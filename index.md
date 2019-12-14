@@ -1,7 +1,16 @@
+---
+title: 首页
+description: 'Azure 中文精选为你带来精彩的云计算开发内容。'
+home: true
+heroImage: /img/azure.png
+actionText: 浏览全部内容
+actionLink: /content/
+---
+
 # Azure 中文精选
 
 ::: tip
-欢迎来到 Azure 中文精选
+:tada: 欢迎来到 Azure 中文精选
 :::
 
 ## 我们的目标
