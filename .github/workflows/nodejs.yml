@@ -1,4 +1,4 @@
-name: Node Vuewpress Publish
+name: Vuepress Publish
 
 on: [push]
 
@@ -17,4 +17,4 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
           BRANCH: gh-pages
           FOLDER: .vuepress/dist
-          BUILD_SCRIPT: npm install && npm run build
+          BUILD_SCRIPT: npm install && npm run build && touch .nojekyll
