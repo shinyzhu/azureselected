@@ -22,13 +22,6 @@ date: 2019-12-14
 
 本文中使用的示例是一个简单的三层应用程序，该应用使用Java EE 8规范，例如JAX-RS，EJB，CDI，JPA，JSF，Bean验证。 我们将使用 [Payara服务器](https://www.payara.fish/) 部署应用程序，并使用 [PostgreSQL](https://www.postgresql.org/) 用作关系数据库。
 
-During the course of the tutorial, we will cover:
-
-- Postgres and Virtual machine setup on Azure
-- Setup Payara server on the Virtual machine
-- Configure and install the Java EE application
-- Explore its functionality
-
 
 在本教程中，我们将介绍:
 
