@@ -45,7 +45,7 @@ Azure中文精选旨在精挑细选微软[Azure云计算平台](https://azure.mi
 
 ### 内容目录结构
 
-```shell
+```
 /content/cloud-advocate/
 - README.md //这是首页，不需要动
 - deploy-javaee-to-azure-1.md //待翻译文章
