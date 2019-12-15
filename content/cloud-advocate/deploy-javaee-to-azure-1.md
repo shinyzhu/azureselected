@@ -1,16 +1,16 @@
 ---
-title: 'Deploying Java EE apps to Azure: Part 1'
+title: '部属 Java EE 应用到Azure: 第 1 部分'
 description: 'There are a multitude of options for cloud based application development ranging from traditional IaaS (Infrastructure-as-a-Service), PaaS (Platform-as-a-Service) and CaaS (Containers-as-a-Service) all the way to Kubernetes and Serverless (and probably some more which I might be missing!). Think of it as a spectrum rather than a “one size fits all model”, with each option having its pros and cons. Ultimately, every scenario is unique and the final choice is driven by requirements — but its always good to know that you have “choices” at your disposal!'
 tags: ['Java EE', 'Azure', 'IaaS', 'Cloud Computing', 'Database']
 author: 'Abhishek Gupta'
 date: 2019-12-14
 ---
 
-# Deploying Java EE apps to Azure: Part 1
+# 部属 Java EE 应用到Azure: 第 1 部分
 
 <TagLinks />
 
-There are a multitude of options for cloud based application development ranging from traditional `IaaS` (Infrastructure-as-a-Service), `PaaS`(Platform-as-a-Service) and `CaaS` (Containers-as-a-Service) all the way to [Kubernetes](https://kubernetes.io/) and `Serverless` (and probably some more which I might be missing!). Think of it as a spectrum rather than a “one size fits all model”, with each option having its pros and cons. Ultimately, every scenario is unique and the final choice is driven by requirements — but its always good to know that you have “choices” at your disposal!
+基于云的应用程序开发有多种选择，包括传统的 `IaaS`（基础架构即服务）， `PaaS`（平台即服务）和 `CaaS`（ 容器即服务）一直到 [Kubernetes]（https://kubernetes.io/）和 `Serverless`（也许还有更多我未提及！）。思考整个范围，而不是 “一种适合所有模型的方法” ，每种选择都有其优缺点。 最终, 每个场景都是唯一的，最终选择取决于需求 — 但是有很多 "选择" 总是好的!
 
 ![img](https://miro.medium.com/max/60/0*v9YZMVTbaw9xoV70.png?q=20)
 
