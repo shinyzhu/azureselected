@@ -18,9 +18,9 @@ date: 2019-12-14
 
 这是一系列博客的第一篇，它将带您逐步了解其中一种在 Azure 中运行 Java EE 应用的方法。 我们将采用最基本的方法将Java EE应用部署在一个 [微软 Azure 虚拟机](https://azure.microsoft.com/services/virtual-machines/?WT.mc_id=medium-blog-abhishgu) 以及 [Azure PostgreSQL 数据库](https://azure.microsoft.com/services/postgresql/?WT.mc_id=medium-blog-abhishgu) 服务作为后端数据库。本质上, 这是结合 `IaaS` (Azure 虚拟机) 与 `PaaS` (LAzure中托管的 PostgreSQL )
 
-> *Other options such as containers and Kubernetes will be covered in upcoming posts*
+> *其他选项（例如容器和Kubernetes）将在以后的文章中介绍*
 
-The example used in the blog post is a simple three-tier application that uses Java EE 8 specifications such as JAX-RS, EJB, CDI, JPA, JSF, Bean Validation. We will use the [Payara Server](https://www.payara.fish/) to deploy the application and use [PostgreSQL](https://www.postgresql.org/) as the relational database.
+本文中使用的示例是一个简单的三层应用程序，该应用使用Java EE 8规范，例如JAX-RS，EJB，CDI，JPA，JSF，Bean验证。 我们将使用 [Payara服务器](https://www.payara.fish/) 部署应用程序，并使用 [PostgreSQL](https://www.postgresql.org/) 用作关系数据库。
 
 During the course of the tutorial, we will cover:
 
@@ -29,7 +29,17 @@ During the course of the tutorial, we will cover:
 - Configure and install the Java EE application
 - Explore its functionality
 
-Except for minor changes, the application used in this tutorial has been adapted from [this project](https://github.com/m-reza-rahman/javaee-azure/tree/master/javaee) by [Reza Rahman](https://twitter.com/reza_rahman)
+
+在本教程中，我们将介绍:
+
+- Azure 中 Postgres 和虚拟机设置
+- 在虚拟机中设置 Payara 服务器
+- 配置和安装 Java EE 应用
+- 探索其功能
+
+
+除某些微小改动外, 本教程中使用的应用来自  [Reza Rahman](https://twitter.com/reza_rahman) 的 [此项目](https://github.com/m-reza-rahman/javaee-azure/tree/master/javaee) 
+
 
 # Pre-requisites
 
