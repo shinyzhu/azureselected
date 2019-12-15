@@ -13,37 +13,44 @@ actionLink: /content/
 
 ## 我们的目标
 
-Azure中文精选旨在精挑细选微软Azure云计算平台的实际应用和开发经验等优质内容，然后将这些内容进行中文本地化翻译，力图为中文环境的Azure开发者提供学习和参考资料。
+Azure中文精选旨在精挑细选微软[Azure云计算平台](https://azure.microsoft.com/?WT.mc_id=azureselected-content-xinglzhu)的实际应用和开发经验等优质内容，然后将这些内容进行中文本地化翻译，力图为中文环境的Azure开发者提供学习和参考资料。
 
 该项目库是为译者和校验等志愿者提供的协作平台，我们将翻译好的内容会推送给国内多个开发者渠道。
 
 ## 内容来源
 
-1、微软开发者关系部门里有很多为全球开发者提供帮助的行业专家，他们根据实际场景创造了非常多的指导和最佳实践内容。
+实际上，[微软 Docs](https://docs.microsoft.com/azure/?WT.mc_id=azureselected-content-xinglzhu) 上的文档非常齐全，在[微软 Learn](https://docs.microsoft.com/learn/?WT.mc_id=azureselected-content-xinglzhu) 平台上也有非常多的学习路径和考试，这也是我们推荐的参考资源。但比起已经相当完整的文档，我们主要关注有实践经验的专家撰写的内容。主要来自：
 
-2、一些精彩的Azure博客提供了日常开发的小提示。
+1、微软的[云大使（Cloud Advocate）](https://developer.microsoft.com/advocates/?WT.mc_id=azureselected-content-xinglzhu)，他们根据实际场景创造了非常多的指导和最佳实践内容。
 
-3、等等（欢迎推荐）
+2、[Azure提示和小技巧](https://aka.ms/azuretipsandtricks)博客，提供了日常开发的小提示。
+
+3、等等（欢迎[推荐优质内容](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxFo4UL6NOJLq2Kj3ObwvLdUNlBQSklPT001OVhXSEpNS09IV1owSkFJTC4u)）
 
 ## 协作模式
 
-流程图
+首先报名成为志愿者，目前在[招募译者](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxFo4UL6NOJLq2Kj3ObwvLdUNU04RVo1WU9RMVpTN081RlY2RE00NlJPNC4u)。
 
-各角色分工
+### 翻译步骤
 
-内容所在目录
+1. 认领翻译文章：创建Issue，认领待翻译的文章。
+2. 开始翻译：根据Issue创建文章的分支，开始翻译。翻译的时候建议一段原文一段中文。记得多提交。
+3. 完成后发起Pull Request，等待审阅。
 
-``` js
-export default {
-  name: 'MyComponent',
-  // ...
-}
-```
+### 审阅步骤
+
+1. 查看Pull Request，对比翻译结果。
+2. 如有修改请标记。
+3. 确认质量合格后，合并Pull Request到master分支。
 
 ## 积分
 
 我们正在设计一个积分规则，译者和校验等志愿者的贡献都将计算积分，累计的积分将用来…
 
-## 如何开始
+```
+TODO
+```
 
-访问azureselected.com，浏览你擅长的领域的内容，直接点击编辑此页面。
+## 内容分发
+
+目前我们正在跟多个第三方渠道沟通，会转发翻译完成的文章，来让更多的中文开发者阅读。
