@@ -34,6 +34,15 @@ Azure中文精选旨在精挑细选微软[Azure云计算平台](https://azure.mi
 2. 如有修改请标记。
 3. 确认质量合格后，合并Pull Request到master分支。
 
+### 内容目录结构
+
+```
+/content/cloud-advocate/
+- README.md //这是首页，不需要动
+- deploy-javaee-to-azure-1.md //待翻译文章
+- ... //其他文章
+```
+
 ## 积分
 
 我们正在设计一个积分规则，译者和校验等志愿者的贡献都将计算积分，累计的积分将用来…

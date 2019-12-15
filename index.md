@@ -1,6 +1,6 @@
 ---
 title: 首页
-description: 'Azure 中文精选为你带来精彩的云计算开发内容。'
+description: 'Azure 中文精选为你带来优质的Azure云计算开发最佳实践和教程等内容。'
 home: true
 heroImage: /img/azure.png
 actionText: 浏览全部内容
@@ -42,6 +42,15 @@ Azure中文精选旨在精挑细选微软[Azure云计算平台](https://azure.mi
 1. 查看Pull Request，对比翻译结果。
 2. 如有修改请标记。
 3. 确认质量合格后，合并Pull Request到master分支。
+
+### 内容目录结构
+
+```shell
+/content/cloud-advocate/
+- README.md //这是首页，不需要动
+- deploy-javaee-to-azure-1.md //待翻译文章
+- ... //其他文章
+```
 
 ## 积分
 
