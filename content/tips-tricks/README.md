@@ -7,5 +7,5 @@ index_page: true
 
 请直接访问[https://aka.ms/azuretipsandtricks](https://aka.ms/azuretipsandtricks)
 
-
 <ContentList category="tips-tricks" />
+

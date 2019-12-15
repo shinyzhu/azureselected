@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "AzureSelected Press Site",
   "main": "index.js",
-  "dependencies": {
-    "moment": "^2.24.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "vuepress": "^1.2.0"
   },

@@ -7,8 +7,6 @@ actionText: 浏览全部内容
 actionLink: /content/
 ---
 
-# Azure 中文精选
-
 ::: tip
 :tada: 欢迎来到 Azure 中文精选
 :::

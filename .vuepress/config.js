@@ -1,4 +1,3 @@
-const moment = require('moment');
 
 module.exports = {
     title: "Azure 中文精选",
@@ -25,10 +24,10 @@ module.exports = {
       nav: [
         { text: '首页', link: '/' },
         { text: 'Cloud Advocate', link: '/content/cloud-advocate/' },
-        //{ text: 'Tips & Tricks', link: '/content/tips-tricks/' },
+        { text: 'Tips & Tricks', link: '/content/tips-tricks/' },
         { text: '标签', link: '/tags.html' },
         { text: '我要参加翻译', link: 'https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxFo4UL6NOJLq2Kj3ObwvLdUNU04RVo1WU9RMVpTN081RlY2RE00NlJPNC4u' },
-        { text: '建议优质内容', link: 'https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxFo4UL6NOJLq2Kj3ObwvLdUNlBQSklPT001OVhXSEpNS09IV1owSkFJTC4u' }
+        { text: '推荐优质内容', link: 'https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxFo4UL6NOJLq2Kj3ObwvLdUNlBQSklPT001OVhXSEpNS09IV1owSkFJTC4u' }
       ]
     },
     plugins: [
@@ -41,19 +40,14 @@ module.exports = {
         serviceWorker: true,
         updatePopup: true
       }],
-      ['@vuepress/last-updated', {
-          transformer: (timestamp, lang) => {
-            const moment = require('moment')
-            moment.locale(lang)
-            return moment(timestamp).fromNow()
-          }
-      }],
+      ['@vuepress/last-updated'],
       ['vuepress-plugin-rss', {
           base_url: '/',
           site_url: 'https://azureselected.com',
           filter: frontmatter => frontmatter.date <= new Date(),
           count: 20
       }],
-      ['vuepress-plugin-table-of-contents']
+      ['vuepress-plugin-table-of-contents'],
+      ['vuepress-plugin-janitor']
     ]
   }

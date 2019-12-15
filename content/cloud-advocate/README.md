@@ -5,6 +5,4 @@ index_page: true
 
 # Cloud Advocate 内容
 
-<TOC />
-
 <ContentList category="cloud-advocate" />
