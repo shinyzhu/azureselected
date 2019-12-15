@@ -41,9 +41,9 @@ During the course of the tutorial, we will cover:
 除某些微小改动外, 本教程中使用的应用来自  [Reza Rahman](https://twitter.com/reza_rahman) 的 [此项目](https://github.com/m-reza-rahman/javaee-azure/tree/master/javaee) 
 
 
-# Pre-requisites
+# 先决条件
 
-You will need a [Microsoft Azure account](https://docs.microsoft.com/azure/?WT.mc_id=medium-blog-abhishgu) and the [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&WT.mc_id=medium-blog-abhishgu) to work through the tutorial.
+你将需要 [微软 Azure 账号](https://docs.microsoft.com/azure/?WT.mc_id=medium-blog-abhishgu) 和 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&WT.mc_id=medium-blog-abhishgu) 来完成本教程。
 
 If you don’t have a Microsoft Azure account, go ahead and [sign up for a free one!](https://azure.microsoft.com/free/?WT.mc_id=medium-blog-abhishgu) The Azure CLI is a cross-platform command-line experience for managing Azure resources — please install it using [these instructions](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&WT.mc_id=medium-blog-abhishgu).
 
