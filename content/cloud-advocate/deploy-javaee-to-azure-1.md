@@ -16,7 +16,7 @@ date: 2019-12-14
 
 ![img](https://miro.medium.com/max/980/0*v9YZMVTbaw9xoV70.png)
 
-This is the first of a series of blogs that will walk you through one of the options of running Java EE applications on Azure. We will follow the most basic approach for deploying our Java EE app to an application server which is set up in a [Virtual Machine on Microsoft Azure](https://azure.microsoft.com/services/virtual-machines/?WT.mc_id=medium-blog-abhishgu) along with the [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql/?WT.mc_id=medium-blog-abhishgu) service as the backend database. In essence, this is the combination of `IaaS` (Azure VM) along with a `PaaS` (managed PostgreSQL on Azure)
+这是一系列博客的第一篇，它将带您逐步了解其中一种在 Azure 中运行 Java EE 应用的方法。 我们将采用最基本的方法将Java EE应用部署在一个 [微软 Azure 虚拟机](https://azure.microsoft.com/services/virtual-machines/?WT.mc_id=medium-blog-abhishgu) 以及 [Azure PostgreSQL 数据库](https://azure.microsoft.com/services/postgresql/?WT.mc_id=medium-blog-abhishgu) 服务作为后端数据库。本质上, 这是结合 `IaaS` (Azure 虚拟机) 与 `PaaS` (LAzure中托管的 PostgreSQL )
 
 > *Other options such as containers and Kubernetes will be covered in upcoming posts*
 
