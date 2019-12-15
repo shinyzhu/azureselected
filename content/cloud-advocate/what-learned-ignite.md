@@ -2,6 +2,8 @@
 title: 'What I Learned About Azure Arc and Other Services at Microsoft Ignite 2019'
 description: ''
 tags: ['arc', 'Azure', 'Azure Arc', 'Azure Stack', 'hybrid', 'Ignite', 'Microsoft Ignite', 'Microsoft Ignite 2019', 'stack', 'Thomas Maurer', 'Windows', 'Windows Server']
+author: ''
+date: 2019-12-13
 ---
 
 # What I Learned About Azure Arc and Other Services at Microsoft Ignite 2019

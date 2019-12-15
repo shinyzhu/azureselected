@@ -3,6 +3,7 @@ title: 'Deploying Java EE apps to Azure: Part 1'
 description: 'There are a multitude of options for cloud based application development ranging from traditional IaaS (Infrastructure-as-a-Service), PaaS (Platform-as-a-Service) and CaaS (Containers-as-a-Service) all the way to Kubernetes and Serverless (and probably some more which I might be missing!). Think of it as a spectrum rather than a “one size fits all model”, with each option having its pros and cons. Ultimately, every scenario is unique and the final choice is driven by requirements — but its always good to know that you have “choices” at your disposal!'
 tags: ['Java EE', 'Azure', 'IaaS', 'Cloud Computing', 'Database']
 author: 'Abhishek Gupta'
+date: 2019-12-14
 ---
 
 # Deploying Java EE apps to Azure: Part 1
