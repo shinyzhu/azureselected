@@ -10,18 +10,33 @@ date: 2019-12-14
 
 <TagLinks />
 
+There are a multitude of options for cloud based application development ranging from traditional `IaaS` (Infrastructure-as-a-Service), `PaaS`(Platform-as-a-Service) and `CaaS` (Containers-as-a-Service) all the way to [Kubernetes](https://kubernetes.io/) and `Serverless` (and probably some more which I might be missing!). Think of it as a spectrum rather than a “one size fits all model”, with each option having its pros and cons. Ultimately, every scenario is unique and the final choice is driven by requirements — but its always good to know that you have “choices” at your disposal!
+
 基于云的应用程序开发有多种选择，包括传统的 `IaaS`（基础架构即服务）， `PaaS`（平台即服务）和 `CaaS`（ 容器即服务）一直到 [Kubernetes]（https://kubernetes.io/）和 `Serverless`（也许还有更多我未提及！）。思考整个范围，而不是 “一种适合所有模型的方法” ，每种选择都有其优缺点。 最终, 每个场景都是唯一的，最终选择取决于需求 — 但是有很多 "选择" 总是好的!
 
 ![img](https://miro.medium.com/max/60/0*v9YZMVTbaw9xoV70.png?q=20)
 
 ![img](https://miro.medium.com/max/980/0*v9YZMVTbaw9xoV70.png)
 
+This is the first of a series of blogs that will walk you through one of the options of running Java EE applications on Azure. We will follow the most basic approach for deploying our Java EE app to an application server which is set up in a [Virtual Machine on Microsoft Azure](https://azure.microsoft.com/services/virtual-machines/?WT.mc_id=medium-blog-abhishgu) along with the [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql/?WT.mc_id=medium-blog-abhishgu) service as the backend database. In essence, this is the combination of `IaaS` (Azure VM) along with a `PaaS` (managed PostgreSQL on Azure)
+
 这是一系列博客的第一篇，它将带您逐步了解其中一种在 Azure 中运行 Java EE 应用的方法。 我们将采用最基本的方法将Java EE应用部署在一个 [微软 Azure 虚拟机](https://azure.microsoft.com/services/virtual-machines/?WT.mc_id=medium-blog-abhishgu) 以及 [Azure PostgreSQL 数据库](https://azure.microsoft.com/services/postgresql/?WT.mc_id=medium-blog-abhishgu) 服务作为后端数据库。本质上, 这是结合 `IaaS` (Azure 虚拟机) 与 `PaaS` (LAzure中托管的 PostgreSQL )
+
+> *Other options such as containers and Kubernetes will be covered in upcoming posts*
 
 > *其他选项（例如容器和Kubernetes）将在以后的文章中介绍*
 
+The example used in the blog post is a simple three-tier application that uses Java EE 8 specifications such as JAX-RS, EJB, CDI, JPA, JSF, Bean Validation. We will use the [Payara Server](https://www.payara.fish/) to deploy the application and use [PostgreSQL](https://www.postgresql.org/) as the relational database.
+
 本文中使用的示例是一个简单的三层应用程序，该应用使用Java EE 8规范，例如JAX-RS，EJB，CDI，JPA，JSF，Bean验证。 我们将使用 [Payara服务器](https://www.payara.fish/) 部署应用程序，并使用 [PostgreSQL](https://www.postgresql.org/) 用作关系数据库。
 
+
+During the course of the tutorial, we will cover:
+
+- Postgres and Virtual machine setup on Azure
+- Setup Payara server on the Virtual machine
+- Configure and install the Java EE application
+- Explore its functionality
 
 在本教程中，我们将介绍:
 
@@ -30,13 +45,18 @@ date: 2019-12-14
 - 配置和安装 Java EE 应用
 - 探索其功能
 
+Except for minor changes, the application used in this tutorial has been adapted from [this project](https://github.com/m-reza-rahman/javaee-azure/tree/master/javaee) by [Reza Rahman](https://twitter.com/reza_rahman)
 
 除某些微小改动外, 本教程中使用的应用来自  [Reza Rahman](https://twitter.com/reza_rahman) 的 [此项目](https://github.com/m-reza-rahman/javaee-azure/tree/master/javaee) 
 
+# Pre-requisites
 
 # 先决条件
 
+You will need a [Microsoft Azure account](https://docs.microsoft.com/azure/?WT.mc_id=medium-blog-abhishgu) and the [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&WT.mc_id=medium-blog-abhishgu) to work through the tutorial.
+
 你将需要 [微软 Azure 账号](https://docs.microsoft.com/azure/?WT.mc_id=medium-blog-abhishgu) 和 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&WT.mc_id=medium-blog-abhishgu) 来完成本教程。
+
 
 If you don’t have a Microsoft Azure account, go ahead and [sign up for a free one!](https://azure.microsoft.com/free/?WT.mc_id=medium-blog-abhishgu) The Azure CLI is a cross-platform command-line experience for managing Azure resources — please install it using [these instructions](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&WT.mc_id=medium-blog-abhishgu).
 
