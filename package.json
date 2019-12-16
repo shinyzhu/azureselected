@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "AzureSelected Press Site",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "vue": "^2.6.11"
+  },
   "devDependencies": {
     "@vuepress/plugin-back-to-top": "^1.2.0",
     "@vuepress/plugin-google-analytics": "^1.2.0",
