@@ -46,8 +46,6 @@ module.exports = {
           site_url: 'https://azureselected.com',
           filter: frontmatter => frontmatter.date <= new Date(),
           count: 20
-      }],
-      ['vuepress-plugin-table-of-contents'],
-      ['vuepress-plugin-janitor']
+      }]
     ]
   }
