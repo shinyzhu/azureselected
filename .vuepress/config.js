@@ -27,7 +27,8 @@ module.exports = {
         //{ text: 'Tips & Tricks', link: '/content/tips-tricks/' },
         { text: '标签', link: '/tags.html' },
         { text: '我要参加翻译', link: 'https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxFo4UL6NOJLq2Kj3ObwvLdUNU04RVo1WU9RMVpTN081RlY2RE00NlJPNC4u' },
-        { text: '推荐优质内容', link: 'https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxFo4UL6NOJLq2Kj3ObwvLdUNlBQSklPT001OVhXSEpNS09IV1owSkFJTC4u' }
+        { text: '推荐优质内容', link: 'https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxFo4UL6NOJLq2Kj3ObwvLdUNlBQSklPT001OVhXSEpNS09IV1owSkFJTC4u' },
+        { text: 'RSS', link: 'https://azureselected.com/rss.xml'}
       ]
     },
     plugins: [
@@ -44,6 +45,7 @@ module.exports = {
       ['vuepress-plugin-rss', {
           base_url: '/',
           site_url: 'https://azureselected.com',
+          copyright: '2019 AzureSelected',
           filter: frontmatter => frontmatter.date <= new Date(),
           count: 20
       }]
