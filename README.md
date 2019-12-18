@@ -43,6 +43,17 @@ Azure中文精选旨在精挑细选微软[Azure云计算平台](https://azure.mi
 - ... //其他文章
 ```
 
+### 待翻译文章列表
+
+- [HOW TO SYNC AZURE BLOB STORAGE WITH AZCOPY](/content/cloud-advocate/how-to-sync-azure-blob-storage-with-azcopy.md)
+- [Manage multiple Azure tenancies with Azure Lighthouse](/content/cloud-advocate/Manage-multiple-Azure-tenancies-with-Azure-Lighthouse.md)
+- [What I Learned About Azure Arc and Other Services at Microsoft Ignite 2019](/content/cloud-advocate/what-learned-ignite.md)
+- [Getting the Latest Array Item with Inline Script in Logic App](/content/cloud-advocate/getting-the-latest-array-item-with-inline-script-in-logic-app.md)
+
+### 翻译中的文章列表
+
+- [部属 Java EE 应用到Azure: 第 1 部分](/content/cloud-advocate/deploy-javaee-to-azure-1.md)
+
 ## 积分
 
 我们正在设计一个积分规则，译者和校验等志愿者的贡献都将计算积分，累计的积分将用来…
