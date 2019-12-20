@@ -102,6 +102,8 @@ export AZURE_LOCATION=[to be filled]az group create --name $AZURE_RESOURCE_GROUP
 
 > *We will be using the single server option for the purposes of this tutorial*
 
+> *在本教程中，我们将使用单服务器选项*
+
 We will use the `az postgres server create`command to create a Postgres server instance on Azure. First, set up some of the server properties such as the name, admin user, etc.
 
 ```
