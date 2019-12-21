@@ -64,9 +64,15 @@ If you don’t have a Microsoft Azure account, go ahead and [sign up for a free 
 
 # First things first…
 
+# 第一件事情…
+
 Set your Azure Subscription ID using the Azure CLI which will be used for this tutorial.
 
+使用 Azure CLI 设置本教程的 Azure 订阅ID。
+
 To set your Azure subscription ID
+
+设置您的Azure订阅ID
 
 ```
 export AZURE_SUBSCRIPTION_ID=[to be filled]az account set --subscription $AZURE_SUBSCRIPTION_ID
@@ -74,7 +80,12 @@ export AZURE_SUBSCRIPTION_ID=[to be filled]az account set --subscription $AZURE_
 
 Create a resource group that will contain all the services (resources) which you will create as a part of this tutorial. A resource group is like a logical container that holds related resources for an Azure solution. The resource group includes those resources that you want to manage as a group.
 
+创建一个资源组，其中将包含您将在本教程中创建的所有服务（资源）。 资源组就像一个逻辑容器，其中包含用于Azure解决方案的相关资源。 资源组包括您要作为组管理的那些资源。
+
+
 To create a resource group
+
+创建资源组
 
 ```
 export AZURE_RESOURCE_GROUP_NAME=[to be filled]
@@ -83,9 +94,15 @@ export AZURE_LOCATION=[to be filled]az group create --name $AZURE_RESOURCE_GROUP
 
 # Install PostgreSQL on Azure
 
+# 在 Azure 中安装 PostgreSQL
+
 [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/?WT.mc_id=medium-blog-abhishgu) is a relational database service based on the open-source [Postgres database engine](https://www.postgresql.org/). It’s a fully managed database-as-a-service offering which is available in two deployment options, as [a single server](https://docs.microsoft.com/azure/postgresql/concepts-servers?WT.mc_id=medium-blog-abhishgu), and as [a Hyperscale (Citus) cluster](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-nodes?WT.mc_id=medium-blog-abhishgu)
 
+[用于PostgreSQL的Azure数据库](https://docs.microsoft.com/azure/postgresql/?WT.mc_id=medium-blog-abhishgu) 是一个基于开源 [Postgres 数据库引擎](https://www.postgresql.org/) 关系数据库服务.这是一种完全托管的数据库即服务产品，有两个部署选项可用, 作为 [单一服务器](https://docs.microsoft.com/azure/postgresql/concepts-servers?WT.mc_id=medium-blog-abhishgu), 和作为 [和超大型 (Citus) 集群](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-nodes?WT.mc_id=medium-blog-abhishgu)
+
 > *We will be using the single server option for the purposes of this tutorial*
+
+> *在本教程中，我们将使用单服务器选项*
 
 We will use the `az postgres server create`command to create a Postgres server instance on Azure. First, set up some of the server properties such as the name, admin user, etc.
 
