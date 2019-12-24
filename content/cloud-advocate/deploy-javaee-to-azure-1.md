@@ -14,7 +14,7 @@ url: ''
 
 There are a multitude of options for cloud based application development ranging from traditional `IaaS` (Infrastructure-as-a-Service), `PaaS`(Platform-as-a-Service) and `CaaS` (Containers-as-a-Service) all the way to [Kubernetes](https://kubernetes.io/) and `Serverless` (and probably some more which I might be missing!). Think of it as a spectrum rather than a “one size fits all model”, with each option having its pros and cons. Ultimately, every scenario is unique and the final choice is driven by requirements — but its always good to know that you have “choices” at your disposal!
 
-基于云的应用程序开发有多种选择，包括传统的 `IaaS`（基础架构即服务）， `PaaS`（平台即服务）和 `CaaS`（ 容器即服务）一直到 [Kubernetes]（https://kubernetes.io/）和 `Serverless`（也许还有更多我未提及！）。思考实际应用范围，而不是 “一种适合所有模型的方法” ，每种选择都有其优缺点。 最终, 每个场景都是唯一的，最终选择取决于需求 — 但是有很多 "选择" 总是好的!
+基于云的应用程序开发有多种选择，包括传统的 `IaaS`（基础架构即服务）， `PaaS`（平台即服务）和 `CaaS`（ 容器即服务）一直到 [Kubernetes]（https://kubernetes.io/）和 `Serverless` （无服务器）（也许还有更多我未提及！）。思考实际应用范围，而不是 “一种适合所有模型的方法” ，每种选择都有其优缺点。 最终, 每个场景都是唯一的，最终选择取决于需求 — 但是有很多 "选择" 总是好的!
 
 ![img](https://miro.medium.com/max/60/0*v9YZMVTbaw9xoV70.png?q=20)
 
@@ -61,6 +61,8 @@ You will need a [Microsoft Azure account](https://docs.microsoft.com/azure/?WT.m
 
 
 If you don’t have a Microsoft Azure account, go ahead and [sign up for a free one!](https://azure.microsoft.com/free/?WT.mc_id=medium-blog-abhishgu) The Azure CLI is a cross-platform command-line experience for managing Azure resources — please install it using [these instructions](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&WT.mc_id=medium-blog-abhishgu).
+
+如果没有微软账户, 在此 [免费注册!](https://azure.microsoft.com/free/?WT.mc_id=medium-blog-abhishgu) Azure CLI 是一个成熟的管理 Azure 资源跨平台命令行 — 请使用 [这些指示](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&WT.mc_id=medium-blog-abhishgu) 安装.
 
 # First things first…
 
