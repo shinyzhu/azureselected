@@ -106,6 +106,8 @@ export AZURE_LOCATION=[to be filled]az group create --name $AZURE_RESOURCE_GROUP
 
 We will use the `az postgres server create`command to create a Postgres server instance on Azure. First, set up some of the server properties such as the name, admin user, etc.
 
+我们将使用 `az postgres server create` 命令在Azure中创建 Postgres 服务器实例。 首先, 设置一些服务器属性，例如名称，管理员用户等。
+
 ```
 export AZURE_POSTGRES_SERVER_NAME=[to be filled]
 export AZURE_POSTGRES_ADMIN_USER=[to be filled]
@@ -116,7 +118,11 @@ export STORAGE=5120
 
 > *For storage and SKU options, please refer to* [*the documentation*](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers?WT.mc_id=medium-blog-abhishgu)
 
+> * 对于存储(storage)和 SKU 选项, 请参考 * [*该文档*](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers?WT.mc_id=medium-blog-abhishgu)
+
 And, then invoke the command to initiate the database instance creation:
+
+然后, 使用此命令创建并初始化数据库实例:
 
 ```
 az postgres server create --resource-group $AZURE_RESOURCE_GROUP_NAME --name $AZURE_POSTGRES_SERVER_NAME  --location $AZURE_LOCATION --admin-user $AZURE_POSTGRES_ADMIN_USER --admin-password $AZURE_POSTGRES_ADMIN_PASSWORD --storage-size $STORAGE --sku-name $SKU
@@ -124,7 +130,11 @@ az postgres server create --resource-group $AZURE_RESOURCE_GROUP_NAME --name $AZ
 
 The provisioning process will take a few minutes.
 
+设置过程将花费几分钟。
+
 To check the details of the Postgres database instance you just provisioned, invoke `az postgres server show` command
+
+使用 `az postgres server show` 命令，检查刚刚配置的 Postgres 数据库实例的详细信息。
 
 ```
 az postgres server show --resource-group $AZURE_RESOURCE_GROUP_NAME --name $AZURE_POSTGRES_SERVER_NAME
@@ -132,15 +142,25 @@ az postgres server show --resource-group $AZURE_RESOURCE_GROUP_NAME --name $AZUR
 
 You should get a JSON response. Please note down the value for the `fullyQualifiedDomainName` attribute as you will be using this to connect to the Postgres instance later.
 
+此时应该得到 JSON 格式响应。请记下 `fullyQualifiedDomainName` 属性的值，因为稍后将使用它来连接到 Postgres实例。
+
 > *It should be of the format:* `*[AZURE_POSTGRES_DB_NAME].postgres.database.azure.com*`
+
+> *其格式应该是:* `*[AZURE_POSTGRES_DB_NAME].postgres.database.azure.com*`
 
 ------
 
 # Install Virtual Machine on Azure
 
+# 在Azure中安装虚拟机
+
 We will use a [Virtual machine](https://docs.microsoft.com/azure/virtual-machines/?WT.mc_id=medium-blog-abhishgu) on Azure to host the Payara JavaEE application server. To be specific, this will be a Ubuntu based Linux VM.
 
+我们将使用 Azure [虚拟机](https://docs.microsoft.com/azure/virtual-machines/?WT.mc_id=medium-blog-abhishgu) 托管Payara JavaEE应用程序服务器。具体来说，这将是基于 Ubuntu 的 Linux 虚拟机。
+
 Let’s start by setting up the required information for the VM
+
+首先，设置虚拟机所需的信息
 
 ```
 export AZURE_VM_NAME=[to be filled]
@@ -151,13 +171,19 @@ export VM_IMAGE=UbuntuLTS
 
 We will use the `az vm create` command to create the VM instance
 
+我们将使用 `az vm create` 命令创建虚拟机实例
+
 ```
 az vm create --resource-group $AZURE_RESOURCE_GROUP_NAME --name $AZURE_VM_NAME --image $VM_IMAGE --admin-username $AZURE_VM_USER --admin-password $AZURE_VM_PASSWORD
 ```
 
 The VM provisioning will take a few minutes.
 
+此虚拟机配置将花费几分钟。
+
 You need to get the public IP address of the VM. Do so using the `az vm list-ip-addresses` command
+
+使用 `az vm list-ip-addresses` 命令，获取虚拟机的公共IP地址。 
 
 ```
 az vm list-ip-addresses --resource-group $AZURE_RESOURCE_GROUP_NAME --name $AZURE_VM_NAME
@@ -165,13 +191,19 @@ az vm list-ip-addresses --resource-group $AZURE_RESOURCE_GROUP_NAME --name $AZUR
 
 You will see a JSON response — take a look at the `publicIpAddresses`section and note down the value of the`ipAddress` property. Configure it as an environment variable as you will be using it in the subsequent steps
 
+查看 JSON 格式响应 — 检查 `publicIpAddresses` 部分，并记下 `ipAddress` 属性的值。 将其配置为环境变量，因为您将在后续步骤中使用它。
+
 ```
 export VM_IP=[to be filled]
 ```
 
 ## Allow VM to access the Postgres database
 
+## 允许虚拟机访问 Postgres 数据库
+
 The Postgres database is not accessible by default. Use the `az postgres server firewall-rule create` command to create a firewall rule to explicitly allow the VM to access the Postgres instance. This will allow the JavaEE application deployed inside the VM to communicate with Postgres.
+
+默认情况下无法访问 Postgres 数据库。 使用 `az postgres server firewall-rule create` 命令创建防火墙规则，明确允许虚拟机访问 Postgres 实例。这将允许虚拟机内部署的 JavaEE 应用程序与 Postgres 通信。
 
 ```
 export FIREWALL_RULE_NAME=AllowJavaEECafeAppOnVMaz postgres server firewall-rule create --resource-group $AZURE_RESOURCE_GROUP_NAME --server $AZURE_POSTGRES_SERVER_NAME --name $FIREWALL_RULE_NAME --start-ip-address $VM_IP --end-ip-address $VM_IP
@@ -181,9 +213,15 @@ export FIREWALL_RULE_NAME=AllowJavaEECafeAppOnVMaz postgres server firewall-rule
 
 # Install Payara server on the Virtual Machine
 
+# 在虚拟机中安装 Payara 服务器
+
 [Payara Server](http://www.payara.fish/) is an open source application server derived from [GlassFish](https://javaee.github.io/glassfish/)that supports reliable and secure deployments of Java EE ([Jakarta EE](https://jakarta.ee/)) and [MicroProfile](https://microprofile.io/)applications in any environment: on-premise, in the cloud or hybrid.
 
+[Payara 服务器](http://www.payara.fish/) 是派生自 [GlassFish](https://javaee.github.io/glassfish/) 开源应用程序服务器，它支持Java EE的可靠和安全部署。 ([Jakarta EE](https://jakarta.ee/)) 和 [MicroProfile](https://microprofile.io/) 应用程序可在任何环境中使用：本地，云中或混合环境中。
+
 > *Check out the project on* [*GitHub*](https://github.com/payara/Payara) *or dive into* [*its documentation*](https://docs.payara.fish/) *to learn more!*
+
+> *在* [*GitHub*](https://github.com/payara/Payara) *检出（git checkout命令）此项目，或在* [*文档*](https://docs.payara.fish/) *了解更多!*
 
 SSH into the Linux VM you just provisioned using the username and VM IP
 
@@ -193,7 +231,11 @@ ssh $AZURE_VM_USER@$VM_IP
 
 Enter the password once prompted. Once you’re logged into the Virtual Machine, proceed with the next steps.
 
+提示时输入密码。 登录虚拟机后，请继续以下步骤。
+
 ## Install required toolset
+
+## 安装所需工具集
 
 Before installing the Payara server, we need to set up a few things such as JDK, etc.
 
