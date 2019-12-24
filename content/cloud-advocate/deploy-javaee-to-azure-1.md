@@ -476,6 +476,8 @@ You should see a JSON response listing both the coffee options you just added
 
 此时应会看到 JSON 格式的响应，列出刚才添加的所有咖啡
 
+Get a coffee by ID
+
 通过 ID 获取咖啡
 
 ```
