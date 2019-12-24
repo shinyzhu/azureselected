@@ -1,6 +1,6 @@
 ---
 type: post
-title: '部属 Java EE 应用到Azure: 第 1 部分'
+title: '部属 Java EE 应用到 Azure: 第 1 部分'
 description: 'There are a multitude of options for cloud based application development ranging from traditional IaaS (Infrastructure-as-a-Service), PaaS (Platform-as-a-Service) and CaaS (Containers-as-a-Service) all the way to Kubernetes and Serverless (and probably some more which I might be missing!). Think of it as a spectrum rather than a “one size fits all model”, with each option having its pros and cons. Ultimately, every scenario is unique and the final choice is driven by requirements — but its always good to know that you have “choices” at your disposal!'
 tags: ['Java EE', 'Azure', 'IaaS', 'Cloud Computing', 'Database']
 author: 'Abhishek Gupta'
@@ -8,13 +8,13 @@ date: 2019-12-14
 url: ''
 ---
 
-# 部属 Java EE 应用到Azure: 第 1 部分
+# 部属 Java EE 应用到 Azure: 第 1 部分
 
 <TagLinks />
 
 There are a multitude of options for cloud based application development ranging from traditional `IaaS` (Infrastructure-as-a-Service), `PaaS`(Platform-as-a-Service) and `CaaS` (Containers-as-a-Service) all the way to [Kubernetes](https://kubernetes.io/) and `Serverless` (and probably some more which I might be missing!). Think of it as a spectrum rather than a “one size fits all model”, with each option having its pros and cons. Ultimately, every scenario is unique and the final choice is driven by requirements — but its always good to know that you have “choices” at your disposal!
 
-基于云的应用程序开发有多种选择，包括传统的 `IaaS`（基础架构即服务）， `PaaS`（平台即服务）和 `CaaS`（ 容器即服务）一直到 [Kubernetes]（https://kubernetes.io/）和 `Serverless`（也许还有更多我未提及！）。思考整个范围，而不是 “一种适合所有模型的方法” ，每种选择都有其优缺点。 最终, 每个场景都是唯一的，最终选择取决于需求 — 但是有很多 "选择" 总是好的!
+基于云的应用程序开发有多种选择，包括传统的 `IaaS`（基础架构即服务）， `PaaS`（平台即服务）和 `CaaS`（ 容器即服务）一直到 [Kubernetes]（https://kubernetes.io/）和 `Serverless`（也许还有更多我未提及！）。思考实际应用范围，而不是 “一种适合所有模型的方法” ，每种选择都有其优缺点。 最终, 每个场景都是唯一的，最终选择取决于需求 — 但是有很多 "选择" 总是好的!
 
 ![img](https://miro.medium.com/max/60/0*v9YZMVTbaw9xoV70.png?q=20)
 
@@ -505,7 +505,11 @@ Notice that `cappuccino` is now deleted
 
 Once you are done exploring the application, you can delete the resources. Since we used a resource group, it's easy executing a single command.
 
+探索完应用程序后，您可以删除资源。 由于我们使用了资源组，因此执行单个命令很容易。
+
 > *Please be aware that this will delete all the resources in the group which includes the ones you created as part of the tutorial (VM, Postgres etc.) as well as any other service instances you might have if you used an* already existing *resource group*
+
+> *请注意，这将删除该组中的所有资源，包括您在教程中创建的资源（虚拟机，Postgres等），如果资源组是* 之前创建 *，资源组中的其他服务实例也会删除*
 
 ```
 az group delete --name $AZURE_RESOURCE_GROUP_NAME
@@ -513,8 +517,16 @@ az group delete --name $AZURE_RESOURCE_GROUP_NAME
 
 # Summary
 
+# 总结
+
 You learned how to deploy a Java EE application to Azure using an app server deployed to a Virtual Machine along with a managed database offering for long term persistence.
+
+您已通过学习如何在 Azure 中部署 Java EE 应用程序，掌握了使用虚拟机和托管数据库部属应用服务器，提供长期持久性支持。
 
 As mentioned earlier, each option comes with its own pros and cons. In this case, you have complete control over your application, its deployment infrastructure, the way you scale it, etc. On the other hand, remember that managing the infrastructure, sizing it for your application, securing it, etc. is a set of responsibilities that you have to take on along with delivering core business value as a part of the app functionality.
 
+如前所述，每个选项都有其优缺点。 在这种情况下，您可以完全控制应用程序，部署基础结构，扩展方式等。另一方面，请记住，管理基础结构、调整应用大小、安全防护等应用程序功能，是同交付核心业务价值一样，必须承担的一系列责任。
+
 The next part will dive into how to use a Docker container platform to deploy your Java EE applications. Stay tuned!
+
+下一部分将深入探讨如何使用Docker容器平台来部署Java EE应用程序。 敬请关注！
