@@ -239,6 +239,8 @@ Enter the password once prompted. Once you’re logged into the Virtual Machine,
 
 Before installing the Payara server, we need to set up a few things such as JDK, etc.
 
+在安装Payara服务器之前，我们需要预安装某些配置，例如JDK等。
+
 ```
 sudo apt-get update
 sudo apt install openjdk-8-jdk
@@ -247,7 +249,11 @@ sudo apt install maven
 
 ## Setup Payara server
 
+## 安装 Payara 服务器
+
 We are using Payara server version `5.193.1` which is the latest at the time of writing this tutorial. The setup simply involves downloading and extracting the server zip file.
+
+我们使用 Payara 服务器 `5.193.1` 版本，这是撰写本教程时的最新版本。 该设置仅涉及下载和提取服务器 zip 文件。
 
 ```
 export PAYARA_VERSION=5.193.1wget https://s3-eu-west-1.amazonaws.com/payara.fish/Payara+Downloads/$PAYARA_VERSION/payara-$PAYARA_VERSION.zipsudo apt install unzip
@@ -256,13 +262,19 @@ unzip payara-$PAYARA_VERSION.zip
 
 To confirm, run `ls ~/payara5/`
 
+运行 `ls ~/payara5/` 进行验证
+
 Start the server using `asadmin`
+
+使用 `asadmin` 启动服务器
 
 ```
 ~/payara5/bin/asadmin start-domain
 ```
 
 It will take a few moments for the server to boot up. You should see the following logs:
+
+服务器启动将需要一些时间。 您应该看到以下日志：
 
 ```
 Waiting for domain1 to start ..................
@@ -277,9 +289,15 @@ Command start-domain executed successfully.
 
 # Setup and deploy the application
 
+# 设置和部署应用程序
+
 Now that we have the VM as well as Payara server up and running, we can now deploy our application.
 
+此时我们已经启动并运行了虚拟机和 Payara 服务器，现在可以部署应用程序了。
+
 Start by cloning the Git repository
+
+首先克隆Git存储库
 
 ```
 git clone https://github.com/abhirockzz/javaee-on-azure-iaasexport APP_FOLDER_NAME=javaee-on-azure-iaas
