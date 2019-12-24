@@ -305,18 +305,29 @@ git clone https://github.com/abhirockzz/javaee-on-azure-iaasexport APP_FOLDER_NA
 
 The `web.xml` file (under `javaee-on-azure-iaas/src/main/webapp/WEB-INF`) needs to be updated with the JDBC URL for the Postgres database on Azure. This is present in the `` attribute of the ` section and its format is as follows:
 
+需要使用 Azure 中 Postgres 数据库的 JDBC URL 更新 `web.xml` 文件（在 `javaee-on-azure-iaas/src/main/webapp/WEB-INF` 下）。 它出现在部分 ``属性` 中，其格式如下：
+
 ```
 jdbc:postgresql://POSTGRES_FQDN:5432/postgres?user=AZURE_POSTGRES_ADMIN_USER@=AZURE_POSTGRES_SERVER_NAME&amp;password=AZURE_POSTGRES_ADMIN_PASSWORD&amp;sslmode=require
 ```
 
 Here is the list of placeholders which form a part of the JDBC URL:
 
+这是构成JDBC URL一部分的占位符列表:
+
 - `POSTGRES_FQDN` with value of `fullyQualifiedDomainName` for Postgres instance
 - `AZURE_POSTGRES_ADMIN_USER` with admin user name used to provision PG
 - `AZURE_POSTGRES_SERVER_NAME` with server name used to provision PG
 - `AZURE_POSTGRES_ADMIN_PASSWORD` with admin password used to provision PG
 
+-  Postgres 实例 `POSTGRES_FQDN` 和 `fullyQualifiedDomainName` 的值
+- `AZURE_POSTGRES_ADMIN_USER` 和管理员用户名用于配置 PG (Postgres)
+- `AZURE_POSTGRES_SERVER_NAME` 和服务器名称用于配置 PG
+- `AZURE_POSTGRES_ADMIN_PASSWORD` 和管理员密码用于配置 PG
+
 Set the required values
+
+设置所需的值
 
 ```
 export POSTGRES_FQDN=[to be filled]
@@ -327,11 +338,15 @@ export AZURE_POSTGRES_ADMIN_PASSWORD=[to be filled]
 
 Simply use these commands to replace
 
+只需使用这些命令即可替换
+
 ```
 export FILE_NAME=javaee-on-azure-iaas/src/main/webapp/WEB-INF/web.xmlsed -i 's/POSTGRES_FQDN/'"$POSTGRES_FQDN"'/g' $FILE_NAMEsed -i 's/AZURE_POSTGRES_SERVER_NAME/'"$AZURE_POSTGRES_SERVER_NAME"'/g' $FILE_NAMEsed -i 's/AZURE_POSTGRES_ADMIN_USER/'"$AZURE_POSTGRES_ADMIN_USER"'/g' $FILE_NAMEsed -i 's/AZURE_POSTGRES_ADMIN_PASSWORD/'"$AZURE_POSTGRES_ADMIN_PASSWORD"'/g' $FILE_NAME
 ```
 
 Here is an e.g. of what the `` section will look like:
+
+如下是 `` 部分的示例：
 
 ```
 <data-source>
@@ -343,11 +358,15 @@ Here is an e.g. of what the `` section will look like:
 
 The application is now configured. Let’s build it!
 
+运行环境已设置完成。 开始构建程序吧！
+
 ```
 mvn clean install -f $APP_FOLDER_NAME/pom.xml
 ```
 
 You should have the WAR file available. To confirm
+
+我们开始确认是否有可用的 WAR 文件
 
 ```
 ls -lrt $APP_FOLDER_NAME/target | grep javaee-cafe.war
@@ -355,7 +374,11 @@ ls -lrt $APP_FOLDER_NAME/target | grep javaee-cafe.war
 
 As a final step in the application setup process, let’s download the [JDBC driver for Postgres](https://jdbc.postgresql.org/) and add it to Payara server
 
+作为应用程序设置过程的最后一步, 下载 [Postgres JDBC 驱动程序](https://jdbc.postgresql.org/) 并将其添加到 Payara 服务器
+
 > *We are using driver version* `*42.2.8*`
+
+> *当前使用驱动版本号* `*42.2.8*`
 
 ```
 export PG_DRIVER_JAR=postgresql-42.2.8.jarwget https://jdbc.postgresql.org/download/$PG_DRIVER_JAR
@@ -363,11 +386,15 @@ export PG_DRIVER_JAR=postgresql-42.2.8.jarwget https://jdbc.postgresql.org/downl
 
 Add the JAR to Payara, simply invoke `asadmin add-library`
 
+调用  `asadmin add-library` ， 将JAR添加到Payara
+
 ```
 ~/payara5/glassfish/bin/asadmin add-library $PG_DRIVER_JAR
 ```
 
 Finally, to deploy the WAR file, just copy it to the domain `autodeploy` folder
+
+最后，开始部署WAR文件，将其复制到域 `autodeploy` 文件夹中
 
 ```
 cp $APP_FOLDER_NAME/target/javaee-cafe.war ~/payara5/glassfish/domains/domain1/autodeploy
@@ -375,11 +402,15 @@ cp $APP_FOLDER_NAME/target/javaee-cafe.war ~/payara5/glassfish/domains/domain1/a
 
 The deployment will take some time. In the meanwhile, you can track the logs using:
 
+部署将需要一些时间。 同时，您可以使用以下方法跟踪日志：
+
 ```
 tail -f ~/payara5/glassfish/domains/domain1/logs/server.log
 ```
 
 You should see log messages indicating successful deployment of the `javaee-cafe` application
+
+您应该会看到 `javaee-cafe` 应用程序的日志消息，提示成功部署
 
 ```
 [2019-11-18T13:34:21.317+0000] [Payara 5.193] [INFO] [NCLS-DEPLOYMENT-02035] [javax.enterprise.system.tools.deployment.autodeploy] [tid: _ThreadID=104 _ThreadName=payara-executor-service-scheduled-task] [timeMillis: 1574084061317] [levelValue: 800] [[
@@ -390,9 +421,15 @@ You should see log messages indicating successful deployment of the `javaee-cafe
 
 # Explore the application
 
+# 探索应用程序
+
 It’s time to test drive the JavaEE app! To start off, we can access the application using a web browser. But, just like the Postgres instance, the virtual machine which hosts the Payara server along with the application is also protected by default i.e. you cannot access it from the public internet.
 
+现在该测试 JavaEE应用了！ 首先，我们可以使用网络浏览器访问该应用程序。 但是，就像 Postgres 实例一样，默认情况下，托管 Payara 服务器和应用程序的虚拟机也受到保护，即您无法从公共 Internet 访问它。
+
 We need to create a firewall rule using the `az vm open-port` to access it from our local machine. We just need to expose port `8080` since that's the default HTTP port which Payara server uses
+
+我们需要使用 `az vm open-port` 创建防火墙规则，使本地计算机可以访问它。 我们只需要公开端口 `8080` ，因为这是 Payara 服务器使用的默认 HTTP 端口
 
 ```
 az vm open-port --port 8080 --resource-group $AZURE_RESOURCE_GROUP_NAME --name $AZURE_VM_NAME
@@ -400,17 +437,27 @@ az vm open-port --port 8080 --resource-group $AZURE_RESOURCE_GROUP_NAME --name $
 
 ## Access the JSF front end
 
+## 访问JSF前端
+
 Use your browser to access `http://[ENTER_VM_IP]:8080/javaee-cafe`. You can use the UI to create, delete and see coffees.
+
+使用浏览器打开 `http://[ENTER_VM_IP]:8080/javaee-cafe`. 你可以使用此图形交换系统创建、删除和列出咖啡（coffees）。
 
 ## Use the REST API
 
+## 使用 REST API
+
 The application also exposes a REST API for creating, deleting and listing coffees.
+
+该应用使用 REST API 同样用于创建、删除和列出咖啡（coffees）。
 
 ```
 export VM_IP=[to be filled]
 ```
 
 Create coffees
+
+创建咖啡
 
 ```
 curl -X POST $VM_IP:8080/javaee-cafe/rest/coffees -d '{"name":"cappuccino","price":"10"}' -H "Content-Type: application/json"
@@ -419,19 +466,25 @@ curl -X POST $VM_IP:8080/javaee-cafe/rest/coffees -d '{"name":"caffe-latte","pri
 
 Get all coffees
 
+获取全部咖啡
+
 ```
 curl -H "Accept: application/json" $VM_IP:8080/javaee-cafe/rest/coffees
 ```
 
 You should see a JSON response listing both the coffee options you just added
 
-Get a coffee by ID
+此时应会看到 JSON 格式的响应，列出刚才添加的所有咖啡
+
+通过 ID 获取咖啡
 
 ```
 curl -H "Accept: application/json" $VM_IP:8080/javaee-cafe/rest/coffees/1
 ```
 
 Delete a coffee by ID
+
+通过 ID 删除咖啡
 
 ```
 curl -X DELETE $VM_IP:8080/javaee-cafe/rest/coffees/1
@@ -440,9 +493,13 @@ curl -H "Accept: application/json" $VM_IP:8080/javaee-cafe/rest/coffees
 
 Notice that `cappuccino` is now deleted
 
+注意 `cappuccino` 已删除
+
 ------
 
 # Clean up resources
+
+# 清理资源
 
 Once you are done exploring the application, you can delete the resources. Since we used a resource group, it's easy executing a single command.
 
