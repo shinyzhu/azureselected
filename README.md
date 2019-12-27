@@ -58,6 +58,14 @@ Azure中文精选旨在精挑细选微软[Azure云计算平台](https://azure.mi
 | ------------------------------------------------------------ | ---------- | -------------------------------------------- |
 | [部属 Java EE 应用到Azure: 第 1 部分](/content/cloud-advocate/deploy-javaee-to-azure-1.md) | 2019-12-28 | [HeMingzhang](https://github.com/HeMinzhang) |
 
+### 完成翻译的文章列表
+
+| Title                                                        | ETD        | Translator                                   |
+| ------------------------------------------------------------ | ---------- | -------------------------------------------- |
+| [部属 Java EE 应用到Azure: 第 1 部分](/content/cloud-advocate/deploy-javaee-to-azure-1.md) | 2019-12-28 | [HeMingzhang](https://github.com/HeMinzhang) |
+
+
+
 ## 积分
 
 我们正在设计一个积分规则，译者和校验等志愿者的贡献都将计算积分，累计的积分将用来…
