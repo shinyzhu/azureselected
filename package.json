@@ -5,7 +5,12 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "vuepress": "^1.2.0"
+    "@vuepress/plugin-back-to-top": "^1.2.0",
+    "@vuepress/plugin-google-analytics": "^1.2.0",
+    "@vuepress/plugin-nprogress": "^1.2.0",
+    "@vuepress/plugin-pwa": "^1.2.0",
+    "vuepress": "^1.2.0",
+    "vuepress-plugin-rss": "^2.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
