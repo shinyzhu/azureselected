@@ -1,6 +1,6 @@
 # Azure 中文精选
 
-![Azure Bits](.vuepress/public/img/azure.png)
+![Azure Bits](.vuepress/public/img/azure-bit.png)
 
 ## 我们的目标
 

@@ -2,7 +2,7 @@
 title: 首页
 description: 'Azure 中文精选为你带来优质的Azure云计算开发最佳实践和教程等内容。'
 home: true
-heroImage: /img/azure.png
+heroImage: /img/azure-bit.png
 actionText: 浏览全部内容
 actionLink: /content/
 ---
