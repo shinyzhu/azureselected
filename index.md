@@ -21,15 +21,13 @@ Azure中文精选旨在精挑细选微软[Azure云计算平台](https://azure.mi
 
 实际上，[微软 Docs](https://docs.microsoft.com/azure/?WT.mc_id=azureselected-content-xinglzhu) 上的文档非常齐全，在[微软 Learn](https://docs.microsoft.com/learn/?WT.mc_id=azureselected-content-xinglzhu) 平台上也有非常多的学习路径和考试，这也是我们推荐的参考资源。但比起已经相当完整的文档，我们主要关注有实践经验的专家撰写的内容。主要来自：
 
-1、微软的[云大使（Cloud Advocate）](https://developer.microsoft.com/advocates/?WT.mc_id=azureselected-content-xinglzhu)，他们根据实际场景创造了非常多的指导和最佳实践内容。
+1、微软的[云大使（Cloud Advocate，简称CA）](https://developer.microsoft.com/advocates/?WT.mc_id=azureselected-content-xinglzhu)，他们根据实际场景创造了非常多的指导和最佳实践内容。
 
 2、[Azure提示和小技巧](https://aka.ms/azuretipsandtricks)博客，提供了日常开发的小提示。
 
-3、等等（欢迎[推荐优质内容](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxFo4UL6NOJLq2Kj3ObwvLdUNlBQSklPT001OVhXSEpNS09IV1owSkFJTC4u)）
-
 ## 协作模式
 
-首先报名成为志愿者，目前在[招募译者](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxFo4UL6NOJLq2Kj3ObwvLdUNU04RVo1WU9RMVpTN081RlY2RE00NlJPNC4u)。
+首先报名成为志愿者，目前在[招募译者](https://wj.qq.com/s2/5227985/7213/)。
 
 ### 翻译步骤
 
