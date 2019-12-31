@@ -24,9 +24,9 @@ module.exports = {
       nav: [
         { text: '首页', link: '/' },
         { text: 'Cloud Advocate', link: '/content/cloud-advocate/' },
-        //{ text: 'Tips & Tricks', link: '/content/tips-tricks/' },
+        { text: 'Tips & Tricks', link: '/content/tips-tricks/' },
         { text: '标签', link: '/tags.html' },
-        { text: '我要参加翻译', link: 'https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxFo4UL6NOJLq2Kj3ObwvLdUNU04RVo1WU9RMVpTN081RlY2RE00NlJPNC4u' },
+        { text: '我要参加翻译', link: 'https://wj.qq.com/s2/5227985/7213/' },
         { text: 'RSS', link: 'https://azureselected.com/rss.xml'}
       ]
     },

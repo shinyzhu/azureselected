@@ -16,11 +16,9 @@ Azure中文精选旨在精挑细选微软[Azure云计算平台](https://azure.mi
 
 2、[Azure提示和小技巧](https://aka.ms/azuretipsandtricks)博客，提供了日常开发的小提示。
 
-3、等等（欢迎[推荐优质内容](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxFo4UL6NOJLq2Kj3ObwvLdUNlBQSklPT001OVhXSEpNS09IV1owSkFJTC4u)）
-
 ## 协作模式
 
-首先报名成为志愿者，目前在[招募译者](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxFo4UL6NOJLq2Kj3ObwvLdUNU04RVo1WU9RMVpTN081RlY2RE00NlJPNC4u)。
+首先报名成为志愿者，目前在[招募译者](https://wj.qq.com/s2/5227985/7213/)。
 
 ### 翻译步骤
 
