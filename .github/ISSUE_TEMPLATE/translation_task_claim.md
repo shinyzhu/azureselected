@@ -1,7 +1,10 @@
 ---
 name: Translation Task Claim
 about: Use this template for claiming new translation task.
-title: "翻译认领: [Article Title]"
+title: '翻译认领: [Article Title]'
+labels: ''
+assignees: ''
+
 ---
 
 - 认领时间： YYYY-MM-DD
