@@ -13,3 +13,27 @@
 1. 查看Pull Request，对比翻译结果。
 2. 如有修改请标记。
 3. 确认质量合格后，合并Pull Request到master分支。
+
+### ISSUE Template
+
+**标题格式**： `翻译认领 + 文章名字`
+
+**内容格式**：
+
+```markdown
+- 认领时间： YYYY-MM-DD
+- 认领人员： [GitHub 用户名](GitHub 个人主页)
+- 认领文章： [文章标题](本仓库中的文章链接))
+- 原文： [原文标题](原文链接) By *原文作者* ©Microsoft on ‎原文时间
+```
+
+**示例如下**：
+
+```markdown
+翻译认领：Manage multiple Azure tenancies with Azure Lighthouse
+
+- 认领时间： 2020-01-02
+- 认领人员： [kongxiangyan](https://github.com/kongxiangyan)
+- 认领文章： [Manage multiple Azure tenancies with Azure Lighthouse](https://github.com/azureselected/azureselected/blob/master/content/cloud-advocate/Manage-multiple-Azure-tenancies-with-Azure-Lighthouse.md)
+- 原文： [Manage multiple Azure tenancies with Azure Lighthouse](https://techcommunity.microsoft.com/t5/itops-talk-blog/manage-multiple-azure-tenancies-with-azure-lighthouse/ba-p/833928) By *Sonia Cuff* ©Microsoft on ‎09-03-2019 02:00 AM
+```
