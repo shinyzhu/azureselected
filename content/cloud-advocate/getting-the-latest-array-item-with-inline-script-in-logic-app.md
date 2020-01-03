@@ -7,25 +7,25 @@ author: ''
 date: 2019-11-14
 ---
 
-# Getting the Latest Array Item with Inline Script in Logic App
+# 在Logic App中使用内联脚本获取最新的数组项
 
-In my [previous post](https://devkimchi.com/2019/11/06/getting-the-latest-array-item-in-logic-app/), we’ve walked through a [Logic App](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview?WT.mc_id=devkimchicom-blog-juyoo) workflow to get the latest item in an array, by combining the [`Select` action](https://docs.microsoft.com/azure/logic-apps/logic-apps-workflow-actions-triggers?WT.mc_id=devkimchicom-blog-juyoo#select-action) and the [`Filter` action](https://docs.microsoft.com/azure/logic-apps/logic-apps-workflow-actions-triggers?WT.mc_id=devkimchicom-blog-juyoo#query-action). In fact, although this approach is practical, it is only applicable for a few specific use cases, and a workaround, which is a bit tricky to apply in general. But, this preview feature, [Inline JavaScript Code action](https://docs.microsoft.com/azure/logic-apps/logic-apps-add-run-inline-code?WT.mc_id=devkimchicom-blog-juyoo), can be handy for array sort. In this post, I’m going to discuss how to use the [Inline JavaScript Code action](https://docs.microsoft.com/azure/logic-apps/logic-apps-add-run-inline-code?WT.mc_id=devkimchicom-blog-juyoo) to sort array items and take the latest one in the Logic App workflow.
+在我的[上一篇文章](https://devkimchi.com/2019/11/06/getting-the-latest-array-item-in-logic-app/)中，通过组合使用[`Select`动作](https://docs.microsoft.com/azure/logic-apps/logic-apps-workflow-actions-triggers?WT.mc_id=devkimchicom-blog-juyoo#select-action)和[`Filter`动作](https://docs.microsoft.com/azure/logic-apps/logic-apps-workflow-actions-triggers?WT.mc_id=devkimchicom-blog-juyoo#query-action)，我们已经了解了如何使用[Logic App](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview?WT.mc_id=devkimchicom-blog-juyoo)工作流来获取一个数组中的最新的项。事实上，虽然这种做法是可行的，但它仅适用于一些特定的使用情况，对大多数情况来说，这个解决方案有点棘手。但是，有一个预览功能：[内联 JavaScript 代码动作](https://docs.microsoft.com/azure/logic-apps/logic-apps-add-run-inline-code?WT.mc_id=devkimchicom-blog-juyoo)，可以方便地对数组排序。在这篇文章中，我将讨论如何使用[内联 JavaScript 代码动作](https://docs.microsoft.com/azure/logic-apps/logic-apps-add-run-inline-code?WT.mc_id=devkimchicom-blog-juyoo)排序数组项，并获取 Logic App 工作流中的最新的项。
 
-## Integration Account
+## 集成账户
 
-In order to use this Inline JavaScript Code action, we have to provision an [Integration Account](https://docs.microsoft.com/azure/logic-apps/logic-apps-enterprise-integration-create-integration-account?WT.mc_id=devkimchicom-blog-juyoo)instance. There are [three pricing tiers](https://docs.microsoft.com/azure/logic-apps/logic-apps-pricing?WT.mc_id=devkimchicom-blog-juyoo#integration-accounts) of Integration Account – Free, Basic and Standard. For our practice, the free one is more than enough.
+为了使用这个内联 JavaScript 代码动作，我们必须提供一个[集成账户](https://docs.microsoft.com/azure/logic-apps/logic-apps-enterprise-integration-create-integration-account?WT.mc_id=devkimchicom-blog-juyoo)实例。集成帐户有[三种定价层](https://docs.microsoft.com/azure/logic-apps/logic-apps-pricing?WT.mc_id=devkimchicom-blog-juyoo#integration-accounts) - 免费、基本和标准。对于我们的例子来说，免费的已经足够了。
 
-Once the Integration Account instance is provisioned, connect it with the existing Logic App instance to use the action.
+一旦提供了集成帐户实例，将其与现有的 Logic App 实例连接起来以使用动作。
 
 ![img](https://sa0blogs.blob.core.windows.net/devkimchi/2019/11/getting-the-latest-array-item-with-inline-script-in-logic-app-03.png)
 
-## JavaScript Support
+## JavaScript 支持
 
-Currently, the action supports the [built-in functions](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects) of node.js `8.11.1`. We can’t import external libraries through `npm` or so. Therefore, we can’t rely on any [`require()`](https://nodejs.org/docs/latest-v8.x/api/modules.html#modules_require) statement. Everything **MUST** stay in the action.
+目前，该动作仅支持 node.js `8.11.1`的[内置函数](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)。我们无法通过`npm`导入外部库。因此，我们不能依赖于任何[`require()`](https://nodejs.org/docs/latest-v8.x/api/modules.html#modules_require)语句。所有内容**必须**被包含在该动作中。
 
-## Inline JavaScript Code
+## 内联 JavaScript 代码
 
-Let’s have a look at the JavaScript code below. It’s not related to Logic App but the pure JavaScript code. If you run this code in a node.js console, it returns the latest file path value of `20191104.json`, which is expected. [Array sorting feature in JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) needs a separate callback function, which contains the sort logic.
+让我们来看看下面的 JavaScript 代码。它不涉及 Logic App，只是纯 JavaScript 代码。如果您在 node.js 的控制台运行这段代码，它将返回`20191104.json`最新的文件路径值，这也是预期的值。 [JavaScript 的数组排序功能](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)需要一个单独的回调函数，其中包含排序逻辑。
 
 ```javascript
 "use strict";
@@ -72,24 +72,24 @@ var result = sorted[0].Path;
 console.log(result);
 ```
 
-The callback function **SHOULD** return either `-1`, `0` or `1`.
+回调函数**应该**返回`-1`，`0`或`1`。
 
-- Returning `-1` means, between the array items `a` and `b`, `a` is sent to the lower index.
-- Returning `1` means the array item `b` is sent to the lower index.
+- 返回 `-1` 表示，在数组元素 `a` 和 `b` 中，`a` 会被排列到 `b` 之前。
+- 返回 `1` 表示 `b` 会被排列到 `a` 之前。
 
-Therefore, the callback function gets rid of `.json` from the `Name` property value of both `a`and `b`, compare both values to each other, and the later (larger) one goes to the upper place of the array item (takes the lower index). In other words, the array items are sorted in descending order.
+因此，回调函数把 `a` 和 `b` 的 `Name` 属性值去掉 `.json`，将这两个值进行相互比较，较大的值位于数组项的上部位置（即较低的索引）。换句话说，数组项以降序进行排序。
 
-> If you want to know more about the sort, please refer to [this page](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#Description).
+> 如果你想知道更多有关排序的信息，请参考[此页面](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#Description)。
 
-Now, let’s apply this code into Logic App.
+现在，让我们将这个代码应用到 Logic App。
 
-## Inline JavaScript Code Action
+## 内联 JavaScript 代码动作
 
-Let’s add an action for [Inline JavaScript Code](https://docs.microsoft.com/azure/logic-apps/logic-apps-add-run-inline-code?WT.mc_id=devkimchicom-blog-juyoo).
+让我们添加一个[内嵌JavaScript代码](https://docs.microsoft.com/azure/logic-apps/logic-apps-add-run-inline-code?WT.mc_id=devkimchicom-blog-juyoo)动作。
 
 ![img](https://sa0blogs.blob.core.windows.net/devkimchi/2019/11/getting-the-latest-array-item-with-inline-script-in-logic-app-01.png)
 
-Then enter the JavaScript code in the action. It’s almost the same as the one in above, but there are two places changed for accommodation.
+然后进入动作的 JavaScript 代码。这几乎等同于上面的例子，但有两个地方有所不同。
 
 ```javascript
 "use strict";
@@ -125,23 +125,23 @@ var result = sorted[0].Path;
 return result;
 ```
 
-- The `items` variable takes the array items from the output of the previous action, `List Backups`.
-- In the last line, it uses the `return` statement to send the result of the action to the `outputs` value.
+- 该 `items` 变量获取上一个操作——`List Backups`的输出值作为数组项。
+- 在最后一行，它使用了 `return` 语句把动作的结果发送到 `outputs` 值。
 
-If we want to refer the result of this action, any action later in this workflow can use `outputs('ACTION_NAME')?['body']`.
+如果我们想引用这个动作的结果，这个工作流中的任何之后的动作都可以使用`outputs('ACTION_NAME')?['body']`。
 
-## Comparison
+## 比较
 
-Now, we only use this Inline JavaScript Code action and sort out the issue (pun intended). Let’s compare the same result as the [previous post](https://devkimchi.com/2019/11/06/getting-the-latest-array-item-in-logic-app/), with the picture below.
+现在，我们只使用这种内联 Javascript 代码动作来解决排序问题。让我们来比较一下相同的结果，请参考[上一篇文章](https://devkimchi.com/2019/11/06/getting-the-latest-array-item-in-logic-app/)与下面的图片。
 
 ![img](https://sa0blogs.blob.core.windows.net/devkimchi/2019/11/getting-the-latest-array-item-with-inline-script-in-logic-app-02.png)
 
-The right-hand side is what we created in the [previous post](https://devkimchi.com/2019/11/06/getting-the-latest-array-item-in-logic-app/). At least we **SHOULD** use both the `Select Filename from Backups` action (`Select`) and the `Take Latest Backup` action (`Filter`). If we want a more elegant way, a few extra actions are placed before and after.
+右侧是我们在[上一篇文章](https://devkimchi.com/2019/11/06/getting-the-latest-array-item-in-logic-app/)中创建的。至少我们**应该**同时使用`从备份中选择文件名`动作（`Select`）和`获取最新备份`动作（`Filter`）。如果我们希望有一个更优雅的方式，需要在之前和之后有一些额外的动作。
 
-On the other hand, if we use the [Inline JavaScript Code action](https://docs.microsoft.com/azure/logic-apps/logic-apps-add-run-inline-code?WT.mc_id=devkimchicom-blog-juyoo), like the left-hand side, we only need one action.
+另一方面，如果我们使用[内联 JavaScript 代码动作](https://docs.microsoft.com/azure/logic-apps/logic-apps-add-run-inline-code?WT.mc_id=devkimchicom-blog-juyoo)，如左侧所示，我们只需要一个动作。
 
-But there’s a caveat. Make sure that we have to have the [Integration Account](https://docs.microsoft.com/azure/logic-apps/logic-apps-enterprise-integration-create-integration-account?WT.mc_id=devkimchicom-blog-juyoo) associated with using this inline code action. The Integration Account is pretty expensive and fixed price – [US$ 302.4 (Basic) and US$ 986.4 (Standard) per month](https://azure.microsoft.com/pricing/details/logic-apps/?WT.mc_id=devkimchicom-blog-juyoo). If your organisation has already been using the Integration Account, then it’s OK. However, if it hasn’t, it **SHOULD** be really careful.
+但有一点需要注意。我们必须有与使用该内联代码动作相关联的[集成账户](https://docs.microsoft.com/azure/logic-apps/logic-apps-enterprise-integration-create-integration-account?WT.mc_id=devkimchicom-blog-juyoo)。集成账户的固定价格相当昂贵——[US$ 302.4 (基本) and US$ 986.4 (标准) 每月](https://azure.microsoft.com/pricing/details/logic-apps/?WT.mc_id=devkimchicom-blog-juyoo)。如果您的组织已经使用集成帐户，那没问题。然而，如果还没有，您**应该**非常小心您的账单。
 
 ------
 
-So far, we’ve walked through how to use the [Inline JavaScript Code action](https://docs.microsoft.com/azure/logic-apps/logic-apps-add-run-inline-code?WT.mc_id=devkimchicom-blog-juyoo) to sort array items within the Logic App workflow. It’s powerful but expensive. Therefore, only if your organisation takes the cost, use it.
+到目前为止，我们已经了解如何使用[内嵌 JavaScript 代码动作](https://docs.microsoft.com/azure/logic-apps/logic-apps-add-run-inline-code?WT.mc_id=devkimchicom-blog-juyoo)在 Logic App 工作流内排序数组项。它功能强大，但价格昂贵。因此，只有当您的组织能够负担成本时，再使用它。
