@@ -15,17 +15,17 @@ If you’ve explored the management capabilities inside Microsoft Azure, you’l
 
 [Announced at our Partner conference, Microsoft Ready, earlier this year](https://azure.microsoft.com/blog/introducing-azure-lighthouse/?WT.mc_id=itopstalk-blog-socuff), Azure Lighthouse brings Azure resource management to a new level of scale. While you might immediately think this will benefit Microsoft Partners (like Managed Service Providers (MSPs)), there are also a significant number of Enterprises that have a business requirement for separate Azure environments, including multi-nationals, brand groups and franchise/owner operator businesses. Best of all, this new capability is completely free, though charges apply as normal for any billed underlying services (such as Log Analytics).
 
-今年早些时候，Azure Lighthouse 在我们的合作伙伴会议（Microsoft Ready）上发布，它将 Azure 的资源管理能力带上了新的高度。您千万不要认为 Microsoft 的合作伙伴（例如托管服务提供商（MSP））是这项功能的唯一的受益者！事实上，大量企业对单独的 Azure 环境有业务需求，包括跨国公司，品牌集团和特许经营/所有者运营商业务，它们都会从中受益。最棒的是，除了像日志分析服务这样的基础计费服务外，这项功能是完全免费的！
+[今年早些时候，Azure Lighthouse 在我们的合作伙伴会议（Microsoft Ready）上发布](https://azure.microsoft.com/blog/introducing-azure-lighthouse/?WT.mc_id=itopstalk-blog-socuff)，它将 Azure 的资源管理能力带上了新的高度。您千万不要认为 Microsoft 的合作伙伴（例如托管服务提供商（MSP））是这项功能的唯一的受益者！事实上，大量企业对独立的 Azure 环境有业务需求，包括跨国公司、品牌集团和特许经营/业主运营商，它们都会从中受益。最棒的是，除了像日志分析服务这样的基础计费服务外，这项新功能是完全免费的！
 
 We’ve seen a glimpse of multi-tenancy support in the way that Office 365 allows a Partner to have delegated access to their customer’s tenancy – using their own partner login to perform tasks from the Admin Portal. Azure Lighthouse starts with this capability for Azure environments, then takes it a whole lot further.
 
-我们已经在 Office 365 中见过多租户模式的运用了，它允许合作伙伴拥有客户租赁的代理访问权，用他们自己的账户登录，并通过管理面板执行任务。Azure Lighthouse 将这种模式应用到 Azure 环境中，并将它更进一步。
+我们已经在 Office 365 中见过多租户模式的运用了，它允许合作伙伴拥有客户租户中资源的代理访问权，用他们自己的账户登录，并通过管理面板执行任务。Azure Lighthouse 将这种模式应用到 Azure 环境中，并将它更进一步。
 
 ## The Partner experience 合作伙伴的体验
 
 Partners will see in the “My Customers blade” a list of all the tenancies they’ve successfully onboarded, including how many subscriptions or resources they have access to inside those tenancies. These can be broken down to accurately reflect the services agreement & scope that the Partner has, with each customer. 
 
-合作伙伴可以在“我的客户”面板中看到他们成功加入的所有租户的列表，包括他们在这些租户中可以访问多少个订阅或资源。这些内容也可以再细分，以准确反映合作伙伴与每个客户达成的服务协议和范围。
+合作伙伴可以在“我的客户”面板中看到他们成功加入的所有租户的列表，并可以看到他们在这些租户中可以访问的订阅或资源。列表内容也可以再细分，以准确反映合作伙伴与每个客户达成的服务协议和范围。
 
 ![azure-delegated-resource-management-customer-tenants.jpg](https://gxcuf89792.i.lithium.com/t5/image/serverpage/image-id/129727i72A3652DD4F59FC6/image-size/large?v=1.0&px=999)
 
@@ -37,7 +37,7 @@ And with that access, the customer’s Azure resources will now appear directly 
 
 The Partner can then take action on those resources, via the Azure CLI, PowerShell, HTTP request or the Azure Portal. Azure Resource Manager validates that the request is from a partner tenant and calls the Managed Services Resource Provider. The Managed Services RP provides precise access via the defined Role Based Access Control, and the request is actioned on the customer’s resource.
 
-然后，合作伙伴可以通过 Azure CLI，PowerShell，HTTP Request 或 Azure 门户对这些资源执行操作。Azure 资源管理器将验证请求是否来自合作伙伴租户，然后调用托管服务资源提供程序。
+然后，合作伙伴可以通过 Azure CLI，PowerShell，HTTP Request 或 Azure 门户对这些资源执行操作。Azure 资源管理器将验证请求是否来自合作伙伴租户，然后调用托管服务资源提供程序。该程序将按照预定义的基于角色的访问控制提供精确的访问，然后，请求的操作会在客户的资源上被执行。
 
 ### So what can Partners then do? 合作伙伴还可以做什么？
 
@@ -48,11 +48,11 @@ Now pretend you are the Partner responsible for managing those multiple Azure te
 - Set up a monitoring alert or a log analytics alert and apply it to all Windows Server Virtual Machines across your customers.
 - 设置监视警报或日志分析警报，并将其应用于客户中的所有 Win Server 虚拟机。
 - Define a standard set of policies for all the customers you manage, and apply Azure Policy at scale, including having visibility of which resources are non-compliant.
-- 为您管理的所有客户定义一套标准的策略，并大规模应用 Azure 策略，包括查看哪些资源不合规。
+- 为您管理的所有客户定义一套标准的策略，并大规模应用 Azure 策略，包括了解哪些资源不合规。
 - For ease of management, you can define a set of tags and apply it across multiple customer resources (for example, tag all non-production/development resources).
 - 为了便于管理，您可以定义一组标签并将其应用于多个客户资源（例如，标记所有非生产/开发资源）。
 - You also have the ability to store an Automation Account in your own partner tenancy, to build automation runbooks that stay protected as your intellectual property as you onboard and offboard customers, but use those runbooks to automate actions across multiple tenancies.
-- 通过将自动化帐户存储在自己的合作伙伴租约中，你可以构建自动化运行手册并使用它们自动执行多个租约中的操作。同时，这些运行手册都将作为您的知识产权受到保护。
+- 您还可以通过将自动化帐户存储在自己的合作伙伴租约中，构建出自动化运行手册，来自动执行多个租约中的操作。同时，无论是用于内部用户还是外部用户，这些运行手册都将作为您的知识产权而受到保护。
 - And you can even dive into the Azure Security Center and see which resources across all of your customers need the most attention.
 - 您甚至可以深入 Azure 安全中心，查看所有客户中哪些资源最需要关注。
 
@@ -62,7 +62,7 @@ Now pretend you are the Partner responsible for managing those multiple Azure te
 
 In the customer’s Azure portal, under a new Service Providers blade, they can accept & approve access to the tenancy and define exactly which subscriptions or resource groups this access will apply to. The customer can also see a full history of their partner’s actions in the Azure Activity log.
 
-在客户的 Azure 门户界面中，有一个新的“服务提供商”片区。在这里，他们可以接受并批准对租约的访问，并确切规定哪些订阅或资源组可以被访问。客户还可以在 Azure 活动日志中查看其合作伙伴完整的操作历史记录。
+在客户的 Azure 门户界面中，有一个新的“服务提供商”片区。在这里，客户可以接受并批准对租约的访问，并确切规定哪些订阅或资源组可以被访问。此外，客户还可以在 Azure 活动日志中查看其合作伙伴完整的历史操作记录。
 
 ![Customer Portal.jpg](https://gxcuf89792.i.lithium.com/t5/image/serverpage/image-id/129729i8C3AF2E6FC54EE78/image-size/large?v=1.0&px=999)
 
@@ -72,11 +72,11 @@ In the customer’s Azure portal, under a new Service Providers blade, they can 
 
 Azure Lighthouse starts with delegated administration access, which can be done in one of two ways:
 
-Azure Lighthouse 从委派管理访问权开始，可以通过以下两种途径完成：
+Azure Lighthouse 委派管理访问权，可以通过以下两种途径完成：
 
 Publish a public or private offer through the Cloud Partner Portal. Note there’s no money exchanging hands here, any transactions relating to those services are to be billed by the partner to the customer directly.
 
-- 通过云合作伙伴门户发布公共或私有产品/服务。请注意，这里没有货币转手，与这些服务有关的任何交易均应由合作伙伴直接与客户达成。
+- 通过云合作伙伴门户发布公共或私有服务。请注意，这里没有货币转手，任何与这些服务有关的交易均应由合作伙伴直接与客户达成。
 
 Or use an Azure Resource Manager template, to define and deploy the delegated administration rights.
 
@@ -86,7 +86,7 @@ Or use an Azure Resource Manager template, to define and deploy the delegated ad
 
 That’s under your control (and the customer has to accept) but using Role Based Access Control, generally Contributor for your team who will be performing actions and Reader for anyone monitoring customer systems. You can assign these to a group, then manage that group membership, and the customer can revoke that access from their portal at any time. If you’d like to get a little more granular, RBAC support means you can choose any one of the 70+ built-in roles and their associated access levels.
 
-这完全由你来决定（客户必须接受），但使用基于角色的访问控制，通常是为要执行操作的团队的贡献者开放写权限，以及为需要监视客户系统的人开放读权限。你可以通过组来管理权限和人员，客户页可以随时撤销这些权限。如果您进一步了解 RBAC，会发现这里有 70 多个内置角色及相关的访问级别供您选择或参考。
+这完全由你来决定（客户必须接受），但使用基于角色的访问控制，通常是为要执行操作的团队的贡献者开放写权限，以及为需要监视客户系统的人开放读权限。你可以通过组来管理权限和人员，客户也可以随时撤销这些权限。如果您进一步了解 RBAC，会发现这里有 70 多个内置角色及相关的访问级别供您选择或参考。
 
 ## FAQs: 常见问题：
 
@@ -115,7 +115,7 @@ Azure Monitor Azure 监控
 Azure Policy Azure 策略
 Azure Resource Graph
 Azure Security Center Azure 安全中心
-Azure Service Health
+Azure Service Health Azure 服务运行状况
 Azure Site Recovery Azure 网站恢复服务
 Azure Virtual Machines Azure 虚拟机
 Azure Virtual Network Azure 虚拟网络
