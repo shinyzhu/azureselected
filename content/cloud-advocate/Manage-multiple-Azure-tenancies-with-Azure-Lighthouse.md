@@ -7,7 +7,7 @@ url: 'https://techcommunity.microsoft.com/t5/ITOps-Talk-Blog/Manage-multiple-Azu
 date: 2019-09-03
 ---
 
-# Manage multiple Azure tenancies with Azure Lighthouse
+# Manage multiple Azure tenancies with Azure Lighthouse 使用 Azure Lighthouse 管理多个 Azure 租约
 
 If you’ve explored the management capabilities inside Microsoft Azure, you’ll know there are a bunch of tools to help you manage and monitor your Azure resources and keep them compliant. Azure Blueprints (in preview) enables you to extend this across multiple subscriptions, but until now there’s been no way to see or manage resources in multiple Azure tenancies, from a single browser pane. Enter, Azure Lighthouse!
 
@@ -23,7 +23,7 @@ We’ve seen a glimpse of multi-tenancy support in the way that Office 365 allow
 
 ## The Partner experience 合作伙伴的体验
 
-Partners will see in the “My Customers blade” a list of all the tenancies they’ve successfully onboarded, including how many subscriptions or resources they have access to inside those tenancies. These can be broken down to accurately reflect the services agreement & scope that the Partner has, with each customer. 
+Partners will see in the “My Customers blade” a list of all the tenancies they’ve successfully onboarded, including how many subscriptions or resources they have access to inside those tenancies. These can be broken down to accurately reflect the services agreement & scope that the Partner has, with each customer.
 
 合作伙伴可以在“我的客户”面板中看到他们成功加入的所有租户的列表，并可以看到他们在这些租户中可以访问的订阅或资源。列表内容也可以再细分，以准确反映合作伙伴与每个客户达成的服务协议和范围。
 
@@ -66,7 +66,7 @@ In the customer’s Azure portal, under a new Service Providers blade, they can 
 
 ![Customer Portal.jpg](https://gxcuf89792.i.lithium.com/t5/image/serverpage/image-id/129729i8C3AF2E6FC54EE78/image-size/large?v=1.0&px=999)
 
- 
+
 
 ## Onboarding
 
@@ -104,7 +104,7 @@ Not yet, but it’s an item on the product roadmap.
 
 *Does it work for all Azure services?*  *它适用于所有 Azure 服务吗？*
 
-This list of supported services and scenarios is growing. Some features (like Azure Cost Management) are currently not supported. Today, you can access: 
+This list of supported services and scenarios is growing. Some features (like Azure Cost Management) are currently not supported. Today, you can access:
 
 支持的服务和方案会越来越多，有些功能是暂时不支持的，例如Azure成本管理。目前，您可以访问的有：
 
@@ -119,7 +119,7 @@ Azure Service Health Azure 服务运行状况
 Azure Site Recovery Azure 网站恢复服务
 Azure Virtual Machines Azure 虚拟机
 Azure Virtual Network Azure 虚拟网络
-Support Requests 
+Support Requests
 
 For further details on supported Azure services and scenarios, visit：
 
@@ -139,7 +139,7 @@ Product page: https://azure.microsoft.com/services/azure-lighthouse/?WT.mc_id=it
 
 产品页面：[Azure Lighthouse](https://azure.microsoft.com/zh-cn/services/azure-lighthouse/?WT.mc_id=itopstalk-blog-socuff)
 
-Technical documentation: https://docs.microsoft.com/azure/lighthouse/?WT.mc_id=itopstalk-blog-socuff 
+Technical documentation: https://docs.microsoft.com/azure/lighthouse/?WT.mc_id=itopstalk-blog-socuff
 
 技术文档：[Azure Lighthouse 文档](https://docs.microsoft.com/zh-cn/azure/lighthouse/?WT.mc_id=itopstalk-blog-socuff)
 
