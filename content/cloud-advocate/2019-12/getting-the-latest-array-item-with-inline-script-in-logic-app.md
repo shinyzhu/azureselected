@@ -1,13 +1,18 @@
 ---
 type: post
+status: translated
 title: 'Getting the Latest Array Item with Inline Script in Logic App'
-description: ''
-tags: []
-author: ''
+description: '1. This post shows how to use the inline JavaScript code action to perform the array sort in a Logic App workflow, and discuss what to consider to use this action. 2. Readers will learn how to use pure JavaScript code for array sort in Logic App workflow, and understand the cost implication and impact on its use.'
+tags: ['Azure Logic Apps', 'Azure Blob Storage']
+author: 'Justin Yoo'
 date: 2019-11-14
+url: 'https://devkimchi.com/2019/11/14/getting-the-latest-array-item-with-inline-script-in-logic-app/'
+translator: ''
 ---
 
 # 在Logic App中使用内联脚本获取最新的数组项
+
+<ContentMeta />
 
 在我的[上一篇文章](https://devkimchi.com/2019/11/06/getting-the-latest-array-item-in-logic-app/)中，通过组合使用[`Select`动作](https://docs.microsoft.com/azure/logic-apps/logic-apps-workflow-actions-triggers?WT.mc_id=devkimchicom-blog-juyoo#select-action)和[`Filter`动作](https://docs.microsoft.com/azure/logic-apps/logic-apps-workflow-actions-triggers?WT.mc_id=devkimchicom-blog-juyoo#query-action)，我们已经了解了如何使用[Logic App](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview?WT.mc_id=devkimchicom-blog-juyoo)工作流来获取一个数组中的最新的项。事实上，虽然这种做法是可行的，但它仅适用于一些特定的使用情况，对大多数情况来说，这个解决方案有点棘手。但是，有一个预览功能：[内联 JavaScript 代码动作](https://docs.microsoft.com/azure/logic-apps/logic-apps-add-run-inline-code?WT.mc_id=devkimchicom-blog-juyoo)，可以方便地对数组排序。在这篇文章中，我将讨论如何使用[内联 JavaScript 代码动作](https://docs.microsoft.com/azure/logic-apps/logic-apps-add-run-inline-code?WT.mc_id=devkimchicom-blog-juyoo)排序数组项，并获取 Logic App 工作流中的最新的项。
 
