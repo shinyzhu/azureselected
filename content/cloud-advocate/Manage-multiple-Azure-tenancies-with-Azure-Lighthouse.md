@@ -82,11 +82,11 @@ Or use an Azure Resource Manager template, to define and deploy the delegated ad
 
 - 使用 Azure 资源管理器模板来定义和部署委派的管理权限。
 
-*What access is needed to the customer’s tenancy?*  *客户的租约需要什么访问权限？*
+*What access is needed to the customer’s tenancy?*  *在客户的租户上需要什么访问权限？*
 
 That’s under your control (and the customer has to accept) but using Role Based Access Control, generally Contributor for your team who will be performing actions and Reader for anyone monitoring customer systems. You can assign these to a group, then manage that group membership, and the customer can revoke that access from their portal at any time. If you’d like to get a little more granular, RBAC support means you can choose any one of the 70+ built-in roles and their associated access levels.
 
-这完全由你来决定（客户必须接受），但使用基于角色的访问控制，通常是为要执行操作的团队的贡献者开放写权限，以及为需要监视客户系统的人开放读权限。你可以通过组来管理权限和人员，客户也可以随时撤销这些权限。如果您进一步了解 RBAC，会发现这里有 70 多个内置角色及相关的访问级别供您选择或参考。
+这完全由你来决定（客户必须接受），但使用基于角色的访问控制，通常是为要执行操作的团队赋予参与者的角色，以及为需要监视客户系统的人赋予读者的角色。你可以通过组来管理权限和人员，客户也可以随时撤销这些权限。如果您进一步了解 RBAC，会发现这里有 70 多个内置角色及相关的访问级别供您选择或参考。
 
 ## FAQs: 常见问题：
 
