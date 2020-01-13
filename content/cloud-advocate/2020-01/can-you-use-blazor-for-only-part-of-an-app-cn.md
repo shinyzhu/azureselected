@@ -1,8 +1,8 @@
 ---
 type: post
 status: new
-title: 'Can You Use Blazor for Only Part of an App?'
-description: 'This blog post takes a look at how to host Blazor WASM applications within a larger application.'
+title: '是否可以把Blazor只用在应用的一部分?'
+description: '这篇博客文章将描述如何在大型应用中托管Blazor WASM应用程序'
 tags: ['Microsoft Blazor']
 author: 'Aaron Powell'
 date: 2019-12-06
@@ -170,15 +170,20 @@ If you remember back to [our last post]({{<ref "/posts/2019-11-29-implementing-s
     </NotFound>
 </Router>
 ```
-
+当`Router`无法找到一个匹配的路由去使用`RouteView`，它就会被丢往`NotFound`页面，这就是我们收到这个错误页面的原因。
 Since the `Router` didn't find a matched route to use `RouteView` against it's fallen through to `NotFound` and that is why we have this error!
 
+别担心，这个很容易修复，只需要更新`@page`指令以匹配您希望它在已发布网站中匹配的路由 ，或者简化 App.razor 以不关心路由。
 Don't worry, it's an easy fix, just update the `@page` directive to match the route that you want it to match on in your published site _or_ simplify your `App.razor` to not care about routing.
 
+一旦一个新的版本发布完成，并且文件拷贝完成，这个页面就会正常呈现。
 Once a new publish is done and the files copied across it'll be happy.
 
+## 结论
 ## Conclusion
 
+Blazor是一个构建应用非常棒的方法，但是相比创建应用程序，在提前生成静态内容并使用Blazor增强现有应用程序更有价值。 
 Blazor is a great way which we can build rich applications, but there is value in generating static content upfront and using Blazor to enhance an application rather than own it.
 
+我们研究了一下在HTML页面中运行Blazor应用所需要的重要文件，同时研究了将其放入其它类型应用需要什么
 Here we've taken a bit of a look at the important files used to run a Blazor application within an HTML page and we've also looked at what it takes to drop it into some other kind of application.
