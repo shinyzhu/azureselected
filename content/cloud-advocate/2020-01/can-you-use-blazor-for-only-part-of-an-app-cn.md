@@ -56,7 +56,7 @@ When you create a new project there's a file called `wwwroot/index.html` that yo
 </body>
 </html>
 ```
-
+实际上，它非常简单，我们需要的重要代码是这两行：
 And really, it's pretty simple, the important pieces that we need are these two lines:
 
 ```html
@@ -64,13 +64,17 @@ And really, it's pretty simple, the important pieces that we need are these two 
 
 <script src="_framework/blazor.webassembly.js"></script>
 ```
+在快速找到`<app>`元素之前，我们首先看一下JavaScript文件。你或许会注意到这个文件并没有出现在硬盘里，这是因为它是属于构建输出的部分。你可以在ASP.NET Core的Github仓库[`src/Components/Web.JS/src/Boot.WebAssembly.ts`](https://github.com/aspnet/AspNetCore/blob/5bdf75f3e160bc90768526ba07c30e594b08b96d/src/Components/Web.JS/src/Boot.WebAssembly.ts)里找到它的源码(at the time of writing anyway)。此文件与Blazor服务器共享一部分内容，但是与使用[`MonoPlatform`](https://github.com/aspnet/AspNetCore/blob/e72223eaf58a3ee6660a922064d2449e47b78253/src/Components/Web.JS/src/Platform/Mono/MonoPlatform.ts)的最大区别是它进行一堆WASM交互操作。
 
 We'll get to the `<app>` element shortly, but first, let's take a look at the JavaScript file. You might notice that this file doesn't appear anywhere on disk, and that's because it's part of the build output. You can find the source of this on GitHub in the ASP.NET Core repository at [`src/Components/Web.JS/src/Boot.WebAssembly.ts`](https://github.com/aspnet/AspNetCore/blob/5bdf75f3e160bc90768526ba07c30e594b08b96d/src/Components/Web.JS/src/Boot.WebAssembly.ts) (at the time of writing anyway). This file shares some stuff in common with Blazor Server, but with the main difference of using the [`MonoPlatform`](https://github.com/aspnet/AspNetCore/blob/e72223eaf58a3ee6660a922064d2449e47b78253/src/Components/Web.JS/src/Platform/Mono/MonoPlatform.ts) which does a bunch of WASM interop.
 
+这个文件至关重要，没有它你的Blazor应用将无法启动，它先负责(通过注入[一个脚本文件到DOM](https://github.com/aspnet/AspNetCore/blob/e72223eaf58a3ee6660a922064d2449e47b78253/src/Components/Web.JS/src/Platform/Mono/MonoPlatform.ts#L197-L200))初始化宿主在Mono的WASM环境。然后它使用另一个生成的文件 `_framework/blazor.boot.json`去找出需要将哪些.NET dll文件加载到Mono/WASM环境中。
 This file is critical, without it your Blazor application won't ever start up since it's responsible for initializing the WASM environment that hosts Mono (by injecting [a script into the DOM](https://github.com/aspnet/AspNetCore/blob/e72223eaf58a3ee6660a922064d2449e47b78253/src/Components/Web.JS/src/Platform/Mono/MonoPlatform.ts#L197-L200)) and then it will use another generated file, `_framework/blazor.boot.json`, to work out what .NET DLL's will need to be loaded into the Mono/WASM environment.
 
+因此你需要把这个js文件包含在内，同时把`_framework`文件夹放在根路径下以确保它可以找到JSON文件(见 [此评论](https://github.com/aspnet/AspNetCore/blob/e72223eaf58a3ee6660a922064d2449e47b78253/src/Components/Web.JS/src/Boot.WebAssembly.ts#L61-L62))。
 So you need to have this JS file included and the `_framework` folder needs to be at the root since that's how it finds the JSON file (see [this comment](https://github.com/aspnet/AspNetCore/blob/e72223eaf58a3ee6660a922064d2449e47b78253/src/Components/Web.JS/src/Boot.WebAssembly.ts#L61-L62)).
 
+### 懒加载Blazor
 ### Lazy-Loading Blazor
 
 An interesting aside which I came across while digging in the source is that you can delay the load of Blazor by adding `autostart="false"` to the `<script>` tag, as per [this line](https://github.com/aspnet/AspNetCore/blob/e72223eaf58a3ee6660a922064d2449e47b78253/src/Components/Web.JS/src/BootCommon.ts#L5) and then call `window.Blazor.start()` in JavaScript to start the Blazor application.
