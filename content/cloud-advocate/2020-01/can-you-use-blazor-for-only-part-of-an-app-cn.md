@@ -155,6 +155,7 @@ If everything has gone correctly you'll have just received an error!
 ## Blazor 路由
 ## Blazor Routing
 
+如果你记得[我们上一篇博客]({{<ref "/posts/2019-11-29-implementing-search-in-blazor-webassembly-with-lucenenet.md">}})我们了解了Razor组件中的`@page`指令。此处你指定的路由对应的页面将匹配已有的`@page "/"`。但是我们现在的路由是`/search`，并且Blazor的路由引擎找到了URL并执行你的`App.razor`组件：
 If you remember back to [our last post]({{<ref "/posts/2019-11-29-implementing-search-in-blazor-webassembly-with-lucenenet.md">}}) we learnt about the `@page` directive in Razor Components. Here you specify the route that the page will match on and up until now we've had `@page "/"` there. But, we're now on `/search` and Blazor's routing engine has looked at the URL and executed your `App.razor` component:
 
 ```html
