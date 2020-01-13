@@ -16,26 +16,21 @@ translator: '龙少'
 <ContentMeta />
 
 [Blazor](https://docs.microsoft.com/en-gb/aspnet/core/blazor/?view=aspnetcore-3.0&{{<cda>}}) 被设计成一个可以创建完整网页应用的平台，你可以看到最近我们为我的博客创建的独立搜索网站就是一个 [Blazor实践]({{<ref "/posts/2019-11-29-implementing-search-in-blazor-webassembly-with-lucenenet.md">}})。 但是就像你工具箱里的任意一个工具一样，它可能不总是适用于你的工作。
-
 [Blazor](https://docs.microsoft.com/en-gb/aspnet/core/blazor/?view=aspnetcore-3.0&{{<cda>}}) is designed to be a platform where you create a complete web application and we saw that in the last [experiment with Blazor]({{<ref "/posts/2019-11-29-implementing-search-in-blazor-webassembly-with-lucenenet.md">}}) where we created a stand-alone search site for my blog. But like any tool in our toolbox, it isn't _always_ the right one for the job.
 
 以我的博客举例，它更多的是一个只读形式的内容存储在[Github](https://github.com/aaronpowell/aaronpowell.github.io)上的网站，它将markdown格式文件转换成HTML文件。 并不确定，我们可能把它做成一个Blazor WASM应用，使用一个.NET的markdown库去动态生成页面，但这可能对于运行我的网站并带给读者一个良好体验来说是一个不高效的方法。
-
 Take my blog for example, it's pretty much a read-only site with the content [stored in GitHub](https://github.com/aaronpowell/aaronpowell.github.io) as markdown that I use [Hugo](https://gohugo.io) to convert into HTML files. Now sure, it's possible to do it as a Blazor WASM application, we could get a .NET Markdown library could be used and the pages generated on-the-fly, but that'd an inefficient way to have my website run and would provide a sub-optimal experience to readers.
 
 但是如果我们想要集成一个我们已有的搜索应用，我们又该如何决策呢？
-
 But if we want to integrate the search app that we've previously built, how do we go about that?
 
 ## 了解Blazor是如何开始的
 ## Understanding How Blazor Starts
 
 想知道我们要如何在另一个应用里运行Blazor WebAssembly。我们需要先学习一下Blazor WebAssessbly应用是如何运行的。
-
 To think about how we can run Blazor WebAssembly within another application we need to learn a bit about how a Blazor WebAssembly application runs.
 
 当你创建一个新的项目，里面包含一个你或许从未打开过的文件 `wwwroot/index.html` , 但这是拼图很重要的一片。这个文件看起来就像：
-
 When you create a new project there's a file called `wwwroot/index.html` that you might never have dug into, but this is an important piece of the puzzle. It looks like this:
 
 ```html
