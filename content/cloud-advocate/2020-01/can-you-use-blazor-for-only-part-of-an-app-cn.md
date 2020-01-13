@@ -77,10 +77,13 @@ So you need to have this JS file included and the `_framework` folder needs to b
 ### 懒加载Blazor
 ### Lazy-Loading Blazor
 
+我在钻研源代码时发现的一个有趣的题外话是，你可以通过添加`autostart="false"`在`<script>`标签里来延迟Blazor的加载。就像[这里](https://github.com/aspnet/AspNetCore/blob/e72223eaf58a3ee6660a922064d2449e47b78253/src/Components/Web.JS/src/BootCommon.ts#L5)提到的一样，然后使用JavaScript调用`window.Blazor.start()`以启动Blazor应用。
 An interesting aside which I came across while digging in the source is that you can delay the load of Blazor by adding `autostart="false"` to the `<script>` tag, as per [this line](https://github.com/aspnet/AspNetCore/blob/e72223eaf58a3ee6660a922064d2449e47b78253/src/Components/Web.JS/src/BootCommon.ts#L5) and then call `window.Blazor.start()` in JavaScript to start the Blazor application.
 
+我不打算使用它来进行这种集成，但很容易理解你可以用一个用户启动的初始化过程，而不是在页面中加载。
 I'm not going to use it for this integration, but it's good to know that you can have a user-initiated initialisation, rather than on page load.
 
+## 放置你的Blazor应用
 ## Placing Your Blazor App
 
 Now that we understand what makes our Blazor app start, how do we know where in the DOM it'll appear? Well, that's what the `<app>` element in our HTML is for, but how does **Blazor** know about it?
