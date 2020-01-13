@@ -68,7 +68,7 @@ And really, it's pretty simple, the important pieces that we need are these two 
 
 We'll get to the `<app>` element shortly, but first, let's take a look at the JavaScript file. You might notice that this file doesn't appear anywhere on disk, and that's because it's part of the build output. You can find the source of this on GitHub in the ASP.NET Core repository at [`src/Components/Web.JS/src/Boot.WebAssembly.ts`](https://github.com/aspnet/AspNetCore/blob/5bdf75f3e160bc90768526ba07c30e594b08b96d/src/Components/Web.JS/src/Boot.WebAssembly.ts) (at the time of writing anyway). This file shares some stuff in common with Blazor Server, but with the main difference of using the [`MonoPlatform`](https://github.com/aspnet/AspNetCore/blob/e72223eaf58a3ee6660a922064d2449e47b78253/src/Components/Web.JS/src/Platform/Mono/MonoPlatform.ts) which does a bunch of WASM interop.
 
-这个文件至关重要，没有它你的Blazor应用将无法启动，它先负责(通过注入[一个脚本文件到DOM](https://github.com/aspnet/AspNetCore/blob/e72223eaf58a3ee6660a922064d2449e47b78253/src/Components/Web.JS/src/Platform/Mono/MonoPlatform.ts#L197-L200))初始化宿主在Mono的WASM环境。然后它使用另一个生成的文件 `_framework/blazor.boot.json`去找出需要将哪些.NET dll文件加载到Mono/WASM环境中。
+这个文件至关重要，没有它你的Blazor应用将无法启动，它先负责(通过注入[一个脚本文件到DOM](https://github.com/aspnet/AspNetCore/blob/e72223eaf58a3ee6660a922064d2449e47b78253/src/Components/Web.JS/src/Platform/Mono/MonoPlatform.ts#L197-L200))初始化托管在Mono的WASM环境。然后它使用另一个生成的文件 `_framework/blazor.boot.json`去找出需要将哪些.NET dll文件加载到Mono/WASM环境中。
 This file is critical, without it your Blazor application won't ever start up since it's responsible for initializing the WASM environment that hosts Mono (by injecting [a script into the DOM](https://github.com/aspnet/AspNetCore/blob/e72223eaf58a3ee6660a922064d2449e47b78253/src/Components/Web.JS/src/Platform/Mono/MonoPlatform.ts#L197-L200)) and then it will use another generated file, `_framework/blazor.boot.json`, to work out what .NET DLL's will need to be loaded into the Mono/WASM environment.
 
 因此你需要把这个js文件包含在内，同时把`_framework`文件夹放在根路径下以确保它可以找到JSON文件(见 [此评论](https://github.com/aspnet/AspNetCore/blob/e72223eaf58a3ee6660a922064d2449e47b78253/src/Components/Web.JS/src/Boot.WebAssembly.ts#L61-L62))。
@@ -86,8 +86,10 @@ I'm not going to use it for this integration, but it's good to know that you can
 ## 放置你的Blazor应用
 ## Placing Your Blazor App
 
+既然我们已经明白了是什么使Blazor应用开始运行，那么我们如何了解它出现在DOM的何处呢？那就是我们HTML文件里`<app>`元素的用处，但是**Blazor**又怎么知道它呢？
 Now that we understand what makes our Blazor app start, how do we know where in the DOM it'll appear? Well, that's what the `<app>` element in our HTML is for, but how does **Blazor** know about it?
 
+事实证明，那是我们通过`Startup` 类控制的一些事情：
 It turns out that that is something that we control from our `Startup` class:
 
 ```c#
@@ -110,20 +112,28 @@ namespace DemoProject
 }
 ```
 
+可以看到在14行的位置我们使用了`AddComponent`并指定一个DOM selector `app`。这就是它如何知道应用启动时DOM里有哪些元素。这些操作你是可以修改的，或许修改selector为一个DOM元素的ID或者一个`<div>`，又或者是任意你想要的内容，但那都不重要，因此我将它叫做`<app>`。
 See how on line 14 we're using `AddComponent` and specifying a DOM selector of `app`? That's how it knows what element in the DOM the application will start. This is something that you can change, maybe make it a selector to a ID of a DOM element or to a `<div>`, or to anything else that you want, but it's not that important, so I just leave it as `<app>`.
 
+_题外话：我并没有进行尝试，但考虑到你指定了DOM元素和入口组件(通过泛型，上面例子中指向`App.razor`)你可以在页面上运行多个Blazor应用程序。至于为什么这个么做我不知道，但理论上你是可以这么做的。_
 _Aside: I haven't tried it yet, but given that you specify the DOM element and the entry component (via generics, this points to `App.razor` in the above sample) you could potentially have multiple independent Blazor apps running on a page. Why would you do this, I have no idea... but you can in theory!_
 
+## 托管 Blazor
 ## Hosting Blazor
 
+当托管一个Blazor WASM[有一些可选项](https://docs.microsoft.com/en-gb/aspnet/core/host-and-deploy/blazor/webassembly?view=aspnetcore-3.1&{{<cda>}})的时候，我想专注于[Azure Storage 静态站点](https://docs.microsoft.com/en-gb/aspnet/core/host-and-deploy/blazor/webassembly?view=aspnetcore-3.1&{{<cda>}}#azure-storage)的方法，这也是我的博客托管的方法。
 When it comes to hosting Blazor WASM [there are a few options](https://docs.microsoft.com/en-gb/aspnet/core/host-and-deploy/blazor/webassembly?view=aspnetcore-3.1&{{<cda>}}) but I want to focus on the [Azure Storage static sites](https://docs.microsoft.com/en-gb/aspnet/core/host-and-deploy/blazor/webassembly?view=aspnetcore-3.1&{{<cda>}}#azure-storage) approach, which is how my blog is hosted.
 
+首先我们要做的事情是使用命令`dotnet publish --configuration Release`发布应用。然后我们可以得到`bin/Release/{TARGET FRAMEWORK}/publish/{ASSEMBLY NAME}/dist/_framework`文件夹的内容，包括：`blazor.boot.json`, `blazor.server.js`, `blazor.webassembly.js`，一个叫做`_bin`的文件夹和一个叫做`wasm`的文件夹。
 First thing we'll need to do is publish the app in Release mode using `dotnet publish --configuration Release`. From that we'll grab the contents of the `bin/Release/{TARGET FRAMEWORK}/publish/{ASSEMBLY NAME}/dist/_framework` folder, which will contain `blazor.boot.json`, `blazor.server.js`, `blazor.webassembly.js`, a folder called `_bin` and a folder called `wasm`.
 
+我们将拷贝这个`_framework`文件夹并防止在静态站点的根目录下，维护所有的路径，以确保Blazor可以启动。
 We want to copy this `_framework` folder and place it in the root of our static site, maintaining all the paths so that Blazor can start up.
 
+_注意：根据文档使用`dotnet run`托管站点时你是可以修改`content-root`和`path-base`，但我没有发现他们发布后也可以正常工作。此外，Hugo非常积极使用绝对路径，因此我发现最简单的办法是把我的WASM文件放在和`dotnet run`使用的相同的结构中。_
 _Note: According to the docs you can change the `content-root` and `path-base` when hosting using `dotnet run` but I haven't found them working when it's published. Also, Hugo is very aggressive at setting absolute paths so I found it easiest to put my WASM files in the same structure that `dotnet run` used._
 
+由于这是一个搜索应用，我们来创建一个新的[搜索](https://raw.githubusercontent.com/aaronpowell/aaronpowell.github.io/fac2ae4c8db58f6b4b010522769fc928eb0e1983/src/content/search.md)页，并把它放在我们需要的HTML文件里：
 Since this is a search application let's create a new page called [Search](https://raw.githubusercontent.com/aaronpowell/aaronpowell.github.io/fac2ae4c8db58f6b4b010522769fc928eb0e1983/src/content/search.md) and put in our required HTML:
 
 ```html
@@ -131,15 +141,18 @@ Since this is a search application let's create a new page called [Search](https
 
 <script src="/_framework/blazor.webassembly.js"></script>
 ```
-
+现在生成你的静态站点(或者任意你选择的托管方式)并导航至`/search`路径下。
 Now generate your static site (or whatever host you're using) and navigate to the `/search` router.
 
+如果一切都没有问题你将会收到一个错误页面！
 If everything has gone correctly you'll have just received an error!
 
+>抱歉，这个地址没有任何内容。
 > Sorry, there's nothing at this address.
 
 ![D'oh](/images/doh.gif)
 
+## Blazor 路由
 ## Blazor Routing
 
 If you remember back to [our last post]({{<ref "/posts/2019-11-29-implementing-search-in-blazor-webassembly-with-lucenenet.md">}}) we learnt about the `@page` directive in Razor Components. Here you specify the route that the page will match on and up until now we've had `@page "/"` there. But, we're now on `/search` and Blazor's routing engine has looked at the URL and executed your `App.razor` component:
