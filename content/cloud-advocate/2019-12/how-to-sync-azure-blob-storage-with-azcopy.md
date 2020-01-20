@@ -2,7 +2,7 @@
 type: post
 status: translated
 title: '如何使用 AZCOPY 同步 Azure Blob 存储'
-description: '几个月前，我写了一篇关于如何使用 AzCopy 同步文件到 Azure Blob 存储的博客。今天针对我在 GitHub上使用 AzCopy 的一个问题，有了一个激动人心的更新。这意味着您现在可以使用 AzCopy 从 Azure Blog 到 Azure Blob。'
+description: '几个月前，我写了一篇关于如何使用 AzCopy 同步文件到 Azure Blob 存储的博客。今天针对我在 GitHub上使用 AzCopy 的一个问题，有了一个激动人心的更新。这意味着您现在可以使用 AzCopy 从 Azure Blob 到 Azure Blob。'
 tags: ['Cloud', 'Microsoft', 'Microsoft Azure', 'Microsoft Azure Stack', 'Powershell']
 author: 'Thomas Maurer'
 date: 2019-11-26
@@ -14,7 +14,7 @@ translator: ''
 
 <ContentMeta />
 
-> 几个月前，我写了一篇关于 [如何使用 AzCopy 同步文件到 Azure Blob 存储](https://www.thomasmaurer.ch/2019/06/sync-folder-with-azure-blob-storage/) 的博客。今天针对我在 [GitHub](https://github.com/Azure/azure-storage-azcopy/issues/116#issuecomment-554186120) 上使用 AzCopy 的一个问题，有了一个激动人心的更新。这意味着您现在可以使用 AzCopy 从 Azure Blog 到 Azure Blob。
+> 几个月前，我写了一篇关于 [如何使用 AzCopy 同步文件到 Azure Blob 存储](https://www.thomasmaurer.ch/2019/06/sync-folder-with-azure-blob-storage/) 的博客。今天针对我在 [GitHub](https://github.com/Azure/azure-storage-azcopy/issues/116#issuecomment-554186120) 上使用 AzCopy 的一个问题，有了一个激动人心的更新。这意味着您现在可以使用 AzCopy 从 Azure Blob 到 Azure Blob。
 
 > Azure Blob <-> Azure Blob (源必须包括共享访问令牌 SAS 或者可公共访问，对于目标可以支持共享访问令牌  SAS 或者 OAuth 认证)
 
@@ -52,27 +52,27 @@ azcopy sync "https://tomnortheurope.blob.core.windows.net/myfiles?[SAS]" "https:
 
 下面是一系列可以使用的参数。您可以在[微软 Docs](https://docs.microsoft.com/en-us/azure/storage/common/storage-ref-azcopy-sync?WT.mc_id=thomasmaurer-blog-thmaure)上发现更多的关于 `AzCopy sync` 的命令。
 
-**–block-size-mb**  在上传到 Azure 存储或者从 Azure 存储下载时，使用的块尺寸 (以 MiB 为单位) 。默认基于文件尺寸自动计算。支持使用十进制小数(例如：0.25)。
+`–block-size-mb`  在上传到 Azure 存储或者从 Azure 存储下载时，使用的块尺寸 (以 MiB 为单位) 。默认基于文件尺寸自动计算。支持使用十进制小数(例如：0.25)。
 
-**–check-md5** 字符串，指定在下载时，如何强制 MD5 散列值用于验证。该选项仅在下载时可用。可用值包括：NoCheck, LogOnly, FailIfDifferent, FailIfDifferentOrMissing. (默认值：‘FailIfDifferent’)。
+`–check-md5` 字符串，指定在下载时，如何强制 MD5 散列值用于验证。该选项仅在下载时可用。可用值包括：NoCheck, LogOnly, FailIfDifferent, FailIfDifferentOrMissing. (默认值：‘FailIfDifferent’)。
 
-**–delete-destination** 字符串。定义是否删除源中没有提供的目标中的其它文件。可以设置为： true, false, 或者 prompt。如果设置为 prompt，在删除文件或者 blob 之前，用户将被要求确认 (默认 false)。
+`–delete-destination` 字符串。定义是否删除源中没有提供的目标中的其它文件。可以设置为： true, false, 或者 prompt。如果设置为 prompt，在删除文件或者 blob 之前，用户将被要求确认 (默认 false)。
 
-**–exclude-attributes** 字符串（仅 Windows)，排除匹配文件属性的文件。例如：A;S;R
+`–exclude-attributes` 字符串（仅 Windows)，排除匹配文件属性的文件。例如：A;S;R
 
-**–exclude-pattern** 字符串，排除匹配模板列表的文件，例如：.jpg;*.pdf;exactName
+`–exclude-pattern` 字符串，排除匹配模板列表的文件，例如：.jpg;*.pdf;exactName
 
-**-h, –help** 使用帮助
+`-h, –help` 使用帮助
 
-**–include-attributes** 字符串 (仅 Windows)，仅包含匹配文件属性列表的文件。例如： A;S;R
+`–include-attributes` 字符串 (仅 Windows)，仅包含匹配文件属性列表的文件。例如： A;S;R
 
-**–include-pattern** 字符串，仅包含匹配模板列表的文件。例如： *.jpg;*.pdf;exactName
+`–include-pattern` 字符串，仅包含匹配模板列表的文件。例如： *.jpg;*.pdf;exactName
 
-**–log-level** 字符串， 定义日志文件的日志级别。可用的级别：INFO(所有的请求和响应)， WARNING(慢速响应)， ERROR(仅仅失败的请求)， 以及 NONE(没有输出日志). (默认 INFO). (default “INFO”)
+`–log-level` 字符串， 定义日志文件的日志级别。可用的级别：INFO(所有的请求和响应)， WARNING(慢速响应)， ERROR(仅仅失败的请求)， 以及 NONE(没有输出日志). (默认 INFO). (default “INFO”)
 
-**–put-md5** 对每个文件创建 MD5 散列，并保存将散列值作为目标 blob 或文件的 Content-MD5 属性。 (默认情况下，**不**创建散列)。仅在上传时可用。
+`–put-md5` 对每个文件创建 MD5 散列，并保存将散列值作为目标 blob 或文件的 Content-MD5 属性。 (默认情况下，**不**创建散列)。仅在上传时可用。
 
-**–recursive**  默认为 True，当在目录之间同步的时候，递归进入子目录 (默认为 true)。
+`–recursive`  默认为 True，当在目录之间同步的时候，递归进入子目录 (默认为 true)。
 
 如果您希望了解更多关于同步本地文件到 Azure blob 存储的内容，请查看我的博客。我希望这可以帮助您快速查看如何使用 AzCopy 同步 Azure blob 存储。如果您希望学习更多内容，请查看微软 Docs 中关于如何  [使用 AzCopy 传输数据](https://docs.microsoft.com/en-us/azure/storage/common/storage-ref-azcopy-sync?WT.mc_id=thomasmaurer-blog-thmaure)。如果有任何问题，请留言。
 
