@@ -18,7 +18,7 @@ translator: '[PiperLiu](github.com/PiperLiu)'
 
 I've previously blogged about Azure Lighthouse, for [managing multiple difference Azure tenancies](https://techcommunity.microsoft.com/t5/ITOps-Talk-Blog/Manage-multiple-Azure-tenancies-with-Azure-Lighthouse/ba-p/833928?WT.mc_id=itopstalk-blog-socuff). This capability is useful for both Managed Service Providers, with support arrangements for multiple customers, and for large or complex Enterprise organizations (for example, if there are sub-brands or franchisees). Onboarding is done via deploying an Azure Resource Manager template or publishing an Azure Marketplace offer (public or private), which enables delegated administration into the other tenancies.
 
-我以前写过一篇关于 Azure Lighthouse 的博文，介绍了[管理不同的 Azure 租户](https://techcommunity.microsoft.com/t5/ITOps-Talk-Blog/Manage-multiple-Azure-tenancies-with-Azure-Lighthouse/ba-p/833928?WT.mc_id=itopstalk-blog-socuff)。这个功能对于面向多客户的托管服务提供商，以及庞大复杂的企业组织（比如，有子品牌的或连锁加盟的企业集团）来讲，都很有用。通过部署 Azure 资源管理器模板，或发布一个（公有或私有的） Azure 市场报价，即可以完成交付，这将把管理权委托给其他租户。
+我以前写过一篇关于 Azure Lighthouse 的博文，介绍了[管理多个不同的 Azure 租户](https://techcommunity.microsoft.com/t5/ITOps-Talk-Blog/Manage-multiple-Azure-tenancies-with-Azure-Lighthouse/ba-p/833928?WT.mc_id=itopstalk-blog-socuff)。这个功能对于面向多客户的托管服务提供商，以及庞大复杂的企业组织（比如，有子品牌的或连锁加盟的企业集团）来讲，都很有用。通过部署 Azure 资源管理器模板，或发布一个（公有或私有的） Azure 市场报价，即可以完成交付，这将把管理权委托给其他租户。
 
 This allows service providers, from the account in their own primary Azure tenancy, to have visibility of all of their customer's Azure resources and to be able to act on them, from the Azure Portal, CLI or APIs. 
 
