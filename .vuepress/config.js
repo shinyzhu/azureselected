@@ -44,7 +44,7 @@ module.exports = {
       ['vuepress-plugin-rss', {
           base_url: '/',
           site_url: 'https://azureselected.com',
-          copyright: '2019 AzureSelected',
+          copyright: '2019 - 2020 AzureSelected',
           filter: frontmatter => frontmatter.date <= new Date(),
           count: 20
       }]

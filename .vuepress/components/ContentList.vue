@@ -6,6 +6,8 @@
         <h2>
             <router-link :to="post.path">{{ post.frontmatter.title }}</router-link>
         </h2>
+
+        <p><a :href="post.frontmatter.url"><i>原文由 {{ post.frontmatter.author }} 在 {{ new Date(post.frontmatter.date).toLocaleDateString() }} 发布。</i></a></p>
         
         <p>{{ post.frontmatter.description }}</p>
 
