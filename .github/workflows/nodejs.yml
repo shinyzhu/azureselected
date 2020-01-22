@@ -3,7 +3,7 @@ name: Vuepress Publish
 on:
   push:
     branches: 
-      - website
+      - master
 
 jobs:
   build-and-deploy:
