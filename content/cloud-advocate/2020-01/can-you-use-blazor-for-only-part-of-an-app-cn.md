@@ -15,8 +15,8 @@ translator: '龙少'
 
 <ContentMeta />
 
-[Blazor](https://docs.microsoft.com/en-gb/aspnet/core/blazor/?view=aspnetcore-3.0&{{<cda>}}) 被设计成一个可以创建完整网页应用的平台，你可以看到最近我们为我的博客创建的独立搜索网站就是一个 [Blazor实践]({{<ref "/posts/2019-11-29-implementing-search-in-blazor-webassembly-with-lucenenet.md">}})。 但是就像你工具箱里的任意一个工具一样，它可能不总是适用于你的工作。
-[Blazor](https://docs.microsoft.com/en-gb/aspnet/core/blazor/?view=aspnetcore-3.0&{{<cda>}}) is designed to be a platform where you create a complete web application and we saw that in the last [experiment with Blazor]({{<ref "/posts/2019-11-29-implementing-search-in-blazor-webassembly-with-lucenenet.md">}}) where we created a stand-alone search site for my blog. But like any tool in our toolbox, it isn't _always_ the right one for the job.
+[Blazor](https://docs.microsoft.com/en-gb/aspnet/core/blazor/?view=aspnetcore-3.0&WT.mc_id=aaronpowell-blog-aapowell) 被设计成一个可以创建完整网页应用的平台，你可以看到最近我们为我的博客创建的独立搜索网站就是一个 [Blazor实践](https://www.aaron-powell.com/posts/2019-11-29-implementing-search-in-blazor-webassembly-with-lucenenet)。 但是就像你工具箱里的任意一个工具一样，它可能不总是适用于你的工作。
+[Blazor](https://docs.microsoft.com/en-gb/aspnet/core/blazor/?view=aspnetcore-3.0&WT.mc_id=aaronpowell-blog-aapowell) is designed to be a platform where you create a complete web application and we saw that in the last [experiment with Blazor](https://www.aaron-powell.com/posts/2019-11-29-implementing-search-in-blazor-webassembly-with-lucenenet) where we created a stand-alone search site for my blog. But like any tool in our toolbox, it isn't _always_ the right one for the job.
 
 以我的博客举例，它更多的是一个只读形式的内容存储在[Github](https://github.com/aaronpowell/aaronpowell.github.io)上的网站，它将markdown格式文件转换成HTML文件。 并不确定，我们可能把它做成一个Blazor WASM应用，使用一个.NET的markdown库去动态生成页面，但这可能对于运行我的网站并带给读者一个良好体验来说是一个不高效的方法。
 Take my blog for example, it's pretty much a read-only site with the content [stored in GitHub](https://github.com/aaronpowell/aaronpowell.github.io) as markdown that I use [Hugo](https://gohugo.io) to convert into HTML files. Now sure, it's possible to do it as a Blazor WASM application, we could get a .NET Markdown library could be used and the pages generated on-the-fly, but that'd an inefficient way to have my website run and would provide a sub-optimal experience to readers.
@@ -116,8 +116,8 @@ _Aside: I haven't tried it yet, but given that you specify the DOM element and t
 ## 托管 Blazor
 ## Hosting Blazor
 
-当托管一个Blazor WASM[有一些可选项](https://docs.microsoft.com/en-gb/aspnet/core/host-and-deploy/blazor/webassembly?view=aspnetcore-3.1&{{<cda>}})的时候，我想专注于[Azure Storage 静态站点](https://docs.microsoft.com/en-gb/aspnet/core/host-and-deploy/blazor/webassembly?view=aspnetcore-3.1&{{<cda>}}#azure-storage)的方法，这也是我的博客托管的方法。
-When it comes to hosting Blazor WASM [there are a few options](https://docs.microsoft.com/en-gb/aspnet/core/host-and-deploy/blazor/webassembly?view=aspnetcore-3.1&{{<cda>}}) but I want to focus on the [Azure Storage static sites](https://docs.microsoft.com/en-gb/aspnet/core/host-and-deploy/blazor/webassembly?view=aspnetcore-3.1&{{<cda>}}#azure-storage) approach, which is how my blog is hosted.
+当托管一个Blazor WASM[有一些可选项](https://docs.microsoft.com/en-gb/aspnet/core/host-and-deploy/blazor/webassembly?view=aspnetcore-3.1&WT.mc_id=aaronpowell-blog-aapowell)的时候，我想专注于[Azure Storage 静态站点](https://docs.microsoft.com/en-gb/aspnet/core/host-and-deploy/blazor/webassembly?view=aspnetcore-3.1&WT.mc_id=aaronpowell-blog-aapowell#azure-storage)的方法，这也是我的博客托管的方法。
+When it comes to hosting Blazor WASM [there are a few options](https://docs.microsoft.com/en-gb/aspnet/core/host-and-deploy/blazor/webassembly?view=aspnetcore-3.1&WT.mc_id=aaronpowell-blog-aapowell) but I want to focus on the [Azure Storage static sites](https://docs.microsoft.com/en-gb/aspnet/core/host-and-deploy/blazor/webassembly?view=aspnetcore-3.1&WT.mc_id=aaronpowell-blog-aapowell#azure-storage) approach, which is how my blog is hosted.
 
 首先我们要做的事情是使用命令`dotnet publish --configuration Release`发布应用。然后我们可以得到`bin/Release/{TARGET FRAMEWORK}/publish/{ASSEMBLY NAME}/dist/_framework`文件夹的内容，包括：`blazor.boot.json`, `blazor.server.js`, `blazor.webassembly.js`，一个叫做`_bin`的文件夹和一个叫做`wasm`的文件夹。
 First thing we'll need to do is publish the app in Release mode using `dotnet publish --configuration Release`. From that we'll grab the contents of the `bin/Release/{TARGET FRAMEWORK}/publish/{ASSEMBLY NAME}/dist/_framework` folder, which will contain `blazor.boot.json`, `blazor.server.js`, `blazor.webassembly.js`, a folder called `_bin` and a folder called `wasm`.
@@ -145,13 +145,13 @@ If everything has gone correctly you'll have just received an error!
 >抱歉，这个地址没有任何内容。
 > Sorry, there's nothing at this address.
 
-![D'oh](/images/doh.gif)
+![D'oh](https://www.aaron-powell.com/images/doh.gif)
 
 ## Blazor 路由
 ## Blazor Routing
 
-如果你记得[我们上一篇博客]({{<ref "/posts/2019-11-29-implementing-search-in-blazor-webassembly-with-lucenenet.md">}})我们了解了Razor组件中的`@page`指令。此处你指定的路由对应的页面将匹配已有的`@page "/"`。但是我们现在的路由是`/search`，并且Blazor的路由引擎找到了URL并执行你的`App.razor`组件：
-If you remember back to [our last post]({{<ref "/posts/2019-11-29-implementing-search-in-blazor-webassembly-with-lucenenet.md">}}) we learnt about the `@page` directive in Razor Components. Here you specify the route that the page will match on and up until now we've had `@page "/"` there. But, we're now on `/search` and Blazor's routing engine has looked at the URL and executed your `App.razor` component:
+如果你记得[我们上一篇博客](https://www.aaron-powell.com/posts/2019-11-29-implementing-search-in-blazor-webassembly-with-lucenenet)我们了解了Razor组件中的`@page`指令。此处你指定的路由对应的页面将匹配已有的`@page "/"`。但是我们现在的路由是`/search`，并且Blazor的路由引擎找到了URL并执行你的`App.razor`组件：
+If you remember back to [our last post](https://www.aaron-powell.com/posts/2019-11-29-implementing-search-in-blazor-webassembly-with-lucenenet) we learnt about the `@page` directive in Razor Components. Here you specify the route that the page will match on and up until now we've had `@page "/"` there. But, we're now on `/search` and Blazor's routing engine has looked at the URL and executed your `App.razor` component:
 
 ```html
 <Router AppAssembly="@typeof(Program).Assembly">
