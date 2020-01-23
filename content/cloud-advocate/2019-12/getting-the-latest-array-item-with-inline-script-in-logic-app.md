@@ -1,13 +1,13 @@
 ---
 type: post
 status: translated
-title: 'Getting the Latest Array Item with Inline Script in Logic App'
+title: '在Logic App中使用内联脚本获取最新的数组项'
 description: '1. This post shows how to use the inline JavaScript code action to perform the array sort in a Logic App workflow, and discuss what to consider to use this action. 2. Readers will learn how to use pure JavaScript code for array sort in Logic App workflow, and understand the cost implication and impact on its use.'
 tags: ['Azure Logic Apps', 'Azure Blob Storage']
 author: 'Justin Yoo'
 date: 2019-11-14
 url: 'https://devkimchi.com/2019/11/14/getting-the-latest-array-item-with-inline-script-in-logic-app/'
-translator: ''
+translator: 'yan_xiaodi'
 ---
 
 # 在Logic App中使用内联脚本获取最新的数组项
