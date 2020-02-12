@@ -2,8 +2,8 @@
 type: post
 status: new
 title: 'The Best Way to Start With Azure Machine Learning'
-description: 'Dmitry recently discovered a way how to get started using Azure ML more effectively. The main secret is the Visual Studio Code extension for Azure ML. It allows you to develop training scripts directly in VS Code, using all the advantages of the environment. You can even run the script locally, and then just send it for training in the Azure ML cluster with a few clicks of the mouse. Convenient, isn't it?'
-tags: ['Debug']
+description: 'Dmitry recently discovered a way how to get started using Azure ML more effectively.'
+tags: ['Debug', 'Debuging']
 author: 'Dmitry Soshnikov'
 date: 2020-01-27
 url: 'https://dev.to/azure/the-best-way-to-start-with-azure-machine-learning-17jl'
