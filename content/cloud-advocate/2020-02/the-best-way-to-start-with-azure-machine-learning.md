@@ -10,7 +10,7 @@ url: 'https://dev.to/azure/the-best-way-to-start-with-azure-machine-learning-17j
 translator: ''
 ---
 
-# 开始Azure机器学习的最好方式
+# 开始Azure机器学习的最佳方式
 
 <ContentMeta />
 
@@ -25,7 +25,7 @@ translator: ''
 - 如果**几个人在同一项目上工作**——他们可以使用同一个集群（所有实验将进行排队），并且可以查看彼此的实验结果。例如，您可以使用**教室环境中的 Azure ML**，创建一个集群供所有人使用，而不是给每个学生创建一个单独的 GPU 机器，并促进学生之间为模型精确度进行竞争。
 - 如果您需要进行大量训练，例如用于**超参数优化**——所有这些可以通过几个命令来完成，无需手动运行一系列的实验。
 
-我希望已经说服您来尝试一下 Azure ML！下面是如何开始使用的最好方式：
+我希望已经说服您来尝试一下 Azure ML！下面是如何开始使用的最佳方式：
 
 - 安装[Visual Studio Code](http://code.visualstudio.com/?WT.mc_id=devto-blog-dmitryso), [Azure Sign In](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) 和 [Azure ML](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai#overview) 扩展
 - 克隆库 https://github.com/CloudAdvocacy/AzureMLStarter ——它包含了一些示例代码来训练识别 MNIST 数字模型。然后，您可以在 VS Code 中打开该克隆库。
