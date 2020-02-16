@@ -87,9 +87,11 @@ az group create --name $AZURE_RESOURCE_GROUP_NAME --location $AZURE_LOCATION
 [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/?WT.mc_id=medium-blog-abhishgu) 是一个建立在开源的 [Postgres 数据库引擎](https://www.postgresql.org/) 关系型数据库服务。 这是一个完全托管型的数据库服务，提供两种部署选项可用， 作为[作为单一的服务器](https://docs.microsoft.com/azure/postgresql/concepts-servers?WT.mc_id=medium-blog-abhishgu) 或者是作为 [一个超大规模 (Citus) 集群](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-nodes?WT.mc_id=medium-blog-abhishgu)
 
 
-> *We will be using the single server option for the purposes of this tutorial 在这次教程中我们将使用 “单一服务器” 选项*
+> *We will be using the single server option for the purposes of this tutorial* 
+>*在这次教程中我们将使用 “单一服务器” 选项*
 
-We will use the `az postgres server create` command to create a Postgres server instance on Azure. First, set up some of the server properties such as the name, admin user, etc. 我们将使用 `az postgres server create` 命令在Azure上创建一个Postgres服务器实例。首先，设置了一些服务器的属性，如名称、管理员账号等等。
+We will use the `az postgres server create` command to create a Postgres server instance on Azure. First, set up some of the server properties such as the name, admin user, etc. 
+我们将使用 `az postgres server create` 命令在Azure上创建一个Postgres服务器实例。首先，设置了一些服务器的属性，如名称、管理员账号等等。
 
 ```
 export AZURE_POSTGRES_SERVER_NAME=[to be filled]
