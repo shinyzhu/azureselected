@@ -1,6 +1,6 @@
 # Azure 中文精选
 
-![Azure Bits](.vuepress/public/img/azure.png)
+![Azure Bits](.vuepress/public/img/azure-bit.png)
 
 ## 我们的目标
 
@@ -16,11 +16,9 @@ Azure中文精选旨在精挑细选微软[Azure云计算平台](https://azure.mi
 
 2、[Azure提示和小技巧](https://aka.ms/azuretipsandtricks)博客，提供了日常开发的小提示。
 
-3、等等（欢迎[推荐优质内容](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxFo4UL6NOJLq2Kj3ObwvLdUNlBQSklPT001OVhXSEpNS09IV1owSkFJTC4u)）
-
 ## 协作模式
 
-首先报名成为志愿者，目前在[招募译者](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxFo4UL6NOJLq2Kj3ObwvLdUNU04RVo1WU9RMVpTN081RlY2RE00NlJPNC4u)。
+首先报名成为志愿者，目前在[招募译者](https://wj.qq.com/s2/5227985/7213/)。
 
 ### 翻译步骤
 
@@ -42,29 +40,6 @@ Azure中文精选旨在精挑细选微软[Azure云计算平台](https://azure.mi
 - deploy-javaee-to-azure-1.md //待翻译文章
 - ... //其他文章
 ```
-
-### 待翻译文章列表
-
-| Title                                                        | ETD  | Translator |
-| ------------------------------------------------------------ | ---- | ---------- |
-| [HOW TO SYNC AZURE BLOB STORAGE WITH AZCOPY](/content/cloud-advocate/how-to-sync-azure-blob-storage-with-azcopy.md) |      |            |
-| [Manage multiple Azure tenancies with Azure Lighthouse](/content/cloud-advocate/Manage-multiple-Azure-tenancies-with-Azure-Lighthouse.md) |      |            |
-| [What I Learned About Azure Arc and Other Services at Microsoft Ignite 2019](/content/cloud-advocate/what-learned-ignite.md) |      |            |
-| [Getting the Latest Array Item with Inline Script in Logic App](/content/cloud-advocate/getting-the-latest-array-item-with-inline-script-in-logic-app.md) |      |            |
-
-### 翻译中的文章列表
-
-| Title                                                        | ETD        | Translator                                   |
-| ------------------------------------------------------------ | ---------- | -------------------------------------------- |
-| [部属 Java EE 应用到Azure: 第 1 部分](/content/cloud-advocate/deploy-javaee-to-azure-1.md) | 2019-12-28 | [HeMingzhang](https://github.com/HeMinzhang) |
-
-### 完成翻译的文章列表
-
-| Title                                                        | ETD        | Translator                                   |
-| ------------------------------------------------------------ | ---------- | -------------------------------------------- |
-| [部属 Java EE 应用到Azure: 第 1 部分](/content/cloud-advocate/deploy-javaee-to-azure-1.md) | 2019-12-28 | [HeMingzhang](https://github.com/HeMinzhang) |
-
-
 
 ## 积分
 

@@ -1,13 +1,18 @@
 ---
 type: post
+status: new
 title: 'Manage multiple Azure tenancies with Azure Lighthouse'
-description: ''
-tags: []
-url: 'https://techcommunity.microsoft.com/t5/ITOps-Talk-Blog/Manage-multiple-Azure-tenancies-with-Azure-Lighthouse/ba-p/833928'
+description: 'If you’ve explored the management capabilities inside Microsoft Azure, you’ll know there are a bunch of tools to help you manage and monitor your Azure resources and keep them compliant.'
+tags: ['Azure Lighthouse', 'Azure Blueprints', 'Security']
+author: 'Sonia Cuff'
 date: 2019-09-03
+url: 'https://techcommunity.microsoft.com/t5/ITOps-Talk-Blog/Manage-multiple-Azure-tenancies-with-Azure-Lighthouse/ba-p/833928'
+translator: ''
 ---
 
 # Manage multiple Azure tenancies with Azure Lighthouse
+
+<ContentMeta />
 
 If you’ve explored the management capabilities inside Microsoft Azure, you’ll know there are a bunch of tools to help you manage and monitor your Azure resources and keep them compliant. Azure Blueprints (in preview) enables you to extend this across multiple subscriptions, but until now there’s been no way to see or manage resources in multiple Azure tenancies, from a single browser pane. Enter, Azure Lighthouse!
 
@@ -102,7 +107,7 @@ For further details on supported Azure services and scenarios, visit:
 
  
 
-For more FAQs, visit: https://azure.microsoft.com/services/azure-lighthouse/?WT.mc_id=itopstalk-blog-socuff
+For more FAQs, visit: <https://azure.microsoft.com/services/azure-lighthouse/?WT.mc_id=itopstalk-blog-socuff>
 
  
 
@@ -111,15 +116,15 @@ We’re just getting started with what Azure Lighthouse can do! Here are some re
 
  
 
-Product page: https://azure.microsoft.com/services/azure-lighthouse/?WT.mc_id=itopstalk-blog-socuff
+Product page: <https://azure.microsoft.com/services/azure-lighthouse/?WT.mc_id=itopstalk-blog-socuff>
 
  
 
-Technical documentation: https://docs.microsoft.com/azure/lighthouse/?WT.mc_id=itopstalk-blog-socuff
+Technical documentation: <https://docs.microsoft.com/azure/lighthouse/?WT.mc_id=itopstalk-blog-socuff>
 
  
 
-GitHub repository: https://github.com/Azure/Azure-Lighthouse-samples
+GitHub repository: <https://github.com/Azure/Azure-Lighthouse-samples>
 (Includes resources like an Azure Policy generator to enrol resources not currently enrolled for Log Analytics and/or Event Hub.)
 
  
