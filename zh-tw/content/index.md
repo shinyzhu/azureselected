@@ -1,8 +1,8 @@
 ---
-title: '全部内容'
+title: '內容列表'
 index_page: true
 ---
 
-# 全部内容
+# 內容列表
 
 <ContentList />

@@ -1,6 +1,6 @@
 
 module.exports = {
-    title: "Azure 中文精选",
+    title: "Azure Selected",
     head: [
       ['link', { rel: 'icon', href: '/favicon.ico'}],
       ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
@@ -8,7 +8,12 @@ module.exports = {
     ],
     locales: {
       '/': {
-        lang: 'zh-CN'
+        lang: 'zh-CN',
+        title: 'Azure 中文精选'
+      },
+      '/zh-tw/': {
+        lang: 'zh-TW',
+        title: 'Azure 中文精選'
       }
     },
     themeConfig: {
@@ -17,17 +22,46 @@ module.exports = {
       repo: 'azureselected/azureselected',
       repoLabel: 'GitHub',
       editLinks: true,
-      editLinkText: '在 GitHub 编辑本页',
-      lastUpdated: '最近更新于',
       smoothScroll: true,
       logo: '/img/logo_azure.svg',
-      nav: [
-        { text: '首页', link: '/' },
-        { text: 'Cloud Advocate', link: '/content/cloud-advocate/' },
-        { text: 'Tips & Tricks', link: '/content/tips-tricks/' },
-        { text: '标签', link: '/tags.html' },
-        { text: '参加翻译', link: 'https://wj.qq.com/s2/5227985/7213/' }
-      ]
+      locales: {
+        '/': {
+          selectText: '选择语言',
+          label: '简体中文',
+          editLinkText: '在 GitHub 编辑本页',
+          lastUpdated: '最近更新于',
+          serviceWorker: {
+            updatePopup: {
+              message: "有新的内容了，请：",
+              buttonText: "刷新"
+            }
+          },
+          nav: [
+            { text: '首页', link: '/' },
+            { text: '内容列表', link: '/content/' },
+            { text: '标签', link: '/tags.html' },
+            { text: '参加翻译', link: 'https://wj.qq.com/s2/5227985/7213/' }
+          ]
+        },
+        '/zh-tw/': {
+          selectText: '選擇語言',
+          label: '繁體中文',
+          editLinkText: '在 GitHub 編輯本頁',
+          lastUpdated: '最近更新於',
+          serviceWorker: {
+            updatePopup: {
+              message: "有新的內容了，請：",
+              buttonText: "刷新"
+            }
+          },
+          nav: [
+            { text: '首頁', link: '/' },
+            { text: '內容列表', link: '/content/' },
+            { text: '標籤', link: '/tags.html' },
+            { text: '參加翻譯', link: 'https://wj.qq.com/s2/5227985/7213/' }
+          ]
+        }
+      }
     },
     plugins: [
       ['@vuepress/back-to-top', true],

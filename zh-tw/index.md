@@ -1,10 +1,10 @@
 ---
-title: 首页
-description: 'Azure 中文精选为你带来优质的Azure云计算开发最佳实践和教程等内容。'
+title: 首頁
+description: 'Azure 中文精選為你帶來優質的Azure雲計算開發最佳實踐和教程等內容。'
 home: true
 heroImage: /img/azure-bit.png
-actionText: 浏览内容
-actionLink: /content/
+actionText: 瀏覽內容
+actionLink: /zh-tw/content/
 ---
 
 ::: tip
