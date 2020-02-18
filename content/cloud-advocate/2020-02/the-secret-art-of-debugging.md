@@ -3,7 +3,7 @@ type: post
 status: new
 title: 'The Secret Art of Debugging'
 description: 'Generic piece about approaching debugging that is relevant for any language or platform.'
-tags: ['Debug']
+tags: ['Debug', 'Debuging']
 author: 'Jeremy Likness'
 date: 2020-01-24
 url: 'https://dev.to/dotnet/the-secret-art-of-debugging-1lfi'
