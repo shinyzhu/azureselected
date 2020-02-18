@@ -3,7 +3,7 @@ type: post
 status: new
 title: 'The Best Way to Start With Azure Machine Learning'
 description: 'Dmitry recently discovered a way how to get started using Azure ML more effectively.'
-tags: ['Debug', 'Debuging']
+tags: ['Azure CLI', 'VS Code', 'Azure ML', 'Azure']
 author: 'Dmitry Soshnikov'
 date: 2020-01-27
 url: 'https://dev.to/azure/the-best-way-to-start-with-azure-machine-learning-17jl'
@@ -14,7 +14,7 @@ translator: ''
 
 <ContentMeta />
 
-我知道很多数据科学家，包括我自己在内，都是在启用了GPU的机器上完成大部分工作，无论是在本地或在云中，通过 Jupyter Notebooks 或一些 Python IDE。近两年来，作为 AI/ML 软件工程师，我正在做的事情是——在一台没有 GPU 的机器上准备数据，然后在云中使用 GPU 虚拟机做训练。
+我知道许多数据科学家，包括我自己，都通过 Jupyter Notebooks 或某些 Python IDE 在支持 GPU 的计算机上，包括本地或在云中完成大部分工作。近两年来，作为 AI/ML 软件工程师，我正在做的事情是——在一台没有 GPU 的机器上准备数据，然后在云中使用 GPU 虚拟机做训练。
 
 另一方面，您可能已经听说过[Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=devto-blog-dmitryso)——一个特殊的用于机器学习的平台服务。但是，如果您开始寻找一些[入门教程](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml/?WT.mc_id=devto-blog-dmitryso)，您将意识到，使用 Azure 的 ML 会创建很多不必要的开销，并且这个过程不是很理想。例如，在前面提到的例子中训练脚本是作为一个 Jupyter Cell 的文本文件创建的，没有代码补全，也没有任何方便地在本地执行或调试的方式。这些额外的开销也是我们并没有在我们的项目中尽可能多的使用它的原因。
 
