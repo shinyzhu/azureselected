@@ -26,8 +26,7 @@ module.exports = {
         { text: 'Cloud Advocate', link: '/content/cloud-advocate/' },
         { text: 'Tips & Tricks', link: '/content/tips-tricks/' },
         { text: '标签', link: '/tags.html' },
-        { text: '我要参加翻译', link: 'https://wj.qq.com/s2/5227985/7213/' },
-        { text: 'RSS', link: 'https://azureselected.com/rss.xml'}
+        { text: '参加翻译', link: 'https://wj.qq.com/s2/5227985/7213/' }
       ]
     },
     plugins: [
@@ -40,13 +39,6 @@ module.exports = {
         serviceWorker: true,
         updatePopup: true
       }],
-      ['@vuepress/last-updated'],
-      ['vuepress-plugin-rss', {
-          base_url: '/',
-          site_url: 'https://azureselected.com',
-          copyright: '2019 - 2020 AzureSelected',
-          filter: frontmatter => frontmatter.date <= new Date(),
-          count: 20
-      }]
+      ['@vuepress/last-updated']
     ]
   }
