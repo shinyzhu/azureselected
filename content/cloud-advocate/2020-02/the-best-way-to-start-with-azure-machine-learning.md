@@ -1,16 +1,16 @@
 ---
 type: post
-status: new
-title: 'The Best Way to Start With Azure Machine Learning'
+status: published
+title: '开始 Azure 机器学习的最佳方式'
 description: 'Dmitry recently discovered a way how to get started using Azure ML more effectively.'
 tags: ['Azure CLI', 'VS Code', 'Azure ML', 'Azure']
 author: 'Dmitry Soshnikov'
 date: 2020-01-27
 url: 'https://dev.to/azure/the-best-way-to-start-with-azure-machine-learning-17jl'
-translator: ''
+translator: 'yanxiaodi'
 ---
 
-# 开始Azure机器学习的最佳方式
+# 开始 Azure 机器学习的最佳方式
 
 <ContentMeta />
 
