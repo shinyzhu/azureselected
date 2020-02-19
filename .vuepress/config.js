@@ -26,7 +26,7 @@ module.exports = {
       logo: '/img/logo_azure.svg',
       locales: {
         '/': {
-          selectText: '选择语言',
+          selectText: '语言',
           label: '简体中文',
           editLinkText: '在 GitHub 编辑本页',
           lastUpdated: '最近更新于',
@@ -44,7 +44,7 @@ module.exports = {
           ]
         },
         '/zh-tw/': {
-          selectText: '選擇語言',
+          selectText: '語言',
           label: '繁體中文',
           editLinkText: '在 GitHub 編輯本頁',
           lastUpdated: '最近更新於',
@@ -55,9 +55,9 @@ module.exports = {
             }
           },
           nav: [
-            { text: '首頁', link: '/' },
-            { text: '內容列表', link: '/content/' },
-            { text: '標籤', link: '/tags.html' },
+            { text: '首頁', link: '/zh-tw/' },
+            { text: '內容列表', link: '/zh-tw/content/' },
+            { text: '標籤', link: '/zh-tw/tags.html' },
             { text: '參加翻譯', link: 'https://wj.qq.com/s2/5227985/7213/' }
           ]
         }
