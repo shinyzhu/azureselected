@@ -19,17 +19,13 @@
 <script>
 export default {
     props:[
-        'category',
+        'path',
         'limit'
     ], computed: {
         posts() {
             let posts = this.$site.pages
-                .filter(x => x.path.startsWith('/content/') && !x.frontmatter.index_page)
+                .filter(x => x.path.startsWith(this.path) && !x.frontmatter.index_page)
                 .sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
-
-            if(this.category){
-                posts = posts.filter(x => x.path.startsWith('/content/' + this.category));
-            }
 
             return posts;
         }

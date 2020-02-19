@@ -5,4 +5,4 @@ description: ''
 
 # 標籤
 
-<TagList />
+<TagList path='/zh-tw/' />

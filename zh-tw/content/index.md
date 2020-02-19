@@ -5,4 +5,4 @@ index_page: true
 
 # 內容列表
 
-<ContentList />
+<ContentList path='/zh-tw/content/' />

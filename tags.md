@@ -5,4 +5,4 @@ description: ''
 
 # 标签
 
-<TagList />
+<TagList path='/' />

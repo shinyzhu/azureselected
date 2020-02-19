@@ -5,4 +5,4 @@ index_page: true
 
 # 内容列表
 
-<ContentList />
+<ContentList path='/content/' />
