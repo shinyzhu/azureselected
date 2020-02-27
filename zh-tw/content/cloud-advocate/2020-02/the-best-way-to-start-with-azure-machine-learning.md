@@ -1,8 +1,8 @@
 ---
 type: post
 status: published
-title: '开始 Azure 机器学习的最佳方式'
-description: 'Dmitry recently discovered a way how to get started using Azure ML more effectively.'
+title: '開始 Azure 機器學習的最佳方式'
+description: 'Dmitry最近發現了一種如何更有效地開始使用Azure ML的方法。'
 tags: ['Azure CLI', 'VS Code', 'Azure ML', 'Azure']
 author: 'Dmitry Soshnikov'
 date: 2020-01-27
