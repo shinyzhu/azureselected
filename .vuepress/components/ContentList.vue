@@ -7,11 +7,11 @@
             <router-link :to="post.path">{{ post.frontmatter.title }}</router-link>
         </h2>
 
-        <p><a :href="post.frontmatter.url"><i>原文由 {{ post.frontmatter.author }} 在 {{ new Date(post.frontmatter.date).toLocaleDateString() }} 发布。</i></a></p>
+        <p><a :href="post.frontmatter.url"><i>{{$site.locales[$localePath].uitext.list.origin}} {{ post.frontmatter.author }} {{$site.locales[$localePath].uitext.list.published}} {{ new Date(post.frontmatter.date).toLocaleDateString() }} 。</i></a></p>
         
         <p>{{ post.frontmatter.description }}</p>
 
-        <p><router-link :to="post.path">继续阅读 &rarr;</router-link></p>
+        <p><router-link :to="post.path">{{$site.locales[$localePath].uitext.list.continue}} &rarr;</router-link></p>
     </div>
 </div>
 </template>
