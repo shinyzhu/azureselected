@@ -8,11 +8,11 @@ author: 'Jeremy Likness'
 date: 2020-01-24
 url: 'https://dev.to/dotnet/the-secret-art-of-debugging-1lfi'
 translator: ''
+reviewer: ''
 ---
 
 # The Secret Art of Debugging
 
-<ContentMeta />
 
 Mastery of the art of debugging is rare. I know this from years of experience working on enterprise systems. If it was simple, more people would be doing it and everyone would be able to track down bugs. The reality is that most shops have that one "go to person" known as "The Exterminator" who is called in to sweep the place for those bugs no one else was able to track down. I've worked for product companies and consulting firms and in both roles, a significant part of our business revolved around finding nasty bugs 🐜 and fixing them.
 
@@ -147,3 +147,4 @@ Debugging is an art that can be learned with patience, focus, and experience. I 
 
 What is your favorite debugging tip? Please share using the comments below.
 
+<ContentMeta />

@@ -8,11 +8,11 @@ author: 'Sonia Cuff'
 date: 2019-11-26
 url: 'https://techcommunity.microsoft.com/t5/itops-talk-blog/managing-security-with-azure-lighthouse-and-azure-arc/ba-p/1032864'
 translator: ''
+reviewer: ''
 ---
 
 # Managing security with Azure Lighthouse and Azure Arc
 
-<ContentMeta />
 
 I've previously blogged about Azure Lighthouse, for [managing multiple difference Azure tenancies](https://techcommunity.microsoft.com/t5/ITOps-Talk-Blog/Manage-multiple-Azure-tenancies-with-Azure-Lighthouse/ba-p/833928?WT.mc_id=itopstalk-blog-socuff). This capability is useful for both Managed Service Providers, with support arrangements for multiple customers, and for large or complex Enterprise organizations (for example, if there are sub-brands or franchisees). Onboarding is done via deploying an Azure Resource Manager template or publishing an Azure Marketplace offer (public or private), which enables delegated administration into the other tenancies.
 
@@ -65,3 +65,5 @@ As the capabilities of both [Azure Lighthouse](https://docs.microsoft.com/azure/
  
 
 For more information on Azure Lighthouse, including onboarding options, visit: <https://docs.microsoft.com/azure/lighthouse/?WT.mc_id=itopstalk-blog-socuff>
+
+<ContentMeta />

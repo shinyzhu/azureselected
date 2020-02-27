@@ -8,12 +8,12 @@ author: 'Aaron Powell'
 date: 2019-12-06
 url: 'https://www.aaron-powell.com/posts/2019-12-10-can-you-use-blazor-for-only-part-of-an-app/'
 translator: '龙少'
+reviewer: 'shinyzhu'
 ---
 
 # 是否可以把Blazor只用在应用的一部分?
 # Can You Use Blazor for Only Part of an App?
 
-<ContentMeta />
 
 [Blazor](https://docs.microsoft.com/en-gb/aspnet/core/blazor/?view=aspnetcore-3.0&WT.mc_id=aaronpowell-blog-aapowell) 被设计成一个可以创建完整网页应用的平台，你可以看到最近我们为我的博客创建的独立搜索网站就是一个 [Blazor实践](https://www.aaron-powell.com/posts/2019-11-29-implementing-search-in-blazor-webassembly-with-lucenenet)。 但是就像你工具箱里的任意一个工具一样，它可能不总是适用于你的工作。
 [Blazor](https://docs.microsoft.com/en-gb/aspnet/core/blazor/?view=aspnetcore-3.0&WT.mc_id=aaronpowell-blog-aapowell) is designed to be a platform where you create a complete web application and we saw that in the last [experiment with Blazor](https://www.aaron-powell.com/posts/2019-11-29-implementing-search-in-blazor-webassembly-with-lucenenet) where we created a stand-alone search site for my blog. But like any tool in our toolbox, it isn't _always_ the right one for the job.
@@ -182,3 +182,5 @@ Blazor is a great way which we can build rich applications, but there is value i
 
 我们研究了一下在HTML页面中运行Blazor应用所需要的重要文件，同时研究了将其放入其它类型应用需要什么
 Here we've taken a bit of a look at the important files used to run a Blazor application within an HTML page and we've also looked at what it takes to drop it into some other kind of application.
+
+<ContentMeta />

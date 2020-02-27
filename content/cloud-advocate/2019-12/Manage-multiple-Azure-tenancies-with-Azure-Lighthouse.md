@@ -8,11 +8,11 @@ author: 'Sonia Cuff'
 date: 2019-09-03
 url: 'https://techcommunity.microsoft.com/t5/ITOps-Talk-Blog/Manage-multiple-Azure-tenancies-with-Azure-Lighthouse/ba-p/833928'
 translator: ''
+reviewer: ''
 ---
 
 # Manage multiple Azure tenancies with Azure Lighthouse
 
-<ContentMeta />
 
 If you’ve explored the management capabilities inside Microsoft Azure, you’ll know there are a bunch of tools to help you manage and monitor your Azure resources and keep them compliant. Azure Blueprints (in preview) enables you to extend this across multiple subscriptions, but until now there’s been no way to see or manage resources in multiple Azure tenancies, from a single browser pane. Enter, Azure Lighthouse!
 
@@ -130,3 +130,5 @@ GitHub repository: <https://github.com/Azure/Azure-Lighthouse-samples>
  
 
 *-SCuffy*
+
+<ContentMeta />
