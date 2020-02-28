@@ -9,6 +9,23 @@ module.exports = {
   ],
   locales: {
     '/': {
+      lang: 'en-US',
+      title: 'Azure Selected',
+      uitext: {
+        meta: {
+          "author": "By: ",
+          "url": "From: ",
+          "translator": "Translated by ",
+          "reviewer": "Review by "
+        },
+        list: {
+          "origin": "By ",
+          "published": ", published on ",
+          "continue": "Continue reading"
+        }
+      }
+    },
+    '/zh-cn/': {
       lang: 'zh-CN',
       title: 'Azure 中文精选',
       uitext: {
@@ -53,6 +70,24 @@ module.exports = {
     logo: '/img/logo_azure.svg',
     locales: {
       '/': {
+        selectText: 'Language',
+        label: 'English',
+        editLinkText: 'Edit on GitHub',
+        lastUpdated: 'Last Updated',
+        serviceWorker: {
+          updatePopup: {
+            message: "New content available",
+            buttonText: "Refresh"
+          }
+        },
+        nav: [
+          { text: 'Home', link: '/' },
+          { text: 'Content', link: '/content/' },
+          { text: 'Tags', link: '/tags.html' },
+          { text: 'Join Us', link: 'https://wj.qq.com/s2/5227985/7213/' }
+        ]        
+      },
+      '/zh-cn/': {
         selectText: '语言',
         label: '简体中文',
         editLinkText: '在 GitHub 编辑本页',
@@ -64,9 +99,9 @@ module.exports = {
           }
         },
         nav: [
-          { text: '首页', link: '/' },
-          { text: '内容列表', link: '/content/' },
-          { text: '标签', link: '/tags.html' },
+          { text: '首页', link: '/zh-cn/' },
+          { text: '内容列表', link: '/zh-cn/content/' },
+          { text: '标签', link: '/zh-cn/tags.html' },
           { text: '参加翻译', link: 'https://wj.qq.com/s2/5227985/7213/' }
         ]
       },
