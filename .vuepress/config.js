@@ -1,6 +1,7 @@
 
 module.exports = {
   title: "Azure Selected",
+  extend: '@vuepress/theme-default',
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
@@ -18,8 +19,6 @@ module.exports = {
           "reviewer": "审阅："
         },
         list: {
-          "origin": "原文由 ",
-          "published": "发布于 ",
           "continue": "继续阅读"
         }
       }
@@ -35,8 +34,6 @@ module.exports = {
           "reviewer": "審閱："
         },
         list: {
-          "origin": "原文由 ",
-          "published": "發佈於 ",
           "continue": "繼續閱讀"
         }
       }

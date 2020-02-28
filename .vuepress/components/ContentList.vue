@@ -7,7 +7,7 @@
             <router-link :to="post.path">{{ post.frontmatter.title }}</router-link>
         </h2>
 
-        <p><a :href="post.frontmatter.url"><i>{{$site.locales[$localePath].uitext.list.origin}} {{ post.frontmatter.author }} {{$site.locales[$localePath].uitext.list.published}} {{ new Date(post.frontmatter.date).toLocaleDateString() }} 。</i></a></p>
+        <p><a :href="post.frontmatter.url">{{$site.locales[$localePath].uitext.list.origin}} {{ post.frontmatter.author }} {{$site.locales[$localePath].uitext.list.published}} {{ new Date(post.frontmatter.date).toLocaleDateString() }} 。</a></p>
         
         <p>{{ post.frontmatter.description }}</p>
 

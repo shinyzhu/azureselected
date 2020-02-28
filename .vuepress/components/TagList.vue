@@ -4,7 +4,7 @@
     <span v-for="tag in Object.keys(tags)">
       <h2 :id="tag">
         <router-link
-          :to="{ path: `/tags.html#${tag}`}"
+          :to="{ path: $localePath + `tags.html#${tag}`}"
           class="header-anchor"
           aria-hidden="true">#</router-link>
         {{tag}}
