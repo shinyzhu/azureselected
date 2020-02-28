@@ -1,17 +1,17 @@
 <!-- /.vuepress/components/ContentList.vue -->
 
 <template>
-<div>
+<div class="content-list">
     <div v-for="post in posts">
         <h2>
             <router-link :to="post.path">{{ post.frontmatter.title }}</router-link>
         </h2>
 
-        <p><a :href="post.frontmatter.url">{{$site.locales[$localePath].uitext.list.origin}} {{ post.frontmatter.author }} {{$site.locales[$localePath].uitext.list.published}} {{ new Date(post.frontmatter.date).toLocaleDateString() }} 。</a></p>
+        <p class="meta"><a :href="post.frontmatter.url">{{$site.locales[$localePath].uitext.list.origin}} {{ post.frontmatter.author }} {{$site.locales[$localePath].uitext.list.published}} {{ new Date(post.frontmatter.date).toLocaleDateString() }}</a></p>
         
         <p>{{ post.frontmatter.description }}</p>
 
-        <p><router-link :to="post.path">{{$site.locales[$localePath].uitext.list.continue}} &rarr;</router-link></p>
+        <p class="meta"><router-link :to="post.path">{{$site.locales[$localePath].uitext.list.continue}} &rarr;</router-link></p>
     </div>
 </div>
 </template>
@@ -32,3 +32,7 @@ export default {
     }
 }
 </script>
+
+<style>
+.content-list .meta{font-size:.9em;}
+</style>
