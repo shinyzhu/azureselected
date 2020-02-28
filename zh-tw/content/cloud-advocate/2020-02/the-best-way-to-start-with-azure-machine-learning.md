@@ -1,6 +1,7 @@
 ---
 type: post
 status: published
+sidebar: auto
 title: '開始 Azure 機器學習的最佳方式'
 description: 'Dmitry最近發現了一種如何更有效地開始使用Azure ML的方法。'
 tags: ['Azure CLI', 'VS Code', 'Azure ML', 'Azure']
@@ -9,9 +10,12 @@ date: 2020-01-27
 url: 'https://dev.to/azure/the-best-way-to-start-with-azure-machine-learning-17jl'
 translator: 'yanxiaodi'
 reviewer: 'shinyzhu'
+pub_date: 2020-02-11
 ---
 
 # 開始 Azure 機器學習的最佳方式
+
+<ContentMeta />
 
 我知道許多數據科學家，包括我自己，都通過 Jupyter Notebooks 或某些 Python IDE 在支持 GPU 的計算機上，包括本地或在雲中完成大部分工作。近兩年來，作為 AI/ML 軟件工程師，我正在做的事情是——在一台沒有 GPU 的機器上準備數據，然後在雲中使用 GPU 虛擬機做訓練。
 
@@ -26,7 +30,7 @@ reviewer: 'shinyzhu'
 
 我希望已經說服您來嘗試一下 Azure ML！下面是如何開始使用的最佳方式：
 
-- 安裝[Visual Studio Code](http://code.visualstudio.com/?WT.mc_id=devto-blog-dmitryso), [Azure Sign In](https://marketplace.visualstudio.com/items?itemName= ms-vscode.azure-account) 和[Azure ML](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai#overview) 擴展
+- 安裝[Visual Studio Code](http://code.visualstudio.com/?WT.mc_id=devto-blog-dmitryso), [Azure Sign In](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) 和[Azure ML](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai#overview) 擴展
 - 克隆庫 https://github.com/CloudAdvocacy/AzureMLStarter ——它包含了一些示例代碼來訓練識別 MNIST 數字模型。然後，您可以在 VS Code 中打開該克隆庫。
 - 繼續閱讀！
 
@@ -34,7 +38,7 @@ reviewer: 'shinyzhu'
 
 Azure ML 中的一切都圍繞著一個**工作區**進行組織。這是您提交實驗、存儲數據和結果模型的中心位置。還有一個特殊的[**Azure ML Portal**](http://ml.azure.com/?WT.mc_id=devto-blog-dmitryso)，為您的工作區提供Web 界面，從這裡您可以執行很多操作，如監視您的實驗和指標等等。
 
-您可以通過[Azure Portal](https://portal.azure.com/?WT.mc_id=devto-blog-dmitryso) 的Web 界面創建一個工作區（可參考[步驟說明](https://docs. microsoft.com/azure/machine-learning/how-to-manage-workspace/?WT.mc_id=devto-blog-dmitryso)），或使用Azure CLI（[介紹](https://docs.microsoft.com/ en-us/azure/machine-learning/how-to-manage-workspace-cli/?WT.mc_id=devto-blog-dmitryso)）。
+您可以通過[Azure Portal](https://portal.azure.com/?WT.mc_id=devto-blog-dmitryso) 的Web 界面創建一個工作區（可參考[步驟說明](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace/?WT.mc_id=devto-blog-dmitryso)），或使用Azure CLI（[介紹](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-manage-workspace-cli/?WT.mc_id=devto-blog-dmitryso)）。
 
 ```
 az extension add -n azure-cli-ml
@@ -97,7 +101,7 @@ except:
    在這裡，您會看到工作區中的不同對象：計算資源，實驗等。
 3. 回到文件列表，並用鼠標右鍵點擊 `train_universal.py` 並選擇 **Azure ML: Run as experiment in Azure**。
    ![VS Code 中的Azure ML 工作區](https://res.cloudinary.com/practicaldev/image/fetch/s--GfBPAe07--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://habrastorage.org/webt/x7/i7/ex/x7i7exvh6uatgqqmhvtte9u89ae.png)
-4. Confirm your Azure subscription and you workspace, and then select **Create new experiment**:
+4. 確認您的Azure訂閱和您的工作區，然後選擇**創建新實驗**：
    ![VS Code 中的Azure ML 工作區](https://res.cloudinary.com/practicaldev/image/fetch/s--yUX026iW--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://habrastorage.org/webt/uq/p1/l1/uqp1l1mazrais_juw3zcfegnyds.png)
    ![VS Code 中的Azure ML 工作區](https://res.cloudinary.com/practicaldev/image/fetch/s--uYXYdSal--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://habrastorage.org/webt/hk/of/ff/hkofffhrmy-mapz-zybagzi5pj4.png)
    ![Azure ML Workspace in VS Code](https://res.cloudinary.com/practicaldev/image/fetch/s--uppA0zaX--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://habrastorage.org/webt/hd/nb/0c/hdnb0clmrgnq534iaktd20q8w2u.png)
@@ -132,4 +136,3 @@ except:
 - [使用Azure 機器學習服務構建AI 解決方案](https://docs.microsoft.com/ru-ru/learn/paths/build-ai-solutions-with-azure-ml-service/?WT.mc_id=devto-blog-dmitryso)
 - [使用Azure 機器學習服務訓練本地模型](https://docs.microsoft.com/ru-ru/learn/modules/train-local-model-with-azure-mls/?WT.mc_id=devto-blog-dmitryso)
 
-<ContentMeta />
