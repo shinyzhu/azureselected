@@ -1,6 +1,7 @@
 
 module.exports = {
   title: "Azure Selected",
+  description: 'AzureSelected is a project for localizing content by Cloud Advocate to empower your Azure skills.',
   extend: '@vuepress/theme-default',
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
@@ -10,7 +11,6 @@ module.exports = {
   locales: {
     '/': {
       lang: 'en-US',
-      title: 'Azure Selected',
       uitext: {
         meta: {
           "author": "By: ",
@@ -28,6 +28,7 @@ module.exports = {
     '/zh-cn/': {
       lang: 'zh-CN',
       title: 'Azure 中文精选',
+      description: 'Azure 中文精选为你带来优质的Azure云计算开发最佳实践和教程等内容。',
       uitext: {
         meta: {
           "author": "作者：",
@@ -45,6 +46,7 @@ module.exports = {
     '/zh-tw/': {
       lang: 'zh-TW',
       title: 'Azure 中文精選',
+      description: 'Azure 中文精選為你帶來優質的Azure雲計算開發最佳實踐和教程等內容。',
       uitext: {
         meta: {
           "author": "作者：",
@@ -76,7 +78,7 @@ module.exports = {
         lastUpdated: 'Last Updated',
         serviceWorker: {
           updatePopup: {
-            message: "New content available",
+            message: "New content is available",
             buttonText: "Refresh"
           }
         },

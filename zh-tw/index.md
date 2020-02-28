@@ -1,63 +1,38 @@
 ---
-title: 首頁
-description: 'Azure 中文精選為你帶來優質的Azure雲計算開發最佳實踐和教程等內容。'
 home: true
 heroImage: /img/azure-bit.png
 actionText: 瀏覽內容
 actionLink: /zh-tw/content/
+footer: AzureSelected - 提高Azure雲計算平台開發技能
 ---
 
-::: tip
-:tada: 欢迎来到 Azure 中文精选
+<div class="features">
+  <div class="feature">
+    <h2>精選原創內容</h2>
+    <p>來自微軟 <a href="https://developer.microsoft.com/advocates/?WT.mc_id=azureselected-content-xinglzhu">Cloud Advocate</a> 的原創博客等內容， 訪問 <a href="https://onazure.today">onazure.today</a> 獲取每週更新。</p>
+  </div>
+  <div class="feature">
+    <h2>本地社群翻譯</h2>
+    <p>簡體中文和繁體中文來自中國本地社群參與，為你帶來習慣的閱讀體驗。</p>
+  </div>
+  <div class="feature">
+    <h2>開發者渠道分發</h2>
+    <p>與開發者社區媒體渠道合作，發布本地化的內容，及時送達到你手上。</p>
+  </div>
+</div>
+
+::: tip 提示
+:tada: 歡迎加入翻譯團隊
+
+如果你想加入翻譯團隊，請訪問 [GitHub](https://github.com/azureselected/azureselected)。或點擊[報名表單](https://wj.qq.com/s2/5227985/7213/)。
 :::
 
-## 我们的目标
+## 我們的目標
 
-Azure中文精选旨在精挑细选微软[Azure云计算平台](https://azure.microsoft.com/?WT.mc_id=azureselected-content-xinglzhu)的实际应用和开发经验等优质内容，然后将这些内容进行中文本地化翻译，力图为中文环境的Azure开发者提供学习和参考资料。
+Azure中文精選旨在精挑細選微軟[Azure雲計算平台](https://azure.microsoft.com/?WT.mc_id=azureselected-content-xinglzhu)的實際應用和開發經驗等優質內容，然後將這些內容進行中文本地化翻譯，力圖為中文環境的Azure開發者提供學習和參考資料。
 
-该项目库是为译者和校验等志愿者提供的协作平台，我们将翻译好的内容会推送给国内多个开发者渠道。
+該項目庫是為譯者和校驗等志願者提供的協作平台，我們將翻譯好的內容會推送給國內多個開發者渠道。
 
-## 内容来源
+## 你可以參與什麼
 
-实际上，[微软 Docs](https://docs.microsoft.com/azure/?WT.mc_id=azureselected-content-xinglzhu) 上的文档非常齐全，在[微软 Learn](https://docs.microsoft.com/learn/?WT.mc_id=azureselected-content-xinglzhu) 平台上也有非常多的学习路径和考试，这也是我们推荐的参考资源。但比起已经相当完整的文档，我们主要关注有实践经验的专家撰写的内容。主要来自：
-
-1、微软的[云大使（Cloud Advocate，简称CA）](https://developer.microsoft.com/advocates/?WT.mc_id=azureselected-content-xinglzhu)，他们根据实际场景创造了非常多的指导和最佳实践内容。
-
-2、[Azure提示和小技巧](https://aka.ms/azuretipsandtricks)博客，提供了日常开发的小提示。
-
-## 协作模式
-
-首先报名成为志愿者，目前在[招募译者](https://wj.qq.com/s2/5227985/7213/)。
-
-### 翻译步骤
-
-1. 认领翻译文章：创建Issue，认领待翻译的文章。
-2. 开始翻译：根据Issue创建文章的分支，开始翻译。翻译的时候建议一段原文一段中文。记得多提交。
-3. 完成后发起Pull Request，等待审阅。
-
-### 审阅步骤
-
-1. 查看Pull Request，对比翻译结果。
-2. 如有修改请标记。
-3. 确认质量合格后，合并Pull Request到master分支。
-
-### 内容目录结构
-
-```
-/content/cloud-advocate/
-- README.md //这是首页，不需要动
-- deploy-javaee-to-azure-1.md //待翻译文章
-- ... //其他文章
-```
-
-## 积分
-
-我们正在设计一个积分规则，译者和校验等志愿者的贡献都将计算积分，累计的积分将用来…
-
-```
-TODO
-```
-
-## 内容分发
-
-目前我们正在跟多个第三方渠道沟通，会转发翻译完成的文章，来让更多的中文开发者阅读。
+歡迎轉發翻譯好的文章到社區，以及基於這些文章作解讀。敬請保留原文鏈接，以及內容中的鏈接。

@@ -1,8 +1,8 @@
 ---
-title: '标签'
+title: 'Tags'
 description: ''
 ---
 
-# 标签
+# Tags
 
 <TagList path='/' />

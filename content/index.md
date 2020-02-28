@@ -1,8 +1,8 @@
 ---
-title: '内容列表'
+title: 'Content'
 index_page: true
 ---
 
-# 内容列表
+# Content
 
 <ContentList path='/content/' />
