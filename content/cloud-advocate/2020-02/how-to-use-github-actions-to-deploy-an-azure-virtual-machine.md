@@ -1,6 +1,7 @@
 ---
 type: post
 status: new
+sidebar: auto
 title: 'How to use GitHub Actions to deploy a virtual machine'
 description: 'Instructional blog that helps the non-developer community deploy Azure resources using GitHub Actions.'
 tags: ['Azure Virtual Machine', 'GitHub Actions']
@@ -9,9 +10,12 @@ date: 2020-01-22
 url: 'https://techcommunity.microsoft.com/t5/itops-talk-blog/how-to-use-github-actions-to-deploy-an-azure-virtual-machine/ba-p/1092015'
 translator: ''
 reviewer: ''
+pub_date: 
 ---
 
 # How to use GitHub Actions to deploy a virtual machine
+
+<ContentMeta />
 
 Hands up if you are used to deploy servers either by unpacking them from a box or using a graphical user interface (GUI)? Yip, that’s me and it's where I’ve built my career. However, over the last few years I’ve been getting more and more used to deploying servers and their supporting resources via code. Either using something like PowerShell or Azure CLI, or sometimes a combination of both. 
 
@@ -276,4 +280,3 @@ I've recorded a video of me walking through the code and each step, this video c
 
 I’d love to hear how other IT Pros are using GitHub Actions to deploy infrastructure, so please do reach out and share your stories!
 
-<ContentMeta />

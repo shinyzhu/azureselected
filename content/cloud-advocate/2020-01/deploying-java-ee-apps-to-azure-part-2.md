@@ -1,6 +1,7 @@
 ---
 type: post
 status: review
+sidebar: auto
 title: '部属 Java EE 应用到 Azure: 第 2 部分'
 description: '这是系列文章中的第二篇博客，它将带您逐步了解在 Azure 上运行 Java EE 应用程序的选项。 在这一部分中，我们将 Java EE 应用程序作为 Azure 容器实例上的 Docker 容器运行。'
 tags: ['Java EE', 'Azure', 'IaaS', 'Cloud Computing', 'Database']
@@ -9,10 +10,12 @@ date: 2019-12-06
 url: 'https://medium.com/microsoftazure/deploying-java-ee-apps-to-azure-part-2-37d73d0ee401'
 translator: 'XtaoBai'
 reviewer: 'shinyzhu'
+pub_date: 2020-02-09
 ---
 
 # 部属 Java EE 应用到 Azure: 第 2 部分
 
+<ContentMeta />
 
 这是系列博客的第二篇，本篇将继续带您逐步了解这种在 Azure 中运行 Java EE 应用的方法。[第一部分](https://medium.com/microsoftazure/deploying-java-ee-apps-to-azure-part-1-e895284b46d1) 讲述了如何将 Java EE 应用程序部署到一个 [微软 Azure 虚拟机](https://azure.microsoft.com/services/virtual-machines/?WT.mc_id=medium-blog-abhishgu) 上并使用 [Azure 数据库 PostgreSQL](https://azure.microsoft.com/services/postgresql/?WT.mc_id=medium-blog-abhishgu) 的服务作为后台数据库。
 
@@ -339,4 +342,3 @@ az group delete --name $AZURE_RESOURCE_GROUP_NAME
 
 第三部分将介绍[Kubernetes](https://kubernetes.io/) 作为我们的 Java EE 应用部署平台。敬请关注！
 
-<ContentMeta />

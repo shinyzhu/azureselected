@@ -1,6 +1,7 @@
 ---
 type: post
 status: published
+sidebar: auto
 title: '开始 Azure 机器学习的最佳方式'
 description: 'Dmitry最近发现了一种如何更有效地开始使用Azure ML的方法。'
 tags: ['Azure CLI', 'VS Code', 'Azure ML', 'Azure']
@@ -9,9 +10,12 @@ date: 2020-01-27
 url: 'https://dev.to/azure/the-best-way-to-start-with-azure-machine-learning-17jl'
 translator: 'yanxiaodi'
 reviewer: 'shinyzhu'
+pub_date: 2020-02-12
 ---
 
 # 开始 Azure 机器学习的最佳方式
+
+<ContentMeta />
 
 我知道许多数据科学家，包括我自己，都通过 Jupyter Notebooks 或某些 Python IDE 在支持 GPU 的计算机上，包括本地或在云中完成大部分工作。近两年来，作为 AI/ML 软件工程师，我正在做的事情是——在一台没有 GPU 的机器上准备数据，然后在云中使用 GPU 虚拟机做训练。
 
@@ -132,4 +136,3 @@ except:
 - [使用 Azure 机器学习服务构建 AI 解决方案](https://docs.microsoft.com/ru-ru/learn/paths/build-ai-solutions-with-azure-ml-service/?WT.mc_id=devto-blog-dmitryso)
 - [使用 Azure 机器学习服务训练本地模型](https://docs.microsoft.com/ru-ru/learn/modules/train-local-model-with-azure-mls/?WT.mc_id=devto-blog-dmitryso)
 
-<ContentMeta />

@@ -10,7 +10,7 @@ date: 2020-01-27
 url: 'https://dev.to/azure/the-best-way-to-start-with-azure-machine-learning-17jl'
 translator: 'yanxiaodi'
 reviewer: 'shinyzhu'
-pub_date: 2020-02-11
+pub_date: 2020-02-12
 ---
 
 # 開始 Azure 機器學習的最佳方式

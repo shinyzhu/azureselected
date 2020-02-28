@@ -1,6 +1,7 @@
 ---
 type: post
 status: new
+sidebar: auto
 title: 'How to learn Microsoft Azure in 2020'
 description: '2019 is over, and usually, we take the time to find some resolutions for the new year. Why not take all that energy and prepare for the cloud computing era and advance your career by learning Microsoft Azure? In this post, Thomas gives you a quick look at how you can get started learning about Azure, whether you are a beginner or already advanced, technical or business-oriented.'
 tags: ['Azure', 'Azure Security Center', 'Azure Migration Center']
@@ -9,10 +10,12 @@ date: 2019-12-27
 url: 'https://www.thomasmaurer.ch/2019/12/how-to-learn-microsoft-azure-in-2020/'
 translator: ''
 reviewer: ''
+pub_date: 
 ---
 
 # How to learn Microsoft Azure in 2020
 
+<ContentMeta />
 
 The year 2019 is almost over, and usually, we take the time to look back at the year and also to find some New Year’s resolutions for the new year. Why not take all that energy and prepare for the cloud computing era and advance your career by learning Microsoft Azure. In this post, I try to give you a quick look at how you can get started to learn Microsoft Azure in 2020.
 
@@ -91,4 +94,3 @@ There are a couple of more resources I want to point you to, to get started and 
 
 I hope these resources give you a great summary of how you can start learning Azure in 2020. If you have any questions, or you feel that some resources are missing, let me know in the comments. Also, [subscribe](https://www.thomasmaurer.ch/subscribe/)to my blog to learn about the latest updates.
 
-<ContentMeta />

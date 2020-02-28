@@ -1,6 +1,7 @@
 ---
 type: post
 status: translated
+sidebar: auto
 title: '部属 Java EE 应用到 Azure: 第 1 部分'
 description: 'This is the first of a series of blogs that will walk you through one of the options of running Java EE applications on Azure. We will follow the most basic approach for deploying our Java EE app to an application server which is set up in a Virtual Machine on Microsoft Azure along with the Azure Database for PostgreSQL service as the backend database. In essence, this is the combination of IaaS (Azure VM) along with a PaaS (managed PostgreSQL on Azure)'
 tags: ['Java EE', 'Azure', 'IaaS', 'Cloud Computing', 'Database']
@@ -9,9 +10,12 @@ date: 2019-11-21
 url: 'https://medium.com/microsoftazure/deploying-java-ee-apps-to-azure-part-1-e895284b46d1'
 translator: 'HeMinzhang'
 reviewer: 'shinyzhu'
+pub_date: 2019-12-27
 ---
 
 # 部属 Java EE 应用到 Azure: 第 1 部分
+
+<ContentMeta />
 
 基于云的应用程序开发有多种选择，包括传统的 `IaaS`（基础架构即服务）， `PaaS`（平台即服务）和 `CaaS`（ 容器即服务）一直到 [Kubernetes](https://kubernetes.io/) 和 `Serverless` （无服务器）（也许还有更多我未提及！）。思考实际应用范围，而不是 “一种适合所有模型的方法” ，每种选择都有其优缺点。 最终, 每个场景都是唯一的，最终选择取决于需求 — 但是有很多 "选择" 总是好的!
 
@@ -349,4 +353,3 @@ az group delete --name $AZURE_RESOURCE_GROUP_NAME
 
 下一部分将深入探讨如何使用Docker容器平台来部署Java EE应用程序。 敬请关注！
 
-<ContentMeta />

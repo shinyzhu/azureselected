@@ -1,6 +1,7 @@
 ---
 type: post
 status: new
+sidebar: auto
 title: 'Deploying Java EE apps to Azure: Part 3'
 description: 'This is the final blog in a series of posts that explore different options for running Java EE workloads on Azure. In this part, we will run the Java EE app on a Kubernetes cluster in Azure.'
 tags: ['Java EE', 'Azure', 'IaaS', 'Cloud Computing', 'Database']
@@ -9,10 +10,12 @@ date: 2019-12-11
 url: 'https://medium.com/microsoftazure/deploying-java-ee-apps-to-azure-part-3-772e717bc4d1'
 translator: ''
 reviewer: ''
+pub_date: 
 ---
 
 # Deploying Java EE apps to Azure: Part 3
 
+<ContentMeta />
 
 This is the final blog in a series of posts that explore different options for running Java EE workloads on Azure. In this part, we will run the Java EE app on a [Kubernetes cluster in Azure](https://docs.microsoft.com/azure/aks/?WT.mc_id=azuremedium-blog-abhishgu).
 
@@ -445,4 +448,3 @@ You learned how to leverage Docker containers to package your Java EE applicatio
 
 That brings us to the end of this series exploring some of the common ways of deploying Java EE workloads to Azure. I hope you found it useful! 🙌
 
-<ContentMeta />

@@ -1,6 +1,7 @@
 ---
 type: post
 status: new
+sidebar: auto
 title: 'Managing security with Azure Lighthouse and Azure Arc'
 description: 'ITOpsTalk blog article for IT Operations on a scenario of how the Azure Lighthouse and Azure Arc products can monitor the security (Azure Policy compliance, Azure Security Centre and Secure Score) of multiple tenants and how adding Azure Arc to the mix then includes on-prem and other-Cloud resources in those management blades.  No video demo but lots of screenshots.'
 tags: ['arc', 'Azure', 'Enterprise', 'Governance', 'hybrid', 'IT Ops', 'IT Pro', 'lighthouse', 'MSP', 'Operations', 'partner', 'Security', 'Server']
@@ -9,10 +10,12 @@ date: 2019-11-26
 url: 'https://techcommunity.microsoft.com/t5/itops-talk-blog/managing-security-with-azure-lighthouse-and-azure-arc/ba-p/1032864'
 translator: ''
 reviewer: ''
+pub_date: 
 ---
 
 # Managing security with Azure Lighthouse and Azure Arc
 
+<ContentMeta />
 
 I've previously blogged about Azure Lighthouse, for [managing multiple difference Azure tenancies](https://techcommunity.microsoft.com/t5/ITOps-Talk-Blog/Manage-multiple-Azure-tenancies-with-Azure-Lighthouse/ba-p/833928?WT.mc_id=itopstalk-blog-socuff). This capability is useful for both Managed Service Providers, with support arrangements for multiple customers, and for large or complex Enterprise organizations (for example, if there are sub-brands or franchisees). Onboarding is done via deploying an Azure Resource Manager template or publishing an Azure Marketplace offer (public or private), which enables delegated administration into the other tenancies.
 
@@ -66,4 +69,3 @@ As the capabilities of both [Azure Lighthouse](https://docs.microsoft.com/azure/
 
 For more information on Azure Lighthouse, including onboarding options, visit: <https://docs.microsoft.com/azure/lighthouse/?WT.mc_id=itopstalk-blog-socuff>
 
-<ContentMeta />
