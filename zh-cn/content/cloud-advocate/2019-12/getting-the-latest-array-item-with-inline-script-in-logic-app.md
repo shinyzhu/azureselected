@@ -3,7 +3,7 @@ type: post
 status: translated
 sidebar: auto
 title: '在Logic App中使用内联脚本获取最新的数组项'
-description: '1. This post shows how to use the inline JavaScript code action to perform the array sort in a Logic App workflow, and discuss what to consider to use this action. 2. Readers will learn how to use pure JavaScript code for array sort in Logic App workflow, and understand the cost implication and impact on its use.'
+description: '这篇文章展示了如何使用内联JavaScript代码操作在Logic App工作流中执行数组排序，并讨论了考虑使用此操作的方法。 读者将学习如何在Logic App工作流中使用纯JavaScript代码进行数组排序，并了解成本隐含及其对使用的影响。'
 tags: ['Azure Logic Apps', 'Azure Blob Storage']
 author: 'Justin Yoo'
 date: 2019-11-14
