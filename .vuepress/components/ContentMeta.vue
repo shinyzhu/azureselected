@@ -5,7 +5,11 @@
   <hr />
   <p>{{$site.locales[$localePath].uitext.meta.url}} <a :href="$page.frontmatter.url">{{ $page.frontmatter.url }}</a></p>
   <p>{{$site.locales[$localePath].uitext.meta.author}} {{ $page.frontmatter.author }} | {{ new Date($page.frontmatter.date).toLocaleDateString() }}</p>
-  <p>{{$site.locales[$localePath].uitext.meta.translator}} {{ $page.frontmatter.translator }} | {{$site.locales[$localePath].uitext.meta.reviewer}} {{ $page.frontmatter.reviewer }} | {{ new Date($page.frontmatter.pub_date).toLocaleDateString() }}</p>
+  <p v-if="$page.frontmatter.translator">
+    <span>{{$site.locales[$localePath].uitext.meta.translator}} {{ $page.frontmatter.translator }} </span>
+    <span v-if="$page.frontmatter.reviewer">| {{$site.locales[$localePath].uitext.meta.reviewer}} {{ $page.frontmatter.reviewer }} </span>
+    <span v-if="$page.frontmatter.pub_date">| {{ new Date($page.frontmatter.pub_date).toLocaleDateString() }}</span>
+  </p>
 
   <div class="tags-head">
     <span>
