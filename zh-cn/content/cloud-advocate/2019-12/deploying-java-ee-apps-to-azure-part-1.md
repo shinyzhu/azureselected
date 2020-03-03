@@ -3,7 +3,7 @@ type: post
 status: translated
 sidebar: auto
 title: '部属 Java EE 应用到 Azure: 第 1 部分'
-description: 'This is the first of a series of blogs that will walk you through one of the options of running Java EE applications on Azure. We will follow the most basic approach for deploying our Java EE app to an application server which is set up in a Virtual Machine on Microsoft Azure along with the Azure Database for PostgreSQL service as the backend database. In essence, this is the combination of IaaS (Azure VM) along with a PaaS (managed PostgreSQL on Azure)'
+description: '这是一系列博客的第一篇，它将引导您逐步了解在Azure上运行Java EE应用程序的一种选择。 我们将采用最基本的方法将Java EE应用程序部署到在Microsoft Azure上的虚拟机中设置的应用程序服务器上，并将Azure Database for PostgreSQL服务作为后端数据库。 本质上，这是IaaS（Azure VM）与PaaS（Azure上的托管PostgreSQL）的组合'
 tags: ['Java EE', 'Azure', 'IaaS', 'Cloud Computing', 'Database']
 author: 'Abhishek Gupta'
 date: 2019-11-21
@@ -19,11 +19,9 @@ pub_date: 2019-12-27
 
 基于云的应用程序开发有多种选择，包括传统的 `IaaS`（基础架构即服务）， `PaaS`（平台即服务）和 `CaaS`（ 容器即服务）一直到 [Kubernetes](https://kubernetes.io/) 和 `Serverless` （无服务器）（也许还有更多我未提及！）。思考实际应用范围，而不是 “一种适合所有模型的方法” ，每种选择都有其优缺点。 最终, 每个场景都是唯一的，最终选择取决于需求 — 但是有很多 "选择" 总是好的!
 
-![img](https://miro.medium.com/max/60/0*v9YZMVTbaw9xoV70.png?q=20)
-
 ![img](https://miro.medium.com/max/980/0*v9YZMVTbaw9xoV70.png)
 
-这是系列博客的第一篇，它将带您逐步了解其中一种在 Azure 中运行 Java EE 应用的方法。 我们将采用最基本的方法将 Java EE 应用部署在一个 [Azure 虚拟机](https://azure.microsoft.com/services/virtual-machines/?WT.mc_id=medium-blog-abhishgu) 以及 [Azure PostgreSQL 数据库](https://azure.microsoft.com/services/postgresql/?WT.mc_id=medium-blog-abhishgu) 服务作为后端数据库。本质上, 这是结合 `IaaS` (Azure 虚拟机) 与 `PaaS` ( Azure 中托管的 PostgreSQL )
+这是系列博客的第一篇，它将带您逐步了解其中一种在 Azure 中运行 Java EE 应用的方法。 我们将采用最基本的方法将 Java EE 应用部署在一个 [Azure 虚拟机](https://azure.microsoft.com/services/virtual-machines/?WT.mc_id=azureselected-content-xinglzhu) 以及 [Azure PostgreSQL 数据库](https://azure.microsoft.com/services/postgresql/?WT.mc_id=azureselected-content-xinglzhu) 服务作为后端数据库。本质上, 这是结合 `IaaS` (Azure 虚拟机) 与 `PaaS` ( Azure 中托管的 PostgreSQL )
 
 > *其他选项（例如容器和Kubernetes）将在以后的文章中介绍*
 
@@ -40,9 +38,9 @@ pub_date: 2019-12-27
 
 # 先决条件
 
-你将需要 [微软 Azure 账号](https://docs.microsoft.com/azure/?WT.mc_id=medium-blog-abhishgu) 和 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&WT.mc_id=medium-blog-abhishgu) 来完成本教程。
+你将需要 [微软 Azure 账号](https://docs.microsoft.com/azure/?WT.mc_id=azureselected-content-xinglzhu) 和 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&WT.mc_id=azureselected-content-xinglzhu) 来完成本教程。
 
-如果没有微软账户, 在此 [免费注册](https://azure.microsoft.com/free/?WT.mc_id=medium-blog-abhishgu) 。Azure CLI 是一个成熟的管理 Azure 资源跨平台命令行 — 请使用 [这些指示](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&WT.mc_id=medium-blog-abhishgu) 安装。
+如果没有微软账户, 在此 [免费注册](https://azure.microsoft.com/free/?WT.mc_id=azureselected-content-xinglzhu) 。Azure CLI 是一个成熟的管理 Azure 资源跨平台命令行 — 请使用 [这些指示](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&WT.mc_id=azureselected-content-xinglzhu) 安装。
 
 # 第一件事情
 
@@ -65,7 +63,7 @@ export AZURE_LOCATION=[to be filled]az group create --name $AZURE_RESOURCE_GROUP
 
 # 在 Azure 中安装 PostgreSQL
 
-[用于PostgreSQL的Azure数据库](https://docs.microsoft.com/azure/postgresql/?WT.mc_id=medium-blog-abhishgu) 是一个基于开源 [Postgres 数据库引擎](https://www.postgresql.org/) 关系数据库服务.这是一种完全托管的数据库即服务产品，有两个部署选项可用，作为 [单一服务器](https://docs.microsoft.com/azure/postgresql/concepts-servers?WT.mc_id=medium-blog-abhishgu), 和作为 [和超大型 (Citus) 集群](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-nodes?WT.mc_id=medium-blog-abhishgu)。
+[用于PostgreSQL的Azure数据库](https://docs.microsoft.com/azure/postgresql/?WT.mc_id=azureselected-content-xinglzhu) 是一个基于开源 [Postgres 数据库引擎](https://www.postgresql.org/) 关系数据库服务.这是一种完全托管的数据库即服务产品，有两个部署选项可用，作为 [单一服务器](https://docs.microsoft.com/azure/postgresql/concepts-servers?WT.mc_id=azureselected-content-xinglzhu), 和作为 [和超大型 (Citus) 集群](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-nodes?WT.mc_id=azureselected-content-xinglzhu)。
 
 > *在本教程中，我们将使用单服务器选项*
 
@@ -79,7 +77,7 @@ export SKU=B_Gen5_1
 export STORAGE=5120
 ```
 
-> *对于存储和 SKU 选项, 请参考  [该文档](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers?WT.mc_id=medium-blog-abhishgu)。*
+> *对于存储和 SKU 选项, 请参考  [该文档](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers?WT.mc_id=azureselected-content-xinglzhu)。*
 
 然后, 使用此命令创建并初始化数据库实例：
 
@@ -101,7 +99,7 @@ az postgres server show --resource-group $AZURE_RESOURCE_GROUP_NAME --name $AZUR
 
 # 在Azure中安装虚拟机
 
-我们将使用 Azure [虚拟机](https://docs.microsoft.com/azure/virtual-machines/?WT.mc_id=medium-blog-abhishgu) 托管 Payara JavaEE 应用程序服务器。具体来说，这将是基于 Ubuntu 的 Linux 虚拟机。
+我们将使用 Azure [虚拟机](https://docs.microsoft.com/azure/virtual-machines/?WT.mc_id=azureselected-content-xinglzhu) 托管 Payara JavaEE 应用程序服务器。具体来说，这将是基于 Ubuntu 的 Linux 虚拟机。
 
 首先，设置虚拟机所需的信息：
 
