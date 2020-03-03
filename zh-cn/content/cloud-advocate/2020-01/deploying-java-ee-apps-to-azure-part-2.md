@@ -11,6 +11,8 @@ url: 'https://medium.com/microsoftazure/deploying-java-ee-apps-to-azure-part-2-3
 translator: 'XtaoBai'
 reviewer: 'shinyzhu'
 pub_date: 2020-02-09
+prev: ../2019-12/deploying-java-ee-apps-to-azure-part-1.md
+next: ../2020-01/deploying-java-ee-apps-to-azure-part-3.md
 ---
 
 # 部属 Java EE 应用到 Azure: 第 2 部分

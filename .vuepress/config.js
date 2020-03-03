@@ -1,7 +1,5 @@
 
 module.exports = {
-  title: "Azure Selected",
-  description: 'AzureSelected is a project for localizing content by Cloud Advocate to empower your Azure skills.',
   extend: '@vuepress/theme-default',
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
@@ -11,6 +9,8 @@ module.exports = {
   locales: {
     '/': {
       lang: 'en-US',
+      title: "Azure Selected",
+      description: 'AzureSelected is a project for localizing content by Cloud Advocate to empower your Azure skills.',
       uitext: {
         meta: {
           "author": "By: ",
@@ -87,7 +87,7 @@ module.exports = {
           { text: 'Content', link: '/content/' },
           { text: 'Tags', link: '/tags.html' },
           { text: 'Join Us', link: 'https://wj.qq.com/s2/5227985/7213/' }
-        ]        
+        ]
       },
       '/zh-cn/': {
         selectText: '语言',

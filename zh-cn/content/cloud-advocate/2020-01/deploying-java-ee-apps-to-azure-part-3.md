@@ -11,6 +11,7 @@ url: 'https://medium.com/microsoftazure/deploying-java-ee-apps-to-azure-part-3-7
 translator: ''
 reviewer: ''
 pub_date: 
+prev: ../2020-01/deploying-java-ee-apps-to-azure-part-2.md
 ---
 
 # Deploying Java EE apps to Azure: Part 3
