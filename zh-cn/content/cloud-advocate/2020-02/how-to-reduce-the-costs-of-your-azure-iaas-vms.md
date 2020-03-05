@@ -8,20 +8,25 @@ tags: ['Azure Stack Hub', 'Azure Migration Center', 'Azure Cost Management', 'Az
 author: 'Thomas Maurer'
 date: 2020-01-23
 url: 'https://www.thomasmaurer.ch/2020/01/how-to-reduce-the-costs-of-your-azure-iaas-vms/'
-translator: ''
+translator: '龙少'
 reviewer: ''
 pub_date: 
 ---
-
+# 任何降低你的Azue基础设施虚拟机成本
 # How to Reduce the Costs of your Azure IaaS VMs
 
 <ContentMeta />
-
+Azure基础设施既服务(IaaS)通过传统虚拟化技术提供显著的优点。比如无论何时需要都可以在全球任何 Azure 区域快速启动几个虚拟机，因此非常强大。更多其它优点请点击[Azure基础设服务虚拟机](https://azure.microsoft.com/services/virtual-machines?WT.mc_id=thomasmaurer-blog-thmaure)。当然，那些不是这篇博客的部分内容。这篇博客专注于通过降低使用Azure基础设施服务虚拟机的成本来帮助你节省金钱。这里的一些提议可以帮到每位用户。
 Azure Infrastructure-as-a-service (IaaS) offers significant benefits over traditional virtualization. With benefits like the possibility to quickly spin up a couple of virtual machine in any Azure region around the world whenever you need it, is pretty powerful. There are a lot more benefits to [Azure IaaS virtual machines](https://azure.microsoft.com/services/virtual-machines?WT.mc_id=thomasmaurer-blog-thmaure). However, that’s not part of this blog. This blog post is focused on helping you saving money by reducing the costs when you are using Azure IaaS virtual machines (VM). Some of the tips here will help everyone out there, some of the tips
 
+## 选择合适的Azure虚拟机系列及合适的Azure虚拟机型号
 ## Pick the right Azure VM series and the right Azure VM size
 
-![Reduce cost by picking the right Azure VM size](https://www.thomasmaurer.ch/wp-content/uploads/2019/09/Reduce-cost-by-picking-the-right-Azure-VM-size-768x508.jpg)Reduce cost by picking the right Azure VM size
+
+![Reduce cost by picking the right Azure VM size](https://www.thomasmaurer.ch/wp-content/uploads/2019/09/Reduce-cost-by-picking-the-right-Azure-VM-size-768x508.jpg)
+通过选择合适的Azure虚拟机型号来降低成本
+Reduce cost by picking the right Azure VM size
+
 
 First of all, obviously, you pay more for larger virtual machines. Something I realized by working with a lot of customers is that they take the on-premises VM size and use the equivalent size in Azure. Not realizing that the VM size they had was way to oversized. But since they had the static capacity on-prem, they didn’t’ care. Now when you pay for more capacity in the cloud, the story is different. So make sure you realize that the Azure VM sizes are not oversized. You can still change the size later to a larger virtual machine if needed. And if you are looking at tools like [Azure Migrate](https://azure.microsoft.com/services/azure-migrate?WT.mc_id=thomasmaurer-blog-thmaure) to migrate your existing VMs to Azure IaaS, you will have some additional advantages. Azure Migrate asses your environment and helps you pick the right Azure VM size depending on performance data history. Azure Migrate works with Hyper-V and VMware virtual machines, if you want to know more about Azure Migrate, check out my [blog post](https://www.thomasmaurer.ch/2019/07/assess-and-migrate-hyper-v-vms-with-azure-migrate/). If you are already running the virtual machine in Azure, Azure Advisor can be helpful to figure out that your virtual machine is underutilized. Picking the right size will help you to save money and reduce the cost of Azure IaaS VMs.
 
