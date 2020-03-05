@@ -1,6 +1,7 @@
 ---
 type: post
 status: new
+sidebar: auto
 title: 'What I Learned About Azure Arc and Other Services at Microsoft Ignite 2019'
 description: 'Microsoft Ignite 2019 conference was a lot of fun! Our team was able not just to deliver content in breakout sessions, learning path session as well as on the Microsoft Ignite Live stage, we also used the time to speak and especially listen to our customers and communities. Here is what Thomas learned at Microsoft Ignite 2019 about Azure Hybrid Cloud with Azure Arc, Azure Stack and much more!'
 tags: ['arc', 'Azure', 'Azure Arc', 'Azure Stack', 'hybrid', 'Ignite', 'Microsoft Ignite', 'Microsoft Ignite 2019', 'stack', 'Thomas Maurer', 'Windows', 'Windows Server']
@@ -8,6 +9,8 @@ author: 'Thomas Maurer'
 date: 2019-11-14
 url: 'https://techcommunity.microsoft.com/t5/itops-talk-blog/what-i-learned-about-azure-arc-and-other-services-at-microsoft/ba-p/1005582?WT.mc_id=twitter-social-thmaure'
 translator: ''
+reviewer: ''
+pub_date: 
 ---
 
 # What I Learned About Azure Arc and Other Services at Microsoft Ignite 2019
@@ -130,3 +133,4 @@ Our team worked hard in the last couple of months to create and prepare our pres
  
 
 There is a lot more I have learned and was excited during Microsoft Ignite. However, I am running out of time. Have you been to Microsoft Ignite? What did you learn, let me know in the comments?
+

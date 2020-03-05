@@ -1,17 +1,17 @@
 <!-- /.vuepress/components/ContentList.vue -->
 
 <template>
-<div>
+<div class="content-list">
     <div v-for="post in posts">
         <h2>
             <router-link :to="post.path">{{ post.frontmatter.title }}</router-link>
         </h2>
 
-        <p><a :href="post.frontmatter.url"><i>原文由 {{ post.frontmatter.author }} 在 {{ new Date(post.frontmatter.date).toLocaleDateString() }} 发布。</i></a></p>
+        <p class="meta"><a :href="post.frontmatter.url">{{$site.locales[$localePath].uitext.list.origin}} {{ post.frontmatter.author }} {{$site.locales[$localePath].uitext.list.published}} {{ new Date(post.frontmatter.date).toLocaleDateString() }}</a></p>
         
         <p>{{ post.frontmatter.description }}</p>
 
-        <p><router-link :to="post.path">继续阅读 &rarr;</router-link></p>
+        <p class="meta"><router-link :to="post.path">{{$site.locales[$localePath].uitext.list.continue}} &rarr;</router-link></p>
     </div>
 </div>
 </template>
@@ -19,20 +19,20 @@
 <script>
 export default {
     props:[
-        'category',
+        'path',
         'limit'
     ], computed: {
         posts() {
             let posts = this.$site.pages
-                .filter(x => x.path.startsWith('/content/') && !x.frontmatter.index_page)
+                .filter(x => x.path.startsWith(this.path) && !x.frontmatter.index_page)
                 .sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
-
-            if(this.category){
-                posts = posts.filter(x => x.path.startsWith('/content/' + this.category));
-            }
 
             return posts;
         }
     }
 }
 </script>
+
+<style>
+.content-list .meta{font-size:.9em;}
+</style>

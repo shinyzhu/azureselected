@@ -1,6 +1,7 @@
 ---
 type: post
 status: new
+sidebar: auto
 title: '是否可以把Blazor只用在应用的一部分?'
 description: '这篇博客文章将描述如何在大型应用中托管Blazor WASM应用程序'
 tags: ['Microsoft Blazor']
@@ -8,6 +9,8 @@ author: 'Aaron Powell'
 date: 2019-12-06
 url: 'https://www.aaron-powell.com/posts/2019-12-10-can-you-use-blazor-for-only-part-of-an-app/'
 translator: '龙少'
+reviewer: 'shinyzhu'
+pub_date: 2020-02-28
 ---
 
 # 是否可以把Blazor只用在应用的一部分?
@@ -182,3 +185,4 @@ Blazor is a great way which we can build rich applications, but there is value i
 
 我们研究了一下在HTML页面中运行Blazor应用所需要的重要文件，同时研究了将其放入其它类型应用需要什么
 Here we've taken a bit of a look at the important files used to run a Blazor application within an HTML page and we've also looked at what it takes to drop it into some other kind of application.
+

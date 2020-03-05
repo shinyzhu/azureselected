@@ -1,13 +1,16 @@
 ---
 type: post
 status: translated
+sidebar: auto
 title: '如何使用 AZCOPY 同步 Azure Blob 存储'
 description: '几个月前，我写了一篇关于如何使用 AzCopy 同步文件到 Azure Blob 存储的博客。今天针对我在 GitHub上使用 AzCopy 的一个问题，有了一个激动人心的更新。这意味着您现在可以使用 AzCopy 从 Azure Blob 到 Azure Blob。'
 tags: ['Cloud', 'Microsoft', 'Microsoft Azure', 'Microsoft Azure Stack', 'Powershell']
 author: 'Thomas Maurer'
 date: 2019-11-26
 url: 'https://www.thomasmaurer.ch/2019/11/how-to-sync-azure-blob-storage-with-azcopy/'
-translator: ''
+translator: 'haoguanjun'
+reviewer: 'shinyzhu'
+pub_date: 2020-01-06
 ---
 
 # 如何使用 AZCOPY 同步 Azure Blob 存储
