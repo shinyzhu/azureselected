@@ -1,21 +1,22 @@
 ---
 type: post
-status: new
+status: review
 sidebar: auto
-title: 'How to Reduce the Costs of your Azure IaaS VMs'
-description: 'This blog post is focused on helping you saving money by reducing the costs when you are using Azure IaaS virtual machines (VM). Some of the tips here will help everyone out there.'
+title: '如何降低 Azure 虚拟机的成本'
+description: '这篇博客专注于通过减少使用Azure 虚拟机（VM）的成本来帮助您省钱。这里的一些技巧将帮助所有人。'
 tags: ['Azure Stack Hub', 'Azure Migration Center', 'Azure Cost Management', 'Azure Dedicated Host', 'Azure Hybrid Benefit']
 author: 'Thomas Maurer'
 date: 2020-01-23
 url: 'https://www.thomasmaurer.ch/2020/01/how-to-reduce-the-costs-of-your-azure-iaas-vms/'
 translator: '龙少'
-reviewer: ''
+reviewer: 'shinyzhu'
 pub_date: 
 ---
-# 任何降低你的Azue基础设施虚拟机成本
+# 如何降低 Azure 虚拟机的成本
 # How to Reduce the Costs of your Azure IaaS VMs
 
 <ContentMeta />
+
 Azure基础设施既服务(IaaS)通过传统虚拟化技术提供显著的优点。比如无论何时需要都可以在全球任何 Azure 区域快速启动几个虚拟机，因此非常强大。更多其它优点请点击[Azure基础设服务虚拟机](https://azure.microsoft.com/services/virtual-machines?WT.mc_id=thomasmaurer-blog-thmaure)。当然，那些不是这篇博客的部分内容。这篇博客专注于通过降低使用Azure基础设施服务虚拟机的成本来帮助你节省金钱。这里的一些提议可以帮到每位用户。
 
 Azure Infrastructure-as-a-service (IaaS) offers significant benefits over traditional virtualization. With benefits like the possibility to quickly spin up a couple of virtual machine in any Azure region around the world whenever you need it, is pretty powerful. There are a lot more benefits to [Azure IaaS virtual machines](https://azure.microsoft.com/services/virtual-machines?WT.mc_id=thomasmaurer-blog-thmaure). However, that’s not part of this blog. This blog post is focused on helping you saving money by reducing the costs when you are using Azure IaaS virtual machines (VM). Some of the tips here will help everyone out there, some of the tips
