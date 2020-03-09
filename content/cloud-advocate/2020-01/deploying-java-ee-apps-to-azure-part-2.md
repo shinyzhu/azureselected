@@ -2,7 +2,7 @@
 type: post
 status: review
 sidebar: auto
-title: '部属 Java EE 应用到 Azure: 第 2 部分'
+title: '部署 Java EE 应用到 Azure: 第 2 部分'
 description: '这是系列文章中的第二篇博客，它将带您逐步了解在 Azure 上运行 Java EE 应用程序的选项。 在这一部分中，我们将 Java EE 应用程序作为 Azure 容器实例上的 Docker 容器运行。'
 tags: ['Java EE', 'Azure', 'IaaS', 'Cloud Computing', 'Database']
 author: 'Abhishek Gupta'
@@ -15,7 +15,7 @@ prev: ../2019-12/deploying-java-ee-apps-to-azure-part-1.md
 next: ../2020-01/deploying-java-ee-apps-to-azure-part-3.md
 ---
 
-# 部属 Java EE 应用到 Azure: 第 2 部分
+# 部署 Java EE 应用到 Azure: 第 2 部分
 
 <ContentMeta />
 
