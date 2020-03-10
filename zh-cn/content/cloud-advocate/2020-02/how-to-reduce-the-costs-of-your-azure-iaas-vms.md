@@ -1,6 +1,6 @@
 ---
 type: post
-status: review
+status: resubmit
 sidebar: auto
 title: '如何降低 Azure 虚拟机的成本'
 description: '这篇博客专注于通过减少使用Azure 虚拟机（VM）的成本来帮助您省钱。这里的一些技巧将帮助所有人。'
