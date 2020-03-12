@@ -31,7 +31,7 @@ pub_date: 2020-02-12
 我希望已经说服您来尝试一下 Azure ML！下面是如何开始使用的最佳方式：
 
 - 安装[Visual Studio Code](http://code.visualstudio.com/?WT.mc_id=devto-blog-dmitryso), [Azure Sign In](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) 和 [Azure ML](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai#overview) 扩展
-- 克隆库 https://github.com/CloudAdvocacy/AzureMLStarter ——它包含了一些示例代码来训练识别 MNIST 数字模型。然后，您可以在 VS Code 中打开该克隆库。
+- 克隆库 <https://github.com/CloudAdvocacy/AzureMLStarter> ——它包含了一些示例代码来训练识别 MNIST 数字模型。然后，您可以在 VS Code 中打开该克隆库。
 - 继续阅读！
 
 ## Azure ML 的工作区和门户
