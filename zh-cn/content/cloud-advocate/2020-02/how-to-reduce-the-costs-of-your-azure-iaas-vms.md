@@ -1,9 +1,9 @@
 ---
 type: post
-status: review
+status: resubmit
 sidebar: auto
-title: '如何降低 Azure 虚拟机的成本'
-description: '这篇博客专注于通过减少使用Azure 虚拟机（VM）的成本来帮助您省钱。这里的一些技巧将帮助所有人。'
+title: '如何降低Azure虚拟机的成本'
+description: '这篇博客专注于通过减少使用Azure虚拟机（VM）的成本来帮助您省钱。这里的一些技巧将帮助所有人。'
 tags: ['Azure Stack Hub', 'Azure Migration Center', 'Azure Cost Management', 'Azure Dedicated Host', 'Azure Hybrid Benefit']
 author: 'Thomas Maurer'
 date: 2020-01-23
@@ -12,11 +12,12 @@ translator: 'DuanShaolong'
 reviewer: 'shinyzhu'
 pub_date: 
 ---
-# 如何降低 Azure 虚拟机的成本
+# 如何降低Azure虚拟机的成本
+# How to Reduce the Costs of your Azure IaaS VMs
 
 <ContentMeta />
 
-Azure基础设施既服务(IaaS)通过传统虚拟化技术提供显著的优点。比如无论何时需要都可以在全球任何 Azure 区域快速启动几个虚拟机，因此非常强大。更多其它优点请点击[Azure基础设服务虚拟机](https://azure.microsoft.com/services/virtual-machines?WT.mc_id=thomasmaurer-blog-thmaure)。当然，那些不是这篇博客的部分内容。这篇博客专注于通过降低使用Azure基础设施服务虚拟机的成本来帮助你节省金钱。这里的一些提议可以帮到每位用户。
+Azure基础设施既服务(IaaS)通过传统虚拟化技术提供显著的优点。比如无论何时需要都可以在全球任何Azure区域快速启动几个虚拟机，因此非常强大。更多其它优点请点击[Azure基础设服务虚拟机](https://azure.microsoft.com/services/virtual-machines?WT.mc_id=thomasmaurer-blog-thmaure)。当然，那些不属于这篇博客的部分内容。这篇博客专注于通过降低使用Azure基础设施服务虚拟机的成本来帮助你节省金钱。这里的一些提议可以帮到每位用户。
 
 ## 选择合适的Azure虚拟机系列及合适的Azure虚拟机型号
 ![通过选择合适的Azure虚拟机型号来降低成本](https://www.thomasmaurer.ch/wp-content/uploads/2019/09/Reduce-cost-by-picking-the-right-Azure-VM-size-768x508.jpg)
@@ -42,14 +43,14 @@ Now, I know that shutting down virtual machines is excellent in theory if you ha
 ## 使用经济型可爆发的虚拟机
 ## Using Economical burstable VMs
 
-B 系列属于经济型虚拟机，可为通常以低到中等基准 CPU 性能运行但有时在需求提高时需要爆发到高得多的 CPU 性能的工作负荷提供低成本选项。这些工作负荷无需 CPU 始终满负荷运转，但偶尔需要爆发以更快完成某些任务。想要了解更多关于A系列Azure虚拟机的请点击[微软文档](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable?WT.mc_id=thomasmaurer-blog-thmaure)。
+B系列属于经济型虚拟机，可为通常以低到中等基准CPU性能运行但有时在需求提高时需要爆发到高得多的CPU性能的工作负荷提供低成本选项。这些工作负荷无需CPU始终满负荷运转，但偶尔需要爆发以更快完成某些任务。想要了解更多关于A系列Azure虚拟机的请点击[微软文档](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable?WT.mc_id=thomasmaurer-blog-thmaure)。
 
 B-series are economical virtual machines that provide a low-cost option for workloads that typically run at a low to moderate baseline CPU utilization, but sometimes need to burst to significantly higher CPU utilization when the demand rises. If you want to know more about B-series Azure VMs, check out the following [Microsoft Docs](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable?WT.mc_id=thomasmaurer-blog-thmaure).
 
 ## Azure 污点虚拟机用于批量处理作业可显著节省成本
 ## Azure Spot Virtual Machines for batch processing jobs with significant cost savings
 
-借助 Azure 污点虚拟机，您将能够以大幅折扣访问未使用的 Azure 计算容量，与即用即付价格相比，高达 90%。[污点虚拟机](https://azure.microsoft.com/pricing/spot?WT.mc_id=thomasmaurer-blog-thmaure) 非常适合用于可中断的工作负载，提供可扩展性的同事降低成本。使用污点虚拟机使你能够充分利用未使用的计算能力，从而显著降低成本。当 Azure 需要恢复容量时，Azure 基础结构将逐出点实例。 因此，点实例非常适合用于处理中断的工作负荷，如批处理作业、开发/测试环境、大型计算工作负荷等。当污点虚拟机运行Windows Server工作负载时，你将获得独一无二的定价和优势，污点实例当前为公共预览版。 不建议将此预览版本用于生产工作负荷。有关详细信息，请参阅[微软文档](https://docs.microsoft.com/azure/virtual-machines/windows/spot-vms?WT.mc_id=thomasmaurer-blog-thmaure)。
+借助Azure污点虚拟机，您将能够以大幅折扣访问未使用的Azure计算容量，与即用即付价格相比高达90%的折扣。[污点虚拟机](https://azure.microsoft.com/pricing/spot?WT.mc_id=thomasmaurer-blog-thmaure) 非常适合用于可中断的工作负载，提供可扩展性的同事降低成本。使用污点虚拟机使你能够充分利用未使用的计算能力，从而显著降低成本。当Azure需要恢复容量时，Azure基础结构将逐出点实例。因此，点实例非常适合用于处理中断的工作负荷，如批处理作业、开发/测试环境、大型计算工作负荷等。当污点虚拟机运行Windows Server工作负载时，你将获得独一无二的定价和优势，污点实例当前为公共预览版。不建议将此预览版本用于生产工作负荷。有关详细信息，请参阅[微软文档](https://docs.microsoft.com/azure/virtual-machines/windows/spot-vms?WT.mc_id=thomasmaurer-blog-thmaure)。
 
 With Azure Spot Virtual Machines (Spot VMs), you’ll be able to access unused Azure compute capacity at deep discounts, up to 90 percent compared to pay-as-you-go prices. [Spot VMs](https://azure.microsoft.com/pricing/spot?WT.mc_id=thomasmaurer-blog-thmaure) are ideal for workloads that can be interrupted, providing scalability while reducing costs. Using Spot VMs allows you to take advantage of our unused capacity at a significant cost saving. At any point in time when Azure needs the capacity back, the Azure infrastructure will evict Spot VMs. Therefore, Spot VMs are great for workloads that can handle interruptions like batch processing jobs, dev/test environments, large compute workloads, and more. You get unique Azure pricing and benefits when running Windows Server workloads on Spot VMs. Spot VMs are currently in preview and you can find more about them on [Microsoft Docs](https://docs.microsoft.com/azure/virtual-machines/windows/spot-vms?WT.mc_id=thomasmaurer-blog-thmaure).
 
@@ -81,14 +82,14 @@ Azure 顾问推荐
 
 Azure Advisor Recommendations
 
-[Azure顾问](https://azure.microsoft.com/services/advisor?WT.mc_id=thomasmaurer-blog-thmaure)是一个针对 Azure 最佳做法的个性化云咨询顾问。Azure 顾问会分析配置和使用情况遥测，提供个性化的可操作建议，从而帮助优化 Azure 资源，实现高可用性、安全性、卓越运营、性能并节省成本。它会建议你选择合适的虚拟机型号或者关闭未使用的虚拟机，购买预留虚拟机以节省成本。想要了解更多关于Azure顾问的信息，请查看[微软文档](https://docs.microsoft.com/azure/advisor?WT.mc_id=thomasmaurer-blog-thmaure)。
+[Azure顾问](https://azure.microsoft.com/services/advisor?WT.mc_id=thomasmaurer-blog-thmaure)是一个针对Azure最佳做法的个性化云咨询顾问。Azure顾问会分析配置和使用情况遥测，提供个性化的可操作建议，从而帮助优化Azure资源，实现高可用性、安全性、卓越运营、性能并节省成本。它会建议你选择合适的虚拟机型号或者关闭未使用的虚拟机，购买预留虚拟机以节省成本。想要了解更多关于Azure顾问的信息，请查看[微软文档](https://docs.microsoft.com/azure/advisor?WT.mc_id=thomasmaurer-blog-thmaure)。
 
 [Azure Advisor](https://azure.microsoft.com/services/advisor?WT.mc_id=thomasmaurer-blog-thmaure) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. It analyzes your resource configuration and usage data to recommend solutions that can help you improve the performance, high availability, security, but also the cost-effectiveness of your Azure resources. It will recommend you to right-size or shutdown underutilized virtual machines, buy virtual machines reserved instances to save money over pay-as-you.go costs and much more. If you want to know more about Azure Advisor, you can check out the [Microsoft Docs](https://docs.microsoft.com/azure/advisor?WT.mc_id=thomasmaurer-blog-thmaure).
 
 ## 选择合适的Azure区域
 ## Select the right Azure region
 
-今天，微软Azure提供超过54个（现在时58个，译者注）[Azure全球区域](https://azure.microsoft.com/global-infrastructure/regions?WT.mc_id=thomasmaurer-blog-thmaure)，领先于其它云提供商。这不仅可以实现你所需的全球部署Azure资源和虚拟机的能力，而且还可以帮助你节省成本。并非所有Azure服务在所有Azure区域中都可用，而且并非所有Azure服务在每个区域的成本都相同。Azure资源价格可能取决于特定区域中的运营成本和其他因素。通常，您希望在需要虚拟机的地方尽可能接近虚拟机，并将它们放置在特定的Azure区域中。然而，如果你不需要在特定区域中部署，则可以在最便宜的区域运行虚拟机以降低Azure虚拟机的成本。
+今天，微软Azure提供超过54个（现在是58个，译者注）[Azure全球区域](https://azure.microsoft.com/global-infrastructure/regions?WT.mc_id=thomasmaurer-blog-thmaure)，领先于其它云提供商。这不仅可以实现你所需的全球部署Azure资源和虚拟机的能力，而且还可以帮助你节省成本。并非所有Azure服务在所有Azure区域中都可用，而且并非所有Azure服务在每个区域的成本都相同。Azure资源价格可能取决于特定区域中的运营成本和其他因素。通常，您希望在需要虚拟机的地方尽可能接近虚拟机，并将它们放置在特定的Azure区域中。然而，如果你不需要在特定区域中部署，则可以在最便宜的区域运行虚拟机以降低Azure虚拟机的成本。
 
 Today, Microsoft Azure offers up more than 54 [Azure regions worldwide](https://azure.microsoft.com/global-infrastructure/regions?WT.mc_id=thomasmaurer-blog-thmaure), more than any other cloud provider. This has not only a massive benefit of having the capability of deploying Azure resources and virtual machines where ever you need them. But it can also help you to reduce costs. Not all Azure services are available in all Azure regions, and not all Azure services cost the same in every region. Azure resource prices can depend on operational costs and other factors in the specific region. Usually, you want to deploy your virtual machines as close as possible where you need them, and you place them in the specific Azure regions. However, if there is no need to deploy them within a particular region, you can run your VMs in the cheapest available regions to reduce the cost for your Azure virtual machines.
 
@@ -114,7 +115,7 @@ The [Azure Migration Center](https://azure.microsoft.com/migration?WT.mc_id=thom
 ## 为Windows Server，SQL Server 2008和2008R2接收免费的安全扩展更新
 ## Receive free extended security updates for Windows Server and SQL Server 2008 and 2008 R2
 
-一年前，微软[宣布](https://azure.microsoft.com/en-us/blog/announcing-new-options-for-sql-server-2008-and-windows-server-2008-end-of-support?WT.mc_id=thomasmaurer-blog-thmaure)了SQL Server 2008和Windows Server 2008终止支持的新选项。对SQL Server 2008和SQL Server 2008 R2的支持已于2019年7月9日结束，Windows Server 2008 和 Windows Server 2008 R2已于2020年1月14日结束。仍在运行 Windows Server和SQL Server 2008 和 2008 R2的客户确实有不同的选项。第一，可以将Windows Server 2019等较新版本；第二，购买扩展的安全支持；第三，将 Windows Server和SQL Server工作负载迁移到Azure，以便获得您数年来的免费安全扩展更新，不仅适用于在Azure上运行，而且适用于在Azure Stack Hub上运行的虚拟机。
+一年前，微软[宣布](https://azure.microsoft.com/en-us/blog/announcing-new-options-for-sql-server-2008-and-windows-server-2008-end-of-support?WT.mc_id=thomasmaurer-blog-thmaure)了SQL Server 2008和Windows Server 2008终止支持的新选项。对SQL Server 2008和SQL Server 2008 R2的支持已于2019年7月9日结束，Windows Server 2008和Windows Server 2008 R2已于2020年1月14日结束。仍在运行Windows Server和SQL Server 2008和2008 R2的客户确实有不同的选项。第一，可以将Windows Server 2019等较新版本；第二，购买扩展的安全支持；第三，将 Windows Server和SQL Server工作负载迁移到Azure，以便获得您数年来的免费安全扩展更新，不仅适用于在Azure上运行，而且适用于在Azure Stack Hub上运行的虚拟机。
 
 A year ago, Microsoft [announced](https://azure.microsoft.com/en-us/blog/announcing-new-options-for-sql-server-2008-and-windows-server-2008-end-of-support?WT.mc_id=thomasmaurer-blog-thmaure) new options for SQL Server 2008 and Windows Server 2008 end of support. Support for SQL Server 2008 and SQL Server 2008 R2 already ended on July 9, 2019, Windows Server 2008, and Windows Server 2008 R2 followed on January 14, 2020. Customers who are still running Windows Server and SQL Server 2008 and 2008 R2 do have different options. First, migrate to a newer version like Windows Server 2019, or buy extended security support, or migrate your Windows Server and SQL Server workloads to Azure, to get free extended security updates for thee years. This offer not only works for virtual machines running on Azure but also running on [Azure Stack Hub](https://www.thomasmaurer.ch/2019/01/extended-security-updates-sql-windows-server-2008-azure-stack/).
 
