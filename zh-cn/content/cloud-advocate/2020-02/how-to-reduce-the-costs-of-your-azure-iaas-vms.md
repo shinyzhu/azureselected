@@ -8,41 +8,26 @@ tags: ['Azure Stack Hub', 'Azure Migration Center', 'Azure Cost Management', 'Az
 author: 'Thomas Maurer'
 date: 2020-01-23
 url: 'https://www.thomasmaurer.ch/2020/01/how-to-reduce-the-costs-of-your-azure-iaas-vms/'
-translator: '龙少'
+translator: 'DuanShaolong'
 reviewer: 'shinyzhu'
 pub_date: 
 ---
 # 如何降低 Azure 虚拟机的成本
-# How to Reduce the Costs of your Azure IaaS VMs
 
 <ContentMeta />
 
 Azure基础设施既服务(IaaS)通过传统虚拟化技术提供显著的优点。比如无论何时需要都可以在全球任何 Azure 区域快速启动几个虚拟机，因此非常强大。更多其它优点请点击[Azure基础设服务虚拟机](https://azure.microsoft.com/services/virtual-machines?WT.mc_id=thomasmaurer-blog-thmaure)。当然，那些不是这篇博客的部分内容。这篇博客专注于通过降低使用Azure基础设施服务虚拟机的成本来帮助你节省金钱。这里的一些提议可以帮到每位用户。
 
-Azure Infrastructure-as-a-service (IaaS) offers significant benefits over traditional virtualization. With benefits like the possibility to quickly spin up a couple of virtual machine in any Azure region around the world whenever you need it, is pretty powerful. There are a lot more benefits to [Azure IaaS virtual machines](https://azure.microsoft.com/services/virtual-machines?WT.mc_id=thomasmaurer-blog-thmaure). However, that’s not part of this blog. This blog post is focused on helping you saving money by reducing the costs when you are using Azure IaaS virtual machines (VM). Some of the tips here will help everyone out there, some of the tips
-
 ## 选择合适的Azure虚拟机系列及合适的Azure虚拟机型号
-## Pick the right Azure VM series and the right Azure VM size
-
-
-![Reduce cost by picking the right Azure VM size](https://www.thomasmaurer.ch/wp-content/uploads/2019/09/Reduce-cost-by-picking-the-right-Azure-VM-size-768x508.jpg)
+![通过选择合适的Azure虚拟机型号来降低成本](https://www.thomasmaurer.ch/wp-content/uploads/2019/09/Reduce-cost-by-picking-the-right-Azure-VM-size-768x508.jpg)
 通过选择合适的Azure虚拟机型号来降低成本
-Reduce cost by picking the right Azure VM size
 
-首先，很明显你需要位大型虚拟机支付更多的费用。在与客户的合作中，我发现：他们在Azure上所使用的虚拟机规格与本地数据中心所使用的虚拟机规格相同，但并没有意识到这样的虚拟机规格是过大的。本地数据中心的硬件是静态容量，他们可以不关心这些，但是当你在云平台上需要为过大的虚拟机资源付费时情况就不同了。因此，请确保你使用的Azure虚拟机规格没有太大。如果需要，你随时可以将虚拟机规格改为更大的型号。如果你正在寻找一个工具比如[Azure Migrate](https://azure.microsoft.com/services/azure-migrate?WT.mc_id=thomasmaurer-blog-thmaure) 以迁移你已有的虚拟机到Azure基础设施服务，你还将有一些额外的优势。Azure Migrate会评估你的现有环境并依据历史性能数据帮助你选择合适的Azure虚拟机型号。Azure Migrate可以用于Hyper-V和VMware的虚拟机，如果想了解更多关于Azure Migrate的信息，请查看我的[博客](https://www.thomasmaurer.ch/2019/07/assess-and-migrate-hyper-v-vms-with-azure-migrate/)。如果你已经在Azure中运行虚拟机，Azure 顾问可以帮助你了解虚拟机是否充分利用。选择正确的型号将帮追节省资金并降低Azure基础设施服务虚拟机的成本。
+首先，很明显你需要为大型虚拟机支付更多的费用。在与客户的合作中，我发现：他们在Azure上所使用的虚拟机规格与本地数据中心所使用的虚拟机规格相同，但并没有意识到这样的虚拟机规格是过大的。本地数据中心的硬件是静态容量，他们可以不关心这些，但是当你在云平台上需要为过大的虚拟机资源付费时情况就不同了。因此，请确保你使用的Azure虚拟机规格没有太大。如果需要，你随时可以将虚拟机规格改为更大的型号。如果你正在寻找一个工具比如[Azure Migrate](https://azure.microsoft.com/services/azure-migrate?WT.mc_id=thomasmaurer-blog-thmaure) 以迁移你已有的虚拟机到Azure基础设施服务，你还将有一些额外的优势。Azure Migrate会评估你的现有环境并依据历史性能数据帮助你选择合适的Azure虚拟机型号。Azure Migrate可以用于Hyper-V和VMware的虚拟机，如果想了解更多关于Azure Migrate的信息，请查看我的[博客](https://www.thomasmaurer.ch/2019/07/assess-and-migrate-hyper-v-vms-with-azure-migrate/)。如果你已经在Azure中运行虚拟机，Azure 顾问可以帮助你了解虚拟机是否充分利用。选择正确的型号将帮追节省资金并降低Azure基础设施服务虚拟机的成本。
 
-First of all, obviously, you pay more for larger virtual machines. Something I realized by working with a lot of customers is that they take the on-premises VM size and use the equivalent size in Azure. Not realizing that the VM size they had was way to oversized. But since they had the static capacity on-prem, they didn’t’ care. Now when you pay for more capacity in the cloud, the story is different. So make sure you realize that the Azure VM sizes are not oversized. You can still change the size later to a larger virtual machine if needed. And if you are looking at tools like [Azure Migrate](https://azure.microsoft.com/services/azure-migrate?WT.mc_id=thomasmaurer-blog-thmaure) to migrate your existing VMs to Azure IaaS, you will have some additional advantages. Azure Migrate asses your environment and helps you pick the right Azure VM size depending on performance data history. Azure Migrate works with Hyper-V and VMware virtual machines, if you want to know more about Azure Migrate, check out my [blog post](https://www.thomasmaurer.ch/2019/07/assess-and-migrate-hyper-v-vms-with-azure-migrate/). If you are already running the virtual machine in Azure, Azure Advisor can be helpful to figure out that your virtual machine is underutilized. Picking the right size will help you to save money and reduce the cost of Azure IaaS VMs.
-
-为了更加方便的选择合适的型号，Azure为你提供不同的类型或者称作[VM series](https://azure.microsoft.com/pricing/details/virtual-machines/series?WT.mc_id=thomasmaurer-blog-thmaure)。你可以在Azure网站上找到一套不同的虚拟机类型，这些虚拟机类型根据用例、方案和应用程序需求为你提供丰富的选择，包括：通用虚拟机，计算、内存或者存储优化的虚拟机，带有GPU的虚拟机，HPC负载的虚拟机。关于不同类型和型号的虚拟机信息你可以点击查看此[文档](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?WT.mc_id=thomasmaurer-blog-thmaure)。
-
-To make it easier to pick the right size, Azure offers you different type or also called [VM series](https://azure.microsoft.com/pricing/details/virtual-machines/series?WT.mc_id=thomasmaurer-blog-thmaure). You can find a broad set of different virtual machine types in Azure, which give you a choice depending on your use cases, scenarios, and application needs. From general-purpose VMs, compute, memory or storage optimized, VMs with GPUs, and HPC workloads. You can find some documentation on the different VM types and sizes [here](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?WT.mc_id=thomasmaurer-blog-thmaure).
+为了更加方便的选择合适的型号，Azure为你提供不同的类型或者称作[VM 类型](https://azure.microsoft.com/pricing/details/virtual-machines/series?WT.mc_id=thomasmaurer-blog-thmaure)。你可以在Azure网站上找到一套不同的虚拟机类型，这些虚拟机类型根据用例、方案和应用程序需求为你提供丰富的选择，包括：通用虚拟机，计算、内存或者存储优化的虚拟机，带有GPU的虚拟机，HPC负载的虚拟机。关于不同类型和型号的虚拟机信息你可以点击查看此[文档](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?WT.mc_id=thomasmaurer-blog-thmaure)。
 
 ## 需要的时候运行，不需要的时候就关闭
-## Run them when you need them, shut them off when you don’t
-
 云计算的另一个巨大优势是用量付费的选项。如果某个时间段你不再需要一个虚拟机继续运行，你可以将其关闭，此时你只需要为其所使用的存储付费，而不用为其计算能力付费。这可以帮助你处理那些需要使用虚拟机进行扩展和缩减的工作负载，或者只是用于测试/开发/实验环境的那些不需要100%时间运行的虚拟机。
-
-Another great benefit of Cloud Computing and next to the large scale are the Pay-per-use options. If you don’t need a virtual machine, you can shut it down, and you are only paying for the existing storage, but not for the computing power anymore. This helps you with workloads, which will need to scale up and down using virtual machines. Or simply with virtual machines in test/dev environments or labs, which don’t need to run 100 percent of the time.
 
 ## 选择使用Azure预留实例
 ## Commit and use Azure Reserved VM instances
