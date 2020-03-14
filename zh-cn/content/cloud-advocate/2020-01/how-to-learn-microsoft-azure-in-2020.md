@@ -1,16 +1,16 @@
 ---
 type: post
-status: new
+status: review
 sidebar: auto
-title: 'How to learn Microsoft Azure in 2020'
-description: '2019 is over, and usually, we take the time to find some resolutions for the new year. Why not take all that energy and prepare for the cloud computing era and advance your career by learning Microsoft Azure? In this post, Thomas gives you a quick look at how you can get started learning about Azure, whether you are a beginner or already advanced, technical or business-oriented.'
+title: '如何在2020年学习 Microsoft Azure'
+description: '2019年结束了，通常我们会花一些时间为新年找到一些解决方案。 为什么不花所有精力为云计算时代做准备，并通过学习Microsoft Azure来发展自己的职业呢？ 在这篇文章中，Thomas使您快速了解如何开始了解Azure，无论您是初学者还是已经是高级，技术或业务导向的人。'
 tags: ['Azure', 'Azure Security Center', 'Azure Migration Center']
 author: 'Thomas Maurer'
 date: 2019-12-27
 url: 'https://www.thomasmaurer.ch/2019/12/how-to-learn-microsoft-azure-in-2020/'
-translator: ''
-reviewer: ''
-pub_date: 
+translator: 'msdz'
+reviewer: 'shinyzhu'
+pub_date: 2020-03-14
 ---
 
 # 如何在2020年学习 Microsoft Azure
@@ -23,21 +23,24 @@ pub_date:
 
 没有比亲身体验更好的了，所以我们从获取一个[免费的 Azure 帐户](https://azure.microsoft.com/free?WT.mc_id=thomasmaurer-blog-thmaure)开始吧。您的Azure免费帐户包括有限数量的免费服务，为期12个月。在这些限制范围内，您可以灵活地使用各种配置中的免费服务来满足您的需求。
 
-[![通过免费的 Azure 服务学习](https://www.thomasmaurer.ch/wp-content/uploads/2019/12/Learn-with-Free-Azure-services-768x420.jpg)通过免费的 Azure 服务学习](https://azure.microsoft.com/free?WT.mc_id=thomasmaurer-blog-thmaure)
+![通过免费的 Azure 服务学习](https://www.thomasmaurer.ch/wp-content/uploads/2019/12/Learn-with-Free-Azure-services-768x420.jpg)
 
-[了解更多,请参阅](https://azure.microsoft.com/free?WT.mc_id=thomasmaurer-blog-thmaure)[Azure 免费帐户常见问题解答](https://azure.microsoft.com/free/free-account-faq?WT.mc_id=thomasmaurer-blog-thmaure)
+通过[免费的 Azure 服务](https://azure.microsoft.com/free?WT.mc_id=thomasmaurer-blog-thmaure)学习
+
+了解更多,请参阅[Azure 免费帐户常见问题解答](https://azure.microsoft.com/free/free-account-faq?WT.mc_id=thomasmaurer-blog-thmaure)
 
 [免费的 Azure 帐户](https://azure.microsoft.com/free?WT.mc_id=thomasmaurer-blog-thmaure)
 
 
 ### 创建免费的 Azure 帐户 ☁
 
-Create your Azure free account today and get started with 12 months of free services!
 立即创建您的 Azure 免费帐户，并开始使用12个月的免费服务！
 
 ## Microsoft Learn
 
-[![Microsoft Learn](https://www.thomasmaurer.ch/wp-content/uploads/2019/12/Microsoft-Learn-768x457.jpg)Microsoft Learn](https://docs.microsoft.com/learn?WT.mc_id=thomasmaurer-blog-thmaure)
+![Microsoft Learn](https://www.thomasmaurer.ch/wp-content/uploads/2019/12/Microsoft-Learn-768x457.jpg)
+
+Microsoft Learn
 
 [Microsoft Learn](https://www.thomasmaurer.ch/2018/10/microsoft-learn/) 是在 Ignite 2018 上推出的，它是一个免费的学习平台，适用于许多不同的 Microsoft 技术，而不仅仅是 Azure。 [Microsoft Learn](https://docs.microsoft.com/learn?WT.mc_id=thomasmaurer-blog-thmaure) 为您提供了各种不同的学习途径，取决于您的工作角色或您正在寻求的技能。 大多数学习路径都为您提供了动手实践的机会，因此您可以通过交互式培训来发展实用技能。而且是完全免费的！您可以立即在浏览器中访问 Microsoft 工具和模块，而无需使用信用卡。
 
@@ -47,7 +50,7 @@ Create your Azure free account today and get started with 12 months of free serv
 
 利用适合当今 IT 专业人士，开发人员和技术大师的模块或学习途径，为您的游戏增添色彩，并为您准备获得行业认可的 Microsoft 认证做好准备
 
-## 成为 Microsoft Azure 认证
+## 获得 Microsoft Azure 认证
 
 另一个很好的学习和验证你的技能的选择是通过 Microsoft Azure 认证考试。几个月前，我写了一系列博客文章，介绍了 [为什么要获得 Microsoft Azure 认证](https://www.thomasmaurer.ch/2019/08/why-you-should-become-microsoft-azure-certified/), [如何准备 Microsoft Azure 考试](https://www.thomasmaurer.ch/2019/09/how-to-prepare-and-pass-a-microsoft-azure-exam/), 以及 [如何参加和通过 Microsoft 认证考试](https://www.thomasmaurer.ch/2019/09/tips-on-how-to-take-microsoft-azure-certification-exams/)。 采取新的基于角色的微软认证考试将会帮助你找到合适的主题和结构学习,具体取决于您正在寻找的当前或将来的职位。
 
@@ -57,7 +60,6 @@ Create your Azure free account today and get started with 12 months of free serv
 
 获得认证表明你是跟上当今技术的角色和需求。
 
-If you are just getting started with Azure, have a look at the AZ-900 Microsoft Azure Fundamentals exam. You can also have a look at my experience with the different Azure exam certifications:
 如果你只是开始使用 Azure,请优先考虑 AZ-900 Microsoft Azure 基础考试。您还可以查看我对各种Azure考试认证的经验：
 
 - [Microsoft Certified Azure Administrator Associate](https://www.thomasmaurer.ch/2018/10/passed-microsoft-certified-azure-administrator/) (AZ-10X)
@@ -71,7 +73,9 @@ If you are just getting started with Azure, have a look at the AZ-900 Microsoft 
 
 我想为您提供更多参考资源，以便在2020年开始学习 Microsoft Azure。
 
-[![Azure 体系结构中心](https://www.thomasmaurer.ch/wp-content/uploads/2019/12/Azure-Architecture-Center-768x449.jpg)Azure 体系结构中心](https://docs.microsoft.com/azure/architecture?WT.mc_id=thomasmaurer-blog-thmaure)
+![Azure 体系结构中心](https://www.thomasmaurer.ch/wp-content/uploads/2019/12/Azure-Architecture-Center-768x449.jpg)
+
+Azure 体系结构中心
 
 - [**Azure 体系结构中心**](https://docs.microsoft.com/azure/architecture?WT.mc_id=thomasmaurer-blog-thmaure) – Azure架构中心包含微软Azure上构建端到端解决方案的指导。在这里你会发现参考体系结构、最佳实践、设计模式、场景指南和参考实现。
 - [**云应用框架**](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/index?WT.mc_id=thomasmaurer-blog-thmaure) – 云应用框架是"一个 Microsoft" 在 Azure 中使用云的一种方法，用于整合和共享来自 Microsoft 员工，合作伙伴和客户的最佳实践。该框架为客户提供了一套工具，指南和叙述，可帮助制定技术，业务和人员策略，以在采用过程中推动所需的业务成果。本指南本指南与云应用生命周期的以下阶段保持一致，例如战略，计划，就绪，迁移，创新，治理和管理。
