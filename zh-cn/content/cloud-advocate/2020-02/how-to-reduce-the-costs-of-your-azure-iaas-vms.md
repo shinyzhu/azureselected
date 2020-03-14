@@ -39,17 +39,8 @@ Azure基础设施既服务(IaaS)通过传统虚拟化技术提供显著的优点
 ## 使用经济型可爆发的虚拟机
 B系列属于经济型虚拟机，可为通常以低到中等基准CPU性能运行但有时在需求提高时需要爆发到高得多的CPU性能的工作负荷提供低成本选项。这些工作负荷无需CPU始终满负荷运转，但偶尔需要爆发以更快完成某些任务。想要了解更多关于A系列Azure虚拟机的请点击[微软文档](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable?WT.mc_id=thomasmaurer-blog-thmaure)。
 
-B-series are economical virtual machines that provide a low-cost option for workloads that typically run at a low to moderate baseline CPU utilization, but sometimes need to burst to significantly higher CPU utilization when the demand rises. If you want to know more about B-series Azure VMs, check out the following [Microsoft Docs](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable?WT.mc_id=thomasmaurer-blog-thmaure).
-
 ## Azure Spot虚拟机用于批量处理作业可显著节省成本
-## Azure Spot Virtual Machines for batch processing jobs with significant cost savings
-
-借助Azure Spot虚拟机，您将能够以大幅折扣访问未使用的Azure计算容量，与即用即付价格相比高达90%的折扣。[Spot VMs](https://azure.microsoft.com/pricing/spot?WT.mc_id=thomasmaurer-blog-thmaure) 非常适合用于可中断的工作负载，提供可扩展性的同事降低成本。使用Spot虚拟机使你能够充分利用未使用的计算能力，从而显著降低成本。当Azure需要恢复容量时，Azure基础结构将逐出Spot实例。因此，Spot实例非常适合用于处理中断的工作负荷，如批处理作业、开发/测试环境、大型计算工作负荷等。当Spot虚拟机运行Windows Server工作负载时，你将获得独一无二的定价和优势，Spot实例当前为公共预览版。不建议将此预览版本用于生产工作负荷。有关详细信息，请参阅[微软文档](https://docs.microsoft.com/azure/virtual-machines/windows/spot-vms?WT.mc_id=thomasmaurer-blog-thmaure)。
-
-With Azure Spot Virtual Machines (Spot VMs), you’ll be able to access unused Azure compute capacity at deep discounts, up to 90 percent compared to pay-as-you-go prices. [Spot VMs](https://azure.microsoft.com/pricing/spot?WT.mc_id=thomasmaurer-blog-thmaure) are ideal for workloads that can be interrupted, providing scalability while reducing costs. Using Spot VMs allows you to take advantage of our unused capacity at a significant cost saving. At any point in time when Azure needs the capacity back, the Azure infrastructure will evict Spot VMs. Therefore, Spot VMs are great for workloads that can handle interruptions like batch processing jobs, dev/test environments, large compute workloads, and more. You get unique Azure pricing and benefits when running Windows Server workloads on Spot VMs. Spot VMs are currently in preview and you can find more about them on [Microsoft Docs](https://docs.microsoft.com/azure/virtual-machines/windows/spot-vms?WT.mc_id=thomasmaurer-blog-thmaure).
-
-## 利用Azure混合权益
-## Leverage the Azure Hybrid Benefit
+借助Azure Spot虚拟机，您将能够以大幅折扣访问未使用的Azure计算容量，与即用即付价格相比高达90%的折扣。[Spot VMs](https://azure.microsoft.com/pricing/spot?WT.mc_id=thomasmaurer-blog-thmaure) 非常适合用于可中断的工作负载，提供可扩展性的同事降低成本。使用Spot虚拟机使你能够充分利用未使用的计算能力，从而显著降低成本。当Azure需要恢复容量时，Azure基础结构将创建Spot实例。因此，Spot实例非常适合用于处理中断的工作负荷，如批处理作业、开发/测试环境、大型计算工作负荷等。当Spot虚拟机运行Windows Server工作负载时，你将获得独一无二的定价和优势，Spot实例当前为公共预览版。不建议将此预览版本用于生产工作负荷。有关详细信息，请参阅[微软文档](https://docs.microsoft.com/azure/virtual-machines/windows/spot-vms?WT.mc_id=thomasmaurer-blog-thmaure)。
 
 ## 利用Azure混合优势
 如果你已经拥有带有软件保障的Windows Server和SQL Server本地许可证，那么你可以直接将其用于Azure虚拟机，这就允许你节省即用即付的Windows Server和SQL Server许可授权的成本。[Azure混合权益](https://azure.microsoft.com/pricing/hybrid-benefit?WT.mc_id=thomasmaurer-blog-thmaure)不仅适用于Azure虚拟机，也适用于PaaS层的Azure数据库和[Azure专用主机](https://www.thomasmaurer.ch/2019/08/azure-dedicated-host-for-your-azure-vms/)。想要了解更多关于Azure混合权益的优势请查看[微软Azure文档](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing?WT.mc_id=thomasmaurer-blog-thmaure)。
