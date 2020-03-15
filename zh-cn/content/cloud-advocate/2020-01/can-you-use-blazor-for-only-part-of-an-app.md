@@ -56,6 +56,7 @@ pub_date: 2020-02-28
 在快速找到`<app>`元素之前，我们首先看一下JavaScript文件。你或许会注意到这个文件并没有出现在硬盘里，这是因为它是属于构建输出的部分。你可以在ASP.NET Core的Github仓库[`src/Components/Web.JS/src/Boot.WebAssembly.ts`](https://github.com/aspnet/AspNetCore/blob/5bdf75f3e160bc90768526ba07c30e594b08b96d/src/Components/Web.JS/src/Boot.WebAssembly.ts)里找到它的源码(at the time of writing anyway)。此文件与Blazor服务器共享一部分内容，但是与使用[`MonoPlatform`](https://github.com/aspnet/AspNetCore/blob/e72223eaf58a3ee6660a922064d2449e47b78253/src/Components/Web.JS/src/Platform/Mono/MonoPlatform.ts)的最大区别是它进行一堆WASM交互操作。
 
 这个文件至关重要，没有它你的Blazor应用将无法启动，它先负责(通过注入[一个脚本文件到DOM](https://github.com/aspnet/AspNetCore/blob/e72223eaf58a3ee6660a922064d2449e47b78253/src/Components/Web.JS/src/Platform/Mono/MonoPlatform.ts#L197-L200))初始化托管在Mono的WASM环境。然后它使用另一个生成的文件 `_framework/blazor.boot.json`去找出需要将哪些.NET dll文件加载到Mono/WASM环境中。
+
 因此你需要把这个js文件包含在内，同时把`_framework`文件夹放在根路径下以确保它可以找到JSON文件(见 [此评论](https://github.com/aspnet/AspNetCore/blob/e72223eaf58a3ee6660a922064d2449e47b78253/src/Components/Web.JS/src/Boot.WebAssembly.ts#L61-L62))。
 
 ### 延迟加载Blazor
