@@ -23,6 +23,7 @@ pub_date: 2020-02-28
 但是如果我们想要集成一个我们已有的搜索应用，我们又该如何决策呢？
 
 ## 了解Blazor是如何开始的
+
 想知道我们要如何在另一个应用里运行Blazor WebAssembly。我们需要先学习一下Blazor WebAssessbly应用是如何运行的。
 
 当你创建一个新的项目，里面包含一个你或许从未打开过的文件 `wwwroot/index.html` , 但这是拼图很重要的一片。这个文件看起来就像：
@@ -67,7 +68,7 @@ pub_date: 2020-02-28
 
 事实证明，那是我们通过`Startup` 类控制的一些事情：
 
-```c#
+```csharp
 using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.Extensions.DependencyInjection;
 

@@ -72,7 +72,7 @@ Now that we understand what makes our Blazor app start, how do we know where in 
 
 It turns out that that is something that we control from our `Startup` class:
 
-```c#
+```csharp
 using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
