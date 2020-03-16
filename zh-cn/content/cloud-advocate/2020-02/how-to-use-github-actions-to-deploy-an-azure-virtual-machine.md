@@ -3,7 +3,7 @@ type: post
 status: new
 sidebar: auto
 title: '如何使用GitHub Actions部署虚拟机'
-description: 'Instructional blog that helps the non-developer community deploy Azure resources using GitHub Actions.'
+description: '这是一篇指导性博客，帮助非开发人员社区使用GitHub Actions部署Azure资源。'
 tags: ['Azure Virtual Machine', 'GitHub Actions']
 author: 'Sarah Lean'
 date: 2020-01-22
@@ -23,7 +23,7 @@ I’ve also taught myself how to use tools such as Visual Studio Code, Git, GitH
 
 At the end of 2019 GitHub announced [GitHub Actions](https://github.blog/2019-11-14-powering-community-led-innovation-with-github-actions/), a new way to automate deployment of code from GitHub repositories.  I’ve been watching with interest as my developer focused colleagues and friends dig into the new service and show examples of it being used and have decided to take a look at it myself and see what it can do for the IT Pro community, as I’m a firm believer that these types of tools can offer IT Pros great opportunities as well.
 
-#### **GitHub Actions Terminology**
+## GitHub Actions Terminology
 
 There is some new terminology that comes with GitHub Actions, so let’s define those before we dig in.
 
@@ -33,7 +33,7 @@ There is some new terminology that comes with GitHub Actions, so let’s define 
 - **Steps** - A task undertaken by a Job using an Action
 - **Event** – Something that happens and triggers a workflow, e.g a commit is pushed to a repository, an issue or pull request is issued
 
-#### **What do you want to build?**
+## What do you want to build?
 
 Keeping it simple, I want my GitHub Action to build a virtual machine (VM) within Azure. Keeping it really simple I want it to build the VM and it’s associated supporting technology (disk, network interface, virtual network, storage account, etc) within the same resource group.  This isn’t exactly best practice but is an easy example to start with and one that is well known/documented.
 
@@ -105,13 +105,13 @@ Write-Output ""
 
 The code isn’t complex and is a well-known example you can see in a lot of Documentation and tutorials. Within my script I’ve used various parameters to allow me to store the information securely or pass it in from my workflow file.  You can find my full PowerShell script [here](https://gist.github.com/weeyin83/81e7a7bf3caf3d0bce787db5d562b47e?WT.mc_id=blog-itops-salean).
 
-#### **How do I instruct the Action?**
+## How do I instruct the Action?
 
 To kick off the VM build we construct a Workflow file. This is in the form of YAML. You can call your workflow file anything you want as long as it ends with. yml or .yaml as the extension type. It also needs to be stored within a specific directory within your GitHub repository - **.github/workflows**
 
 Your workflow file is split up into several sections, let’s look at each of them individually:
 
-**Metadata**
+### Metadata
 
 We start off with some naming the workflow:
 
@@ -119,7 +119,7 @@ We start off with some naming the workflow:
 name: GitHub for IT Pro CI/CD Pipeline
 ```
 
-**Environment variables:**
+### Environment variables:
 
 ```markup
 Env:
@@ -127,7 +127,7 @@ Env:
   OUTPUT_PATH: $
 ```
 
-**Triggers**
+### Triggers
 
 We then instruct how the action will be [triggered](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions#on); I have set my action to start whenever something is pushed to the repository: 
 
@@ -135,7 +135,7 @@ We then instruct how the action will be [triggered](https://help.github.com/en/a
 on: [push]
 ```
 
- **Jobs**
+###  Jobs
 
 Now we start to declare the jobs that our workflow will do, we have to start by declaring what platform our Workflow will run on (Linux, MacOS or Windows).
 
@@ -149,7 +149,7 @@ jobs:
     runs-on: windows-latest
 ```
 
-**Steps**
+### Steps
 
 Now we can start with the steps within the workflow. The first step I’ve instructed my workflow to do a checkout. This takes the files/code from my repository and puts it into **$github.workspace** for my workflow to access it.
 
@@ -257,7 +257,7 @@ run: >
 
 For a full copy of this workflow file, you can find it [here](https://gist.github.com/weeyin83/b63d320cc814dee9aebb599b847d0a49).
 
-#### **Monitoring the GitHub Action running**
+## Monitoring the GitHub Action running
 
 When the Action is running you can monitor its progress. When you navigate to your repository on the GitHub website you will see a tab called Actions, click into that will take you into the Workflow section. You can create new workflows, edit workflows and monitor the progress of the workflows running.
 
@@ -269,7 +269,7 @@ And once the workflow has completed you can check in your Azure subscription and
 
 ![undefined](https://gxcuf89792.i.lithium.com/t5/image/serverpage/image-id/163887i4528F2147C235951/image-size/large?v=1.0&px=999)*Azure Resources*
 
-#### **Things to think about**
+## Things to think about
 
 My example workflow is a very basic one and the resource that I am deploying is a very basic one, however for me it was a great starting point to learn GitHub Actions. I’ve seen my colleagues use it for much more complex deployments and workflows, for example Aaron Powell is using it to [deploy his blog](https://www.aaron-powell.com/posts/2019-12-17-implementing-github-actions-for-my-blog/).
 
