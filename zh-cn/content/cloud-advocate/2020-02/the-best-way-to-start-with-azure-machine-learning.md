@@ -19,7 +19,7 @@ pub_date: 2020-02-12
 
 我知道许多数据科学家，包括我自己，都通过 Jupyter Notebooks 或某些 Python IDE 在支持 GPU 的计算机上，包括本地或在云中完成大部分工作。近两年来，作为 AI/ML 软件工程师，我正在做的事情是——在一台没有 GPU 的机器上准备数据，然后在云中使用 GPU 虚拟机做训练。
 
-另一方面，您可能已经听说过[Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=devto-blog-dmitryso)——一个特殊的用于机器学习的平台服务。但是，如果您开始寻找一些[入门教程](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml/?WT.mc_id=devto-blog-dmitryso)，您将意识到，使用 Azure 的 ML 会创建很多不必要的开销，并且这个过程不是很理想。例如，在前面提到的例子中训练脚本是作为一个 Jupyter Cell 的文本文件创建的，没有代码补全，也没有任何方便地在本地执行或调试的方式。这些额外的开销也是我们并没有在我们的项目中尽可能多的使用它的原因。
+另一方面，您可能已经听说过[Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=azureselected-content31-xinglzhu)——一个特殊的用于机器学习的平台服务。但是，如果您开始寻找一些[入门教程](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml/?WT.mc_id=azureselected-content31-xinglzhu)，您将意识到，使用 Azure 的 ML 会创建很多不必要的开销，并且这个过程不是很理想。例如，在前面提到的例子中训练脚本是作为一个 Jupyter Cell 的文本文件创建的，没有代码补全，也没有任何方便地在本地执行或调试的方式。这些额外的开销也是我们并没有在我们的项目中尽可能多的使用它的原因。
 
 不过，最近我发现有一个[Visual Studio Code Extension for Azure ML](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai&WT.mc_id=azureselected-content-xinglzhu#overview)。有了这个扩展，您可以在 VS Code 中直接开发您的的训练代码，并在本地运行，然后将相同的代码提交到集群上进行训练，只需点击几下按钮。这样的方式有几个重要的优势：
 
@@ -30,15 +30,15 @@ pub_date: 2020-02-12
 
 我希望已经说服您来尝试一下 Azure ML！下面是如何开始使用的最佳方式：
 
-- 安装[Visual Studio Code](http://code.visualstudio.com/?WT.mc_id=devto-blog-dmitryso), [Azure Sign In](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account&WT.mc_id=azureselected-content-xinglzhu) 和 [Azure ML](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai&WT.mc_id=azureselected-content-xinglzhu#overview) 扩展
+- 安装[Visual Studio Code](http://code.visualstudio.com/?WT.mc_id=azureselected-content31-xinglzhu), [Azure Sign In](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account&WT.mc_id=azureselected-content-xinglzhu) 和 [Azure ML](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai&WT.mc_id=azureselected-content-xinglzhu#overview) 扩展
 - 克隆库 <https://github.com/CloudAdvocacy/AzureMLStarter> ——它包含了一些示例代码来训练识别 MNIST 数字模型。然后，您可以在 VS Code 中打开该克隆库。
 - 继续阅读！
 
 ## Azure ML 的工作区和门户
 
-Azure ML 中的一切都围绕着一个**工作区**进行组织。这是您提交实验、存储数据和结果模型的中心位置。还有一个特殊的[**Azure ML Portal**](http://ml.azure.com/?WT.mc_id=devto-blog-dmitryso)，为您的工作区提供 Web 界面，从这里您可以执行很多操作，如监视您的实验和指标等等。
+Azure ML 中的一切都围绕着一个**工作区**进行组织。这是您提交实验、存储数据和结果模型的中心位置。还有一个特殊的[**Azure ML Portal**](http://ml.azure.com/?WT.mc_id=azureselected-content31-xinglzhu)，为您的工作区提供 Web 界面，从这里您可以执行很多操作，如监视您的实验和指标等等。
 
-您可以通过 [Azure Portal](https://portal.azure.com/?WT.mc_id=devto-blog-dmitryso) 的 Web 界面创建一个工作区（可参考[步骤说明](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace/?WT.mc_id=devto-blog-dmitryso)），或使用 Azure CLI（[介绍](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-manage-workspace-cli/?WT.mc_id=devto-blog-dmitryso)）。
+您可以通过 [Azure Portal](https://portal.azure.com/?WT.mc_id=azureselected-content31-xinglzhu) 的 Web 界面创建一个工作区（可参考[步骤说明](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace/?WT.mc_id=azureselected-content31-xinglzhu)），或使用 Azure CLI（[介绍](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-manage-workspace-cli/?WT.mc_id=azureselected-content31-xinglzhu)）。
 
 ```
 az extension add -n azure-cli-ml
@@ -106,13 +106,13 @@ except:
    [![VS Code 中的 Azure ML 工作区](https://res.cloudinary.com/practicaldev/image/fetch/s--uYXYdSal--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://habrastorage.org/webt/hk/of/ff/hkofffhrmy-mapz-zybagzi5pj4.png)](https://res.cloudinary.com/practicaldev/image/fetch/s--uYXYdSal--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://habrastorage.org/webt/hk/of/ff/hkofffhrmy-mapz-zybagzi5pj4.png)
    [![Azure ML Workspace in VS Code](https://res.cloudinary.com/practicaldev/image/fetch/s--uppA0zaX--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://habrastorage.org/webt/hd/nb/0c/hdnb0clmrgnq534iaktd20q8w2u.png)](https://res.cloudinary.com/practicaldev/image/fetch/s--uppA0zaX--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://habrastorage.org/webt/hd/nb/0c/hdnb0clmrgnq534iaktd20q8w2u.png)
 5. 创建新的 **Compute** 和 **compute configuration**：
-   - **Compute** 定义了用于训练/推理的计算资源。您可以使用本地计算机或任何云资源。在我们的示例中，我们将使用 AmlCompute 集群。请建立 STANDARD_DS3_v2 机器的可扩展群集，节点配置为 min=0和max=4。您可以从 VS Code 中，或从[ML 门户](http://ml.azure.com/?WT.mc_id=devto-blog-dmitryso)中进行配置。![VS Code 中的 Azure ML 工作区](https://res.cloudinary.com/practicaldev/image/fetch/s---rv4Ptrh--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://habrastorage.org/webt/az/qq/tt/azqqttrje6jx8nsepdycwtosh04.png)
+   - **Compute** 定义了用于训练/推理的计算资源。您可以使用本地计算机或任何云资源。在我们的示例中，我们将使用 AmlCompute 集群。请建立 STANDARD_DS3_v2 机器的可扩展群集，节点配置为 min=0和max=4。您可以从 VS Code 中，或从[ML 门户](http://ml.azure.com/?WT.mc_id=azureselected-content31-xinglzhu)中进行配置。![VS Code 中的 Azure ML 工作区](https://res.cloudinary.com/practicaldev/image/fetch/s---rv4Ptrh--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://habrastorage.org/webt/az/qq/tt/azqqttrje6jx8nsepdycwtosh04.png)
    - **Compute Configuration** 定义远程资源上创建的用于执行训练的容器选项。特别是，它指定所有要安装的库。在我们的例子中，选择 *SkLearn*，并确认库列表。[VS Code 中的 Azure ML 工作区](https://res.cloudinary.com/practicaldev/image/fetch/s--jmmNby__--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://habrastorage.org/webt/0x/wv/u_/0xwvu_iu7tovivowbhmrbjkml2m.png)![VS Code 中的 Azure ML 工作区](https://res.cloudinary.com/practicaldev/image/fetch/s--FaXAgED7--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://habrastorage.org/webt/fx/t-/hv/fxt-hvhaeanmz6_ztcoh1q5tc8u.png)
 6. 然后您会看到一个窗口，显示下一个实验的 JSON 描述。您可以在其中编辑信息，例如改变实验或集群名称，并调整一些参数。当您准备好后，点击 **Submit Experiment**：
    [![Azure ML Workspace in VS Code](https://res.cloudinary.com/practicaldev/image/fetch/s--joFeivEz--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://habrastorage.org/webt/vj/r0/6_/vjr06_o6idgburn_bs84xtau7qe.png)](https://res.cloudinary.com/practicaldev/image/fetch/s--joFeivEz--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://habrastorage.org/webt/vj/r0/6_/vjr06_o6idgburn_bs84xtau7qe.png)
-7. 在 VS Code 中成功提交实验后，您会得到一个链接，指向[Azure ML 门户](http://ml.azure.com/?WT.mc_id=devto-blog-dmitryso)中的实验进度和结果。
+7. 在 VS Code 中成功提交实验后，您会得到一个链接，指向[Azure ML 门户](http://ml.azure.com/?WT.mc_id=azureselected-content31-xinglzhu)中的实验进度和结果。
    [![Azure ML 门户中的 Azure ML 实验结果](https://res.cloudinary.com/practicaldev/image/fetch/s--2oWg9AGT--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://habrastorage.org/webt/_2/dc/mg/_2dcmguwlzuegyt8feqtmy2fyfg.png)](https://res.cloudinary.com/practicaldev/image/fetch/s--2oWg9AGT--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://habrastorage.org/webt/_2/dc/mg/_2dcmguwlzuegyt8feqtmy2fyfg.png)
-   您还可以从 [Azure ML 门户](http://ml.azure.com/?WT.mc_id=devto-blog-dmitryso) 中的 **Experiments** 选项卡，或 VS Code 中的**Azure Machine Learning** 栏找到您的实验：
+   您还可以从 [Azure ML 门户](http://ml.azure.com/?WT.mc_id=azureselected-content31-xinglzhu) 中的 **Experiments** 选项卡，或 VS Code 中的**Azure Machine Learning** 栏找到您的实验：
    [![VS Code 中的 Azure ML 工作区](https://res.cloudinary.com/practicaldev/image/fetch/s--ZOptBzGn--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://habrastorage.org/webt/sf/aj/zi/sfajzixi7onq59cbfgnjzq2ay7u.png)](https://res.cloudinary.com/practicaldev/image/fetch/s--ZOptBzGn--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://habrastorage.org/webt/sf/aj/zi/sfajzixi7onq59cbfgnjzq2ay7u.png)
 8. 在您的代码调整一些参数后，如果要再次运行实验，这个过程会更快、更容易。用鼠标右键单击您的训练文件，您会看到一个新的菜单选项 **Repeat last run** ——只需选择它，实验将立即被提交。
    [![VS Code 中的 Azure ML 工作区](https://res.cloudinary.com/practicaldev/image/fetch/s--o_ITr5kJ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://habrastorage.org/webt/uh/u0/vg/uhu0vgjdtifxczq6saeerxhsdys.png)](https://res.cloudinary.com/practicaldev/image/fetch/s--o_ITr5kJ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://habrastorage.org/webt/uh/u0/vg/uhu0vgjdtifxczq6saeerxhsdys.png)
@@ -126,13 +126,13 @@ except:
 
 现在您已经了解了如何将脚本提交到远程群集上来执行，可以开始在您的日常工作中使用 Azure ML了。您可以在普通 PC 上开发脚本，然后在 GPU 虚拟机或集群上自动计划执行，并在一个地方保存所有的结果。
 
-不过，使用 Azure ML 不仅仅只有这两个优势。Azure ML 也可用于数据存储和数据集处理——使用不同的训练脚本来访问相同的数据会更加方便。另外，您还可以通过 API 自动提交实验、改变参数——从而进行一些超参数优化。此外，Azure ML 中内置的称为[**Hyperdrive**](https://docs.microsoft.com/azure/machine-learning/how-to-tune-hyperparameters/?WT.mc_id=devto-blog-dmitryso)的特定技术，能够进行更聪明的超参数搜索。我将在下一篇文章中讨论这些功能和技术。
+不过，使用 Azure ML 不仅仅只有这两个优势。Azure ML 也可用于数据存储和数据集处理——使用不同的训练脚本来访问相同的数据会更加方便。另外，您还可以通过 API 自动提交实验、改变参数——从而进行一些超参数优化。此外，Azure ML 中内置的称为[**Hyperdrive**](https://docs.microsoft.com/azure/machine-learning/how-to-tune-hyperparameters/?WT.mc_id=azureselected-content31-xinglzhu)的特定技术，能够进行更聪明的超参数搜索。我将在下一篇文章中讨论这些功能和技术。
 
 ## 有用的资源
 
 如果您想了解更多信息，Microsoft Learn 提供的以下课程可能会很有用：
 
-- [Azure 机器学习服务介绍](https://docs.microsoft.com/learn/modules/intro-to-azure-machine-learning-service/?WT.mc_id=devto-blog-dmitryso)
-- [使用 Azure 机器学习服务构建 AI 解决方案](https://docs.microsoft.com/ru-ru/learn/paths/build-ai-solutions-with-azure-ml-service/?WT.mc_id=devto-blog-dmitryso)
-- [使用 Azure 机器学习服务训练本地模型](https://docs.microsoft.com/ru-ru/learn/modules/train-local-model-with-azure-mls/?WT.mc_id=devto-blog-dmitryso)
+- [Azure 机器学习服务介绍](https://docs.microsoft.com/learn/modules/intro-to-azure-machine-learning-service/?WT.mc_id=azureselected-content31-xinglzhu)
+- [使用 Azure 机器学习服务构建 AI 解决方案](https://docs.microsoft.com/ru-ru/learn/paths/build-ai-solutions-with-azure-ml-service/?WT.mc_id=azureselected-content31-xinglzhu)
+- [使用 Azure 机器学习服务训练本地模型](https://docs.microsoft.com/ru-ru/learn/modules/train-local-model-with-azure-mls/?WT.mc_id=azureselected-content31-xinglzhu)
 
