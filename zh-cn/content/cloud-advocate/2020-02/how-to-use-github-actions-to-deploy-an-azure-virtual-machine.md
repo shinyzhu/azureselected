@@ -2,7 +2,7 @@
 type: post
 status: new
 sidebar: auto
-title: 'How to use GitHub Actions to deploy a virtual machine'
+title: '如何使用GitHub Actions部署虚拟机'
 description: 'Instructional blog that helps the non-developer community deploy Azure resources using GitHub Actions.'
 tags: ['Azure Virtual Machine', 'GitHub Actions']
 author: 'Sarah Lean'
@@ -13,7 +13,7 @@ reviewer: ''
 pub_date: 
 ---
 
-# How to use GitHub Actions to deploy a virtual machine
+# 如何使用GitHub Actions部署虚拟机
 
 <ContentMeta />
 
