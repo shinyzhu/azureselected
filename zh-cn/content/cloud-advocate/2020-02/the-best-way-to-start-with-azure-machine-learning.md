@@ -21,7 +21,7 @@ pub_date: 2020-02-12
 
 另一方面，您可能已经听说过[Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=devto-blog-dmitryso)——一个特殊的用于机器学习的平台服务。但是，如果您开始寻找一些[入门教程](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml/?WT.mc_id=devto-blog-dmitryso)，您将意识到，使用 Azure 的 ML 会创建很多不必要的开销，并且这个过程不是很理想。例如，在前面提到的例子中训练脚本是作为一个 Jupyter Cell 的文本文件创建的，没有代码补全，也没有任何方便地在本地执行或调试的方式。这些额外的开销也是我们并没有在我们的项目中尽可能多的使用它的原因。
 
-不过，最近我发现有一个[Visual Studio Code Extension for Azure ML](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai#overview)。有了这个扩展，您可以在 VS Code 中直接开发您的的训练代码，并在本地运行，然后将相同的代码提交到集群上进行训练，只需点击几下按钮。这样的方式有几个重要的优势：
+不过，最近我发现有一个[Visual Studio Code Extension for Azure ML](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai&WT.mc_id=azureselected-content-xinglzhu#overview)。有了这个扩展，您可以在 VS Code 中直接开发您的的训练代码，并在本地运行，然后将相同的代码提交到集群上进行训练，只需点击几下按钮。这样的方式有几个重要的优势：
 
 - 您可以将大部分的时间花在本地机器上，并**仅为训练使用强大的GPU资源**。训练集群可以根据需求自动调整大小，通过将机器的最小量设置为0，可以根据需要调整 VM。
 - 您**将训练的所有结果**维护在一个中心位置，包括指标和创建模型——没有必要为手工为每个实验保留精确度记录。
@@ -30,7 +30,7 @@ pub_date: 2020-02-12
 
 我希望已经说服您来尝试一下 Azure ML！下面是如何开始使用的最佳方式：
 
-- 安装[Visual Studio Code](http://code.visualstudio.com/?WT.mc_id=devto-blog-dmitryso), [Azure Sign In](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) 和 [Azure ML](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai#overview) 扩展
+- 安装[Visual Studio Code](http://code.visualstudio.com/?WT.mc_id=devto-blog-dmitryso), [Azure Sign In](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account&WT.mc_id=azureselected-content-xinglzhu) 和 [Azure ML](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai&WT.mc_id=azureselected-content-xinglzhu#overview) 扩展
 - 克隆库 <https://github.com/CloudAdvocacy/AzureMLStarter> ——它包含了一些示例代码来训练识别 MNIST 数字模型。然后，您可以在 VS Code 中打开该克隆库。
 - 继续阅读！
 
