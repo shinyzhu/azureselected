@@ -2,9 +2,9 @@
 type: post
 status: new
 sidebar: auto
-title: 'Managing security with Azure Lighthouse and Azure Arc'
-description: 'ITOpsTalk blog article for IT Operations on a scenario of how the Azure Lighthouse and Azure Arc products can monitor the security (Azure Policy compliance, Azure Security Centre and Secure Score) of multiple tenants and how adding Azure Arc to the mix then includes on-prem and other-Cloud resources in those management blades.  No video demo but lots of screenshots.'
-tags: ['arc', 'Azure', 'Enterprise', 'Governance', 'hybrid', 'IT Ops', 'IT Pro', 'lighthouse', 'MSP', 'Operations', 'partner', 'Security', 'Server']
+title: '基于 Azure Lighthouse 和 Azure Arc 的安全管理'
+description: '关于IT运营的ITOpsTalk博客文章，介绍了Azure Lighthouse和Azure Arc产品如何监视多个租户的安全性（Azure策略合规性，Azure安全中心和Secure Score）以及如何将Azure Arc添加到混合中的方案 以及这些管理刀片中的其他云资源。'
+tags: ['Arc', 'Azure', 'Enterprise', 'Governance', 'Hybrid', 'IT Ops', 'IT Pro', 'Lighthouse', 'MSP', 'Operations', 'Partner', 'Security', 'Server']
 author: 'Sonia Cuff'
 date: 2019-11-26
 url: 'https://techcommunity.microsoft.com/t5/itops-talk-blog/managing-security-with-azure-lighthouse-and-azure-arc/ba-p/1032864'
