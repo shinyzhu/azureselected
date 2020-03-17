@@ -1,6 +1,6 @@
 ---
 type: post
-status: new
+status: review
 sidebar: auto
 title: '如何使用GitHub Actions部署虚拟机'
 description: '这是一篇指导性博客，帮助非开发人员社区使用GitHub Actions部署Azure资源。'
@@ -8,9 +8,9 @@ tags: ['Azure Virtual Machine', 'GitHub Actions']
 author: 'Sarah Lean'
 date: 2020-01-22
 url: 'https://techcommunity.microsoft.com/t5/itops-talk-blog/how-to-use-github-actions-to-deploy-an-azure-virtual-machine/ba-p/1092015'
-translator: ''
-reviewer: ''
-pub_date: 
+translator: 'IannaZhou'
+reviewer: 'shinyzhu'
+pub_date: 2020-03-17
 ---
 
 # 如何使用GitHub Actions部署虚拟机
@@ -19,27 +19,39 @@ pub_date:
 
 Hands up if you are used to deploy servers either by unpacking them from a box or using a graphical user interface (GUI)? Yip, that’s me and it's where I’ve built my career. However, over the last few years I’ve been getting more and more used to deploying servers and their supporting resources via code. Either using something like PowerShell or Azure CLI, or sometimes a combination of both. 
 
+在部署服务器时，人们要么将其从安装包中解压，要么使用 GUI 进行操作，你也是其中的一员吗？我在事业起步时就是这么操作的。但是，在过去的几年当中，我逐渐适应了通过代码来部署服务器及其相关资源。通过使用PowerShell 或者 Azure CLI，或者两者结合都能达成。
+
 I’ve also taught myself how to use tools such as Visual Studio Code, Git, GitHub or even Azure DevOps to get the task done.  It’s not been an easy journey but what it has been is fun and a challenge.
+
+我自学了一系列工具，如 Visual Studio Code, Git, GitHub 甚至是 Azure DevOps 来完成任务。一路走来并不容易，但却有趣而充满挑战。
 
 At the end of 2019 GitHub announced [GitHub Actions](https://github.blog/2019-11-14-powering-community-led-innovation-with-github-actions/), a new way to automate deployment of code from GitHub repositories.  I’ve been watching with interest as my developer focused colleagues and friends dig into the new service and show examples of it being used and have decided to take a look at it myself and see what it can do for the IT Pro community, as I’m a firm believer that these types of tools can offer IT Pros great opportunities as well.
 
-## GitHub Actions Terminology
+2019年末，GitHub 发布了[GitHub Actions](https://github.blog/2019-11-14-powering-community-led-innovation-with-github-actions/)，GitHub Actions 可以自动从 GitHub repository中部署代码。当我的同事和朋友们开始了解并示例这项服务时，我就一直饶有兴趣，并决定自己上手，看看能给 IT 专家社区带来些什么，我始终坚定的相信，这些工具可以给 IT 专家们带来很好的机遇。
+
+## GitHub Actions Terminology术语
 
 There is some new terminology that comes with GitHub Actions, so let’s define those before we dig in.
 
-- **Action** – these define what we can do, we can either get them from the marketplace (free) or build our own
-- **Workflow** – A collection of Environment variables, Jobs and Steps that are completed when an event happens
-- **Jobs** – What the workflow will do
-- **Steps** - A task undertaken by a Job using an Action
-- **Event** – Something that happens and triggers a workflow, e.g a commit is pushed to a repository, an issue or pull request is issued
+在我详细讲解之前，需要提一提和 GitHub Actions 的相关术语。
 
-## What do you want to build?
+- **Action** – these define what we can do, we can either get them from the marketplace (free) or build our own 定义我们能做何种操作，我们可以从市场中免费获得，或自己创建
+- **Workflow** – A collection of Environment variables, Jobs and Steps that are completed when an event happens事件发生时所完成的一系列环境变量、任务以及步骤
+- **Jobs** – What the workflow will doWorkflow 所要执行的任务
+- **Steps** - A task undertaken by a Job using an ActionJob 使用一项 Action 所接收的任务步骤
+- **Event** – Something that happens and triggers a workflow, e.g a commit is pushed to a repository, an issue or pull request is issued发生时可以触发工作流的事件，例如向一个 repository 提交 commit 时，会触发一个 issue 或 pull request 
+
+## What do you want to build?你想构建什么？
 
 Keeping it simple, I want my GitHub Action to build a virtual machine (VM) within Azure. Keeping it really simple I want it to build the VM and it’s associated supporting technology (disk, network interface, virtual network, storage account, etc) within the same resource group.  This isn’t exactly best practice but is an easy example to start with and one that is well known/documented.
 
+简单点说，我想用 GitHub Action 在 Azure 中创建虚拟机(VM)。再明确一点说，我想让它在同一资源群组下，构建虚拟机及其相关的支持性技术（存储盘，网络界面，虚拟网络，存储账户等）。这不是最佳的实践范式，但却是一个对新手十分友好的例子，且有详细的文档记录。
+
 I can use four blocks of Azure CLI code to build the VM within Azure.  The first block of code helps log into my Azure subscription using an Azure Service Principal and perform the necessary steps to create the VM.
 
-```markup
+只需要使用四段 Azure CLI 代码，就能在 Azure 中创建 VM。第一段代码使用 Azure Service Principal 登陆我的 Azure 订阅并执行创建 VM 的必需步骤。
+
+```powershell
 #region Login
 # This logs into Azure with a Service Principal Account
 #
@@ -56,7 +68,9 @@ Write-Output ""
 
 The next section selects the correct subscription, just to be sure my resources go to the right place:
 
-```markup
+下一段代码将选择正确的订阅，确保我的资源分配至正确的位置：
+
+```powershell
 #region Subscription
 #This sets the subscription the resources will be created in
 Write-Output "Setting default azure subscription..."
@@ -69,7 +83,9 @@ Write-Output ""
 
 The third section creates the resource group for my VM to live in:
 
-```markup
+第三段代码将为虚拟机构建赖以生存的资源群组：
+
+```powershell
 #region Create Resource Group
 # This creates the resource group used to house the VM
 Write-Output "Creating resource group $resourceGroupName in region $resourceGroupNameRegion..."
@@ -83,7 +99,9 @@ az group create `
 
 And the fourth section creates the VM within that resource group:
 
-```markup
+第四段代码将在资源群组里创建 VM：
+
+```powershell
 #region Create VM
 # Create a VM in the resource group
 Write-Output "Creating VM..."
@@ -104,6 +122,8 @@ Write-Output ""
 ```
 
 The code isn’t complex and is a well-known example you can see in a lot of Documentation and tutorials. Within my script I’ve used various parameters to allow me to store the information securely or pass it in from my workflow file.  You can find my full PowerShell script [here](https://gist.github.com/weeyin83/81e7a7bf3caf3d0bce787db5d562b47e?WT.mc_id=blog-itops-salean).
+
+这些代码并不复杂， 在很多文档和教程里你都会看到这个著名的示例。在我的脚本中，我使用了多种参数，从而确保信息能被安全的存储或者导入至我的工作流文件中。完整的 PowerShell 脚本 [请点击此处](https://gist.github.com/weeyin83/81e7a7bf3caf3d0bce787db5d562b47e?WT.mc_id=blog-itops-salean)。
 
 ## How do I instruct the Action?我该如何创建Action？
 
