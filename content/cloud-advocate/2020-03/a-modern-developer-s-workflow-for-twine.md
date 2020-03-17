@@ -4,7 +4,7 @@ status: new
 sidebar: auto
 title: "A Modern Developer's Workflow For Twine"
 description: 'This is an article about my flow for how I use modern web development tools to write and publish my games (VS Code + extensions, a CLI compiler, GitHub Actions + GitHub pages for CI/CD), rather than just using the default editor.  It also ends up being a sort of intro to both GH Actions and the concept of CI for people who have likely never been exposed to it.'
-tags: ['PlayFab', 'javascript']
+tags: ['PlayFab']
 author: 'Em Lazer-Walker'
 date: 2020-01-16
 url: 'https://dev.to/lazerwalker/a-modern-developer-s-workflow-for-twine-4imp'
