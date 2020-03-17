@@ -2,8 +2,8 @@
 type: post
 status: translated
 sidebar: auto
-title: '部属 Java EE 应用到 Azure: 第 1 部分'
-description: '这是一系列博客的第一篇，它将引导您逐步了解在Azure上运行Java EE应用程序的一种选择。 我们将采用最基本的方法将Java EE应用程序部署到在Microsoft Azure上的虚拟机中设置的应用程序服务器上，并将Azure Database for PostgreSQL服务作为后端数据库。 本质上，这是IaaS（Azure VM）与PaaS（Azure上的托管PostgreSQL）的组合'
+title: '部署 Java EE 应用到 Azure: 第 1 部分'
+description: '这是一系列博客的第一篇，它将引导您逐步了解在Azure上运行Java EE应用程序的一种选择。 我们将采用最基本的方法将Java EE应用程序部署到在Microsoft Azure上的虚拟机中设置的应用程序服务器上，并将Azure Database for PostgreSQL服务作为后端数据库。 本质上，这是IaaS（Azure VM）与PaaS（Azure上的托管PostgreSQL）的组合。'
 tags: ['Java EE', 'Azure', 'IaaS', 'Cloud Computing', 'Database']
 author: 'Abhishek Gupta'
 date: 2019-11-21
@@ -14,7 +14,7 @@ pub_date: 2019-12-27
 next: ../2020-01/deploying-java-ee-apps-to-azure-part-2.md
 ---
 
-# 部属 Java EE 应用到 Azure: 第 1 部分
+# 部署 Java EE 应用到 Azure: 第 1 部分
 
 <ContentMeta />
 
