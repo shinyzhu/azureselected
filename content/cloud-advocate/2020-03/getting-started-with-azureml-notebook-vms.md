@@ -19,7 +19,7 @@ pub_date:
 
 (Notice this post is out of date please check out [Azure Machine Learning Compute Instance’s](https://docs.microsoft.com/en-us/azure/machine-learning/concept-compute-instance/?WT.mc_id=blog-medium-abornst) a new post describing how to get started is coming soon!)
 
-![img](https://miro.medium.com/max/6368/1*2pYrggp8mO47vVpGA2Dfdg.gif)
+![img](https://miro.medium.com/max/900/1*2pYrggp8mO47vVpGA2Dfdg.gif)
 
 TLDR; [Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/service/overview-what-is-azure-ml?WT.mc_id=blog-medium-abornst) (AML), a cloud-based environment you can use to train, deploy, automate, manage, and track ML models. In the following tutorial we will walk through how to set up an Azure Notebook VM.
 
@@ -44,7 +44,7 @@ If you don’t have an Azure Subscription you can get a free account using the l
 
 ## Step 2: Create Azure Machine Learning Workspace
 
-![img](https://miro.medium.com/freeze/max/60/0*N09HG5K133NUC45H.gif?q=20)
+![img](https://miro.medium.com/freeze/max/900/0*N09HG5K133NUC45H.gif)
 
 Follow the instructions in the gif above to create a new azure machine learning service instance. More information can be found below.
 
@@ -52,15 +52,15 @@ Follow the instructions in the gif above to create a new azure machine learning 
 
 ## Step 3: Navigate to Azure ML Compute
 
-![img](https://miro.medium.com/max/60/1*r9E_9IOr95ZxpA_2nOzC_g.png?q=20)
+![img](https://miro.medium.com/max/900/1*r9E_9IOr95ZxpA_2nOzC_g.png)
 
 ## Step 4: Click New Compute
 
-![img](https://miro.medium.com/max/60/1*GJom1HUXnuK803DjzrGRtw.png?q=20)
+![img](https://miro.medium.com/max/900/1*GJom1HUXnuK803DjzrGRtw.png)
 
 ## Step 5: Choose the VM Size and Deploy
 
-![img](https://miro.medium.com/max/60/1*pzTToNLGuG9WRii4Q60X4g.png?q=20)
+![img](https://miro.medium.com/max/900/1*pzTToNLGuG9WRii4Q60X4g.png)
 
 A list of VM Sizes and pricing can be found in the documentation below. The standard series is recommended for most projects and the N series are recommended for projects requiring GPU.
 
@@ -70,15 +70,15 @@ When you are done click create it should take about 5–10 mins to set up the ne
 
 ## Step 6: Jupyter, JupyterLab or Open R Studio and Get Started Coding
 
-![img](https://miro.medium.com/max/5932/1*5FXOhPFpHBdHhqCh5SbvGw.png)
+![img](https://miro.medium.com/max/900/1*5FXOhPFpHBdHhqCh5SbvGw.png)
 
 ![img](https://miro.medium.com/max/60/1*W2t49hUltJddA_Mpyop9Tg.png?q=20)
 
-![img](https://miro.medium.com/max/5344/1*W2t49hUltJddA_Mpyop9Tg.png)
+![img](https://miro.medium.com/max/900/1*W2t49hUltJddA_Mpyop9Tg.png)
 
 ## Bonus Best Practice: Shutdown VM when not in use delete VM when using standard dependencies.
 
-![img](https://miro.medium.com/max/60/1*u-ap5ZImFnzj2kmpg3w9GA.png?q=20)
+![img](https://miro.medium.com/max/900/1*u-ap5ZImFnzj2kmpg3w9GA.png)
 
 Since all notebooks are persisted in the notebooks section of the Azure ML Service unlike a DSVM your work can be recovered and shared across multiple notebook VMs. So it is seamless to start with a standard VM for basic data processing and later switch to a N Series VM if GPU Compute is needed.
 
