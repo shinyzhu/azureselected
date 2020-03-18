@@ -4,7 +4,7 @@ status: translating
 sidebar: auto
 标题: "一位现代开发人员的Twine工作流管理"
 title: "A Modern Developer's Workflow For Twine"
-描述: '这篇文章将介绍我使用现代Web开发工具编写和发布项目的流程（VS Code + 扩展，编译器的CLI，GitHub Actions + GitHub pages 实现CI/CD），而不是仅仅使用其默认的编辑器功能。最终目的是为那些可能没有接触过的人介绍GitHub Actions和CI的概念。'
+描述: '这篇文章将介绍我使用现代Web开发工具编写和发布游戏的流程（VS Code + 扩展，编译器的CLI，GitHub Actions + GitHub pages 实现CI/CD），而不是仅仅使用其默认的编辑器功能。最终目的是为那些可能没有接触过的人介绍GitHub Actions和CI的概念。'
 description: 'This is an article about my flow for how I use modern web development tools to write and publish my games (VS Code + extensions, a CLI compiler, GitHub Actions + GitHub pages for CI/CD), rather than just using the default editor.  It also ends up being a sort of intro to both GH Actions and the concept of CI for people who have likely never been exposed to it.'
 tags: ['PlayFab', 'javascript']
 author: 'Em Lazer-Walker'
@@ -14,15 +14,13 @@ translator: 'DuanShaolong'
 reviewer: ''
 pub_date: 
 ---
-<ContentMeta />
-Twine应用里面创建的工程叫game，很像是我们使用VS时候创建的项目或者解决方案的意思，初步翻译成项目。【此部分待删除】
-<ContentMeta />
+
 # 一位现代开发人员的Twine工作流管理
 # A Modern Developer's Workflow For Twine
 
 <ContentMeta />
 
-我喜欢[Twine](https://twinery.org/)！开展一个基于超文本的项目叙述，它是如此的强大且易用，无论是用于为一个大型工作进行原型设计还是做你自己的事情。
+我喜欢[Twine](https://twinery.org/)！开展一个基于超文本的游戏叙述，它是如此的强大且易用，无论是用于为一个大型工作进行原型设计还是做你自己的事情。
 
 I love [Twine](https://twinery.org/)! Whether you're trying to prototype a larger work or make something on your own, it's such a powerful and easy-to-use tool to make hypertext-based narrative games.
 
@@ -38,9 +36,9 @@ A visual graph editor is a fantastic approach for small projects, but gets unman
 
 But there's a solution! I'm going to spend the next few minutes walking you through my Twine development workflow. There are three important parts of it I want to talk about:
 
-1. **纯文本文件**。我使用[VS Code](https://code.visualstudio.com/?WT.mc_id=devto-blog-emwalker) 来编写我的项目，而不是使用可视化的Twine编辑器。
-3. **现代版本控制**。使用git存储我的项目在GitHub上。
-3. **自动化发布**。每次我都会推送一个项目的新版本到GitHub，它会通过[GitHub Actions](https://github.com/features/actions) 和 [GitHub Pages](https://pages.github.com/)即时执行。
+1. **纯文本文件**。我使用[VS Code](https://code.visualstudio.com/?WT.mc_id=devto-blog-emwalker) 来编写我的游戏，而不是使用可视化的Twine编辑器。
+3. **现代版本控制**。使用git存储我的游戏在GitHub上。
+3. **自动化发布**。每次我都会推送一个游戏的新版本到GitHub，它会通过[GitHub Actions](https://github.com/features/actions) 和 [GitHub Pages](https://pages.github.com/)即时可玩。
 
 1. **Plain text files**. I use [VS Code](https://code.visualstudio.com/?WT.mc_id=devto-blog-emwalker) to write my games, rather than using the visual Twine editor. 
 2. **Modern version control**, storing my games in git on GitHub.
@@ -53,31 +51,44 @@ Let's step through the tools I use, and how you can get set up with a similar to
 ## 使用文本编辑器进行编写
 ## Writing in a Text Editor
 
-对于Twine项目为什么文本化编辑代替节点的图形化编辑是有价值的？
+对于Twine游戏为什么文本化编辑代替节点的图形化编辑是有价值的？
 
 Why is it valuable to be able to write Twine games as text files instead of as nodes in a visual graph?
 
-**规模友好.**
+**规模友好.**当你的游戏增长到成千上万字时,在Twine的可视化节点编辑器中跳转将会非常痛苦。即使是对于中等规模的项目，把整个游戏文件放在单个文本文件中，你也可以随心所欲的浏览操作此文件。甚至在考虑将大型脚本文件拆分成多个文件之前，这样的操作可以大大减少大型项目的认知负载。
 **It scales better.** When your game grows to be tens of thousands of words, navigating Twine's node-based visual editor can be a pain. Having your entire game be in a single text file, that you can manipulate and browse however you'd like, is far easier for even medium-sized projects. And that's even before considering that being able to split your script up into multiple files, which can greatly reduce the cognitive load for larger projects.
 
-**可复用.**
+**可复用.**希望跨段落之间或跨多个游戏项目重用一些宏或其他脚本位吗？能在 IDE 中复制/粘贴文本比在可视化编辑器中管理文本要容易得多。
+
 **It allows for reuse.** Have some macros or other bits of scripting you'd like to reuse between passages, or across multiple game projects? Being able to copy/paste text in an IDE is a lot easier than managing it in the visual editor.
 
-**可使用更高效的工具编写.**
+**可使用更高效的工具编写.**相对Twine的文本框，在常用的于其它编程和写作任务的文本编辑器中编写会更舒适一些。这就意味着我可以使用这些工具来是生活更轻松。
+
 **It gives you access to better writing tools.** I'm more comfortable writing in the same text editor I use for other programming and writing tasks than I am in Twine's text boxes. It also means I can use the tools they provide to make my life easier! 
+
+VS Code扩展可以为Harlowe和Sugarcube添加语法高亮功能。更重要的是，访问其整个IDE生态系统意味着我可以使用工具来帮助创作创意散文。这不仅意味着基本的事情，如拼写检查和无所不在的单词计数器，而且还包括更强大的工具来完成对[使用微妙的性别歧视/种族主义/攻击性的语言的警告](https://alexjs.com/)，甚至是[与AI协作激发我的创造力](https://www.robinsloan.com/notes/writing-with-the-machine/)！
 
 VS Code has extensions to add syntax highlighting for both Harlowe and Sugarcube. More than that, access to its entire IDE ecosystem means I can pull in tools to help with creative prose writing. This means basic things like spell check and an omnipresent word counter, but it can also mean more powerful tools to do things like [warn me if I'm using subtly sexist/racist/ableist language](https://alexjs.com/) or even [spark my creativity by collaborating with an AI](https://www.robinsloan.com/notes/writing-with-the-machine/)!
 
-**支持更强大的版本控制和协作.**
+**支持更强大的版本控制和协作.**稍后将做更多介绍。在一个文本文件中编写我的游戏意味着它被存储在一个人类可读的文本文件中，这就是我下面要讨论的所有其它优秀工具和技术的原因。
+
 **It enables more robust versioning and collaboration.** More on this later, but writing my game in a text file means it's stored in a human-readable text file, which is what enables all of the other great tools and techniques I'll be talking about next.
 
+这听起来很棒！为了得到这些优势，我们需要使用一种叫做Twee的特殊编程语言！
 This all sounds great! To get all of these benefits, we can use a special programming language called Twee!
 
+### 什么是Twee？
 ### What is Twee?
+
+在Twine1的旧时代，官方有提供两种游戏制作方法：使用Twine可视化编辑器，或者使用一种叫做twee的脚本语言编写代码，这个语言可以用官方的CLI工具进行编译。
 
 In the olden days of Twine 1, there were two officially-supported ways to make games: using the Twine visual editor, or by writing code in a scripting language called twee that could be compiled by an official CLI tool, also called `twee`. 
 
+(一个有趣的历史副作用：即使Twine的可视化编辑器是更受欢迎的工具，但twee CLI却比他它早诞生3年！)
+
 (A fun historical sidenote: even though the Twine's visual editor is the more popular tool, the twee CLI predates it by 3 years!)
+
+Twee代码在概念上与Twine图形相同,文件中不同段落引用的文本块也不同。
 
 Twee code is conceptually the same as a Twine graph, with different blocks of text in a file referring to different passages.
 
@@ -91,18 +102,28 @@ This is the first passage in a Twine game!
 :: Next Passage
 The player just clicked a link to get here!
 ```
+当Twine 2发布后，官方对于twee语言的支持就停止了，唯一官方支持的路径是使用Twine 2可视化编辑器及其对故事格式的大幅扩展支持。
 
 When Twine 2 came out, support for the twee language was officially killed, and the only officially supported path was to use the Twine 2 visual editor and its greatly-expanded support for story formats.
 
+## 如何通过Twine 2来使用Twee？
 ## How do you use Twee with Twine 2?
+
+当Twine 2还没有完成发布"Twee 2"时，社区就站了出来，出现了一些第三方Twee CLI工具。不过，twee语言还需要修改，因为Twine 2处理故事格式的方式与Twine 1截然不同。
 
 When Twine 2 wasn't accompanied by a "Twee 2", the community stepped up, and a number of third-party twee CLI tools emerged. The twee language needed to adapt, though, since Twine 2 handles story formats in a vastly different way from Twine 1. 
 
+接下来是现代 Twee 工具开发的一些技术解释。我认为它很有趣，如果你想跳过它，主要的要点是：我使用[Tweego](https://www.motoslave.net/tweego) CLI工具写了一个新版本的Twee，称为[Twee 3](https://github.com/iftechfoundation/twine-specs/blob/master/twee-3-specification.md)。
+
 What follows is a bit of a technical explanation of the development of modern Twee tools. I think it's interesting, but if you want to skip over it, the main practical takeaway is that I use the [Tweego](https://www.motoslave.net/tweego) CLI tool to write a newer version of Twee that's called [Twee 3](https://github.com/iftechfoundation/twine-specs/blob/master/twee-3-specification.md).
 
+### Twine 2故事格式：技术说明
 ### Twine 2 Story Formats: A Technical Explanation
 
+为了理解为什么不能使用Twine 2里面的`twee`工具，我们需要先理解Twee 2故事格式的工作机制。
+
 To understand why we can't just use the old `twee` tool with Twine 2, we need to understand how Twine 2 story formats work.
+
 
 Internally, Twine 2 stores your work as an XML document. When you click the "publish" button in the Twine 2 editor, that XML document is passed to the selected "story format", which is essentially an HTML template. A story format will typically embed JS within that template to parse and modify the Twine story data as appropriate to display it as a playable game. 
 
