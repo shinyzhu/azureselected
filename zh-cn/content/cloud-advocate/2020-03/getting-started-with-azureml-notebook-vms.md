@@ -1,16 +1,16 @@
 ---
 type: post
-status: new
+status: review
 sidebar: auto
-title: "Getting Started With AzureML Notebook VMs"
-description: "Azure Machine Learning (AML), a cloud-based environment you can use to train, deploy, automate, manage, and track ML models. In the following tutorial we will walk through how to set up an Azure Notebook VM."
+title: "AzureML Notebook VM入门"
+description: "Azure机器学习（AML）是一种基于云端环境，可用于训练，部署，自动化，管理和跟踪ML模型。在下面的教程中，我们将逐步介绍如何设置Azure Notebook VM。"
 tags: ['AI', 'ML', 'VM']
 author: 'Ari Bornstein'
 date: 2019-12-24
 url: 'https://medium.com/microsoftazure/getting-started-with-azureml-notebook-vms-f637b6e09ed4'
-translator: ''
-reviewer: ''
-pub_date: 
+translator: 'JamesL20'
+reviewer: 'shinyzhu'
+pub_date: 2020-03-18
 ---
 
 # Getting Started With AzureML Notebook VMs
