@@ -4,7 +4,7 @@
     <span v-for="tag in Object.keys(tags)">
       <h2 :id="tag">
         <router-link
-          :to="{ path: `/tags.html#${tag}`}"
+          :to="{ path: $localePath + `tags.html#${tag}`}"
           class="header-anchor"
           aria-hidden="true">#</router-link>
         {{tag}}
@@ -21,10 +21,13 @@
 
 <script>
 export default {
+  props:[
+    'path'
+  ],
   computed: {
     tags() {
       let tags = {}
-      for (let page of this.$site.pages) {
+      for (let page of this.$site.pages.filter(x => x.path.startsWith(this.path) && !x.frontmatter.index_page)) {
         for (let index in page.frontmatter.tags) {
           const tag = page.frontmatter.tags[index]
           if (tag in tags) {
@@ -34,6 +37,7 @@ export default {
           }
         }
       }
+
       return tags
     }
   }
