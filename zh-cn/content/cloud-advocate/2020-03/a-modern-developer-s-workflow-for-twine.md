@@ -2,9 +2,9 @@
 type: post
 status: translating
 sidebar: auto
-标题: "一位现代开发人员的Twine工作流管理"
+标题: "一个现代开发人员的Twine工作流管理"
 title: "A Modern Developer's Workflow For Twine"
-描述: '这篇文章将介绍我使用现代Web开发工具编写和发布游戏的流程（VS Code + 扩展，编译器的CLI，GitHub Actions + GitHub pages 实现CI/CD），而不是仅仅使用其默认的编辑器功能。最终目的是为那些可能没有接触过的人介绍GitHub Actions和CI的概念。'
+描述: '这篇文章将介绍我使用现代Web开发工具编写和发布游戏的流程（VS Code + 扩展，CLI编译器，GitHub Actions + GitHub pages 实现CI/CD），而不是仅仅使用其默认的编辑器功能。最终目的是为那些可能还没有接触过的人介绍GitHub Actions和CI的概念。'
 description: 'This is an article about my flow for how I use modern web development tools to write and publish my games (VS Code + extensions, a CLI compiler, GitHub Actions + GitHub pages for CI/CD), rather than just using the default editor.  It also ends up being a sort of intro to both GH Actions and the concept of CI for people who have likely never been exposed to it.'
 tags: ['PlayFab', 'javascript']
 author: 'Em Lazer-Walker'
@@ -15,24 +15,24 @@ reviewer: ''
 pub_date: 
 ---
 
-# 一位现代开发人员的Twine工作流管理
+# 一个现代开发人员的Twine工作流管理
 # A Modern Developer's Workflow For Twine
 
 <ContentMeta />
 
-我喜欢[Twine](https://twinery.org/)！开展一个基于超文本的游戏叙述，它是如此的强大且易用，无论是用于为一个大型工作进行原型设计还是做你自己的事情。
+我喜欢[Twine](https://twinery.org/)！用来进行基于超文本的游戏叙述时，无论是用于为一个大型工作进行原型设计还是做你自己的事情，它都是如此的强大且易用。
 
 I love [Twine](https://twinery.org/)! Whether you're trying to prototype a larger work or make something on your own, it's such a powerful and easy-to-use tool to make hypertext-based narrative games.
 
-话虽如此，我交谈过的大多数人那里听到的一个常见抱怨是：工作流程管理在规模上升时非常容易崩溃。
+话虽如此，我交谈过的大多数人那里听到的一个常见抱怨是：工作流在规模上升时非常容易崩溃。
 
 That said, a common complaint I've heard from most people I've talked to who use it seriously is how readily its workflows fall apart at scale. 
 
-可视化图形编辑器对于小型项目来说是一种绝妙的方法，但在较大的项目中却会变得难以快速管理。此外，使用Twine2编辑器处理文件的方式意味着使用版本控制一类的工具会很困难，要合并多个协作者做出的改变几乎是不可能的。
+可视化图形编辑器对于小型项目来说是一种绝妙的方法，但在较大的项目中却会变得难以快速管理。此外，使用Twine 2编辑器处理文件的方式意味着使用版本控制一类的工具会很困难，要合并多个协作者做出的改变几乎是不可能的。
 
 A visual graph editor is a fantastic approach for small projects, but gets unmanageable quickly on larger projects. Additionally, the way the Twine 2 editor handles files means using using tools like version control can be difficult, and merging changes from multiple collaborators can be nearly impossible.
 
-但是已经找到解决方案了！我下面将用几分钟时间带你了解我的Twine开发工作流程管理。我将分三个重要的部分来谈论：
+但是已经找到解决方案了！我下面将用几分钟时间带你了解我的Twine开发工作流程管理。我将会分三个重要的部分来谈论：
 
 But there's a solution! I'm going to spend the next few minutes walking you through my Twine development workflow. There are three important parts of it I want to talk about:
 
@@ -58,7 +58,7 @@ Why is it valuable to be able to write Twine games as text files instead of as n
 **规模友好.**当你的游戏增长到成千上万字时,在Twine的可视化节点编辑器中跳转将会非常痛苦。即使是对于中等规模的项目，把整个游戏文件放在单个文本文件中，你也可以随心所欲的浏览操作此文件。甚至在考虑将大型脚本文件拆分成多个文件之前，这样的操作可以大大减少大型项目的认知负载。
 **It scales better.** When your game grows to be tens of thousands of words, navigating Twine's node-based visual editor can be a pain. Having your entire game be in a single text file, that you can manipulate and browse however you'd like, is far easier for even medium-sized projects. And that's even before considering that being able to split your script up into multiple files, which can greatly reduce the cognitive load for larger projects.
 
-**可复用.**希望跨段落之间或跨多个游戏项目重用一些宏或其他脚本位吗？能在 IDE 中复制/粘贴文本比在可视化编辑器中管理文本要容易得多。
+**可复用.**希望跨段落之间或跨多个游戏项目重用一些宏或其他脚本位吗？能在IDE中复制/粘贴文本比在可视化编辑器中管理文本要容易得多。
 
 **It allows for reuse.** Have some macros or other bits of scripting you'd like to reuse between passages, or across multiple game projects? Being able to copy/paste text in an IDE is a lot easier than managing it in the visual editor.
 
@@ -80,7 +80,7 @@ This all sounds great! To get all of these benefits, we can use a special progra
 ### 什么是Twee？
 ### What is Twee?
 
-在Twine1的旧时代，官方有提供两种游戏制作方法：使用Twine可视化编辑器，或者使用一种叫做twee的脚本语言编写代码，这个语言可以用官方的CLI工具进行编译。
+在Twine 1的旧时代，官方有提供两种游戏制作方法：使用Twine可视化编辑器，或者使用一种叫做twee的脚本语言编写代码，这个语言可以用官方的CLI工具进行编译。
 
 In the olden days of Twine 1, there were two officially-supported ways to make games: using the Twine visual editor, or by writing code in a scripting language called twee that could be compiled by an official CLI tool, also called `twee`. 
 
@@ -88,7 +88,7 @@ In the olden days of Twine 1, there were two officially-supported ways to make g
 
 (A fun historical sidenote: even though the Twine's visual editor is the more popular tool, the twee CLI predates it by 3 years!)
 
-Twee代码在概念上与Twine图形相同,文件中不同段落引用的文本块也不同。
+Twee代码在概念上与Twine图形是一致的,文件中不同段落引用的文本块也不同。
 
 Twee code is conceptually the same as a Twine graph, with different blocks of text in a file referring to different passages.
 
@@ -109,11 +109,11 @@ When Twine 2 came out, support for the twee language was officially killed, and 
 ## 如何通过Twine 2来使用Twee？
 ## How do you use Twee with Twine 2?
 
-当Twine 2还没有完成发布"Twee 2"时，社区就站了出来，出现了一些第三方Twee CLI工具。不过，twee语言还需要修改，因为Twine 2处理故事格式的方式与Twine 1截然不同。
+当Twine 2还没有完成发布"Twee 2"时，社区就站了出来，出现了一些第三方Twee CLI工具。不过，因为Twine 2处理故事格式的方式与Twine 1的截然不同，twee语言需要被修改。
 
 When Twine 2 wasn't accompanied by a "Twee 2", the community stepped up, and a number of third-party twee CLI tools emerged. The twee language needed to adapt, though, since Twine 2 handles story formats in a vastly different way from Twine 1. 
 
-接下来是现代 Twee 工具开发的一些技术解释。我认为它很有趣，如果你想跳过它，主要的要点是：我使用[Tweego](https://www.motoslave.net/tweego) CLI工具写了一个新版本的Twee，称为[Twee 3](https://github.com/iftechfoundation/twine-specs/blob/master/twee-3-specification.md)。
+接下来是现代Twee工具开发的一些技术解释。我认为它很有趣，如果你想跳过它，那我长话短说：我使用[Tweego](https://www.motoslave.net/tweego) CLI工具写了一个新版本的Twee，称为[Twee 3](https://github.com/iftechfoundation/twine-specs/blob/master/twee-3-specification.md)。
 
 What follows is a bit of a technical explanation of the development of modern Twee tools. I think it's interesting, but if you want to skip over it, the main practical takeaway is that I use the [Tweego](https://www.motoslave.net/tweego) CLI tool to write a newer version of Twee that's called [Twee 3](https://github.com/iftechfoundation/twine-specs/blob/master/twee-3-specification.md).
 
@@ -147,7 +147,7 @@ This all means a story format is essential to actually going from a script to a 
 
 The last few years have been a tumultuous time for people who would want to write Twee. After quite some time of different people building out different competing Twine 2-compatible twee compilers, there is now a [formal language specification](https://github.com/iftechfoundation/twine-specs/blob/master/twee-3-specification.md) for Twee 3, maintained by the Interactive Fiction Technology Foundation (IFTF). 
 
-它被设计成原始Twee语言（可追溯称为Twee 1）的一个超集，并且可以很容易的在twee代码和Twine 2可视化编辑器使用的内部格式之间进行转换。
+它被设计成原始Twee语言（可追溯为Twee 1）的一个超集，并且可以很容易的在twee代码和Twine 2可视化编辑器使用的内部格式之间进行转换。
 
 It's designed to be a superset of the original `twee` language (retroactively known as Twee 1), and to be fairly easy to convert between twee code and the internal format used by the Twine 2 visual editor. 
 
@@ -162,7 +162,7 @@ There are multiple functioning Twee 3 compilers, but I personally use [Tweego](h
 ## 如何使用Tweego
 ## How to use Tweego
 
-如果你习惯使用 CLI 工具，那么Tweego就很容易上手。从[官网](https://www.motoslave.net/tweego/)下载正确的二进制文件（https：//www.motoslave.net/tweego/）后，你就可以直接调用它将一个`.twee`文件编译成可在浏览器中打开的`.html`文件：
+如果你习惯使用CLI工具，那么Tweego就很容易上手。从[官网](https://www.motoslave.net/tweego/)下载正确的二进制文件（https：//www.motoslave.net/tweego/）后，你就可以直接调用它将一个`.twee`文件编译成可在浏览器中打开的`.html`文件：
 
 If you're comfortable using CLI tools, Tweego is quite easy to use. After downloading the correct binary from the [website](https://www.motoslave.net/tweego/), you can call it directly to simply compile a `.twee` file into a compiled `.html` file you can play in a browser:
 
@@ -230,7 +230,7 @@ If you've ever tried to revisit previous versions of a Twine game you've made, o
 
 In the past, I've often given up on trying to fix merge conflicts with other writers, and just manually copy-pasted changes into the Twine editor by hand. That's frustrating, and avoidable by storing everything in Twee files instead!
 
-我不会回忆我是如何使用git和GitHub，但我会说，我做的一件重要的事情是：不再存储编译后的.html文件到git上。相反，我将设置一个构建过程来负责自动编译我的`.twee`文件到`.html`文件。这意味着我们可以保持 git 存储库的干净性和可读性。
+我不会回忆我是如何使用git和GitHub的，但我会说我做的一件重要的事情：不再存储编译后的.html文件到git上。相反，我将设置一个构建过程来负责自动编译我的`.twee`文件到`.html`文件。这意味着我们可以保持git存储库的干净性和可读性。
 
 I'm not going to walk through how I use git and GitHub, but I will say one important thing that I do is not store my compiled .html files in git at all. Rather, I'm going to set up a build process so that GitHub is responsible for automatically compiling my `.twee` files into `.html` files. This means we can keep the git repository clean and readable!
 
@@ -249,7 +249,7 @@ As soon as you push up new code to your version control server, it should be res
 
 This might seem foreign, or perhaps overkill, if you're just used to the flow of writing a game, getting an HTML file, and uploading that to something like [https://philome.la](https://philome.la/) or [https://itch.io](https://itch.io/).
 
-然而，[GitHub Actions](https://dev.to/lazerwalker/a-modern-developer-s-workflow-for-twine-4imp?devcontent0320)是一个可以免费使用的轻量级服务，我们可以很容易用于设置一个部署管道！在上一节中，我提到我不会将编译好的 HTML 文件存储在 Twine/Twee 游戏的git存储库中，取而代之的是让GitHub Actions处理所有内容。
+然而，[GitHub Actions](https://dev.to/lazerwalker/a-modern-developer-s-workflow-for-twine-4imp?devcontent0320)是一个可以免费使用的轻量级服务，我们可以很容易用于设置一个部署管道！在上一节中，我提到我不会将编译好的HTML文件存储在 Twine/Twee游戏的git存储库中，取而代之的是让GitHub Actions处理所有内容。
 
 However, [GitHub Actions](https://dev.to/lazerwalker/a-modern-developer-s-workflow-for-twine-4imp?devcontent0320) are a lightweight free service we can use to easily set up a deployment pipeline! In the previous section, I mentioned I don't store the compiled HTML files in my git repos for Twine/Twee games. Instead, GitHub Actions handles everything.
 
@@ -286,7 +286,7 @@ I typically use [GitHub Pages](https://pages.github.com/) to host my games. It's
 
 If you don't want to use GH Pages to host your game, you can safely skip this section.
 
-为了使GitHub Actions将游戏部署到GitHub Pages，它需要权限来将代码提交到你的git存储库（在引擎盖下：GitHub Pages将被配置为托管任何文件，会存在一个特殊的`gh-pages`git分支，GitHub Actions将负责进行一个包含你的HTML的新提交到该分支上）。
+为了使GitHub Actions将游戏部署到GitHub Pages，它需要权限来将代码提交到你的git存储库（简单操作的背后：GitHub Pages将被配置为托管任何文件，会存在一个特殊的`gh-pages`git分支，GitHub Actions将负责进行一个包含你的HTML的新提交到该分支上）。
 
 In order for GitHub Actions to deploy your game to GitHub Pages, it needs permissions to commit code to your git repo (under the hood: GitHub Pages will be configured to host any files that exist in a special `gh-pages` git branch, and GitHub Actions will be responsible for making a new commit containing your HTML file onto that branch).
 
@@ -313,7 +313,7 @@ Go to the repository settings for the GitHub repo that you'll be running GitHub 
 
 To set up a GitHub Action, all you need to do is add a new file into your git repo.
 
-GitHub Actions基于"工作流"，也就是配置文件。如果你添加一个名为`.github/workflows/build.yml`（或者任何`.yml`文件在那个目录下），它就会读取该配置并尝试使用。
+GitHub Actions基于"工作流"，也就是配置文件。如果你添加一个名为`.github/workflows/build.yml`（或者任何`.yml`文件在那个目录下），它就会读取该配置并尝试去使用它。
 
 GitHub Actions are based on "workflows", which are configuration files. If you add a file called `.github/workflows/build.yml` (or any `.yml` file inside that directory), it will read that config and try to use it.
 
@@ -464,6 +464,6 @@ As someone used to working with more programer-focused tools, I've found this wo
 
 If this is interesting to you, you might also be interested in [PlayFab-Twine](https://lazerwalker.com/playfab-twine), my tool to easily and automatically add free analytics to your Twine games. The [GitHub repo](https://github.com/lazerwalker/playfab-twine) for that site is also a great example of a Twine project developed using this workflow!
 
-如果你在使用中有任何问题请扔给我一个笔记，我很期待听到你的声音！
+如果你在使用中有任何问题请发给我一份笔记，我很期待听到你的声音！
 
 Drop me a note if you're using any of this stuff, I'd love to hear from you!
