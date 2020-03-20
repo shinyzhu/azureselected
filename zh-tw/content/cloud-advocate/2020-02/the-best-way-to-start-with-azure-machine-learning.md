@@ -17,11 +17,11 @@ pub_date: 2020-02-12
 
 <ContentMeta />
 
-我知道許多數據科學家，包括我自己，都通過 Jupyter Notebooks 或某些 Python IDE 在支持 GPU 的計算機上，包括本地或在雲中完成大部分工作。近兩年來，作為 AI/ML 軟件工程師，我正在做的事情是——在一台沒有 GPU 的機器上準備數據，然後在雲中使用 GPU 虛擬機做訓練。
+我知道許多資料科學家，包括我自己，都在配備 GPU 的機器使用 Jupyter Notebooks 或某些 Python IDE，也許本地端或在雲完成大部分工作。近兩年來，作為 AI/ML 軟體工程師，我在做沒有 GPU 的機器上處理資料，然後在雲中使用 GPU 虛擬機器做訓練。
 
-另一方面，您可能已經聽說過[Azure 機器學習](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=azureselected-content31-xinglzhu)——一個特殊的用於機器學習的平台服務。但是，如果您開始尋找一些[入門教程](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml/?WT.mc_id=azureselected-content31-xinglzhu)，您將意識到，使用Azure 的ML 會創建很多不必要的開銷，並且這個過程不是很理想。例如，在前面提到的例子中訓練腳本是作為一個 Jupyter Cell 的文本文件創建的，沒有代碼補全，也沒有任何方便地在本地執行或調試的方式。這些額外的開銷也是我們並沒有在我們的項目中盡可能多的使用它的原因。
+另一方面，您可能已經聽說過[Azure 機器學習](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=azureselected-content31-xinglzhu)——一個特別的機器學習平台服務。但是，當你開始參考一些[入門教程](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml/?WT.mc_id=azureselected-content31-xinglzhu)，您可能意識到，使用Azure 的ML 會繁瑣及重工產生很多不必要的開銷，使用過程不是很理想。例如，訓練腳本是透過 Jupyter Cell 的文本文件創建的，沒有編碼補全，也無法方便地在本地端執行或調校。這些額外的開銷也是我們並沒有在我們的項目中盡可能多的使用它的原因。
 
-不過，最近我發現有一個[Visual Studio Code Extension for Azure ML](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai&WT.mc_id=azureselected-content31-xinglzhu#overview)。有了這個擴展，您可以在 VS Code 中直接開發您的的訓練代碼，並在本地運行，然後將相同的代碼提交到集群上進行訓練，只需點擊幾下按鈕。這樣的方式有幾個重要的優勢：
+不過，最近我找到一個擴充[Visual Studio Code Extension for Azure ML](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai&WT.mc_id=azureselected-content31-xinglzhu#overview)。透過這個擴充，您可以在 VS Code 中直接開發您的的訓練編碼，並在本地端運行，然後將相同的編碼提交到集群上進行訓練，這些過程只需幾下點擊。並且還有幾個重要的好處：
 
 - 您可以將大部分的時間花在本地機器上，並**僅為訓練使用強大的GPU資源**。訓練集群可以根據需求自動調整大小，通過將機器的最小量設置為0，可以根據需要調整 VM。
 - 您**將訓練的所有結果**維護在一個中心位置，包括指標和創建模型——沒有必要為手工為每個實驗保留精確度記錄。
