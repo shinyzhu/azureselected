@@ -8,7 +8,7 @@ tags: ['Azure CLI', 'VS Code', 'Azure ML', 'Azure']
 author: 'Dmitry Soshnikov'
 date: 2020-01-27
 url: 'https://dev.to/azure/the-best-way-to-start-with-azure-machine-learning-17jl'
-translator: 'yanxiaodi''Ning Chen'
+translator: 'Ning Chen'
 reviewer: 'shinyzhu'
 pub_date: 2020-02-12
 ---
