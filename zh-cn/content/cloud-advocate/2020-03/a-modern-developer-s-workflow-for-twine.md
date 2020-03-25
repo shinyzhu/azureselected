@@ -2,49 +2,47 @@
 type: post
 status: translating
 sidebar: auto
-标题: "一个现代开发人员的Twine工作流管理"
-title: "A Modern Developer's Workflow For Twine"
-描述: '这篇文章将介绍我使用现代Web开发工具编写和发布游戏的流程（VS Code + 扩展，CLI编译器，GitHub Actions + GitHub pages 实现CI/CD），而不是仅仅使用其默认的编辑器功能。最终目的是为那些可能还没有接触过的人介绍GitHub Actions和CI的概念。'
-description: 'This is an article about my flow for how I use modern web development tools to write and publish my games (VS Code + extensions, a CLI compiler, GitHub Actions + GitHub pages for CI/CD), rather than just using the default editor.  It also ends up being a sort of intro to both GH Actions and the concept of CI for people who have likely never been exposed to it.'
+title: "Twine 的现代开发流程"
+description: '这是一篇关于如何使用现代网站开发工具编写和发布游戏（VS Code + 扩展、命令行编译器、GitHub Actions + GitHub Pages 实现 CI/CD）的文章，而不仅仅是使用 Twine 的默认编辑器。也向没接触过的读者介绍GitHub Action 和 CI 概念。'
 tags: ['PlayFab', 'javascript']
 author: 'Em Lazer-Walker'
 date: 2020-01-16
 url: 'https://dev.to/lazerwalker/a-modern-developer-s-workflow-for-twine-4imp'
 translator: 'DuanShaolong'
-reviewer: ''
-pub_date: 
+reviewer: 'shinyzhu'
+pub_date: 2020-03-24
 ---
 
-# 一个现代开发人员的Twine工作流管理
-# A Modern Developer's Workflow For Twine
-
+# Twine 的现代开发流程
 <ContentMeta />
-
-我喜欢[Twine](https://twinery.org/)！用来进行基于超文本的游戏叙述时，无论是用于为一个大型工作进行原型设计还是做你自己的事情，它都是如此的强大且易用。
 
 I love [Twine](https://twinery.org/)! Whether you're trying to prototype a larger work or make something on your own, it's such a powerful and easy-to-use tool to make hypertext-based narrative games.
 
-话虽如此，我交谈过的大多数人那里听到的一个常见抱怨是：工作流在规模上升时非常容易崩溃。
+我喜欢 [Twine](https://twinery.org/)！无论你是在尝试一个更大的原型作品，还是自己制作一些东西，它都是一个强大而易于使用的工具，可以制作基于超文本的叙事游戏。
 
 That said, a common complaint I've heard from most people I've talked to who use it seriously is how readily its workflows fall apart at scale. 
 
-可视化图形编辑器对于小型项目来说是一种绝妙的方法，但在较大的项目中却会变得难以快速管理。此外，使用Twine 2编辑器处理文件的方式意味着使用版本控制一类的工具会很困难，要合并多个协作者做出的改变几乎是不可能的。
+话虽如此，我聊过的大多数人有一个常见的抱怨是：工作流在规模变大时非常容易崩溃。
 
 A visual graph editor is a fantastic approach for small projects, but gets unmanageable quickly on larger projects. Additionally, the way the Twine 2 editor handles files means using using tools like version control can be difficult, and merging changes from multiple collaborators can be nearly impossible.
 
-但是已经找到解决方案了！我下面将用几分钟时间带你了解我的Twine开发工作流程管理。我将会分三个重要的部分来谈论：
+对于小项目来说，可视化图形编辑器是一种非常好的方法，但是对于较大的项目来说，它很快就变得难以胜任了。此外，Twine 2 编辑器处理文件的方式意味着使用诸如版本控制之类的工具可能很困难，合并来自多个协作者的更改几乎是不可能的。
 
 But there's a solution! I'm going to spend the next few minutes walking you through my Twine development workflow. There are three important parts of it I want to talk about:
 
+但是已经找到解决方案了！我下面将用几分钟时间带你了解我的 Twine 开发流程。我会分三个重要的部分：
+
 1. **纯文本文件**。我使用[VS Code](https://code.visualstudio.com/?WT.mc_id=devto-blog-emwalker) 来编写我的游戏，而不是使用可视化的Twine编辑器。
-3. **现代版本控制**。使用git存储我的游戏在GitHub上。
-3. **自动化发布**。每次我都会推送一个游戏的新版本到GitHub，它会通过[GitHub Actions](https://github.com/features/actions) 和 [GitHub Pages](https://pages.github.com/)即时可玩。
+3. **现代版本控制**。使用GitHub托管的git库来存储我的游戏。
+3. **自动化发布**。每次当我推送游戏的一个新版本到GitHub，会即时通过 [GitHub Actions](https://github.com/features/actions) 和 [GitHub Pages](https://pages.github.com/) 完成发布，游戏立刻可玩。
+
+
 
 1. **Plain text files**. I use [VS Code](https://code.visualstudio.com/?WT.mc_id=devto-blog-emwalker) to write my games, rather than using the visual Twine editor. 
 2. **Modern version control**, storing my games in git on GitHub.
 3. **Automatic publishing**. Every time I push a new version of my game to GitHub, it's instantly playable via [GitHub Actions](https://github.com/features/actions) and [GitHub Pages](https://pages.github.com/).
 
-下面逐步介绍我使用的工具，以及如何为你设置类似的工具链！
+下面逐步介绍我使用的工具，以及让你如何使用类似的工具链！
 
 Let's step through the tools I use, and how you can get set up with a similar toolchain!
 
