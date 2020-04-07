@@ -9,8 +9,8 @@ author: 'Henk Boelman'
 date: 2019-10-8
 url: 'https://www.henkboelman.com/articles/create-your-first-model-with-azure-custom-vision-and-python/'
 translator: 'Xiaodi Yan'
-reviewer: ''
-pub_date: 
+reviewer: 'Shiny Zhu'
+pub_date: 2020-04-05
 ---
 
 # 使用自定义视觉和 Python 创建您的第一个模型
