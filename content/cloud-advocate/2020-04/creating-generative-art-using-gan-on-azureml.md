@@ -15,6 +15,8 @@ pub_date:
 
 # Creating Generative Art using GANs on Azure ML
 
+<ContentMeta />
+
 Deep Learning can look like Magic! I get the most magical feeling when watching neural network doing something creative, for example learning to produce paintings like an artist. Technology behind this is called Generative Adversarial Networks, and in this post we will look at how to train such a network on Azure Machine Learning Service. 
 
 > This post is a part of [AI April](http://aka.ms/AIApril) initiative, where each day of April my colleagues publish new original article related to AI, Machine Learning and Microsoft. Have a look at the [Calendar](http://aka.ms/AIApril) to find other interesting articles that have already been published, and keep checking that page during the month.
