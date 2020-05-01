@@ -84,7 +84,7 @@ Training the GAN involves the following steps:
    ```
 
 2. Training discriminator to better differentiate between those two. Note, how we provide vector with
-2.训练识别器以更好的区分两者。z
+2. 训练识别器以更好的区分两者。注意：我们是提供向量值的方法
 
     
 
@@ -95,6 +95,7 @@ Training the GAN involves the following steps:
     
 
    and
+   和
 
     
 
@@ -105,6 +106,7 @@ Training the GAN involves the following steps:
     
 
    as expected answer:
+   如期的答案：
 
    ```
    d_loss_r = discriminator.train_on_batch(imgs, ones)
@@ -113,12 +115,14 @@ Training the GAN involves the following steps:
    ```
 
 3. Training the combined model, in order to improve the generator:
+3. 训练组合模型，以提升生成器
 
    ```
    g_loss = combined.train_on_batch(noise, ones)
    ```
 
 During this step, discriminator is not trained, because its weights are explicitly frozen during creation of combined model:
+在此步骤中，不训练识别器，因为在创建组合模型期间，其权重被显式冻结：
 
 ```
 discriminator = create_discriminator()
@@ -136,8 +140,11 @@ combined.compile(loss='binary_crossentropy', optimizer=optimizer)
 ```
 
 ## Discriminator Model
+## 识别器模型
 
 To differentiate between real and fake image, we use traditional [**Convolutional Neural Network**](https://en.wikipedia.org/wiki/Convolutional_neural_network) (CNN) architecture. So, for the image of size 64x64, we will have something like this:
+
+为了区分真实图像和假图像，我们使用传统的 [**卷积神经网络**](https://en.wikipedia.org/wiki/Convolutional_neural_network)（CNN）架构。因此，对于尺寸为 64x64 的图像，我们将有类似这样的内容：
 
 ```
 discriminator = Sequential()
@@ -161,11 +168,22 @@ We have 3 convolution layers, which do the following:
 
 On top of this convolutional base, we put simple logistic regression classifier (AKA 1-neuron dense layer).
 
+我们有 3 个卷积层，它们负责执行以下操作：
+
+- 形状为64x64x3的原始图像经过16层过滤器，产生一个形状为32x32x16的图像。为了减小文件大小，我们使用 `AveragePooling2D`。
+- 下一步转换32x32x16的张量为16x16x32的张量。
+- 最后，在下一个卷积层之后，我们最终得到8x8x64形状的张量。
+
 ## Generator Model
+## 生成器模型
 
 Generator model is slightly more complicated. First, imagine if we wanted to convert an image to some sort of feature vector of length `latent_dim=100`. We would use convolutional network model similar to the discriminator above, but final layer would be a dense layer with size 100.
 
+生成器模型稍微复杂一些。首先，假设我们想要将图像转换为某种长度`latent_dim=100`的要素矢量。我们将使用与上面的识别器类似的卷积网络模型，不同的是，识别器的最终层会是一个大小为100的密集层。
+
 Generator does the opposite — converts vector of size 100 to an image. This involves a process called **deconvolution**, which is essentially a *reversed convolution*. Together with `UpSampling2D` they cause the size of the tensor to increase at each layer:
+
+生成器的作用正好相反 – 将大小为100的矢量转换为图像。这涉及到一个称为**去卷**的过程，它本质上是一个*反向卷积*。与`UpSampling2D`一起使用时会导致每个层的张量尺寸增加：
 
 ```
 generator = Sequential()
@@ -185,7 +203,11 @@ generator.add(Activation("tanh"))
 
 At the last step, we end up with tensor size 64x64x3, which is exactly the size of the image that we need. Note that final activation function is `tanh`, which gives an output in the range of [-1;1] — which means that we need to scale original training images to this interval. All those steps for preparing images is handled by `ImageDataset` class, and I will not go into detail there.
 
+在最后一步，我们以64x64x3的张量大小结束，这正是我们需要的图像的大小。请注意，最终的激活函数是 `tanh`，它给出的输出范围为[-1;1] ---- 这意味着我们需要将原始训练图像缩放到此区间。所有这些准备图像的步骤都由`ImageDataset`类来处理，我将不会在此详细介绍。
+
+
 ## Training script for Azure ML
+## Azure ML的训练脚本
 
 Now that we have all pieces for training the GAN together, we are ready to run this code on Azure ML as an experiment!
 
