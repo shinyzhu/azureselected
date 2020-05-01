@@ -21,19 +21,29 @@ pub_date:
 <ContentMeta />
 
 Deep Learning can look like Magic! I get the most magical feeling when watching neural network doing something creative, for example learning to produce paintings like an artist. Technology behind this is called Generative Adversarial Networks, and in this post we will look at how to train such a network on Azure Machine Learning Service. 
-深度学习看起来就像是魔法！当看到神经网络进行一些创造性的工作时，比如学习艺术家的风格去绘画，这时候我会有一种神奇的感觉。这背后的技术叫做生成对抗网络，本文中我们将了解如何在Azure的机器学习服务上训练这样一个网络。
+
+深度学习就像魔法一样！当看到神经网络进行一些创造性的工作时，比如学习艺术家的风格去绘画，这时候我会有一种神奇的感觉。这背后的技术叫做生成对抗网络，本文中我们将了解如何在Azure的机器学习服务上训练这样一个网络。
 
 > This post is a part of [AI April](http://aka.ms/AIApril) initiative, where each day of April my colleagues publish new original article related to AI, Machine Learning and Microsoft. Have a look at the [Calendar](http://aka.ms/AIApril) to find other interesting articles that have already been published, and keep checking that page during the month.
 
+> 这篇文章是[AI April](http：//aka.ms/AIApril)计划的一部分,所谓AI April计划是我的同事会在四月的每一天发布新的有关AI,机器学习和微软的原创文章。可以点击 [日历](http://aka.ms/AIApril) 以查看更多已经发布的文章，找到你感兴趣的内容。
+
 If you have seen my previous posts on Azure ML (about [using it from VS Code](https://soshnikov.com/azure/best-way-to-start-with-azureml/) and [submitting experiments and hyperparameter optimization](https://soshnikov.com/azure/using-azureml-for-hyperparameter-optimization/)), you should know that it is quite convenient to use Azure ML for almost any training tasks. However, all examples up to now have been done using toy MNIST dataset. Today we will focus on real problem: creating artificial paintings like those:
 
-| ![Flowers](https://soshnikov.com/images/artartificial/Flo1.jpg) | ![Portrait](https://soshnikov.com/images/artartificial/Port1.jpg) |
+如果你我之前发布的有关Azure ML的文章（关于[在VS Code内部使用Azure ML](https://soshnikov.com/azure/best-way-to-start-with-azureml/) and [提交实验和超参数优化](https://soshnikov.com/azure/using-azureml-for-hyperparameter-optimization/)）。你应该会知道，将Azure ML用于几乎任何训练任务都很方便。但是，到目前为止，所有的示例都是用的MNIST测试数据集。如今我们将致力于解决现实问题：创造像这样的人工智能绘画作品：
+
+| ![花卉](https://soshnikov.com/images/artartificial/Flo1.jpg) | ![肖像](https://soshnikov.com/images/artartificial/Port1.jpg) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Flowers, 2019, *Art of the Artificial* [keragan](https://github.com/shwars/keragan) trained on [WikiArt](https://www.wikiart.org/) Flowers | Queen of Chaos, 2019, [keragan](https://github.com/shwars/keragan) trained on [WikiArt](https://www.wikiart.org/) Portraits |
 
+| 鲜花, 2019, *人工艺术* [keragan](https://github.com/shwars/keragan) 训练自 [维基艺术](https://www.wikiart.org/) 鲜花 | 混沌女王, 2019, [keragan](https://github.com/shwars/keragan) 训练自 [维基艺术](https://www.wikiart.org/) 肖像 |
+
 Those painting are produced after training the network on paintings from [WikiArt](https://www.wikiart.org/). If you want to reproduce the same results, you may need to collect the dataset yourself, for example by using [WikiArt Retriever](https://github.com/lucasdavid/wikiart), or borrowing existing collections from [WikiArt Dataset](https://github.com/cs-chan/ArtGAN/blob/master/WikiArt Dataset/README.md) or [GANGogh Project](https://github.com/rkjones4/GANGogh).
 
-Place images you want to train on somewhere in `dataset` directory. For training on flowers, here is how some of those images might look like:
+这些绘画作品是在使用维基艺术进行绘画网络训练后被制作出来的。如果你想重现相同的结果，那你可能需要自己收集数据集，你可以使用[维基艺术检索器](https://github.com/lucasdavid/wikiart), 或者浏览现有的来自[维基艺术数据集](https://github.com/cs-chan/ArtGAN/blob/master/WikiArt Dataset/README.md) 的收藏集。还可以通过[GANGogh Project](https://github.com/rkjones4/GANGogh)来获得.
+
+Place images you want to train on somewhere in  directory. For training on flowers, here is how some of those images might look like:
+将需要训练的图像放在`数据集`目录下的任意位置：
 
 ![Flowers Dataset](https://soshnikov.com/images/blog/gan_dataset_flowers.png)
 
