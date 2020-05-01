@@ -34,8 +34,6 @@ If you have seen my previous posts on Azure ML (about [using it from VS Code](ht
 
 | ![花卉](https://soshnikov.com/images/artartificial/Flo1.jpg) | ![肖像](https://soshnikov.com/images/artartificial/Port1.jpg) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Flowers, 2019, *Art of the Artificial* [keragan](https://github.com/shwars/keragan) trained on [WikiArt](https://www.wikiart.org/) Flowers | Queen of Chaos, 2019, [keragan](https://github.com/shwars/keragan) trained on [WikiArt](https://www.wikiart.org/) Portraits |
-
 | 鲜花, 2019, *人工艺术* [keragan](https://github.com/shwars/keragan) 训练自 [维基艺术](https://www.wikiart.org/) 鲜花 | 混沌女王, 2019, [keragan](https://github.com/shwars/keragan) 训练自 [维基艺术](https://www.wikiart.org/) 肖像 |
 
 Those painting are produced after training the network on paintings from [WikiArt](https://www.wikiart.org/). If you want to reproduce the same results, you may need to collect the dataset yourself, for example by using [WikiArt Retriever](https://github.com/lucasdavid/wikiart), or borrowing existing collections from [WikiArt Dataset](https://github.com/cs-chan/ArtGAN/blob/master/WikiArt Dataset/README.md) or [GANGogh Project](https://github.com/rkjones4/GANGogh).
@@ -49,20 +47,35 @@ Place images you want to train on somewhere in  directory. For training on flowe
 
 We need our neural network model to learn both high-level composition of flower bouquet and a vase, as well as low-level style of painting, with smears of paint and canvas texture.
 
+我们需要使用神经网络模型去学习花束和花瓶的高层次组成，以及低层次的油漆上色和画布纹理等绘画风格。
+
 ## Generative Adversarial Networks
+
+## 生成对抗网络
 
 Those painting were generated using [**Generative Adversarial Network**](https://en.wikipedia.org/wiki/Generative_adversarial_network)), or GAN for short. In this example, we will use my simple GAN implementation in Keras called [keragan](https://github.com/shwars/keragan), and I will show some simplified code parts from it.
 
+那些绘画作品是使用[**生成对抗网络**](https://en.wikipedia.org/wiki/Generative_adversarial_network)（简称GAN)生成的。在此示例中，我们将在Keras中使用我的简单GAN实现，称为[keragan](https://github.com/shwars/keragan)，同时我将展示一部分简化的代码。
+
 GAN consists of two networks:
+
+GAN由两个网络组成：
 
 - **Generator**, which generates images given some input **noise vector**
 - **Discriminator**, whose role is to differentiate between real and "fake" (generated) paintings
+
+- **生成器**, 根据给定的输入**噪声矢量**生成图片
+- **识别器**, 区分真实绘画和“假”（生成的）绘画的不同点
 
 ![GAN Architecture](https://soshnikov.com/images/blog/gan_architecture.png)
 
 Training the GAN involves the following steps:
 
+培训 GAN 涉及以下几个步骤：
+
+
 1. Getting a bunch of generated and real images:
+1. 获取一堆生成的和真实的图片：
 
    ```
    noise = np.random.normal(0, 1, (batch_size, latent_dim))
@@ -71,6 +84,7 @@ Training the GAN involves the following steps:
    ```
 
 2. Training discriminator to better differentiate between those two. Note, how we provide vector with
+2.训练识别器以更好的区分两者。z
 
     
 
