@@ -1,6 +1,6 @@
 ---
 type: post
-status: new
+status: review
 sidebar: auto
 title: "Creating Generative Art using GANs on Azure ML"
 title: "使用Azure ML的GANS进行艺术创作"
@@ -316,6 +316,8 @@ After the experiment has been running for some time, we should be able to observ
 
 The first time we run GAN training, we might not get excellent results, for several reasons. First of all, learning rate seems to be an important parameter, and too high learning rate might lead to poor results. Thus, for best results we might need to perform a number of experiments.
 
+首次运行GAN训练的时候，由于某些原因我们可能无法得到优异的结果。首先，学习速率似乎是一个重要的参数，过高的学习速率可能会导致不良的结果。因此，为了获得最佳效果，我们需要进行大量的实验。
+
 Parameters that we might want to vary are the following:
 
 - `--size` determines the size of the picture, which should be power of 2. Small sizes like 64 or 128 allow for fast exprimentation, while large sizes (up to 1024) are good for creating higher quality images. Anything above 1024 will likely not produce good results, because special techniques are required to train large resolutions GANs, such as [progressive growing](https://arxiv.org/abs/1710.10196)
@@ -324,13 +326,24 @@ Parameters that we might want to vary are the following:
 
 Since we already know how to submit the experiment programmatically, it should be easy to wrap that code into a couple of `for`-loops to perform some parametric sweep. You may then check manually through Azure ML Portal which experiments are on their way to good results, and terminate all other experiments to save costs. Having a cluster of a few VMs gives you the freedom to start a few experiments at the same time without waiting.
 
+可能想要修改的参数如下：
+
+- `--大小` 这决定了图片的大小，数值应该是2的指数级。像64或者128这样的小型号可以让实验更迅速，然而大型号（最高可达1024）有利于生成高质量的图片。超过1024可能就无法产生一个好的结果，因为高分辨率的GANs需要特殊的技术来训练，比如 [progressive growing](https://arxiv.org/abs/1710.10196)。
+- `--学习速率` 是一个（令人惊讶的）相当主要的参数，尤其是对于高分辨率图像的训练。学习速率越小，训练的结果就越好，但同时也会非常的慢。
+- `--数据集` 我们可能会上传不同风格的图片到Azure ML数据存储中的不同文件夹里面，并同时开始训练多个实验。
+
 ## Getting Experiment Results
+## 获得实验结果
 
 Once you are happy with results, it makes sense to get the results of the training in the form or model files and sample images. I have mentioned that during the training our training script stored models in `outputs/models` directory, and sample images — to `outputs/samples`. You can browse those directories in the Azure ML Portal and download the files that you like manually:
+
+当你对结果满意的时候，这些训练结果才有意义。如我之前提到的一样训练时我们的训练脚本会存储模型在`outputs/models`路径下，并存储示例图片在`outputs/samples`路径下。你可以在Azure ML Portal里面浏览这些路径，也可以手动将其下载下来：
 
 ![Azure Portal with Experiment Results](https://soshnikov.com/images/blog/AzML/AzMLPortalGANRes.PNG)
 
 You can also do that programmatically, especially if you want to download *all* images produced during different epochs. `run` object that you have obtained during experiment submission gives you access to all files stored as part of that run, and you can download them like this:
+
+你也可以以编程方式执行此操作，特别是要下载不同时刻生成的*所有*图像。`run`表示在实验提交期间某一刻获得的对象，允许你访问运行期间某一刻的全部文件，而且你可以运行如下的脚本下载这些文件：
 
 ```
 run.download_files(prefix='outputs/samples')
@@ -338,7 +351,11 @@ run.download_files(prefix='outputs/samples')
 
 This will create the directory `outputs/samples` inside the current directory, and download all files from remote directory with the same name.
 
-I you have lost the reference to the specific run inside your notebook (it can happen, because most of the experiments are quite long-running), you can always create it by knowing the *run id*, which you can look up at the portal:
+这将在当前路径下创建一个`outputs/samples`路径，并以相同的名称下载远程路径下的全部文件。
+
+If you have lost the reference to the specific run inside your notebook (it can happen, because most of the experiments are quite long-running), you can always create it by knowing the *run id*, which you can look up at the portal:
+
+如果丢失了对笔记本内特定运行进程的引用（这可能会发生，因为大多数实验运行很长的时间），那么你始终可以通过Azure ML Portal上已知的*run id*来重新创建引用。
 
 ```
 run = Run(experiment=exp,run_id='KeraGAN_1584082108_356cf603')
@@ -346,12 +363,16 @@ run = Run(experiment=exp,run_id='KeraGAN_1584082108_356cf603')
 
 We can also get the models that were trained. For example, let's download the final generator model, and use it for generating a bunch of random images. We can get all filenames that are associated with the experiment, and filter out only those that represent generator models:
 
+我们也可以获得经过训练的模型。比如，下载最终的生成器模型，并将其用于生成一组随机图片。我们可以获取与实验有关的所有文件名，然后筛选出生成器模型的文件名：
+
 ```
 fnames = run.get_file_names()
 fnames = filter(lambda x : x.startswith('outputs/models/gen_'),fnames)
 ```
 
 They will all look like `outputs/models/gen_0.h5`, `outputs/models/gen_100.h5` and so on. We need to find out the maximum epoch number:
+
+她们看起来类似于`outputs/models/gen_0.h5`, `outputs/models/gen_100.h5`。我们需要找出最大阶段的数：
 
 ```
 no = max(map(lambda x: int(x[19:x.find('.')]), fnames))
@@ -361,10 +382,14 @@ run.download_file(fname)
 ```
 
 This will download the file with the highers epoch number to local directory, and also store the name of this file (w/out directory path) into `fname_wout_path`.
+这将下载具有较高纪元编号的文件到本地目录，并将此文件(w/out directory path)的名称存储在`fname_wout_path`。
 
 ## Generating new Images
+## 生成新图像
 
 Once we have obtained the model, we can just need load it in Keras, find out the input size, and give the correctly sized random vector as the input to produce new random painting generated by the network:
+
+获得模型后，我们只需要把模型加载到Keras里，找出输入大小，并给赋一个正确大小的随机矢量作为输入去生成一个新的随机绘画生成网络：
 
 ```
 model = keras.models.load_model(fname_wout_path)
@@ -374,6 +399,8 @@ res = model.predict(np.random.normal(0,1,(10,latent_dim)))
 
 Output of the generator network is in the range [-1,1], so we need to scale it linearly to the range [0,1] in order to be correctly displayed by `matplotlib`:
 
+生成网络的输出区间为[-1,1]，因此我们需要线性缩放到区间[0,1]以便可以通过`matplotlib`准确显示：
+
 ```
 res = (res+1.0)/2
 fig,ax = plt.subplots(1,10,figsize=(15,10))
@@ -381,9 +408,12 @@ for i in range(10):
     ax[i].imshow(res[i])
 ```
 
-Here is the result we will get: ![GAN Result](https://soshnikov.com/images/blog/AzML/AzMLGANPix.PNG)
+Here is the result we will get: 
+将会得到的结果：
+![GAN Result](https://soshnikov.com/images/blog/AzML/AzMLGANPix.PNG)
 
 Have a look at some of the best pictures produced during this experiment:
+这个实验期间产生的最佳图片：
 
 | ![Colourful Spring](https://soshnikov.com/images/artartificial/ColorfulSpring.jpg) | ![Countryside](https://soshnikov.com/images/artartificial/CountrySide.jpg) |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
@@ -395,24 +425,39 @@ Have a look at some of the best pictures produced during this experiment:
 
 > If you want to get fresh images produced by the network every day (well, almost every day) - we (together with my daughter) have created [@art_of_artificial](http://instagram.com/art_of_artificial) Instagram account where we will post those images.
 
+> 如果你想每天得到一张全新的来自这个生成网络的图片，我们（和我女儿一起）开通了一个Instagram账号[@art_of_artificial](http://instagram.com/art_of_artificial)来分享这些图片。
+
 ## Observing The Process of Learning
+## 观察学习的过程
 
 It is also interesting to look at the process of how GAN network gradually learns. I have explored this notion of learning in my exhibition [Art of the Artificial](https://soshnikov.com/art/artofartificial). Here are a couple of videos that show this process:
+
+研究GAN网络逐渐学习的过程也是非常有趣的。我在[人造艺术](https://soshnikov.com/art/artofartificial)展览中有探索这种学习的概念。下面这几个视频可以为你展示这个过程：
 
 | GAN Flower Generation          | GAN Portrait Generation        |
 | ------------------------------ | ------------------------------ |
 | <https://youtu.be/hnwbnt2Q9Iw> | <https://youtu.be/j2wpUFxyrEs> |
 
 ## Food for Thought
+## 值得深思的问题
 
 In this post, I have described how GAN works, and how to train it using Azure ML. This definitely opens up a lot of room for experimentation, but also a lot of room for thought. During this experiment we have created original artworks, generated by Artificial Intelligence. But can they be considered **ART**? I will discuss this in one of my next posts…
+本文中，我描述了GAN是如何工作的，以及如何使用Azure ML来训练它。这无疑为实验开辟了很多的空间，同时也引发了很大的思考空间。在这个实验中，我们创造了由人工智能生成的原创艺术品，但是它们可以被认为是**艺术**吗？我将会在下一篇文章中进行讨论……
 
 ## Acknowledgements
+##致谢
 
 When producing [keragan](https://github.com/shwars/keragan) library, I was largely inspired by [this article](https://towardsdatascience.com/generating-modern-arts-using-generative-adversarial-network-gan-on-spell-39f67f83c7b4), and also by [DCGAN implementation](https://github.com/Maximellerbach/Car-DCGAN-Keras) by Maxime Ellerbach, and partly by [GANGogh](https://github.com/rkjones4/GANGogh) project. A lot of different GAN architectures implemented in Keras are presented [here](https://github.com/eriklindernoren/Keras-GAN).
 
+创造[keragan](https://github.com/shwars/keragan)库的时候，我深受一些文章的启发：[this article](https://towardsdatascience.com/generating-modern-arts-using-generative-adversarial-network-gan-on-spell-39f67f83c7b4)，来自Maxime Ellerbach的[DCGAN implementation](https://github.com/Maximellerbach/Car-DCGAN-Keras)。并且有一部分来自[GANGogh](https://github.com/rkjones4/GANGogh)项目。[此处](https://github.com/eriklindernoren/Keras-GAN)介绍了Keras实现的很多不同的GAN体系架构。
+
 ## Other Posts in Azure ML Series
+## 其它关于Azure ML系列的文章
 
 - [Best Way to Start with Azure ML](https://soshnikov.com/azure/best-way-to-start-with-azureml/)
 - [Using Azure ML for Hyperparameter Optimization](https://soshnikov.com/azure/using-azureml-for-hyperparameter-optimization/)
 - **Creating Generative Art using GANs on Azure ML** (this post)
+
+- [开始Azure ML的最佳方式](https://soshnikov.com/azure/best-way-to-start-with-azureml/)
+- [使用Azure ML进行超参数优化](https://soshnikov.com/azure/using-azureml-for-hyperparameter-optimization/)
+- **使用Azure ML的GANs进行艺术创作** (本文)
