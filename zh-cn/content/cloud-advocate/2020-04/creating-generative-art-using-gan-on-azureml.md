@@ -210,12 +210,19 @@ At the last step, we end up with tensor size 64x64x3, which is exactly the size 
 ## Azure ML的训练脚本
 
 Now that we have all pieces for training the GAN together, we are ready to run this code on Azure ML as an experiment!
+现在，我们已经有了训练GAN的所有组件，接下来我们准备在Azure ML上运行一些实验代码！
 
 There is one important thing to be noted, however: normally, when running an experiment in Azure ML, we want to track some metrics, such as accuracy or loss. We can log those values during training using `run.log`, as described in my [previous post](https://soshnikov.com/azure/best-way-to-start-with-azureml/), and see how this metric changes during training on [Azure ML Portal](http://ml.azure.com/?WT.mc_id=aiapril-blog-dmitryso).
 
+然而，有非常重要的一点需要特别注意：当我们在Azure ML中运行实验时，通常希望追踪准确性或丢失等指标。我们可以在训练期间使用`run.log`来记录那些值，就像我的[上一篇文章](https://soshnikov.com/azure/best-way-to-start-with-azureml/)中描述的那样，同时可以在[Azure ML Portal](http://ml.azure.com/?WT.mc_id=aiapril-blog-dmitryso)中看到这些指标的变化情况。
+
 In our case, instead of numeric metric, we are interested in the visual images that our network generates at each step. Inspecting those images while experiment is running can help us decide whether we want to end our experiment, alter parameters, or continue.
 
+但是在我们这个案例中，我们感兴趣的不是数字指标，而是网络在每个步骤中生成的可以看到的图像，在训练运行的状态下检查这些图像可以帮助我们决定是否结束实验，更高参数，或者是继续运行。
+
 Azure ML supports logging images in addition to numbers, as described [here](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments/?WT.mc_id=aiapril-blog-dmitryso). We can log either images represented as np-arrays, or any plots produced by `matplotlib`, so what we will do is plotting three sample images on one plot. This plotting will be handled in `callbk` callback function that gets called by `keragan` after each training epoch:
+
+Azure ML除了支持记录数值之外还支持记录图像，具体请看[此处](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments/?WT.mc_id=aiapril-blog-dmitryso)。我们可以记录呈现为np数组的图像，或者是由`matplotlib`生成的任何图表，因此我们将在一个图表上绘制三个示例图像。这个绘图过程将在每次训练之后由`keragan`调用的回调函数`callbk`中处理：
 
 ```
 def callbk(tr):
@@ -229,6 +236,8 @@ def callbk(tr):
 
 So, the actual training code will look like this:
 
+因此，实际的训练代码将看起来如下所示：
+
 ```
 gan = keragan.DCGAN(args)
 imsrc = keragan.ImageDataset(args)
@@ -240,7 +249,10 @@ train.train(callbk)
 
 Note that `keragan` supports automatic parsing of many command-line parameters that we can pass to it through `args` structure, and that is what makes this code so simple.
 
+注意：这代码之所以如此简单，是因为`keragan`支持自动解析多个命令行参数，我们可以通过`args`结构体来传递给它。
+
 ## Starting the Experiment
+## 开始实验
 
 To submit the experiment to Azure ML, we will use the code similar to the one discussed in the [previous post on Azure ML](https://soshnikov.com/azure/using-azureml-for-hyperparameter-optimization/). The code is located inside [submit_gan.ipynb][https://github.com/CloudAdvocacy/AzureMLStarter/blob/master/submit_gan.ipynb], and it starts with familiar steps:
 
@@ -249,6 +261,14 @@ To submit the experiment to Azure ML, we will use the code similar to the one di
 - Uploading our dataset to the default datastore in the ML Workspace
 
 After that has been done, we can submit the experiment using the following code:
+
+提交实验到Azure ML时，我们将使用一段类似于在[上一篇关于Azure ML的文章](https://soshnikov.com/azure/using-azureml-for-hyperparameter-optimization/)中讨论过的代码。代码位于[submit_gan.ipynb][https://github.com/CloudAdvocacy/AzureMLStarter/blob/master/submit_gan.ipynb]，它从熟悉的步骤开始：
+
+- 使用 `ws = Workspace.from_config()`连接到工作空间
+- 连接到计算集群： `cluster = ComputeTarget(workspace=ws, name='My Cluster')`。此处我们需要一个带有GPU的虚拟机集群，例如[NC6](https://docs.microsoft.com/azure/virtual-machines/sizes-gpu/?WT.mc_id=aiapril-blog-dmitryso)。
+- 上传我们的数据集到ML工作区默认的数据存储里
+
+在这些步骤完成后，我们就可以使用如下代码提交我们的实验：
 
 ```
 exp = Experiment(workspace=ws, name='KeraGAN')
@@ -275,15 +295,24 @@ run = exp.submit(est)
 
 In our case, we pass `model_path=./outputs/models` and `samples_path=./outputs/samples` as parameters, which will cause models and samples generated during training to be written to corresponding directories inside Azure ML experiment. Those files will be available through Azure ML Portal, and can also be downloaded programmatically afterwards (or even during training).
 
+在我们这个示例中，我们传递`model_path=./outputs/models`和`samples_path=./outputs/samples`作为参数，它们会指定训练期间生成的模型和样本数据写入到Azure ML实验的相应目录里。而那些文件将可以通过Azure ML Portal访问到，也可以在训练结束后（甚至是训练进行期间）通过编写程序来下载到本地。
+
 To create the estimator that can run on GPU without problems, we use built-in [`Tensorflow`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&WT.mc_id=aiapril-blog-dmitryso) estimator. It is very similar to generic [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py&WT.mc_id=aiapril-blog-dmitryso), but also provides some out-of-the-box options for distributed training. You can read more about using different estimators [in the official documentation](https://docs.microsoft.com/azure/machine-learning/how-to-train-ml-models?WT.mc_id=aiapril-blog-dmitryso).
+
+为了创建可以在GPU上顺利运行的estimator，我们使用内建的[`Tensorflow`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&WT.mc_id=aiapril-blog-dmitryso)estimator。它和通用[`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py&WT.mc_id=aiapril-blog-dmitryso)非常类似，但是可以为分布式训练提供开箱即用的选项。你可以去了解更多关于使用不同估算器的[官方文档](https://docs.microsoft.com/azure/machine-learning/how-to-train-ml-models?WT.mc_id=aiapril-blog-dmitryso)。
 
 Another interesting point here is how we install `keragan` library — directly from GitHub. While we can also install it from PyPI repository, I wanted to demonstrate you that direct installation from GitHub is also supported, and you can even indicate a specific version of the library, tag or commit ID.
 
+另外一个有趣的点是我们可以直接从GitHun安装`keragan`库。尽管我们也可以从PyPI存储库安装，但我想向你展示它也支持直接从GitHub安装，你甚至可以指定库文件的特定版本，标签或者是提交ID。
+
 After the experiment has been running for some time, we should be able to observe the sample images being generated in the [Azure ML Portal](http://ml.azure.com/?WT.mc_id=aiapril-blog-dmitryso):
+
+实验运行一段时间后，我们应该就可以在[Azure ML Portal](http://ml.azure.com/?WT.mc_id=aiapril-blog-dmitryso)中看到样本图片：
 
 ![GAN Training Experiment Results](https://soshnikov.com/images/blog/AzML/AzMLPortalGAN.PNG)
 
 ## Running Many Experiments
+## 运行多个实验
 
 The first time we run GAN training, we might not get excellent results, for several reasons. First of all, learning rate seems to be an important parameter, and too high learning rate might lead to poor results. Thus, for best results we might need to perform a number of experiments.
 
