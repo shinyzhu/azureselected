@@ -2,21 +2,19 @@
 type: post
 status: review
 sidebar: auto
-title: "Creating Generative Art using GANs on Azure ML"
-title: "使用Azure ML的GANS进行艺术创作"
-description: "How you can train GANs on pictures of flowers and portraits. This technical post should be first, because the AI Art challenge would depend on it."
-description: "关于如何训练花卉和肖像类图片的的GANs。这篇技术文章应该是第一篇，因为AI艺术的挑战依赖于它。"
+title: "在 Azure ML 上使用生成对抗网络（GAN）创建艺术作品"
+description: "本文介绍如何训练花和肖像图片的生成对抗网络（GAN）。"
 tags: ['Azure Machine Learning']
 author: 'Dmitry Soshnikov'
 date: 2020-03-06
 url: 'https://soshnikov.com/scienceart/creating-generative-art-using-gan-on-azureml/'
 translator: 'DuanShaolong'
-reviewer: ''
-pub_date: 
+reviewer: 'shinyzhu'
+pub_date: 2020-05-06
 ---
 
 # Creating Generative Art using GANs on Azure ML
-# 使用Azure ML的GANS进行艺术创作
+# 在 Azure ML 上使用生成对抗网络（GAN）创建艺术作品
 
 <ContentMeta />
 
