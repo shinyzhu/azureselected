@@ -25,7 +25,7 @@ pub_date: 2020-05-06
 
 | ![花卉](https://soshnikov.com/images/artartificial/Flo1.jpg) | ![肖像](https://soshnikov.com/images/artartificial/Port1.jpg) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 鲜花, 2019, *人工艺术* [keragan](https://github.com/shwars/keragan) 训练自 [维基艺术](https://www.wikiart.org/) 鲜花 | 混沌女王, 2019, [keragan](https://github.com/shwars/keragan) 训练自 [维基艺术](https://www.wikiart.org/) 肖像 |
+| 鲜花, 2019, *人工艺术* [keragan](https://github.com/shwars/keragan) 基于 [WikiArt](https://www.wikiart.org/) 鲜花的训练 | 混沌女王, 2019, [keragan](https://github.com/shwars/keragan) 基于 [WikiArt](https://www.wikiart.org/) 肖像的训练 |
 
 这些绘画作品是在使用维基艺术进行绘画网络训练后被制作出来的。如果你想重现相同的结果，那你可能需要自己收集数据集，你可以使用[维基艺术检索器](https://github.com/lucasdavid/wikiart), 或者浏览现有的来自[维基艺术数据集](https://github.com/cs-chan/ArtGAN/blob/master/WikiArt Dataset/README.md) 的收藏集。还可以通过[GANGogh Project](https://github.com/rkjones4/GANGogh)来获得.
 
@@ -51,40 +51,30 @@ GAN由两个网络组成：
 
 1. 获取一堆生成的和真实的图片：
 
-   ```
+   ```python
    noise = np.random.normal(0, 1, (batch_size, latent_dim))
    gen_imgs = generator.predict(noise)   
    imgs = get_batch(batch_size)
    ```
-2. 训练识别器以更好的区分两者。注意：我们是提供向量值的方法
-
-   ```plaintext
-   ones
-   ```
+2. 训练识别器以更好的区分两者。注意：我们是提供向量值的方法`ones`和`zeros`
 
 
-   和
+期望的答案：
 
-   ```plaintext
-   zeros
-   ```
-
-   如期的答案：
-
-   ```
+   ```python
    d_loss_r = discriminator.train_on_batch(imgs, ones)
    d_loss_f = discriminator.train_on_batch(gen_imgs, zeros)
    d_loss = np.add(d_loss_r , d_loss_f)*0.5
    ```
 3. 训练组合模型，以提升生成器
 
-   ```
+   ```python
    g_loss = combined.train_on_batch(noise, ones)
    ```
 
 在此步骤中，不训练识别器，因为在创建组合模型期间，其权重被显式冻结：
 
-```
+```python
 discriminator = create_discriminator()
 generator = create_generator()
 discriminator.compile(loss='binary_crossentropy', optimizer=optimizer, 
@@ -103,7 +93,7 @@ combined.compile(loss='binary_crossentropy', optimizer=optimizer)
 
 为了区分真实图像和假图像，我们使用传统的 [**卷积神经网络**](https://en.wikipedia.org/wiki/Convolutional_neural_network)（CNN）架构。因此，对于尺寸为 64x64 的图像，我们将有类似这样的内容：
 
-```
+```python
 discriminator = Sequential()
 
 for x in [16,32,64]: # number of filters on next layer
@@ -131,7 +121,7 @@ discriminator.add(Dense(1, activation='sigmoid'))
 
 生成器的作用正好相反 – 将大小为100的矢量转换为图像。这涉及到一个称为**去卷**的过程，它本质上是一个*反向卷积*。与`UpSampling2D`一起使用时会导致每个层的张量尺寸增加：
 
-```
+```python
 generator = Sequential()
 generator.add(Dense(8 * 8 * 2 * size, activation="relu", 
                                       input_dim=latent_dim))
@@ -159,7 +149,7 @@ generator.add(Activation("tanh"))
 
 Azure ML除了支持记录数值之外还支持记录图像，具体请看[此处](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments/?WT.mc_id=aiapril-blog-dmitryso)。我们可以记录呈现为np数组的图像，或者是由`matplotlib`生成的任何图表，因此我们将在一个图表上绘制三个示例图像。这个绘图过程将在每次训练之后由`keragan`调用的回调函数`callbk`中处理：
 
-```
+```python
 def callbk(tr):
     if tr.gan.epoch % 20 == 0:
         res = tr.gan.sample_images(n=3)
@@ -171,7 +161,7 @@ def callbk(tr):
 
 因此，实际的训练代码将看起来如下所示：
 
-```
+```python
 gan = keragan.DCGAN(args)
 imsrc = keragan.ImageDataset(args)
 imsrc.load()
@@ -192,7 +182,7 @@ train.train(callbk)
 
 在这些步骤完成后，我们就可以使用如下代码提交我们的实验：
 
-```
+```python
 exp = Experiment(workspace=ws, name='KeraGAN')
 script_params = {
     '--path': ws.get_default_datastore(),
@@ -215,13 +205,13 @@ est = TensorFlow(source_directory='.',
 run = exp.submit(est)
 ```
 
-在我们这个示例中，我们传递`model_path=./outputs/models`和`samples_path=./outputs/samples`作为参数，它们会指定训练期间生成的模型和样本数据写入到Azure ML实验的相应目录里。而那些文件将可以通过Azure ML Portal访问到，也可以在训练结束后（甚至是训练进行期间）通过编写程序来下载到本地。
+在我们这个示例中，我们传递`model_path=./outputs/models`和`samples_path=./outputs/samples`作为参数，它们会指定训练期间生成的模型和样本数据写入到Azure ML实验的相应目录里。而那些文件将可以通过Azure ML门户访问到，也可以在训练结束后（甚至是训练进行期间）通过编写程序来下载到本地。
 
-为了创建可以在GPU上顺利运行的estimator，我们使用内建的[`Tensorflow`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&WT.mc_id=aiapril-blog-dmitryso)estimator。它和通用[`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py&WT.mc_id=aiapril-blog-dmitryso)非常类似，但是可以为分布式训练提供开箱即用的选项。你可以去了解更多关于使用不同估算器的[官方文档](https://docs.microsoft.com/azure/machine-learning/how-to-train-ml-models?WT.mc_id=aiapril-blog-dmitryso)。
+为了创建可以在GPU上顺利运行的Estimator，我们使用内建的[`Tensorflow`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&WT.mc_id=aiapril-blog-dmitryso) Estimator。它和通用[`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py&WT.mc_id=aiapril-blog-dmitryso)非常类似，但是可以为分布式训练提供开箱即用的选项。你可以去了解更多关于使用不同估算器的[官方文档](https://docs.microsoft.com/azure/machine-learning/how-to-train-ml-models?WT.mc_id=aiapril-blog-dmitryso)。
 
 另外一个有趣的点是我们可以直接从GitHun安装`keragan`库。尽管我们也可以从PyPI存储库安装，但我想向你展示它也支持直接从GitHub安装，你甚至可以指定库文件的特定版本，标签或者是提交ID。
 
-实验运行一段时间后，我们应该就可以在[Azure ML Portal](http://ml.azure.com/?WT.mc_id=aiapril-blog-dmitryso)中看到样本图片：
+实验运行一段时间后，我们应该就可以在[Azure ML 门户](http://ml.azure.com/?WT.mc_id=aiapril-blog-dmitryso)中看到样本图片：
 
 ![GAN Training Experiment Results](https://soshnikov.com/images/blog/AzML/AzMLPortalGAN.PNG)
 
@@ -239,47 +229,47 @@ run = exp.submit(est)
 
 ## 获得实验结果
 
-当你对结果满意的时候，这些训练结果才有意义。如我之前提到的一样训练时我们的训练脚本会存储模型在`outputs/models`路径下，并存储示例图片在`outputs/samples`路径下。你可以在Azure ML Portal里面浏览这些路径，也可以手动将其下载下来：
+当你对结果满意的时候，这些训练结果才有意义。如我之前提到的一样训练时我们的训练脚本会存储模型在`outputs/models`路径下，并存储示例图片在`outputs/samples`路径下。你可以在Azure ML 门户里面浏览这些路径，也可以手动将其下载下来：
 
 ![Azure Portal with Experiment Results](https://soshnikov.com/images/blog/AzML/AzMLPortalGANRes.PNG)
 
 你也可以以编程方式执行此操作，特别是要下载不同时刻生成的*所有*图像。`run`表示在实验提交期间某一刻获得的对象，允许你访问运行期间某一刻的全部文件，而且你可以运行如下的脚本下载这些文件：
 
-```
+```python
 run.download_files(prefix='outputs/samples')
 ```
 
 这将在当前路径下创建一个`outputs/samples`路径，并以相同的名称下载远程路径下的全部文件。
 
-如果丢失了对笔记本内特定运行进程的引用（这可能会发生，因为大多数实验运行很长的时间），那么你始终可以通过Azure ML Portal上已知的*run id*来重新创建引用。
+如果丢失了对笔记本内特定运行进程的引用（这可能会发生，因为大多数实验运行很长的时间），那么你始终可以通过Azure ML 门户上已知的*run id*来重新创建引用。
 
-```
+```python
 run = Run(experiment=exp,run_id='KeraGAN_1584082108_356cf603')
 ```
 
 我们也可以获得经过训练的模型。比如，下载最终的生成器模型，并将其用于生成一组随机图片。我们可以获取与实验有关的所有文件名，然后筛选出生成器模型的文件名：
 
-```
+```python
 fnames = run.get_file_names()
 fnames = filter(lambda x : x.startswith('outputs/models/gen_'),fnames)
 ```
 
 她们看起来类似于`outputs/models/gen_0.h5`, `outputs/models/gen_100.h5`。我们需要找出最大阶段的数：
 
-```
+```python
 no = max(map(lambda x: int(x[19:x.find('.')]), fnames))
 fname = 'outputs/models/gen_{}.h5'.format(no)
 fname_wout_path = fname[fname.rfind('/')+1:]
 run.download_file(fname)
 ```
 
-这将下载具有较高纪元编号的文件到本地目录，并将此文件(w/out directory path)的名称存储在`fname_wout_path`。
+这将下载具有较高纪元编号的文件到本地目录，并将此文件的名称存储在`fname_wout_path`。
 
 ## 生成新图像
 
 获得模型后，我们只需要把模型加载到Keras里，找出输入大小，并给赋一个正确大小的随机矢量作为输入去生成一个新的随机绘画生成网络：
 
-```
+```python
 model = keras.models.load_model(fname_wout_path)
 latent_dim=model.layers[0].input.shape[1].value
 res = model.predict(np.random.normal(0,1,(10,latent_dim)))
@@ -287,7 +277,7 @@ res = model.predict(np.random.normal(0,1,(10,latent_dim)))
 
 生成网络的输出区间为[-1,1]，因此我们需要线性缩放到区间[0,1]以便可以通过`matplotlib`准确显示：
 
-```
+```python
 res = (res+1.0)/2
 fig,ax = plt.subplots(1,10,figsize=(15,10))
 for i in range(10):
@@ -333,4 +323,3 @@ for i in range(10):
 
 - [开始Azure ML的最佳方式](https://soshnikov.com/azure/best-way-to-start-with-azureml/)
 - [使用Azure ML进行超参数优化](https://soshnikov.com/azure/using-azureml-for-hyperparameter-optimization/)
-- **使用Azure ML的GANs进行艺术创作** (本文)
