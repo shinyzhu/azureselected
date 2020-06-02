@@ -6,7 +6,7 @@ title: "Build, test, and deploy .NET Core apps"
 description: "Use .NET Core to build apps with Azure Pipelines, Azure DevOps, & Team Foundation Server"
 tags: ['Azure DevOps', '.NET Core']
 author: 'Abel Wang'
-date: 2020-03-28
+date: 2020-05-06
 url: 'https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/dotnet-core'
 translator: ''
 reviewer: ''
