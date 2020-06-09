@@ -8,7 +8,7 @@ tags: ['Azure CLI', 'VS Code', 'Azure ML', 'Azure']
 author: 'Dmitry Soshnikov'
 date: 2020-01-27
 url: 'https://dev.to/azure/the-best-way-to-start-with-azure-machine-learning-17jl'
-translator: 'yanxiaodi'
+translator: 'Ning Chen'
 reviewer: 'shinyzhu'
 pub_date: 2020-02-12
 ---
@@ -17,14 +17,14 @@ pub_date: 2020-02-12
 
 <ContentMeta />
 
-我知道許多數據科學家，包括我自己，都通過 Jupyter Notebooks 或某些 Python IDE 在支持 GPU 的計算機上，包括本地或在雲中完成大部分工作。近兩年來，作為 AI/ML 軟件工程師，我正在做的事情是——在一台沒有 GPU 的機器上準備數據，然後在雲中使用 GPU 虛擬機做訓練。
+我知道許多資料科學家，包括我自己，都在配備 GPU 的機器使用 Jupyter Notebooks 或某些 Python IDE，也許本地端或在雲完成大部分工作。近兩年來，作為 AI/ML 軟體工程師，我在做沒有 GPU 的機器上處理資料，然後在雲中使用 GPU 虛擬機器做訓練。
 
-另一方面，您可能已經聽說過[Azure 機器學習](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=azureselected-content31-xinglzhu)——一個特殊的用於機器學習的平台服務。但是，如果您開始尋找一些[入門教程](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml/?WT.mc_id=azureselected-content31-xinglzhu)，您將意識到，使用Azure 的ML 會創建很多不必要的開銷，並且這個過程不是很理想。例如，在前面提到的例子中訓練腳本是作為一個 Jupyter Cell 的文本文件創建的，沒有代碼補全，也沒有任何方便地在本地執行或調試的方式。這些額外的開銷也是我們並沒有在我們的項目中盡可能多的使用它的原因。
+另一方面，您可能已經聽說過[Azure 機器學習](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=azureselected-content31-xinglzhu)——一個特別的機器學習平台服務。但是，當你開始參考一些[入門教程](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml/?WT.mc_id=azureselected-content31-xinglzhu)，您可能意識到，使用Azure 的ML 會繁瑣及重工產生很多不必要的開銷，使用過程不是很理想。例如，訓練腳本是透過 Jupyter Cell 的文本文件創建的，沒有編碼補全，也無法方便地在本地端執行或調校。這些額外的開銷也是我們並沒有在我們的項目中盡可能多的使用它的原因。
 
-不過，最近我發現有一個[Visual Studio Code Extension for Azure ML](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai&WT.mc_id=azureselected-content31-xinglzhu#overview)。有了這個擴展，您可以在 VS Code 中直接開發您的的訓練代碼，並在本地運行，然後將相同的代碼提交到集群上進行訓練，只需點擊幾下按鈕。這樣的方式有幾個重要的優勢：
+不過，最近我找到一個擴充[Visual Studio Code Extension for Azure ML](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai&WT.mc_id=azureselected-content31-xinglzhu#overview)。透過這個擴充，您可以在 VS Code 中直接開發您的的訓練編碼，並在本地端運行，然後將相同的編碼提交到集群上進行訓練，這些過程只需幾下點擊。並且還有幾個重要的好處：
 
-- 您可以將大部分的時間花在本地機器上，並**僅為訓練使用強大的GPU資源**。訓練集群可以根據需求自動調整大小，通過將機器的最小量設置為0，可以根據需要調整 VM。
-- 您**將訓練的所有結果**維護在一個中心位置，包括指標和創建模型——沒有必要為手工為每個實驗保留精確度記錄。
+- 您可以將主要的時間花在本地機器上，並**在需要訓練時使用強大的雲端GPU資源**。訓練集群可以根據需求自動調整大小，當將機器的最小量設置為0後，你可以根據需要調整 VM。
+- 您**將訓練的所有結果**包括指標和創建模型維護在一個中心位置，你不在需要手工為每個實驗保留精確度的記錄。
 - 如果**幾個人在同一項目上工作**——他們可以使用同一個集群（所有實驗將進行排隊），並且可以查看彼此的實驗結果。例如，您可以使用**教室環境中的 Azure ML**，創建一個集群供所有人使用，而不是給每個學生創建一個單獨的 GPU 機器，並促進學生之間為模型精確度進行競爭。
 - 如果您需要進行大量訓練，例如用於**超參數優化**——所有這些可以通過幾個命令來完成，無需手動運行一系列的實驗。
 
@@ -50,7 +50,7 @@ az ml workspace create -w myworkspace -g myazml
 
 ## MNIST 訓練腳本
 
-在我們的示例中，我們將展示如何使用 MNIST 數據集來解決非常[傳統的手寫數字識別問題](https://www.kaggle.com/c/digit-recognizer)。以同樣的方式，您將能夠運行其他任何訓練腳本。
+在我們的範例中，我們將展示如何使用 MNIST 數據集來解決非常[傳統的手寫數字識別問題](https://www.kaggle.com/c/digit-recognizer)。以同樣的方式，您將能夠運行其他任何訓練腳本。
 
 我們的樣本庫包含簡單的 MNIST 訓練腳本 `train_local.py`。這個腳本從 OpenML 下載 MNIST 數據集，然後使用 SKLearn `邏輯回歸` 訓練模型並打印結果精確度：
 
@@ -93,7 +93,7 @@ except:
 
 此腳本修改後的版本被稱為`train_universal.py`（它比上面呈現的代碼更複雜一些），它既可以在本地運行（不使用 Azure ML），也可以運行在遠程計算資源上。
 
-為了從 VS Code 中將其運行在 Azure ML 上，請遵循這些步驟：
+為了從 VS Code 中運行在 Azure ML 上，請遵循這些步驟：
 
 1. 確保您的 Azure 擴展連接到您的雲帳戶。選擇左側菜單的 Azure 圖標。如果您沒有連接，您會看到在右下角顯示一個通知以便您連接（[見圖](https://habrastorage.org/webt/7b/ii/u6/7biiu6ktpygayub0ff17-u36om4.png)）。點擊它，並通過瀏覽器登錄。您也可以按下 **Ctrl-Shift-P**，將彈出命令面板，輸入 **Azure Sign In** 進行登錄。
 2. 然後，您應該能夠在 Azure 欄部分的 **MACHINE LEARNING** 中看見您的工作區：
@@ -118,13 +118,13 @@ except:
    ![VS Code 中的Azure ML 工作區](https://res.cloudinary.com/practicaldev/image/fetch/s--o_ITr5kJ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://habrastorage.org/webt/uh/u0/vg/uhu0vgjdtifxczq6saeerxhsdys.png)
    然後，您將在 Azure ML 門戶中看到所有運行的指標結果，如上面的截圖所示。
 
-現在您已了解，將運行提交到 Azure ML 並不復雜，而且一些功能（如從您的運行、模型等存儲所有的統計數據）是免費的。
+現在您已了解，將運行提交到 Azure ML 並不複雜，而且一些功能（如從您的運行、模型等存儲所有的統計數據）是免費的。
 
-您可能已經註意到，對我們的示例來說，在集群上運行腳本所花費的時間比本地運行要長——它甚至可能需要幾分鐘。當然，還有一些開銷，如將腳本和所有環境打包到容器中，並將其發送到雲端。如果群集被設置為自動縮放到0節點——可能還會有一些額外的開銷，如虛擬機的啟動，並且當這個示例腳本小到僅需要幾秒鐘來執行的時候，這些開銷都是顯而易見的。然而，在現實的場景中，當訓練需要幾十分鐘，有時甚至更多的時候——這種開銷變得幾乎不再重要，尤其是對從集群中獲得的速度提升來說。
+您可能已經註意到，對我們的範例來說，在集群上運行腳本所花費的時間比本地運行要長——它甚至可能需要幾分鐘。當然，這需要花一些資源，如將腳本和所有環境打包到容器中，並將其發送到雲端。如果群集被設置為自動縮放到0節點——可能還會有一些額外的開銷，如虛擬機的啟動，並且當這個範例腳本小到僅需要幾秒鐘來執行的時候，這些開銷都是顯而易見的。然而，在現實的場景中，當訓練需要幾十分鐘，有時甚至更多的時候——這種開銷變得幾乎不再重要，尤其是對從集群中獲得的速度提升來說。
 
 ## 下一步是什麼？
 
-現在您已經了解瞭如何將腳本提交到遠程群集上來執行，可以開始在您的日常工作中使用 Azure ML了。您可以在普通 PC 上開發腳本，然後在 GPU 虛擬機或集群上自動計劃執行，並在一個地方保存所有的結果。
+現在您已經了解瞭如何將腳本提交到遠程群集上來執行，可以開始在您的日常工作中使用 Azure ML了。您可以在一般 PC 上開發腳本，然後在 GPU 虛擬機或集群上自動計劃執行，並在一個地方保存所有的結果。
 
 不過，使用 Azure ML 不僅僅只有這兩個優勢。 Azure ML 也可用於數據存儲和數據集處理——使用不同的訓練腳本來訪問相同的數據會更加方便。另外，您還可以通過 API 自動提交實驗、改變參數——從而進行一些超參數優化。此外，Azure ML 中內置的稱為[**Hyperdrive**](https://docs.microsoft.com/azure/machine-learning/how-to-tune-hyperparameters/?WT.mc_id=azureselected-content31-xinglzhu)的特定技術，能夠進行更聰明的超參數搜索。我將在下一篇文章中討論這些功能和技術。
 

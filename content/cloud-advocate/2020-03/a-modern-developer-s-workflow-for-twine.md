@@ -21,13 +21,13 @@ I love [Twine](https://twinery.org/)! Whether you're trying to prototype a large
 
 That said, a common complaint I've heard from most people I've talked to who use it seriously is how readily its workflows fall apart at scale. 
 
-A visual graph editor is a fantastic approach for small projects, but gets unmanageable quickly on larger projects. Additionally, the way the Twine 2 editor handles files means using using tools like version control can be difficult, and merging changes from multiple collaborators can be nearly impossible.
+A visual graph editor is a fantastic approach for small projects, but gets unmanageable quickly on larger projects. Additionally, the way using the Twine 2 editor handles files means using tools like version control can be difficult, and merging changes from multiple collaborators can be nearly impossible.
 
 But there's a solution! I'm going to spend the next few minutes walking you through my Twine development workflow. There are three important parts of it I want to talk about:
 
-1. **Plain text files**. I use [VS Code](https://code.visualstudio.com/?WT.mc_id=devto-blog-emwalker) to write my games, rather than using the visual Twine editor. 
-2. **Modern version control**, storing my games in git on GitHub.
-3. **Automatic publishing**. Every time I push a new version of my game to GitHub, it's instantly playable via [GitHub Actions](https://github.com/features/actions) and [GitHub Pages](https://pages.github.com/).
+1. **Plain text files.** I use [VS Code](https://code.visualstudio.com/?WT.mc_id=devto-blog-emwalker) to write my games, rather than using the visual Twine editor. 
+2. **Modern version control.** storing my games in git on GitHub.
+3. **Automatic publishing.** Every time I push a new version of my game to GitHub, it's instantly playable via [GitHub Actions](https://github.com/features/actions) and [GitHub Pages](https://pages.github.com/).
 
 Let's step through the tools I use, and how you can get set up with a similar toolchain!
 
@@ -39,11 +39,11 @@ Why is it valuable to be able to write Twine games as text files instead of as n
 
 **It allows for reuse.** Have some macros or other bits of scripting you'd like to reuse between passages, or across multiple game projects? Being able to copy/paste text in an IDE is a lot easier than managing it in the visual editor.
 
-**It gives you access to better writing tools**. I'm more comfortable writing in the same text editor I use for other programming and writing tasks than I am in Twine's text boxes. It also means I can use the tools they provide to make my life easier! 
+**It gives you access to better writing tools.** I'm more comfortable writing in the same text editor I use for other programming and writing tasks than I am in Twine's text boxes. It also means I can use the tools they provide to make my life easier! 
 
 VS Code has extensions to add syntax highlighting for both Harlowe and Sugarcube. More than that, access to its entire IDE ecosystem means I can pull in tools to help with creative prose writing. This means basic things like spell check and an omnipresent word counter, but it can also mean more powerful tools to do things like [warn me if I'm using subtly sexist/racist/ableist language](https://alexjs.com/) or even [spark my creativity by collaborating with an AI](https://www.robinsloan.com/notes/writing-with-the-machine/)!
 
-**It enables more robust versioning and collaboration**. More on this later, but writing my game in a text file means it's stored in a human-readable text file, which is what enables all of the other great tools and techniques I'll be talking about next.
+**It enables more robust versioning and collaboration.** More on this later, but writing my game in a text file means it's stored in a human-readable text file, which is what enables all of the other great tools and techniques I'll be talking about next.
 
 This all sounds great! To get all of these benefits, we can use a special programming language called Twee!
 
