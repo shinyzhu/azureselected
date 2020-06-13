@@ -7,7 +7,7 @@ description: "描述了 C# 中3个新特性"
 tags: ['C#', '.NET']
 author: 'Chris Noring'
 date: 2020-03-04
-url: 'https://docs.microsoft.com/en-us/azure/devops/pipelines/apps/aspnet/build-aspnet-4'
+url: 'https://softchris.github.io/pages/dotnet-csharp-news.html'
 translator: ''
 reviewer: ''
 pub_date: 
