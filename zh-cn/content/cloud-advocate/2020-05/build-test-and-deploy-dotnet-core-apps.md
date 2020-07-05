@@ -24,39 +24,59 @@ Use a pipeline to automatically build and test your .NET Core projects. Learn ho
 使用Pipeline自动化构建和测试你的.NET Core项目，学习如何：
 
 - Set up your build environment with [Microsoft-hosted](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops) or [self-hosted](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/agents?view=azure-devops) agents.
+- 使用微软托管或者自己托管的agents设置你的构建环境。
 - Restore dependencies, build your project, and test with the [.NET Core CLI task](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops) or a [script](https://docs.microsoft.com/en-us/azure/devops/pipelines/scripts/cross-platform-scripting?view=azure-devops).
+- 使用[.NET Core CLI task](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops) 或者 [script](https://docs.microsoft.com/en-us/azure/devops/pipelines/scripts/cross-platform-scripting?view=azure-devops)还原依赖，构建并测试项目。
 - Use the [publish code coverage task](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/test/publish-code-coverage-results?view=azure-devops) to publish code coverage results.
+- 使用[publish code coverage task](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/test/publish-code-coverage-results?view=azure-devops)发布代码覆盖率结果。
 - Package and deliver your code with the [.NET Core CLI task](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops) and the [publish build artifacts task](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/utility/publish-build-artifacts?view=azure-devops).
+- 使用[.NET Core CLI task](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops) 和 [publish build artifacts task](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/utility/publish-build-artifacts?view=azure-devops)打包并交付你的代码。
 - Publish to a [NuGet feed](https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/nuget?view=azure-devops).
+- 发布一个[NuGet feed](https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/nuget?view=azure-devops)。
 - Deploy your [web app to Azure](https://docs.microsoft.com/en-us/azure/devops/pipelines/targets/webapp?view=azure-devops).
+- 部署你的[web app 到 Azure](https://docs.microsoft.com/en-us/azure/devops/pipelines/targets/webapp?view=azure-devops)。
 
 > Note
 >
 > For help with .NET Framework projects, see [Build ASP.NET apps with .NET Framework](https://docs.microsoft.com/en-us/azure/devops/pipelines/apps/aspnet/build-aspnet-4?view=azure-devops).
 
+> 备注
+>
+> 关于的.NET Framework项目的帮助信息，见[Build ASP.NET apps with .NET Framework](https://docs.microsoft.com/en-us/azure/devops/pipelines/apps/aspnet/build-aspnet-4?view=azure-devops)。
+
 ## Create your first pipeline
+## 创建你的第一个pipeline
 
 > Are you new to Azure Pipelines? If so, then we recommend you try this section before moving on to other sections.
+> 如果你的初次接触Azure Pipelines，我们建议你首先阅读这个部分。
 
 ### Get the code
+### 获取代码
 
 Fork this repo in GitHub:
+在GitHubfork这个仓库：
 
 ```
 https://github.com/MicrosoftDocs/pipelines-dotnet-core
 ```
 
 ### Sign in to Azure Pipelines
+### 登录到Azure Pipelines
 
 Sign in to [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines). After you sign in, your browser goes to `https://dev.azure.com/my-organization-name` and displays your Azure DevOps dashboard.
+首先登录到[Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines)。登录成功后，你的浏览器会跳转到`https://dev.azure.com/my-organization-name`并展示你的Azure DevOps dashboard。
 
 Within your selected organization, create a *project*. If you don't have any projects in your organization, you see a **Create a project to get started** screen. Otherwise, select the **Create Project** button in the upper-right corner of the dashboard.
+在你选中的组织内，创建一个*项目*。如果你的组织内还没有项目，你将看到一个**Create a project to get started**的画面。否则，就在dashboard的右上角选择**Create Project**按钮。
 
 ### Create the pipeline
+### 创建pipeline
 
 1. Sign in to your Azure DevOps organization and navigate to your project.
+1. 登录到你的Azure DevOps 组织并导航到你的项目。
 
 2. Go to **Pipelines**, and then select **New Pipeline**.
+2. 选择 **Pipelines**，然后选择**New Pipeline**。
 
 3. Walk through the steps of the wizard by first selecting **GitHub** as the location of your source code.
 
@@ -65,16 +85,27 @@ Within your selected organization, create a *project*. If you don't have any pro
    > Note
    >
    > If this is not what you see, then [make sure the Multi-stage pipelines experience is turned on](https://docs.microsoft.com/en-us/azure/devops/project/navigation/preview-features?view=azure-devops).
+3. 首选将 **GitHub** 作为源代码的位置，完成向导的步骤。
+   ![Select GitHub](https://docs.microsoft.com/en-us/azure/devops/pipelines/media/get-started-yaml/new-pipeline.png?view=azure-devops)
+ 
+   >备注
+   >
+   >如果你看到的不是这样的，请先[确认Multi-stage pipelines experience是打开的](https://docs.microsoft.com/en-us/azure/devops/project/navigation/preview-features?view=azure-devops)。
 
 4. You might be redirected to GitHub to sign in. If so, enter your GitHub credentials.
+4. 你可能会被跳转到GitHub去登录，只需输入你的GitHub凭证信息即可。
 
 5. When the list of repositories appears, select your repository.
+5. 当仓库出现的时候，选择你的仓库。
 
 6. You might be redirected to GitHub to install the Azure Pipelines app. If so, select **Approve and install**.
+6. 你可能会被跳转到GitHub去安装Azure Pipeline应用。只需选择**Approve and install**即可。
 
 > When the **Configure** tab appears, select **ASP.NET Core**.
+> 当**Configure**tab出现的时候，选择**ASP.NET Core**。
 
 1. When your new pipeline appears, take a look at the YAML to see what it does. When you're ready, select **Save and run**.
+1. 当你的pipeline出现的时候，打开看看YAML文件做了什么事情。准备好之后，选择**Save and run**即可。
 
    ![Save and run button in a new YAML pipeline](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/media/save-and-run-button-new-yaml-pipeline.png?view=azure-devops)
 
@@ -85,14 +116,23 @@ Within your selected organization, create a *project*. If you don't have any pro
    > You just created and ran a pipeline that we automatically created for you, because your code appeared to be a good match for the [ASP.NET Core](https://github.com/Microsoft/azure-pipelines-yaml/blob/master/templates/asp.net-core.yml) template.
 
    You now have a working YAML pipeline (`azure-pipelines.yml`) in your repository that's ready for you to customize!
+2. 系统提示你向仓库提交一个新的*azure-pipelines.yml*文件。当你对commit信息满意后，再次选择**Save and run**。
+  
+   如果要监视pipeline的运行状态，选择构建job。
+
+   > 你只是创建并运行了一个我们自动为你创建的pipeline，因为你的代码正好和[ASP.NET Core](https://github.com/Microsoft/azure-pipelines-yaml/blob/master/templates/asp.net-core.yml) 模板非常匹配。
 
 3. When you're ready to make changes to your pipeline, select it in the **Pipelines** page, and then **Edit**the `azure-pipelines.yml` file.
+3. 当你准备好修改你的pipeline，在**Pipelines**页面选择对应的pipeline，然后**Edit**`azure-pipelines.yml`文件。
 
 4. See the sections below to learn some of the more common ways to customize your pipeline.
+4. 阅读下面的部分可以学习一些常用的自定义pipeline的方法。
 
 ## Build environment
+## 构建环境
 
 You can use Azure Pipelines to build your .NET Core projects on Windows, Linux, or macOS without needing to set up any infrastructure of your own. The [Microsoft-hosted agents](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops) in Azure Pipelines have several released versions of the .NET Core SDKs preinstalled.
+
 
 Ubuntu 18.06 is set here in the YAML file.
 
