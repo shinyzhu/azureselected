@@ -294,8 +294,10 @@ steps:
 ## 运行测试
 
 If you have test projects in your repository, then use the **.NET Core** task to run unit tests by using testing frameworks like MSTest, xUnit, and NUnit. For this functionality, the test project must reference [Microsoft.NET.Test.SDK](https://www.nuget.org/packages/Microsoft.NET.Test.SDK) version 15.8.0 or higher. Test results are automatically published to the service. These results are then made available to you in the build summary and can be used for troubleshooting failed tests and test-timing analysis.
+如果你的仓库里包含测试项目，就可以使用**.NET Core** task借助MSTest， xUnit和NUnit一类的测试框架来运行单元测试。对于此功能，测试项目必须引用[Microsoft.NET.Test.SDK](https://www.nuget.org/packages/Microsoft.NET.Test.SDK)15.8.0或更高的版本。测试结果将会自动发布到服务。然后这些结果也将在生成的构建摘要中提供给你，以用于失败测试的故障排除和定时测试分析。
 
 Add the following snippet to your `azure-pipelines.yml` file:
+添加下面的代码段到你的`azure-pipelines.yml`文件里：
 
 ```yaml
 steps:
@@ -309,6 +311,7 @@ steps:
 ```
 
 An alternative is to run the `dotnet test` command with a specific logger and then use the **Publish Test Results** task:
+另一种选择是运行带有指定日志记录器选项的`dotnet test`命令，然后使用**Publish Test Results** task：
 
 ```yaml
 steps:
@@ -323,10 +326,13 @@ steps:
 ```
 
 ## Collect code coverage
+## 收集代码覆盖率
 
 If you're building on the Windows platform, code coverage metrics can be collected by using the built-in coverage data collector. For this functionality, the test project must reference [Microsoft.NET.Test.SDK](https://www.nuget.org/packages/Microsoft.NET.Test.SDK)version 15.8.0 or higher. If you use the **.NET Core** task to run tests, coverage data is automatically published to the server. The **.coverage** file can be downloaded from the build summary for viewing in Visual Studio.
+如果你在Windows平台上构建，可以使用内置的覆盖率数据收集器收集代码覆盖率指标。对于此功能，测试项目必须引用[Microsoft.NET.Test.SDK](https://www.nuget.org/packages/Microsoft.NET.Test.SDK)15.8.0或更高版本。如果你使用 **.NET Core** task运行测试，覆盖率数据会自动发布到服务器。可以在构建摘要中下载**.coverage**文件，以方便在Visual Studio中查看。
 
 Add the following snippet to your `azure-pipelines.yml` file:
+添加下面的代码段到你的`azure-pipelines.yml`文件里：
 
 ```yaml
 steps:
@@ -340,6 +346,7 @@ steps:
 ```
 
 If you choose to run the `dotnet test` command, specify the test results logger and coverage options. Then use the [Publish Test Results](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/test/publish-test-results?view=azure-devops) task:
+如果你选择运行`dotnet test`命令，并指定了测试结果日志记录器和覆盖率范围选项，然后使用[Publish Test Results](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/test/publish-test-results?view=azure-devops) task:
 
 ```yaml
 steps:
@@ -353,6 +360,7 @@ steps:
 ```
 
 ### Collect code coverage metrics with Coverlet
+### 使用Coverlet收集代码覆盖率指标
 
 If you're building on Linux or macOS, you can use [Coverlet](https://github.com/tonerdo/coverlet) or a similar tool to collect code coverage metrics.
 
