@@ -363,10 +363,13 @@ steps:
 ### 使用Coverlet收集代码覆盖率指标
 
 If you're building on Linux or macOS, you can use [Coverlet](https://github.com/tonerdo/coverlet) or a similar tool to collect code coverage metrics.
+如果你是在Linux或者macOS上构建你的应用，你可以使用[Coverlet](https://github.com/tonerdo/coverlet)或者类似的工具去收集代码覆盖率指标。
 
 Code coverage results can be published to the server by using the [Publish Code Coverage Results](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/test/publish-code-coverage-results?view=azure-devops) task. To leverage this functionality, the coverage tool must be configured to generate results in Cobertura or JaCoCo coverage format.
+代码覆盖率结果可以使用[Publish Code Coverage Results](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/test/publish-code-coverage-results?view=azure-devops) task发布到服务器。要使用此功能，覆盖率工具必须配置成生成结果为Cobertura 或 JaCoCo的代码覆盖率格式。
 
 To run tests and publish code coverage with Coverlet, add this snippet to your `azure-pipelines.yml` file:
+使用Coverlet运行测试并发布代码覆盖率，请添加下面的代码段到你的`azure-pipelines.yml`文件中：
 
 ```yaml
 - task: DotNetCoreCLI@2
@@ -385,17 +388,22 @@ To run tests and publish code coverage with Coverlet, add this snippet to your `
 ```
 
 ## Package and deliver your code
+## 打包并交付代码
 
 After you've built and tested your app, you can upload the build output to Azure Pipelines or TFS, create and publish a NuGet package, or package the build output into a .zip file to be deployed to a web application.
+在应用构建并测试完成后，你可以上传构建的输出结果到Azure Pipelines 或者 TFS，也可以创建并发布一个NuGet包，或者是把输出结果直接打包成一个.zip文件去部署到一个web 应用。
 
 ### Publish artifacts to Azure Pipelines
+### 发布artifacts到Azure Pipelines
 
 To publish the output of your .NET **build**,
+发布.NET **build**的输出结果，
 
 - Run `dotnet publish --output $(Build.ArtifactStagingDirectory)` on CLI or add the DotNetCoreCLI@2 task with publish command.
 - Publish the artifact by using Publish artifact task.
 
 Add the following snippet to your `azure-pipelines.yml` file:
+添加下面的代码段到你的`azure-pipelines.yml`文件：
 
 ```yaml
 steps:
@@ -417,12 +425,18 @@ steps:
 > Note
 >
 > The `dotNetCoreCLI@2` task has a `publishWebProjects` input that is set to **true** by default. This publishes *all* web projects in your repo by default. You can find more help and information in the [open source task on GitHub](https://github.com/microsoft/azure-pipelines-tasks).
+>备注
+>
+>`dotNetCoreCLI@2` task有一个输入选项`publishWebProjects`默认为**true**。这会默认发布你仓库下*全部*web项目。更多信息可以参见[open source task on GitHub](https://github.com/microsoft/azure-pipelines-tasks)
 
 To copy additional files to Build directory before publishing, use [Utility: copy files](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/utility/copy-files?view=azure-devops).
+发布前要复制额外的文件到构建路径下，可以使用[Utility: copy files](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/utility/copy-files?view=azure-devops)。
 
 ### Publish to a NuGet feed
+### 发布到一个NuGet源
 
 To create and publish a NuGet package, add the following snippet:
+要创建并发布一个NuGet包，添加下面的代码段：
 
 ```yaml
 steps:
@@ -442,10 +456,13 @@ steps:
 ```
 
 For more information about versioning and publishing NuGet packages, see [publish to NuGet feeds](https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/nuget?view=azure-devops).
+更多关于NuGet包的发布和版本的信息，请参见[publish to NuGet feeds](https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/nuget?view=azure-devops)。
 
 ### Deploy a web app
+### 部署一个web应用
 
 To create a .zip file archive that's ready for publishing to a web app, add the following snippet:
+当你准备发布到一个web应用的时候要创建.ZIP文件压缩包，添加下面的代码段：
 
 ```yaml
 steps:
@@ -461,14 +478,19 @@ steps:
 ```
 
 To publish this archive to a web app, see [Azure Web Apps deployment](https://docs.microsoft.com/en-us/azure/devops/pipelines/targets/webapp?view=azure-devops).
+发布这个压缩包到一个web应用，请参见[Azure Web Apps deployment](https://docs.microsoft.com/en-us/azure/devops/pipelines/targets/webapp?view=azure-devops)。
 
 ## Build an image and push to container registry
+## 构建一个镜像并发布到容器注册表
 
 For your app, you can also [build an image](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/containers/build-image?view=azure-devops) and [push it to a container registry](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/containers/push-image?view=azure-devops).
+你也可以把你的应用[构建一个镜像](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/containers/build-image?view=azure-devops) 并 [推送到一个容器注册表](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/containers/push-image?view=azure-devops)。
 
 ## Troubleshooting
+## 故障排除
 
 If you're able to build your project on your development machine, but you're having trouble building it on Azure Pipelines or TFS, explore the following potential causes and corrective actions:
+如果你的项目能够在开发机器上构建，但是不能在Azure Pipelines 或 TFS上进行构建。请浏览以下的潜在原因和修改措施：
 
 - We don't install prerelease versions of the .NET Core SDK on Microsoft-hosted agents. After a new version of the .NET Core SDK is released, it can take a few weeks for us to roll it out to all the datacenters that Azure Pipelines runs on. You don't have to wait for us to finish this rollout. You can use the **.NET Core Tool Installer**, as explained in this guidance, to install the desired version of the .NET Core SDK on Microsoft-hosted agents.
 
