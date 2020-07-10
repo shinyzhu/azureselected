@@ -26,7 +26,7 @@ Use a pipeline to automatically build and test your .NET Core projects. Learn ho
 - Set up your build environment with [Microsoft-hosted](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops) or [self-hosted](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/agents?view=azure-devops) agents.
 - 使用微软托管或者自己托管的agents设置你的构建环境。
 - Restore dependencies, build your project, and test with the [.NET Core CLI task](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops) or a [script](https://docs.microsoft.com/en-us/azure/devops/pipelines/scripts/cross-platform-scripting?view=azure-devops).
-- 使用[.NET Core CLI task](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops) 或者 [script](https://docs.microsoft.com/en-us/azure/devops/pipelines/scripts/cross-platform-scripting?view=azure-devops)还原依赖，构建并测试项目。
+- 使用[.NET Core CLI task](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops) 或者 [script](https://docs.microsoft.com/en-us/azure/devops/pipelines/scripts/cross-platform-scripting?view=azure-devops)还原依赖包，构建并测试项目。
 - Use the [publish code coverage task](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/test/publish-code-coverage-results?view=azure-devops) to publish code coverage results.
 - 使用[publish code coverage task](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/test/publish-code-coverage-results?view=azure-devops)发布代码覆盖率结果。
 - Package and deliver your code with the [.NET Core CLI task](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops) and the [publish build artifacts task](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/utility/publish-build-artifacts?view=azure-devops).
@@ -54,7 +54,7 @@ Use a pipeline to automatically build and test your .NET Core projects. Learn ho
 ### 获取代码
 
 Fork this repo in GitHub:
-在GitHubfork这个仓库：
+从GitHub fork这个仓库：
 
 ```
 https://github.com/MicrosoftDocs/pipelines-dotnet-core
@@ -102,7 +102,7 @@ Within your selected organization, create a *project*. If you don't have any pro
 6. 你可能会被跳转到GitHub去安装Azure Pipeline应用。只需选择**Approve and install**即可。
 
 > When the **Configure** tab appears, select **ASP.NET Core**.
-> 当**Configure**tab出现的时候，选择**ASP.NET Core**。
+> 当**Configure**选项卡出现的时候，选择**ASP.NET Core**。
 
 1. When your new pipeline appears, take a look at the YAML to see what it does. When you're ready, select **Save and run**.
 1. 当你的pipeline出现的时候，打开看看YAML文件做了什么事情。准备好之后，选择**Save and run**即可。
@@ -116,7 +116,7 @@ Within your selected organization, create a *project*. If you don't have any pro
    > You just created and ran a pipeline that we automatically created for you, because your code appeared to be a good match for the [ASP.NET Core](https://github.com/Microsoft/azure-pipelines-yaml/blob/master/templates/asp.net-core.yml) template.
 
    You now have a working YAML pipeline (`azure-pipelines.yml`) in your repository that's ready for you to customize!
-2. 系统提示你向仓库提交一个新的*azure-pipelines.yml*文件。当你对commit信息满意后，再次选择**Save and run**。
+2. 此时系统会提示你向仓库提交一个新的*azure-pipelines.yml*文件。当你对commit信息满意后，再次选择**Save and run**。
   
    如果要监视pipeline的运行状态，选择构建job。
 
@@ -144,13 +144,13 @@ pool:
 ```
 
 See [Microsoft-hosted agents](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops) for a complete list of images and [Pool](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#pool) for further examples.
-参阅[微软托管的agents](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops)了解完整的镜像和池列表信息。
+参阅[微软托管的agents](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops)了解完整的镜像和agent池信息列表。
 
 The Microsoft-hosted agents don't include some of the older versions of the .NET Core SDK. They also don't typically include prerelease versions. If you need these kinds of SDKs on Microsoft-hosted agents, add the [UseDotNet@2](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/tool/dotnet-core-tool-installer?view=azure-devops) task to your YAML file.
 微软托管的agents既不包含那些旧版本的.NET Core SDK，同时也不包含预发行版本。如果你需要在微软托管的agents中使用这类版本的SDKs，只需添加[UseDotNet@2](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/tool/dotnet-core-tool-installer?view=azure-devops) 类型的task到你的YAML文件里即可。
 
 To install the preview version of the 5.0.x SDK for building and 3.0.x for running tests that target .NET Core 3.0.x, add this snippet:
-安装5.0.x 的preview版SDK来构建，3.0.x的SDK来运行基于.NET Core 3.0.x的测试，添加下面的代码段：
+安装5.0.x 的preview版SDK用于构建项目，3.0.x的SDK用于运行基于.NET Core 3.0.x的测试项目，添加下面的代码段：
 
 ```yaml
 steps:
@@ -166,7 +166,7 @@ steps:
 ```
 
 If you are installing on a Windows agent, it will already have a .NET Core runtime on it. To install a newer SDK, set `performMultiLevelLookup` to `true` in this snippet:
-如果你是安装在一个Windows agent上，那么它已经包含一个.NET Core runtime，要安装新版本的SDK的话，只需要在代码里设置`performMultiLevelLookup` 为 `true`即可：
+如果你想要安装在一个Windows版的agent上，那么它已经包含一个.NET Core runtime，要安装新版本的SDK的话，只需要在代码里设置`performMultiLevelLookup` 为 `true`即可：
 
 ```yaml
 steps:
@@ -183,13 +183,13 @@ steps:
 > As an alternative, you can set up a [self-hosted agent](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/agents?view=azure-devops#install) and save the cost of running the tool installer. See [Linux](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-linux?view=azure-devops), [MacOS](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-osx?view=azure-devops), or [Windows](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-windows?view=azure-devops). You can also use self-hosted agents to save additional time if you have a large repository or you run incremental builds. A self-hosted agent can also help you in using the preview or private SDKs thats are not officially supported by Azure DevOps or you have available on your corporate or on-premises environments only.
 > 提示
 >
-> 作为替代方案，你可以设置一个[自己托管的agent](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/agents?view=azure-devops#install) 并节省运行工具安装程序的时间成本。参阅[Linux](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-linux?view=azure-devops), [MacOS](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-osx?view=azure-devops), 或者 [Windows](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-windows?view=azure-devops)。如果有一个大型仓库或者运行增量构建，还可以通过自托管agent节省额外的时间。自托管agent不仅可以帮助你使用Azure DevOps还未正式支持的预览版或者私有SDK，也可以帮助你使用仅在你的企业内部或本地环境中可用的预览版或者私有SDK。
+> 作为替代方案，你可以设置一个[自己托管的agent](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/agents?view=azure-devops#install) 这可以节省运行工具安装程序的时间成本。参阅[Linux](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-linux?view=azure-devops), [MacOS](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-osx?view=azure-devops), 或者 [Windows](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-windows?view=azure-devops)。如果有一个大型仓库或者运行增量构建，还可以通过自托管agent节省额外的时间。自托管agent不仅可以帮助你使用Azure DevOps还未正式支持的预览版或者私有SDK，也可以帮助你使用仅在你的企业内部或本地环境中可用的预览版或者私有SDK。
 
 ## Restore dependencies
 ## 还原依赖项
 
 NuGet is a popular way to depend on code that you don't build. You can download NuGet packages and project-specific tools that are specified in the project file by running the `dotnet restore` command either through the [.NET Core](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops) task or directly in a script in your pipeline.
-NuGet是一种受欢迎的无需构建的代码依赖方式。你可以通过[.NET Core](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops)任务或者直接在pipeline中的脚本中运行`dotnet restore`命令，下载项目文件中指定的NuGet包和项目指定的特定工具。
+NuGet是一种受欢迎的无需构建的代码依赖方式。你可以通过[.NET Core](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops) task或者直接在pipeline中的脚本中运行`dotnet restore`命令，下载项目文件中指定的NuGet包和项目指定的特定工具。
 
 You can download NuGet packages from Azure Artifacts, NuGet.org, or some other external or internal NuGet repository. The **.NET Core** task is especially useful to restore packages from authenticated NuGet feeds.
 你可以从Azure Artifacts, NuGet.org,或者是一些其它的内部或外部的NuGet仓库。**.NET Core** task对于从未经身份验证的NuGet源进行包还原非常有用。
@@ -228,13 +228,13 @@ In .NET Core SDK version 2.0 and newer, packages are restored automatically when
 在 .NET Core SDK 2.0或者更新的版本中，当运行其它命令例如`dotnet build`的时候就会更自动进行依赖包还原。然而，如果有使用到未验证的源，你可能依然需要使用**.NET Core** task来还原依赖包。
 
 If your builds occasionally fail when restoring packages from NuGet.org due to connection issues, you can use Azure Artifacts in conjunction with [upstream sources](https://docs.microsoft.com/en-us/azure/devops/artifacts/concepts/upstream-sources?view=azure-devops) and cache the packages. The credentials of the pipeline are automatically used when connecting to Azure Artifacts. These credentials are typically derived from the **Project Collection Build Service** account.
-如果由于网络连接问题导致从NuGet.org还原依赖包时会出现偶尔的构建失败，你可以把Azure Artifacts与[upstream sources](https://docs.microsoft.com/en-us/azure/devops/artifacts/concepts/upstream-sources?view=azure-devops) 结合使用以缓存包文件。连接到Azure Artifacts时候，pipeline的凭证会自动验证。这些凭证同城派生自**Project Collection Build Service**账户。
+如果由于网络连接问题导致从NuGet.org还原依赖包时会出现偶尔的构建失败，你可以把Azure Artifacts与[upstream sources](https://docs.microsoft.com/en-us/azure/devops/artifacts/concepts/upstream-sources?view=azure-devops) 结合使用以缓存依赖包文件。连接到Azure Artifacts时候，pipeline的凭证会自动验证。这些凭证同城派生自**Project Collection Build Service**账户。
 
 If you want to specify a NuGet repository, put the URLs in a `NuGet.config` file in your repository. If your feed is authenticated, manage its credentials by creating a NuGet service connection in the **Services** tab under **Project Settings**.
 如果要指定一个NuGet仓库，请将URLs放在仓库中的`NuGet.config`文件中。如果你的源已通过验证，请在**Services**选项卡下的**Project Settings**中创建一个NuGet服务链接以管理其凭证。
 
 If you use Microsoft-hosted agents, you get a new machine every time your run a build, which means restoring the packages every time. This restoration can take a significant amount of time. To mitigate this issue, you can either use Azure Artifacts or a self-hosted agent, in which case, you get the benefit of using the package cache.
-如果你使用微软托管的agents，每次运行构建任务时你都会得到一个全新的机器，这就意味着每次都需要还原依赖包，这个还原过程可能需要大量时间。为了缓解这个问题，你可以使用Azure Artifacts或者自托管agent，这样你就可以受益于依赖包的缓存。
+如果你使用微软托管的agents，每次运行构建任务时你都会得到一个全新的机器，这就意味着每次都需要还原依赖包，这个还原过程可能需要大量时间。为了缓解这个问题，你可以使用Azure Artifacts或者自托管agent，这样你就可以受益于依赖包的缓存优势。
 
 To restore packages from an external custom feed, use the **.NET Core** task:
 使用**.NET Core** task从一个外部自定义源还原依赖包：
@@ -278,7 +278,7 @@ steps:
 ```
 
 You can run any custom dotnet command in your pipeline. The following example shows how to install and use a .NET global tool, [dotnetsay](https://www.nuget.org/packages/dotnetsay/):
-在pipeline中可以运行任何自定义的dotnet命令，下面的实例展示了如何安装并使用.NET全局工具，[dotnetsay](https://www.nuget.org/packages/dotnetsay/):
+在pipeline中可以运行任何自定义的dotnet命令，下面的实例展示了如何安装并使用.NET全局工具————[dotnetsay](https://www.nuget.org/packages/dotnetsay/):
 
 ```yaml
 steps:
@@ -430,7 +430,7 @@ steps:
 >`dotNetCoreCLI@2` task有一个输入选项`publishWebProjects`默认为**true**。这会默认发布你仓库下*全部*web项目。更多信息可以参见[open source task on GitHub](https://github.com/microsoft/azure-pipelines-tasks)
 
 To copy additional files to Build directory before publishing, use [Utility: copy files](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/utility/copy-files?view=azure-devops).
-发布前要复制额外的文件到构建路径下，可以使用[Utility: copy files](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/utility/copy-files?view=azure-devops)。
+发布前想要复制额外的文件到构建路径下，可以使用[Utility: copy files](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/utility/copy-files?view=azure-devops)。
 
 ### Publish to a NuGet feed
 ### 发布到一个NuGet源
@@ -502,7 +502,7 @@ If you're able to build your project on your development machine, but you're hav
 - If you have a mixed solution that includes some .NET Core projects and some .NET Framework projects, you should also use the **NuGet** task to restore packages specified in `packages.config` files. Similarly, you should add **MSBuild** or **Visual Studio Build** tasks to build the .NET Framework projects.
 - 如果你的解决方案混合了.NET Core项目和.NET Framework项目，你需要使用**NuGet** task来还原`packages.config`文件中指定的依赖包。类似的，你应该添加**MSBuild** 或者 **Visual Studio Build** tasks去构建.NET Framework项目。
 - If your builds fail intermittently while restoring packages, either NuGet.org is having issues, or there are networking problems between the Azure datacenter and NuGet.org. These aren't under our control, and you might need to explore whether using Azure Artifacts with NuGet.org as an upstream source improves the reliability of your builds.
-- 如果你的构建在依赖包还原阶段间歇性失败，可能会事NuGet.org出现了故障，也可能是Azure 数据中心与NuGet.org之间的网络连接出现了问题。这些都是我们不可控的因素，你可以考虑使用Azure Artifacts作为NuGet.org的中继来提高你的构建任务的可靠性。
+- 如果你的构建在依赖包还原阶段出现间歇性失败，一种可能原因是NuGet.org出现了故障，也可能是Azure 数据中心与NuGet.org之间的网络连接出现了问题。这些都是我们不可控的因素，你可以考虑使用Azure Artifacts作为NuGet.org的中继来提高你的构建任务的可靠性。
 - Occasionally, when we roll out an update to the hosted images with a new version of the .NET Core SDK or Visual Studio, something might break your build. This can happen, for example, if a newer version or feature of the NuGet tool is shipped with the SDK. To isolate these problems, use the **.NET Core Tool Installer** task to specify the version of the .NET Core SDK that's used in your build.
 - 有时，当我们更新托管环境镜像到带有新版本.NET Core SDK 或者 Visual Studio的镜像时，可能会打断你的构建任务。比如，当一个新版本的NuGet工具随着SDK发布时，这可能就会发生。要解决这个问题，可以使用**.NET Core Tool Installer** task指定你用来构建项目的.NET Core SDK版本信息。
 
