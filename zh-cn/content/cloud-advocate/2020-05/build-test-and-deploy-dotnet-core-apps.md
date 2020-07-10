@@ -493,27 +493,37 @@ If you're able to build your project on your development machine, but you're hav
 如果你的项目能够在开发机器上构建，但是不能在Azure Pipelines 或 TFS上进行构建。请浏览以下的潜在原因和修改措施：
 
 - We don't install prerelease versions of the .NET Core SDK on Microsoft-hosted agents. After a new version of the .NET Core SDK is released, it can take a few weeks for us to roll it out to all the datacenters that Azure Pipelines runs on. You don't have to wait for us to finish this rollout. You can use the **.NET Core Tool Installer**, as explained in this guidance, to install the desired version of the .NET Core SDK on Microsoft-hosted agents.
+- 我们没有安装预发布版的.NET Core SDK到Microsoft-hosted agents上。一个新版本的.NET Core SDK发布后，我们还需要几周时间才能将其部署到Azure Pipelines运行的数据中心。你不必等待我们完成部署，可以直接使用**.NET Core Tool Installer**去安装一个你需要的.NET Core SDK版本到Microsoft-hosted agents。
 
 - Check that the versions of the .NET Core SDK and runtime on your development machine match those on the agent. You can include a command-line script `dotnet --version` in your pipeline to print the version of the .NET Core SDK. Either use the **.NET Core Tool Installer**, as explained in this guidance, to deploy the same version on the agent, or update your projects and development machine to the newer version of the .NET Core SDK.
+- 检查你的开发机器上的.NET Core SDK和runtime的版本信息是否和agent上的版本匹配。你可以在你的pipeline中包含一个命令行脚本`dotnet --version`去呈现.NET Core SDK的版本信息。你可以使用**.NET Core Tool Installer**在agent上部署一个相同版本的.NET Core SDK，也可以更新你项目和开发机器的.NET Core SDK到最新版本。
 - You might be using some logic in the Visual Studio IDE that isn't encoded in your pipeline. Azure Pipelines or TFS runs each of the commands you specify in the tasks one after the other in a new process. Look at the logs from the Azure Pipelines or TFS build to see the exact commands that ran as part of the build. Repeat the same commands in the same order on your development machine to locate the problem.
+- 或许你在Visual Studio IDE中使用了一些特殊逻辑，但没有编码到你的pipeline中。Azure Pipelines或和TFS在一个全新的进程中逐个运行你tasks中指定的每个命令。查看Azure Pipelines或者TFS的构建日志信息可以了解当前运行的每条命令的确切信息。在开发机器上重复这个运行顺序就可以快速定位问题所在。
 - If you have a mixed solution that includes some .NET Core projects and some .NET Framework projects, you should also use the **NuGet** task to restore packages specified in `packages.config` files. Similarly, you should add **MSBuild** or **Visual Studio Build** tasks to build the .NET Framework projects.
+- 如果你的解决方案混合了.NET Core项目和.NET Framework项目，你需要使用**NuGet** task来还原`packages.config`文件中指定的依赖包。类似的，你应该添加**MSBuild** 或者 **Visual Studio Build** tasks去构建.NET Framework项目。
 - If your builds fail intermittently while restoring packages, either NuGet.org is having issues, or there are networking problems between the Azure datacenter and NuGet.org. These aren't under our control, and you might need to explore whether using Azure Artifacts with NuGet.org as an upstream source improves the reliability of your builds.
+- 如果你的构建在依赖包还原阶段间歇性失败，可能会事NuGet.org出现了故障，也可能是Azure 数据中心与NuGet.org之间的网络连接出现了问题。这些都是我们不可控的因素，你可以考虑使用Azure Artifacts作为NuGet.org的中继来提高你的构建任务的可靠性。
 - Occasionally, when we roll out an update to the hosted images with a new version of the .NET Core SDK or Visual Studio, something might break your build. This can happen, for example, if a newer version or feature of the NuGet tool is shipped with the SDK. To isolate these problems, use the **.NET Core Tool Installer** task to specify the version of the .NET Core SDK that's used in your build.
+- 有时，当我们更新托管环境镜像到带有新版本.NET Core SDK 或者 Visual Studio的镜像时，可能会打断你的构建任务。比如，当一个新版本的NuGet工具随着SDK发布时，这可能就会发生。要解决这个问题，可以使用**.NET Core Tool Installer** task指定你用来构建项目的.NET Core SDK版本信息。
 
 ## Q&A
 
 ### Where can I learn more about Azure Artifacts and the TFS Package Management service?
+### 我在那里可以了解更多关于Azure Artifacts 和 TFS Package Management service的信息？
 
 [Package Management in Azure Artifacts and TFS](https://docs.microsoft.com/en-us/azure/devops/artifacts/?view=azure-devops)
 
 ### Where can I learn more about .NET Core commands?
+### 我在那里可以了解更多关于.NET Core commands的信息？
 
 [.NET Core CLI tools](https://docs.microsoft.com/en-us/dotnet/core/tools/)
 
 ### Where can I learn more about running tests in my solution?
+### 我在那里可以了解更多关于解决方案中运行测试的信息？
 
 [Unit testing in .NET Core projects](https://docs.microsoft.com/en-us/dotnet/core/testing/)
 
 ### Where can I learn more about tasks?
+### 我在那里可以了解更多关于tasks的信息？
 
 [Build and release tasks](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/?view=azure-devops)
