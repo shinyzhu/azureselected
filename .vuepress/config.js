@@ -1,6 +1,7 @@
 
 module.exports = {
   extend: '@vuepress/theme-default',
+  base: 'azureselected',
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
@@ -65,7 +66,7 @@ module.exports = {
   themeConfig: {
     displayAllHeaders: true,
     searchMaxSuggestions: 10,
-    repo: 'azureselected/azureselected',
+    repo: 'shinyzhu/azureselected',
     repoLabel: 'GitHub',
     editLinks: true,
     smoothScroll: true,
