@@ -1,7 +1,7 @@
 
 module.exports = {
   extend: '@vuepress/theme-default',
-  base: 'azureselected',
+  base: '/azureselected/',
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
