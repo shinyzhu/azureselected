@@ -14,10 +14,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
-      - name: Build & Deploy
+      - name: Build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
-        env:
-          ACCESS_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: .vuepress/dist
-          BUILD_SCRIPT: npm install && npm run build
+        with:
+          token: ${{ secrets.DEPLOY_TOKEN }}
+          branch: gh-pages
+          folder: .vuepress/dist
