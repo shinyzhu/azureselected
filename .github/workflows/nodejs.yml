@@ -15,8 +15,9 @@ jobs:
         uses: actions/checkout@master
 
       - name: Build & Deploy
-        uses: jenkey2011/vuepress-deploy@master
+        uses: JamesIves/github-pages-deploy-action@v4
         env:
           ACCESS_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: .vuepress/dist
           BUILD_SCRIPT: npm install && npm run build
-          BUILD_DIR: .vuepress/dist
