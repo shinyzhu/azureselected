@@ -19,6 +19,6 @@ jobs:
         env:
           ACCESS_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
           TARGET_REPO: shinyzhu/azureselected
-          TARGET_BRANCH: master
+          TARGET_BRANCH: gh-pages
           BUILD_SCRIPT: npm install && npm run build
           BUILD_DIR: .vuepress/dist
