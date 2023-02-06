@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>如何使用GitHub Actions部署虚拟机 | Azure 中文精选</title>
+    <meta name="generator" content="VuePress 1.9.8">
+    <link rel="icon" href="/azureselected/favicon.ico">
+    <meta name="description" content="这是一篇指导性博客，帮助非开发人员社区使用GitHub Actions部署Azure资源。">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <link rel="preload" href="/azureselected/assets/css/0.styles.fe1e9048.css" as="style"><link rel="preload" href="/azureselected/assets/js/app.8a0b7483.js" as="script"><link rel="preload" href="/azureselected/assets/js/2.8d021b4d.js" as="script"><link rel="preload" href="/azureselected/assets/js/47.b54cc2ca.js" as="script"><link rel="preload" href="/azureselected/assets/js/3.32c85e2e.js" as="script"><link rel="preload" href="/azureselected/assets/js/5.554b9b17.js" as="script"><link rel="prefetch" href="/azureselected/assets/js/10.fa73f6fc.js"><link rel="prefetch" href="/azureselected/assets/js/11.e07babbc.js"><link rel="prefetch" href="/azureselected/assets/js/12.12214fd4.js"><link rel="prefetch" href="/azureselected/assets/js/13.b7275e3f.js"><link rel="prefetch" href="/azureselected/assets/js/14.d6b8a728.js"><link rel="prefetch" href="/azureselected/assets/js/15.31a19f47.js"><link rel="prefetch" href="/azureselected/assets/js/16.c3ccb867.js"><link rel="prefetch" href="/azureselected/assets/js/17.7d290d04.js"><link rel="prefetch" href="/azureselected/assets/js/18.4cc5d13c.js"><link rel="prefetch" href="/azureselected/assets/js/19.01296b5f.js"><link rel="prefetch" href="/azureselected/assets/js/20.84db9ad2.js"><link rel="prefetch" href="/azureselected/assets/js/21.6a1d22b6.js"><link rel="prefetch" href="/azureselected/assets/js/22.b38195a7.js"><link rel="prefetch" href="/azureselected/assets/js/23.53dea98b.js"><link rel="prefetch" href="/azureselected/assets/js/24.67816702.js"><link rel="prefetch" href="/azureselected/assets/js/25.8e0307d1.js"><link rel="prefetch" href="/azureselected/assets/js/26.fb128a8f.js"><link rel="prefetch" href="/azureselected/assets/js/27.e8b0b7a9.js"><link rel="prefetch" href="/azureselected/assets/js/28.e625e9de.js"><link rel="prefetch" href="/azureselected/assets/js/29.aeb087ba.js"><link rel="prefetch" href="/azureselected/assets/js/30.8ef68534.js"><link rel="prefetch" href="/azureselected/assets/js/31.6b43ffde.js"><link rel="prefetch" href="/azureselected/assets/js/32.b2f60498.js"><link rel="prefetch" href="/azureselected/assets/js/33.ef0db925.js"><link rel="prefetch" href="/azureselected/assets/js/34.c990c7e7.js"><link rel="prefetch" href="/azureselected/assets/js/35.177548dd.js"><link rel="prefetch" href="/azureselected/assets/js/36.be924c7e.js"><link rel="prefetch" href="/azureselected/assets/js/37.c4a329a3.js"><link rel="prefetch" href="/azureselected/assets/js/38.88502f70.js"><link rel="prefetch" href="/azureselected/assets/js/39.b70a599f.js"><link rel="prefetch" href="/azureselected/assets/js/4.f7cbda98.js"><link rel="prefetch" href="/azureselected/assets/js/40.af1f7c88.js"><link rel="prefetch" href="/azureselected/assets/js/41.09f3637f.js"><link rel="prefetch" href="/azureselected/assets/js/42.91268a34.js"><link rel="prefetch" href="/azureselected/assets/js/43.8bc4e597.js"><link rel="prefetch" href="/azureselected/assets/js/44.e75fe39d.js"><link rel="prefetch" href="/azureselected/assets/js/45.36f7e780.js"><link rel="prefetch" href="/azureselected/assets/js/46.d83d96f0.js"><link rel="prefetch" href="/azureselected/assets/js/48.9b7655b1.js"><link rel="prefetch" href="/azureselected/assets/js/49.dc3e7585.js"><link rel="prefetch" href="/azureselected/assets/js/50.44491727.js"><link rel="prefetch" href="/azureselected/assets/js/51.b3cc832a.js"><link rel="prefetch" href="/azureselected/assets/js/52.4b3f7433.js"><link rel="prefetch" href="/azureselected/assets/js/53.d0efb5a8.js"><link rel="prefetch" href="/azureselected/assets/js/54.41189e23.js"><link rel="prefetch" href="/azureselected/assets/js/55.0604b61d.js"><link rel="prefetch" href="/azureselected/assets/js/56.d1bb56be.js"><link rel="prefetch" href="/azureselected/assets/js/57.2ae826e1.js"><link rel="prefetch" href="/azureselected/assets/js/58.fcca3b58.js"><link rel="prefetch" href="/azureselected/assets/js/59.3da7d882.js"><link rel="prefetch" href="/azureselected/assets/js/6.ef320c88.js"><link rel="prefetch" href="/azureselected/assets/js/60.3f06229c.js"><link rel="prefetch" href="/azureselected/assets/js/61.6e57367f.js"><link rel="prefetch" href="/azureselected/assets/js/62.3b222c6c.js"><link rel="prefetch" href="/azureselected/assets/js/63.8a7f0932.js"><link rel="prefetch" href="/azureselected/assets/js/7.51b986da.js"><link rel="prefetch" href="/azureselected/assets/js/8.a9358b51.js"><link rel="prefetch" href="/azureselected/assets/js/9.b8eed478.js">
+    <link rel="stylesheet" href="/azureselected/assets/css/0.styles.fe1e9048.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/azureselected/zh-cn/" class="home-link router-link-active"><img src="/azureselected/img/logo_azure.svg" alt="Azure 中文精选" class="logo"> <span class="site-name can-hide">Azure 中文精选</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/azureselected/zh-cn/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/azureselected/zh-cn/content/" class="nav-link router-link-active">
+  内容列表
+</a></div><div class="nav-item"><a href="/azureselected/zh-cn/tags.html" class="nav-link">
+  标签
+</a></div><div class="nav-item"><a href="https://wj.qq.com/s2/5227985/7213/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  参加翻译
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/azureselected/content/cloud-advocate/2020-02/how-to-use-github-actions-to-deploy-an-azure-virtual-machine.html" class="nav-link">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/azureselected/zh-cn/content/cloud-advocate/2020-02/how-to-use-github-actions-to-deploy-an-azure-virtual-machine.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/azureselected/zh-tw/" class="nav-link">
+  繁體中文
+</a></li></ul></div></div> <a href="https://github.com/shinyzhu/azureselected" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/azureselected/zh-cn/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/azureselected/zh-cn/content/" class="nav-link router-link-active">
+  内容列表
+</a></div><div class="nav-item"><a href="/azureselected/zh-cn/tags.html" class="nav-link">
+  标签
+</a></div><div class="nav-item"><a href="https://wj.qq.com/s2/5227985/7213/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  参加翻译
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/azureselected/content/cloud-advocate/2020-02/how-to-use-github-actions-to-deploy-an-azure-virtual-machine.html" class="nav-link">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/azureselected/zh-cn/content/cloud-advocate/2020-02/how-to-use-github-actions-to-deploy-an-azure-virtual-machine.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/azureselected/zh-tw/" class="nav-link">
+  繁體中文
+</a></li></ul></div></div> <a href="https://github.com/shinyzhu/azureselected" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>如何使用GitHub Actions部署虚拟机</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/azureselected/zh-cn/content/cloud-advocate/2020-02/how-to-use-github-actions-to-deploy-an-azure-virtual-machine.html#github-actions-术语" class="sidebar-link">GitHub Actions 术语</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/azureselected/zh-cn/content/cloud-advocate/2020-02/how-to-use-github-actions-to-deploy-an-azure-virtual-machine.html#你想构建什么" class="sidebar-link">你想构建什么？</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/azureselected/zh-cn/content/cloud-advocate/2020-02/how-to-use-github-actions-to-deploy-an-azure-virtual-machine.html#我该如何创建action" class="sidebar-link">我该如何创建Action？</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/azureselected/zh-cn/content/cloud-advocate/2020-02/how-to-use-github-actions-to-deploy-an-azure-virtual-machine.html#元数据" class="sidebar-link">元数据</a></li><li class="sidebar-sub-header"><a href="/azureselected/zh-cn/content/cloud-advocate/2020-02/how-to-use-github-actions-to-deploy-an-azure-virtual-machine.html#环境变量" class="sidebar-link">环境变量</a></li><li class="sidebar-sub-header"><a href="/azureselected/zh-cn/content/cloud-advocate/2020-02/how-to-use-github-actions-to-deploy-an-azure-virtual-machine.html#触发器" class="sidebar-link">触发器</a></li><li class="sidebar-sub-header"><a href="/azureselected/zh-cn/content/cloud-advocate/2020-02/how-to-use-github-actions-to-deploy-an-azure-virtual-machine.html#任务" class="sidebar-link">任务</a></li><li class="sidebar-sub-header"><a href="/azureselected/zh-cn/content/cloud-advocate/2020-02/how-to-use-github-actions-to-deploy-an-azure-virtual-machine.html#步骤" class="sidebar-link">步骤</a></li></ul></li><li><a href="/azureselected/zh-cn/content/cloud-advocate/2020-02/how-to-use-github-actions-to-deploy-an-azure-virtual-machine.html#监控github-action的运行状态" class="sidebar-link">监控GitHub Action的运行状态</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/azureselected/zh-cn/content/cloud-advocate/2020-02/how-to-use-github-actions-to-deploy-an-azure-virtual-machine.html#注意事项" class="sidebar-link">注意事项</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="如何使用github-actions部署虚拟机"><a href="#如何使用github-actions部署虚拟机" class="header-anchor">#</a> 如何使用GitHub Actions部署虚拟机</h1> <div class="content-meta"><hr> <p>原文： <a href="https://techcommunity.microsoft.com/t5/itops-talk-blog/how-to-use-github-actions-to-deploy-an-azure-virtual-machine/ba-p/1092015">https://techcommunity.microsoft.com/t5/itops-talk-blog/how-to-use-github-actions-to-deploy-an-azure-virtual-machine/ba-p/1092015</a></p> <p>作者： Sarah Lean | 1/22/2020</p> <p><span>翻译： IannaZhou </span> <span>| 审阅： shinyzhu </span> <span>| 3/17/2020</span></p> <div class="tags-head"><span><a href="/azureselected/zh-cn/tags.html#Azure Virtual Machine">
+      Azure Virtual Machine
+    </a><a href="/azureselected/zh-cn/tags.html#GitHub Actions">
+      GitHub Actions
+    </a></span></div> <hr></div> <p>在部署服务器时，人们要么将其从安装包中解压，要么使用 GUI 进行操作，你也是其中的一员吗？我在事业起步时就是这么操作的。但是，在过去的几年当中，我逐渐适应了通过代码来部署服务器及其相关资源。通过使用PowerShell 或者 Azure CLI，或者两者结合。</p> <p>我自学了一系列工具，如 Visual Studio Code, Git, GitHub 甚至是 Azure DevOps 来完成任务。一路走来并不容易，但却有趣而充满挑战。</p> <p>2019年末，GitHub 发布了<a href="https://github.blog/2019-11-14-powering-community-led-innovation-with-github-actions/" target="_blank" rel="noopener noreferrer">GitHub Actions<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，GitHub Actions 可以自动从 GitHub 代码库中部署代码。当我的同事和朋友们开始深入了解并演示这项服务时，我就一直饶有兴趣，并决定自己上手，看看能给 IT 专家社区带来些什么，我始终坚定地相信，这些工具可以给 IT 专家们带来很好的机遇。</p> <h2 id="github-actions-术语"><a href="#github-actions-术语" class="header-anchor">#</a> GitHub Actions 术语</h2> <p>在我详细讲解之前，需要提一提 GitHub Actions 的相关术语。</p> <ul><li><strong>Action</strong> – 定义我们能做何种操作，我们可以从市场中免费获得，或自己创建。</li> <li><strong>Workflow</strong> – 工作流，事件发生时所完成的一系列环境变量、任务以及步骤。</li> <li><strong>Jobs</strong> – 任务，工作流所要执行的任务。</li> <li><strong>Steps</strong> - 步骤，任务使用一项 Action 所接收的步骤。</li> <li><strong>Event</strong> – 事件，发生时可以触发工作流的事件，例如向一个代码库提交代码时，会触发一个 Issue 或 PR。</li></ul> <h2 id="你想构建什么"><a href="#你想构建什么" class="header-anchor">#</a> 你想构建什么？</h2> <p>简单点说，我想用 GitHub Action 在 Azure 中创建虚拟机(VM)。再明确一点说，我想让它在同一资源群组下，构建虚拟机及其相关的支持性技术（存储磁盘，网络接口，虚拟网络，存储账户等）。这不是最佳的实践范式，但却是一个对新手十分友好的例子，且有详细的文档记录。</p> <p>只需要使用四段 Azure CLI 代码，就能在 Azure 中创建 VM。第一段代码使用 Azure Service Principal 登录我的 Azure 订阅并执行创建 VM 的必需步骤。</p> <div class="language-powershell extra-class"><pre class="language-powershell"><code><span class="token comment">#region Login</span>
+<span class="token comment"># This logs into Azure with a Service Principal Account</span>
+<span class="token comment">#</span>
+<span class="token function">Write-Output</span> <span class="token string">&quot;Logging in to Azure with a service principal...&quot;</span>
+az login `
+    <span class="token operator">--</span>service-principal `
+    <span class="token operator">--</span>username <span class="token variable">$servicePrincipal</span> `
+    <span class="token operator">--</span>password <span class="token variable">$servicePrincipalSecret</span> `
+    <span class="token operator">--</span>tenant <span class="token variable">$servicePrincipalTenantId</span>
+<span class="token function">Write-Output</span> <span class="token string">&quot;Done&quot;</span>
+<span class="token function">Write-Output</span> <span class="token string">&quot;&quot;</span>
+<span class="token comment">#endregion</span>
+</code></pre></div><p>下一段代码将选择正确的订阅，确保我的资源分配至正确的位置：</p> <div class="language-powershell extra-class"><pre class="language-powershell"><code><span class="token comment">#region Subscription</span>
+<span class="token comment">#This sets the subscription the resources will be created in</span>
+<span class="token function">Write-Output</span> <span class="token string">&quot;Setting default azure subscription...&quot;</span>
+az account <span class="token function">set</span> `
+    <span class="token operator">--</span>subscription <span class="token variable">$azureSubscriptionName</span>
+<span class="token function">Write-Output</span> <span class="token string">&quot;Done&quot;</span>
+<span class="token function">Write-Output</span> <span class="token string">&quot;&quot;</span>
+<span class="token comment">#endregion</span>
+</code></pre></div><p>第三段代码将为虚拟机构建赖以生存的资源组：</p> <div class="language-powershell extra-class"><pre class="language-powershell"><code><span class="token comment">#region Create Resource Group</span>
+<span class="token comment"># This creates the resource group used to house the VM</span>
+<span class="token function">Write-Output</span> <span class="token string">&quot;Creating resource group <span class="token variable">$resourceGroupName</span> in region <span class="token variable">$resourceGroupNameRegion</span>...&quot;</span>
+az <span class="token function">group</span> create `
+    <span class="token operator">--</span>name <span class="token variable">$resourceGroupName</span> `
+    <span class="token operator">--</span>location <span class="token variable">$resourceGroupNameRegion</span>
+    <span class="token function">Write-Output</span> <span class="token string">&quot;Done creating resource group&quot;</span>
+    <span class="token function">Write-Output</span> <span class="token string">&quot;&quot;</span>
+<span class="token comment">#endregion</span>
+</code></pre></div><p>第四段代码将在资源组里创建 VM：</p> <div class="language-powershell extra-class"><pre class="language-powershell"><code><span class="token comment">#region Create VM</span>
+<span class="token comment"># Create a VM in the resource group</span>
+<span class="token function">Write-Output</span> <span class="token string">&quot;Creating VM...&quot;</span>
+<span class="token keyword">try</span> <span class="token punctuation">{</span>
+    az vm create  `
+        <span class="token operator">--</span>resource-<span class="token function">group</span> <span class="token variable">$resourceGroupName</span> `
+        <span class="token operator">--</span>name <span class="token variable">$serverName</span> `
+        <span class="token operator">--</span>image win2016datacenter `
+        <span class="token operator">--</span>admin-username <span class="token variable">$adminLogin</span> `
+        <span class="token operator">--</span>admin-password <span class="token variable">$adminPassword</span>
+    <span class="token punctuation">}</span>
+<span class="token keyword">catch</span> <span class="token punctuation">{</span>
+    <span class="token function">Write-Output</span> <span class="token string">&quot;VM already exists&quot;</span>
+    <span class="token punctuation">}</span>
+<span class="token function">Write-Output</span> <span class="token string">&quot;Done creating VM&quot;</span>
+<span class="token function">Write-Output</span> <span class="token string">&quot;&quot;</span>
+<span class="token comment">#endregion</span>
+</code></pre></div><p>这些代码并不复杂， 在很多文档和教程里你都会看到这个著名的示例。在我的脚本中，我使用了多种参数，从而确保信息能被安全的存储或者导入至我的工作流文件中。完整的 PowerShell 脚本 <a href="https://gist.github.com/weeyin83/81e7a7bf3caf3d0bce787db5d562b47e?WT.mc_id=blog-itops-salean" target="_blank" rel="noopener noreferrer">请点击此处<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。</p> <h2 id="我该如何创建action"><a href="#我该如何创建action" class="header-anchor">#</a> 我该如何创建Action？</h2> <p>为了启动VM构建，我们创建一个YAML格式的工作流文件。工作流文件的名字可以是任意合法命名，它以<code>.yml</code>或<code>.yaml</code>结尾作为扩展名。还需要存储在 GitHub 库的特定目录中，即<code>.github/workflows</code>。</p> <p>您的工作流文件分为几个部分，让我们分别查看每个部分：</p> <h3 id="元数据"><a href="#元数据" class="header-anchor">#</a> 元数据</h3> <p>我们从命名工作流开始：</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">name</span><span class="token punctuation">:</span> GitHub for IT Pro CI/CD Pipeline
+</code></pre></div><h3 id="环境变量"><a href="#环境变量" class="header-anchor">#</a> 环境变量</h3> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">Env</span><span class="token punctuation">:</span>
+
+  <span class="token key atrule">OUTPUT_PATH</span><span class="token punctuation">:</span> $
+</code></pre></div><h3 id="触发器"><a href="#触发器" class="header-anchor">#</a> 触发器</h3> <p>然后，我们指示如何<a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions#on" target="_blank" rel="noopener noreferrer">触发<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>该动作 ; 我已将我的操作设置为在将任何内容推送到仓库时开始：</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">on</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>push<span class="token punctuation">]</span>
+</code></pre></div><h3 id="任务"><a href="#任务" class="header-anchor">#</a> 任务</h3> <p>现在，我们开始声明工作流将要执行的任务，我们首先必须声明工作流将在哪个平台上运行（Linux，MacOS或Windows）。</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+
+<span class="token comment"># Deploy VM in Azure</span>
+
+  <span class="token key atrule">DeployVM</span><span class="token punctuation">:</span>
+
+    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> windows<span class="token punctuation">-</span>latest
+</code></pre></div><h3 id="步骤"><a href="#步骤" class="header-anchor">#</a> 步骤</h3> <p>现在，我们可以从工作流中的步骤开始。 我已指示我的工作流第一步是签出。 这将从我的仓库中获取文件/代码，并将其放入 <code>$ github.workspace</code> 以便我的工作流访问它。</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">steps</span><span class="token punctuation">:</span>
+
+    <span class="token comment"># checkout code from repo</span>
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> checkout repo
+
+      <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout
+</code></pre></div><p>下一步是告诉工作流查找有助于构建VM的PowerShell脚本：</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code>    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> look for ps1 file
+
+      <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span>
+
+        ls '$\IaC\AzCLI'
+</code></pre></div><p>我们工作流的最后一步是部署和配置VM：</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code> <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> provision virtual machine in azure
+
+      <span class="token key atrule">env</span><span class="token punctuation">:</span>
+
+        <span class="token key atrule">RESOURCE_GROUP</span><span class="token punctuation">:</span> rg<span class="token punctuation">-</span>githubitpro
+
+        <span class="token key atrule">RESOURCE_GROUP_REGION</span><span class="token punctuation">:</span> southcentralus
+
+        <span class="token key atrule">SERVER_NAME</span><span class="token punctuation">:</span> gihtubactions
+
+        <span class="token key atrule">ADMIN_LOGIN</span><span class="token punctuation">:</span> sarah
+
+      <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">&gt;</span>
+
+        powershell <span class="token punctuation">-</span>command &quot;&amp; '$\IaC\AzCLI\vmcreation.ps1'&quot;
+
+        <span class="token punctuation">-</span>servicePrincipal $
+
+        <span class="token punctuation">-</span>servicePrincipalSecret $
+
+        <span class="token punctuation">-</span>servicePrincipalTenantId $
+
+        <span class="token punctuation">-</span>azureSubscriptionName $
+
+        <span class="token punctuation">-</span>resourceGroupName %RESOURCE_GROUP%
+
+        <span class="token punctuation">-</span>resourceGroupNameRegion %RESOURCE_GROUP_REGION%
+
+        <span class="token punctuation">-</span>serverName %SERVER_NAME%
+
+        <span class="token punctuation">-</span>adminLogin %ADMIN_LOGIN%
+
+        <span class="token punctuation">-</span>adminPassword $
+</code></pre></div><p>该步骤有很多内容，所以现在让我们进一步分解一下我们正在做的事情：</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code>    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> provision virtual machine in azure
+
+      <span class="token key atrule">env</span><span class="token punctuation">:</span>
+
+        <span class="token key atrule">RESOURCE_GROUP</span><span class="token punctuation">:</span> rg<span class="token punctuation">-</span>githubitpro
+
+        <span class="token key atrule">RESOURCE_GROUP_REGION</span><span class="token punctuation">:</span> southcentralus
+
+        <span class="token key atrule">SERVER_NAME</span><span class="token punctuation">:</span> gihtubactions
+
+        <span class="token key atrule">ADMIN_LOGIN</span><span class="token punctuation">:</span> sarah
+</code></pre></div><p>第一部分声明了一些环境变量，在这里我设置了Azure资源组名称，我要部署资源组的区域，虚拟机（服务器）的名称以及将要使用的管理员登录帐户名称。</p> <p>该步骤的第二步是告诉工作流调用我的PowerShell脚本，并从工作流和<a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets" target="_blank" rel="noopener noreferrer">GitHub 密钥存储<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>传入下面的变量。为了允许GitHub Actions在我的Azure订阅中部署资源，我创建了一个Azure服务主体。 如果您从未接触过，那么我之前在<a href="https://techcommunity.microsoft.com/t5/itops-talk-blog/working-with-azure-service-principal-accounts/ba-p/1086961?WT.mc_id=blog-itopstalk-salean" target="_blank" rel="noopener noreferrer">另一篇文章<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>中介绍了如何创建和使用它们。</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">&gt;</span>
+
+        powershell <span class="token punctuation">-</span>command &quot;&amp; '$\IaC\AzCLI\vmcreation.ps1'&quot;
+
+        <span class="token punctuation">-</span>servicePrincipal $
+
+        <span class="token punctuation">-</span>servicePrincipalSecret $
+
+        <span class="token punctuation">-</span>servicePrincipalTenantId $
+
+        <span class="token punctuation">-</span>azureSubscriptionName $
+
+        <span class="token punctuation">-</span>resourceGroupName %RESOURCE_GROUP%
+
+        <span class="token punctuation">-</span>resourceGroupNameRegion %RESOURCE_GROUP_REGION%
+
+        <span class="token punctuation">-</span>serverName %SERVER_NAME%
+
+        <span class="token punctuation">-</span>adminLogin %ADMIN_LOGIN%
+
+        <span class="token punctuation">-</span>adminPassword $
+</code></pre></div><p>此工作流的完整文件可以在<a href="https://gist.github.com/weeyin83/b63d320cc814dee9aebb599b847d0a49" target="_blank" rel="noopener noreferrer">这里<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>找到。</p> <h2 id="监控github-action的运行状态"><a href="#监控github-action的运行状态" class="header-anchor">#</a> 监控GitHub Action的运行状态</h2> <p>Action在运行时，你可以监视其进度。当你导航到GitHub仓库时，你将看到一个名为Actions的选项卡，单击该选项卡将带你进入Workflow部分。 你可以创建新的工作流，编辑工作流并监控工作流的运行进度。</p> <p><img src="https://gxcuf89792.i.lithium.com/t5/image/serverpage/image-id/163886i433300750608D8F9/image-size/large?v=1.0&amp;px=999" alt="undefined"><em>GitHub Actions 标签页</em></p> <p><img src="https://gxcuf89792.i.lithium.com/t5/image/serverpage/image-id/163889iD61736851B0DA262/image-size/large?v=1.0&amp;px=999" alt="undefined"><em>监控 GitHub Actions</em></p> <p>工作流完成后，你可以检查Azure订阅，就能看到创建的资源了：</p> <p><img src="https://gxcuf89792.i.lithium.com/t5/image/serverpage/image-id/163887i4528F2147C235951/image-size/large?v=1.0&amp;px=999" alt="undefined"><em>Azure 资源</em></p> <h2 id="注意事项"><a href="#注意事项" class="header-anchor">#</a> 注意事项</h2> <p>这里的示例是一个非常基本的工作流，而正在部署的资源也是一个非常基本的资源，但是对我来说，这是学习GitHub Actions的一个很好的起点。我已经看到我的同事将其用于更复杂的部署和工作流，例如Aaron Powell正在使用它来<a href="https://www.aaron-powell.com/posts/2019-12-17-implementing-github-actions-for-my-blog/" target="_blank" rel="noopener noreferrer">部署他的博客<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。</p> <p>我为测试此部署而创建的<a href="https://github.com/weeyin83/vm-actions" target="_blank" rel="noopener noreferrer">代码库<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>是公开的，工作流的输出可供已登录或未登录到GitHub的任何人查看，它包含某些可能被视为敏感的信息，比如我的Azure订阅ID，更重要的是虚拟机的IP地址，给了恶意的人一个容易攻击的机会。因此，如果你正在测试GitHub Action，请注意这一点，并警惕你在Azure中部署的内容以及它的安全性。</p> <p>我录制了一段视频，记录了代码的过程和每一步，可以在此处找到此视频：<a href="https://youtu.be/0kDr9OlAzlM" target="_blank" rel="noopener noreferrer">https://youtu.be/0kDr9OlAzlM<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。</p> <p>我很想听听其他IT专业人士是如何使用GitHub Action来部署基础设施的，所以请联系并分享您的故事！</p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/shinyzhu/azureselected/edit/master/zh-cn/content/cloud-advocate/2020-02/how-to-use-github-actions-to-deploy-an-azure-virtual-machine.md" target="_blank" rel="noopener noreferrer">在 GitHub 编辑本页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">最近更新于:</span> <span class="time">3/17/2020, 8:13:10 AM</span></div></footer> <!----> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/azureselected/assets/js/app.8a0b7483.js" defer></script><script src="/azureselected/assets/js/2.8d021b4d.js" defer></script><script src="/azureselected/assets/js/47.b54cc2ca.js" defer></script><script src="/azureselected/assets/js/3.32c85e2e.js" defer></script><script src="/azureselected/assets/js/5.554b9b17.js" defer></script>
+  </body>
+</html>
