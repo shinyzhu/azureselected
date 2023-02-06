@@ -12,12 +12,13 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@master
 
       - name: Build & Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v2
+        uses: jenkey2011/vuepress-deploy@master
         env:
           ACCESS_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: .vuepress/dist
+          TARGET_REPO: shinyzhu/azureselected
+          TARGET_BRANCH: master
+          BUILD_DIR: .vuepress/dist
           BUILD_SCRIPT: npm install && npm run build
